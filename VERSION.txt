@@ -1,0 +1,1 @@
+AlPro V6.0 - Supabase Cloud Deploy. Cloud hosting için PORT env uyumlu, Render config, Procfile, .env.example ve kurulum rehberi eklendi.

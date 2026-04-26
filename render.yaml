@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: alpro-live-web
-    env: node
-    plan: free
-    buildCommand: npm install
-    startCommand: npm start
-    autoDeploy: true

@@ -1,0 +1,11 @@
+{
+  "name": "alpro-weekly-auto-mobile",
+  "version": "6.3.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

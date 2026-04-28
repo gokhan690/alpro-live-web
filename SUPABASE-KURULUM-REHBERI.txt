@@ -1,0 +1,5 @@
+1) Supabase projesi aç.
+2) SUPABASE-SETUP.sql dosyasını SQL Editor'de çalıştır.
+3) .env.example dosyasını .env diye kopyala.
+4) SUPABASE_URL ve SUPABASE_SERVICE_KEY alanlarını doldur.
+5) START.bat veya BASLAT-V5-9-SUPABASE-CLOUD-8833.bat ile başlat.

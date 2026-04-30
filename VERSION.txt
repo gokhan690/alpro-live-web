@@ -1,9 +1,8 @@
-AlPro V7.2 - Dashboard Mockup + Light Fix
+AlPro V7.3 - Header + Mobile + Light Fix
 
 Bu sürümde:
-1) Ana sayfa, kullanıcının gönderdiği mockup düzenine daha yakın hale getirildi.
-2) Eski dashboard görünümü gizlenip yerine daha premium bir homepage yerleşimi eklendi.
-3) Üstte piyasa kartları, ortada kritik uyarılar ve yapılacaklar, altta sipariş/lojistik/finans/haftalık özet panelleri oluşturuldu.
-4) Alt bölümde 4 premium özet badge eklendi.
-5) Aydınlık mod düzeltildi; çok parlak beyaz tonlar yerine daha dengeli krem/açık gri premium tonlar kullanıldı.
-6) Koyu mod premium görünüm korunur.
+1) Aydınlık mod daha dengeli ve premium hale getirildi.
+2) Dashboard üst alanı, kullanıcının gönderdiği ilk ekran görüntüsündeki yapıya yakın yeniden tasarlandı.
+3) Mobil dashboard, kullanıcının ikinci görseline yakın bir uygulama görünümüyle yeniden tasarlandı.
+4) Desktop dashboard üst kartlar, uyarılar, görevler ve özet paneller korunarak daha düzenli hale getirildi.
+5) Önceki geliştirmeler temel alınmıştır.

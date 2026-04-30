@@ -1,0 +1,7 @@
+V7.4 SAFE TOPBAR ONLY
+
+Bu paket sadece üst barı değiştirir.
+Bozulan V7.2/V7.3 gibi tüm dashboard'u overwrite etmez.
+
+Yükleme:
+ZIP'i çıkar -> dosyaları GitHub repo klasörüne kopyala -> GitHub Desktop commit/push -> Render deploy latest commit.

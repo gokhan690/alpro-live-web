@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v73-header-mobile-lightfix",
-  "version": "7.3.0",
+  "name": "alpro-v74-safe-topbar",
+  "version": "7.4.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

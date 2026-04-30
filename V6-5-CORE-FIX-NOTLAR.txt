@@ -1,0 +1,10 @@
+V6.5 CORE FIX
+
+Bu sürüm yeni özellikten çok stabilite düzeltmesidir.
+
+Özellikle:
+- showPage('orders') artık P('orders') gibi çalışır.
+- Dashboard hızlı eylemler boşa düşmez.
+- data-go ve data-page click handler eklendi.
+- V58/V59 string kaçış problemleri doğrudan güvenli menü ile bypass edildi.
+- Eksik sayfalar Tüm Modüller başlığı altında erişilebilir.

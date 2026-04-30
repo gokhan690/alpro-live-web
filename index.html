@@ -684,7 +684,7 @@ table tr:hover {
 
 
 <style id="v54-premium-ui">
-/* ===== V6.4B PREMIUM UI REVISION ===== */
+/* ===== V6.6B PREMIUM UI REVISION ===== */
 :root{
   --bg:#05080d;
   --surface:#0a1017;
@@ -918,7 +918,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v55-finance-ui">
-/* ===== V6.4B BANKA & ODEME FINANSMAN MODULU ===== */
+/* ===== V6.6B BANKA & ODEME FINANSMAN MODULU ===== */
 .finance-hub{
   margin-top:14px;
   border:1px solid rgba(215,162,58,.18);
@@ -963,7 +963,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v56-hedge-preview-css">
-/* ===== V6.4B HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
+/* ===== V6.6B HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
 .hedge-preview{
   margin:10px 0 12px;
   padding:13px;
@@ -1026,7 +1026,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v57-more-leverage-css">
-/* ===== V6.4B DAHA FAZLA KALDIRAÇ KARTI ===== */
+/* ===== V6.6B DAHA FAZLA KALDIRAÇ KARTI ===== */
 .lev-btn{min-width:54px!important;border-radius:10px!important}
 .lev-btn[data-lev="15"],.lev-btn[data-lev="20"],.lev-btn[data-lev="25"],.lev-btn[data-lev="50"]{
   border-color:rgba(231,76,60,.28)!important;
@@ -1061,7 +1061,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v58-shared-ui">
-/* ===== V6.4B ORTAK KULLANIM / SHARED SERVER ===== */
+/* ===== V6.6B ORTAK KULLANIM / SHARED SERVER ===== */
 .shared-pill{
   display:inline-flex;align-items:center;gap:7px;
   border:1px solid rgba(46,204,113,.28);
@@ -1101,7 +1101,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v63-weekly-auto-mobile-css">
-/* ===== V6.4B WEEKLY REPORT + AUTO PRICE + MOBILE PRO ===== */
+/* ===== V6.6B WEEKLY REPORT + AUTO PRICE + MOBILE PRO ===== */
 .weekly-report-panel{
   border:1px solid rgba(215,162,58,.20);
   border-radius:16px;
@@ -1202,6 +1202,357 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 .product-chip{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:800;border:1px solid rgba(90,169,230,.20);background:rgba(90,169,230,.06);color:var(--text)}
 .formula-chip{display:inline-flex;border-radius:999px;padding:3px 8px;font-size:10px;font-family:Consolas,monospace;border:1px solid rgba(215,162,58,.22);background:rgba(215,162,58,.07);color:var(--accent)}
 .v64b-hint{margin:8px 0;padding:8px 10px;border:1px solid rgba(46,204,113,.18);background:rgba(46,204,113,.055);border-radius:10px;color:var(--text);font-size:10.5px}
+</style>
+
+
+<style id="v65-core-fix-css">
+/* ===== V6.6B CORE FIX ===== */
+.v65-menu-section{
+  margin:10px 8px 6px;
+  padding-top:8px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.v65-menu-title{
+  font-size:9px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  font-weight:900;
+  margin:0 0 6px 4px;
+}
+.v65-clean-note{
+  margin:8px 0;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid rgba(46,204,113,.18);
+  background:rgba(46,204,113,.055);
+  color:var(--text);
+  font-size:10.5px;
+}
+</style>
+
+
+<style id="v66-ui-customs-css">
+/* ===== V6.6B SELECT READABILITY + DETAILED CUSTOMS ===== */
+select.fsel, .fsel, select.fi {
+  background:#0b1118 !important;
+  color:#e8eef5 !important;
+  border:1px solid rgba(215,162,58,.24) !important;
+}
+select.fsel option, .fsel option {
+  background:#0b1118 !important;
+  color:#e8eef5 !important;
+}
+select.fsel:focus, .fsel:focus {
+  outline:none !important;
+  border-color:rgba(215,162,58,.65) !important;
+  box-shadow:0 0 0 3px rgba(215,162,58,.10) !important;
+}
+body.light select.fsel, body.light .fsel, body.light select.fi {
+  background:#ffffff !important;
+  color:#16202b !important;
+  border:1px solid rgba(130,100,35,.32) !important;
+}
+body.light select.fsel option, body.light .fsel option {
+  background:#ffffff !important;
+  color:#16202b !important;
+}
+.v66-customs-wrap{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:14px;
+}
+.v66-result-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.v66-result-card{
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:12px;
+  padding:10px;
+  background:rgba(255,255,255,.025);
+}
+.v66-result-card .l{font-size:8px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:900}
+.v66-result-card .v{font-size:16px;color:var(--bright);font-weight:900;font-family:Consolas,monospace;margin-top:5px}
+.v66-breakdown{
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:12px;
+  overflow:hidden;
+  background:rgba(255,255,255,.018);
+}
+.v66-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 10px;
+  border-bottom:1px solid rgba(255,255,255,.055);
+  font-size:11px;
+}
+.v66-row:last-child{border-bottom:none}
+.v66-row b{color:var(--bright)}
+.v66-row.total{background:rgba(215,162,58,.07);font-weight:900}
+.v66-row.grand{background:rgba(46,204,113,.07);font-weight:900;color:var(--accent3)}
+.v66-note{
+  margin-top:10px;
+  padding:9px 10px;
+  border:1px solid rgba(243,156,18,.20);
+  background:rgba(243,156,18,.06);
+  border-radius:10px;
+  font-size:10.5px;
+  color:var(--text);
+  line-height:1.5;
+}
+.v66-pill{
+  display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 8px;
+  background:rgba(90,169,230,.08);border:1px solid rgba(90,169,230,.22);
+  color:var(--text);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;
+}
+@media(max-width:900px){.v66-customs-wrap{grid-template-columns:1fr}.v66-result-grid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="v66b-global-readability-css">
+/* ===== V6.6BB GLOBAL READABILITY FIX ===== */
+/* Uygulamadaki tüm beyaz/okunmayan form ve dropdown alanlarını düzeltir */
+
+:root{
+  --v66b-field-bg:#0b1118;
+  --v66b-field-bg-2:#101923;
+  --v66b-field-text:#eaf1f8;
+  --v66b-field-muted:#9fb0bf;
+  --v66b-field-border:rgba(215,162,58,.28);
+  --v66b-field-border-focus:rgba(215,162,58,.68);
+}
+
+/* Genel form alanları */
+input,
+textarea,
+select,
+.fi,
+.fsel,
+.e-inp,
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="file"]{
+  background:var(--v66b-field-bg) !important;
+  color:var(--v66b-field-text) !important;
+  border:1px solid var(--v66b-field-border) !important;
+  caret-color:var(--accent) !important;
+  box-shadow:none !important;
+}
+
+/* Placeholder görünürlüğü */
+input::placeholder,
+textarea::placeholder,
+.fi::placeholder,
+.e-inp::placeholder{
+  color:rgba(234,241,248,.48) !important;
+  opacity:1 !important;
+}
+
+/* Select option görünürlüğü */
+select option,
+.fsel option,
+select optgroup{
+  background:#0b1118 !important;
+  color:#eaf1f8 !important;
+}
+
+/* Disabled alanlar */
+input:disabled,
+textarea:disabled,
+select:disabled,
+.fi:disabled,
+.fsel:disabled{
+  background:#151a20 !important;
+  color:#7f8b96 !important;
+  border-color:rgba(255,255,255,.08) !important;
+  opacity:.85 !important;
+}
+
+/* Focus hali */
+input:focus,
+textarea:focus,
+select:focus,
+.fi:focus,
+.fsel:focus,
+.e-inp:focus{
+  outline:none !important;
+  border-color:var(--v66b-field-border-focus) !important;
+  box-shadow:0 0 0 3px rgba(215,162,58,.12) !important;
+  background:var(--v66b-field-bg-2) !important;
+}
+
+/* Date picker ve file input butonları */
+input[type="date"]::-webkit-calendar-picker-indicator{
+  filter:invert(1) brightness(1.3) sepia(.25) saturate(1.4) hue-rotate(350deg) !important;
+  opacity:.85 !important;
+}
+input[type="file"]::file-selector-button{
+  background:rgba(215,162,58,.12) !important;
+  color:var(--v66b-field-text) !important;
+  border:1px solid rgba(215,162,58,.28) !important;
+  border-radius:8px !important;
+  padding:6px 10px !important;
+  margin-right:10px !important;
+  cursor:pointer !important;
+}
+
+/* Modal içindeki alanları da garantiye al */
+.mo .md,
+.modal,
+.dialog{
+  color:var(--text) !important;
+}
+.mo input,
+.mo textarea,
+.mo select,
+.mo .fi,
+.mo .fsel{
+  background:#0b1118 !important;
+  color:#eaf1f8 !important;
+  border-color:rgba(215,162,58,.28) !important;
+}
+.mo select option{
+  background:#0b1118 !important;
+  color:#eaf1f8 !important;
+}
+
+/* Tablo içindeki select / input */
+table input,
+table select,
+table .fi,
+table .fsel{
+  background:#0a1017 !important;
+  color:#eaf1f8 !important;
+  border-color:rgba(255,255,255,.12) !important;
+}
+
+/* Search, filter, küçük dropdownlar */
+#ord-search,
+#ord-filter,
+[id*="search"],
+[id*="filter"],
+[id*="sel"],
+[id*="-st"],
+[id*="-type"],
+[id*="-status"]{
+  background:#0b1118 !important;
+  color:#eaf1f8 !important;
+}
+
+/* Açık renk kartlarda beyaz üstüne beyaz riskini azalt */
+.card input,
+.card select,
+.sec input,
+.sec select,
+.sb input,
+.sb select{
+  background:#0b1118 !important;
+  color:#eaf1f8 !important;
+}
+
+/* Butonların üstündeki küçük textler okunur kalsın */
+button small,
+.btn small{
+  color:rgba(234,241,248,.72) !important;
+}
+
+/* Badge/chip içindeki yazılar */
+.badge,
+.chip,
+.product-chip,
+.formula-chip,
+.shared-pill,
+.supabase-status,
+.auto-price-status,
+.crit-status,
+.v66-pill{
+  color:inherit;
+}
+
+/* Light mode uyumlu, ama yine okunur */
+body.light,
+.light{
+  --v66b-field-bg:#ffffff;
+  --v66b-field-bg-2:#f7f9fc;
+  --v66b-field-text:#111827;
+  --v66b-field-muted:#475569;
+  --v66b-field-border:rgba(130,100,35,.34);
+  --v66b-field-border-focus:rgba(130,100,35,.70);
+}
+body.light input,
+body.light textarea,
+body.light select,
+body.light .fi,
+body.light .fsel,
+body.light .e-inp,
+.light input,
+.light textarea,
+.light select,
+.light .fi,
+.light .fsel,
+.light .e-inp{
+  background:#ffffff !important;
+  color:#111827 !important;
+  border-color:rgba(130,100,35,.34) !important;
+}
+body.light select option,
+body.light .fsel option,
+.light select option,
+.light .fsel option{
+  background:#ffffff !important;
+  color:#111827 !important;
+}
+body.light input::placeholder,
+body.light textarea::placeholder,
+.light input::placeholder,
+.light textarea::placeholder{
+  color:rgba(17,24,39,.48) !important;
+}
+body.light input[type="date"]::-webkit-calendar-picker-indicator,
+.light input[type="date"]::-webkit-calendar-picker-indicator{
+  filter:none !important;
+  opacity:.75 !important;
+}
+
+/* Browser autofill beyaz patlamasını düzelt */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill{
+  -webkit-text-fill-color:#eaf1f8 !important;
+  -webkit-box-shadow:0 0 0 1000px #0b1118 inset !important;
+  transition:background-color 5000s ease-in-out 0s !important;
+}
+body.light input:-webkit-autofill,
+body.light textarea:-webkit-autofill,
+body.light select:-webkit-autofill{
+  -webkit-text-fill-color:#111827 !important;
+  -webkit-box-shadow:0 0 0 1000px #ffffff inset !important;
+}
+
+/* Dropdown benzeri custom listeler */
+.dropdown,
+.menu,
+.search-results,
+.quick-results,
+#quick-results,
+#search-results{
+  background:#071018 !important;
+  color:#eaf1f8 !important;
+  border-color:rgba(215,162,58,.20) !important;
+}
+.dropdown *,
+.menu *,
+.search-results *,
+.quick-results *,
+#quick-results *,
+#search-results *{
+  color:inherit;
+}
 </style>
 
 </head>
@@ -1397,7 +1748,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
         <div style="font-size:11px;color:var(--muted);margin-top:2px" id="dash-date"></div>
       </div>
       <div class="stage1-banner">
-        <div><strong>Aşama 1 aktif — V6.4B temiz grafik</strong><br><span>8833 tablet modlu sürüm korunuyor. Canlı fiyat, USD/TRY ve sağlık kontrolleri tek panelde.</span></div>
+        <div><strong>Aşama 1 aktif — V6.6B temiz grafik</strong><br><span>8833 tablet modlu sürüm korunuyor. Canlı fiyat, USD/TRY ve sağlık kontrolleri tek panelde.</span></div>
         <div class="stage1-actions"><span class="stage1-badge">● STABİL SÜRÜM</span><button class="btn bp bsm" onclick="stage1RefreshAll()">Fiyat/Kur Yenile</button><button class="btn bs2 bsm" onclick="P('v5-live')">Canlı Metaller</button></div>
       </div>
       <div class="stage1-grid" id="stage1-dashboard-cards">
@@ -1410,7 +1761,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
       <div class="sec" style="margin-bottom:14px">
         <div class="sh"><div><div class="st">🧩 Aşama 1 Sistem Sağlığı</div><div class="ss">Eski server karışıklığını, fiyat kaynağını ve son kayıt durumunu gösterir.</div></div></div>
         <div class="sb"><div class="stage1-health">
-          <div class="h"><b id="stage1-h-version">V6.4B / 8833</b><span>Tek ana sürüm etiketi eklendi. Eski paketleri karıştırmamak için bu sürümü kullan.</span></div>
+          <div class="h"><b id="stage1-h-version">V6.6B / 8833</b><span>Tek ana sürüm etiketi eklendi. Eski paketleri karıştırmamak için bu sürümü kullan.</span></div>
           <div class="h"><b id="stage1-h-metals">Metal verisi: bekleniyor</b><span>Canlı fiyat alınamazsa son kayıt gösterilir; yanlış sabit değer basılmaz.</span></div>
           <div class="h"><b id="stage1-h-fx">USD/TRY: bekleniyor</b><span>Kur server proxy ile alınır; alınamazsa son kayıt/yok uyarısı verir.</span></div>
         </div></div>
@@ -5073,12 +5424,12 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 
 <div class="page" id="page-v58-shared">
   <div class="shared-banner">
-    <b>👥 Products LME Fix Modu — V6.4B</b>
+    <b>👥 Global Readability Fix Modu — V6.6B</b>
     <span>Bu modda kayıtlar sadece tarayıcıda değil, server tarafındaki ortak veri dosyasında tutulur. Aynı ağa bağlanan ortakların aynı verileri görmesi hedeflenir.</span>
   </div>
   <div class="sec">
     <div class="sh">
-      <div><div class="st">Products LME Fix Durumu</div><div class="ss">Server, ağ adresi, veri sağlığı ve yedekleme</div></div>
+      <div><div class="st">Global Readability Fix Durumu</div><div class="ss">Server, ağ adresi, veri sağlığı ve yedekleme</div></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn bp bsm" onclick="v58RefreshShared()">Yenile</button>
         <button class="btn bs2 bsm" onclick="v58CopyUrl()">Ağ Linkini Kopyala</button>
@@ -5101,7 +5452,7 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 
 <div class="page" id="page-v59-supabase">
   <div class="sec">
-    <div class="sh"><div><div class="st">☁️ Products LME Fix</div><div class="ss">Cloud veritabanı bağlantı testi ve kurulum</div></div><button class="btn bp" onclick="v59TestSupabase()">Bağlantıyı Test Et</button></div>
+    <div class="sh"><div><div class="st">☁️ Global Readability Fix</div><div class="ss">Cloud veritabanı bağlantı testi ve kurulum</div></div><button class="btn bp" onclick="v59TestSupabase()">Bağlantıyı Test Et</button></div>
     <div class="sb">
       <div class="al al-i">.env dosyasına SUPABASE_URL ve SUPABASE_SERVICE_KEY yazılırsa kayıtlar Supabase'e gider. Ayar yoksa local JSON yedek mod çalışır.</div>
       <pre class="shared-code" id="v59-sb-result">Test bekleniyor...</pre>
@@ -5127,7 +5478,7 @@ create table if not exists alpro_audit (
   </div>
 </div>
 
-<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div><div class="v5-ribbon" onclick="P('v5-live')">V6.4B • Aşama 1</div>
+<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div><div class="v5-ribbon" onclick="P('v5-live')">V6.6B • Aşama 1</div>
 <script>
 (function(){
 const V5=window.AlProV5={aiMode:'quote',metals:null}; const keys=['suppliers','customers','orders','stock','invoices','sales','customs','reminders','freight','hedges','documents','v5_metal_history'];
@@ -5339,11 +5690,11 @@ const oldP=window.P;window.P=function(id){oldP(id);if(id==='v5-mobile')detect();
 })();
 </script>
 
-<div class="stage1-version" onclick="P('dashboard')">V6.4B AŞAMA 1 • 8833</div>
+<div class="stage1-version" onclick="P('dashboard')">V6.6B AŞAMA 1 • 8833</div>
 
 <script id="stage1-v52-js">
 (function(){
-  const VERSION='V6.4Bb Aşama 1 Products LME Fix - 8833 Tablet Korundu';
+  const VERSION='V6.6Bb Aşama 1 Global Readability Fix - 8833 Tablet Korundu';
   function fmt(n,d=2){n=Number(n);return isFinite(n)?n.toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d}):'--'}
   function setTxt(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
   function pill(id,text,ok){const e=document.getElementById(id);if(e){e.textContent=text;e.className='stage1-pill '+(ok?'ok':'warn')}}
@@ -5777,9 +6128,9 @@ const oldP=window.P;window.P=function(id){oldP(id);if(id==='v5-mobile')detect();
     const nav=document.querySelector('.nav'); if(!nav || document.getElementById('v58-nav')) return;
     let holder=document.createElement('div');
     holder.id='v58-nav';
-    holder.innerHTML='<div class="ns">Ortak</div><div class="ni" onclick="P(\\'v58-shared\\')"><span class="ic">👥</span><span>Products LME Fix</span></div>';
+    holder.innerHTML='<div class="ns">Ortak</div><div class="ni" onclick="P(\\'v58-shared\\')"><span class="ic">👥</span><span>Global Readability Fix</span></div>';
     nav.appendChild(holder);
-    if(window.ptitles) ptitles['v58-shared']='Products LME Fix';
+    if(window.ptitles) ptitles['v58-shared']='Global Readability Fix';
   }
   const oldP=window.P;
   if(typeof oldP==='function' && !oldP._v58Wrapped){
@@ -5815,9 +6166,9 @@ function addNav(){
   if(!nav||document.getElementById('v59-nav'))return;
   const d=document.createElement('div');
   d.id='v59-nav';
-  d.innerHTML='<div class="ns">Cloud</div><div class="ni" onclick="P(\\'v59-supabase\\')"><span class="ic">☁️</span><span>Products LME Fix</span></div>';
+  d.innerHTML='<div class="ns">Cloud</div><div class="ni" onclick="P(\\'v59-supabase\\')"><span class="ic">☁️</span><span>Global Readability Fix</span></div>';
   nav.appendChild(d);
-  if(window.ptitles) ptitles['v59-supabase']='Products LME Fix';
+  if(window.ptitles) ptitles['v59-supabase']='Global Readability Fix';
 }
 const oldP=window.P;
 if(typeof oldP==='function'&&!oldP._v59Wrapped){const w=function(id){oldP(id);if(id==='v59-supabase')setTimeout(v59TestSupabase,80)};w._v59Wrapped=true;window.P=w;}
@@ -6066,6 +6417,298 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
     }).join('');
   };
   ready(function(){setTimeout(function(){enhance(); if(n('t-sup'))renderSup();},1000)});
+})();
+</script>
+
+
+<script id="v65-core-fix-js">
+(function(){
+  const PAGE_TITLES = {
+    lme:'Canlı LME', forex:'Döviz', history:'Fiyat Geçmişi', dashboard:'Dashboard',
+    reminders:'Hatırlatıcılar', suppliers:'Tedarikçiler', orders:'Siparişler',
+    customers:'Müşteriler', freight:'Navlun', customs:'Gümrük', 'customs-calc':'Gümrük Hesap',
+    bank:'Banka & Ödeme', invoices:'Faturalar', calculator:'Kâr / Maliyet',
+    analytics:'Analitik', reports:'Raporlar', ai:'AI Asistan', notify:'Bildirimler',
+    stock:'Stok', documents:'Belgeler', setup:'Ekip Kurulumu', income:'Gelir/Gider',
+    hedge:'LME Hedging', 'v5-mobile':'Mobil / Tablet', 'v58-shared':'Ortak Kullanım',
+    'v59-supabase':'Supabase Cloud', 'v61-logistics':'Lojistik Kulesi'
+  };
+  const MENU = [
+    ['Ana', [['dashboard','Dashboard'],['lme','Canlı LME'],['forex','Döviz'],['history','Geçmiş']]],
+    ['Operasyon', [['reminders','Hatırlatıcılar'],['suppliers','Tedarikçiler'],['orders','Siparişler'],['customers','Müşteriler'],['stock','Stok']]],
+    ['Lojistik', [['freight','Navlun'],['customs','Gümrük'],['customs-calc','Gümrük Hesap'],['documents','Belgeler']]],
+    ['Finans', [['bank','Banka & Ödeme'],['invoices','Faturalar'],['calculator','Kâr / Maliyet'],['hedge','Hedging']]],
+    ['Analiz', [['analytics','Analitik'],['income','Gelir/Gider'],['reports','Raporlar'],['ai','AI Asistan']]],
+    ['Sistem', [['notify','Bildirimler'],['setup','Kurulum'],['v5-mobile','Mobil/Tablet'],['v58-shared','Ortak'],['v59-supabase','Supabase']]]
+  ];
+  function page(id){return document.getElementById('page-'+id)}
+  function title(id){return PAGE_TITLES[id] || (window.ptitles && window.ptitles[id]) || id}
+  function safeRun(id){
+    const runners = {
+      dashboard:window.renderDB, suppliers:window.renderSup, orders:window.renderOrd, customers:window.renderCust,
+      customs:window.renderCus, stock:window.renderStk, invoices:window.renderInv, reminders:function(){ if(window.renderRem) renderRem('all') },
+      analytics:window.renderAnalytics, income:window.renderIncome, hedge:window.renderHedge, reports:window.renderReports,
+      calculator:window.initCostPage, 'customs-calc':window.calcCustoms, bank:window.renderBank,
+      freight:window.renderFreight, setup:window.loadSetup, documents:window.renderDocs
+    };
+    try{ if(typeof runners[id]==='function') runners[id](); }catch(e){ console.warn('V6.6B runner error', id, e); }
+  }
+  window.P = function(id){
+    const pg = page(id);
+    if(!pg){ console.warn('V6.6B: page not found', id); return false; }
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+    pg.classList.add('active');
+    document.querySelectorAll('[data-page="'+id+'"]').forEach(n=>n.classList.add('active'));
+    const pt=document.getElementById('pt'); if(pt) pt.textContent=title(id);
+    safeRun(id);
+    return true;
+  };
+  window.showPage = window.P;
+  window.goPage = window.P;
+
+  function cleanBrokenNav(){
+    // Broken V58/V59 script outputs may create duplicate raw items; remove our own old menu if present
+    document.querySelectorAll('#v65-direct-menu').forEach(x=>x.remove());
+  }
+  function addDirectMenu(){
+    const nav = document.querySelector('.nav') || document.querySelector('.nav-grouped') || document.querySelector('.sidebar');
+    if(!nav || document.getElementById('v65-direct-menu')) return;
+    const wrap = document.createElement('div');
+    wrap.id='v65-direct-menu';
+    wrap.className='v65-menu-section';
+    let html = '<div class="v65-menu-title">Tüm Modüller</div>';
+    MENU.forEach(([cat,items])=>{
+      html += '<div class="v65-menu-title" style="margin-top:10px">'+cat+'</div>';
+      items.forEach(([id,label])=>{
+        if(page(id)) html += '<div class="ni" data-page="'+id+'" onclick="P(\''+id+'\')"><span class="ic">•</span><span>'+label+'</span></div>';
+      });
+    });
+    wrap.innerHTML=html;
+    nav.appendChild(wrap);
+  }
+  function fixDelegatedClicks(){
+    if(window.__v65Delegated) return;
+    window.__v65Delegated=true;
+    document.addEventListener('click',function(e){
+      const el=e.target.closest('[data-go],[data-page-go],[data-page]');
+      if(!el) return;
+      const id=el.getAttribute('data-go')||el.getAttribute('data-page-go')||el.getAttribute('data-page');
+      if(id && page(id)){
+        e.preventDefault();
+        P(id);
+      }
+    },true);
+  }
+  function fixQuickSearchResults(){
+    // Makes any Ctrl+K / search result with data-go or onclick showPage work
+    document.querySelectorAll('[onclick*="showPage("]').forEach(el=>{
+      const raw=el.getAttribute('onclick')||'';
+      const m=raw.match(/showPage\(['"]([^'"]+)['"]\)/);
+      if(m){ el.setAttribute('data-go',m[1]); }
+    });
+  }
+  function dedupeAddButtons(){
+    const seen = new Set();
+    document.querySelectorAll('button').forEach(btn=>{
+      const txt=(btn.textContent||'').trim();
+      const on=btn.getAttribute('onclick')||'';
+      if(!txt.includes('Ekle') && !txt.includes('Sipariş')) return;
+      const key=txt+'|'+on+'|'+(btn.closest('.page')?.id||'');
+      if(seen.has(key)) btn.style.display='none';
+      else seen.add(key);
+    });
+  }
+  function patchBadScriptsVisually(){
+    // V58/V59 pages remain accessible through direct menu; this avoids relying on broken innerHTML escaped onclicks.
+    if(window.ptitles){
+      Object.assign(window.ptitles, PAGE_TITLES);
+    }
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    setTimeout(function(){
+      patchBadScriptsVisually();
+      cleanBrokenNav();
+      addDirectMenu();
+      fixDelegatedClicks();
+      fixQuickSearchResults();
+      dedupeAddButtons();
+      if(!document.querySelector('.page.active')){
+        P('dashboard');
+      }
+    },800);
+  });
+})();
+</script>
+
+
+<script id="v66-detailed-customs-js">
+(function(){
+  function n(id){return document.getElementById(id)}
+  function num(id){return Number(n(id)?.value)||0}
+  function val(id){return n(id)?.value||''}
+  function tr(nm){return (Number(nm)||0).toLocaleString('tr-TR',{maximumFractionDigits:2})+' TL'}
+  function usd(nm){return '$'+(Number(nm)||0).toLocaleString('tr-TR',{maximumFractionDigits:2})}
+  const GTIP = {
+    '7601.10.00': {name:'Saf Alüminyum / Unwrought aluminium', duty:4, vat:20},
+    '7601.20.99': {name:'Alaşımlı Alüminyum', duty:4, vat:20},
+    '7604.10.10': {name:'Alüminyum Çubuk / Profil', duty:5, vat:20},
+    '7605.11.00': {name:'Alüminyum Tel', duty:5, vat:20},
+    '7403.11.00': {name:'Katot Bakır / Copper Cathode', duty:0, vat:20},
+    '7901.11.00': {name:'Çinko Külçe', duty:3, vat:20}
+  };
+  function customsHtml(){
+    return `
+      <div class="al al-i">🧮 Detaylı ithalat gümrük masrafı hesaplayıcı. CIF, vergi, KDV, KKDF, liman ve operasyon masraflarını ton başına indirger.</div>
+      <div class="v66-customs-wrap">
+        <div class="sec">
+          <div class="sh"><div><div class="st">Detaylı Gümrük Hesaplama</div><div class="ss">Alüminyum, katot bakır ve çinko ithalatı için</div></div><span class="v66-pill">V6.6B</span></div>
+          <div class="sb">
+            <div class="fg">
+              <div class="fg1"><label class="fl">Ürün / GTİP</label><select class="fsel" id="v66-gtip" onchange="v66GtipChange();v66CalcCustoms()">
+                <option value="7601.10.00">7601.10.00 — Saf Alüminyum</option>
+                <option value="7601.20.99">7601.20.99 — A7/A8 Alüminyum Külçe</option>
+                <option value="7604.10.10">7604.10.10 — Alüminyum Profil/Çubuk</option>
+                <option value="7605.11.00">7605.11.00 — Alüminyum Tel</option>
+                <option value="7403.11.00">7403.11.00 — Katot Bakır Grade A</option>
+                <option value="7901.11.00">7901.11.00 — Çinko Külçe</option>
+              </select></div>
+              <div class="fg1"><label class="fl">Mal Bedeli FOB / Invoice (USD)</label><input class="fi" type="number" id="v66-fob" value="100000" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Navlun (USD)</label><input class="fi" type="number" id="v66-freight" value="3500" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Sigorta (USD)</label><input class="fi" type="number" id="v66-insurance" value="250" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">USD/TRY Kuru</label><input class="fi" type="number" step="0.01" id="v66-rate" value="38.2" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Miktar (ton)</label><input class="fi" type="number" id="v66-qty" value="20" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Gümrük Vergisi %</label><input class="fi" type="number" step="0.01" id="v66-duty" value="4" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">KDV %</label><input class="fi" type="number" step="0.01" id="v66-vat" value="20" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">KKDF Uygula?</label><select class="fsel" id="v66-kkdf-on" onchange="v66CalcCustoms()"><option value="no">Hayır</option><option value="yes">Evet</option></select></div>
+              <div class="fg1"><label class="fl">KKDF %</label><input class="fi" type="number" step="0.01" id="v66-kkdf" value="6" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Damga / Diğer Resmi %</label><input class="fi" type="number" step="0.001" id="v66-stamp" value="0.948" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Ordino / THC / Liman (TRY)</label><input class="fi" type="number" id="v66-port" value="25000" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Ardiye / Demuraj (TRY)</label><input class="fi" type="number" id="v66-demurrage" value="0" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Gümrük Müşavirliği (TRY)</label><input class="fi" type="number" id="v66-broker" value="12000" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Banka / Transfer Masrafı (TRY)</label><input class="fi" type="number" id="v66-bank" value="5000" oninput="v66CalcCustoms()"></div>
+              <div class="fg1"><label class="fl">Diğer Masraflar (TRY)</label><input class="fi" type="number" id="v66-other" value="0" oninput="v66CalcCustoms()"></div>
+            </div>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sh"><div><div class="st">Hesap Sonucu</div><div class="ss" id="v66-gtip-note">GTİP oranları otomatik gelir, gerektiğinde elle değiştirilebilir.</div></div></div>
+          <div class="sb">
+            <div class="v66-result-grid">
+              <div class="v66-result-card"><div class="l">CIF USD</div><div class="v" id="v66-out-cif-usd">-</div></div>
+              <div class="v66-result-card"><div class="l">CIF TRY</div><div class="v" id="v66-out-cif-try">-</div></div>
+              <div class="v66-result-card"><div class="l">Toplam Masraf</div><div class="v" id="v66-out-total">-</div></div>
+              <div class="v66-result-card"><div class="l">Masraf / Ton</div><div class="v" id="v66-out-ton">-</div></div>
+            </div>
+            <div class="v66-breakdown" id="v66-breakdown"></div>
+            <div class="v66-note">
+              Not: Oranlar ve masraf kalemleri operasyonel tahmin içindir. Nihai tutar için gümrük müşaviri, GTİP, menşe, rejim ve ödeme şekli kontrol edilmelidir. KKDF ödeme/finansman yapısına göre değişebilir.
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+  window.v66GtipChange=function(){
+    const g=GTIP[val('v66-gtip')]||GTIP['7601.20.99'];
+    if(n('v66-duty')) n('v66-duty').value=g.duty;
+    if(n('v66-vat')) n('v66-vat').value=g.vat;
+    if(n('v66-gtip-note')) n('v66-gtip-note').textContent=g.name+' • Gümrük %'+g.duty+' • KDV %'+g.vat;
+  };
+  window.v66CalcCustoms=function(){
+    const fob=num('v66-fob'), freight=num('v66-freight'), ins=num('v66-insurance'), rate=num('v66-rate')||1, qty=num('v66-qty')||1;
+    const dutyRate=num('v66-duty')/100, vatRate=num('v66-vat')/100, kkdfRate=num('v66-kkdf')/100, stampRate=num('v66-stamp')/100;
+    const cifUsd=fob+freight+ins;
+    const cifTry=cifUsd*rate;
+    const duty=cifTry*dutyRate;
+    const kkdf=val('v66-kkdf-on')==='yes' ? fob*rate*kkdfRate : 0;
+    const stamp=cifTry*stampRate;
+    const vatBase=cifTry+duty+kkdf+stamp;
+    const vat=vatBase*vatRate;
+    const port=num('v66-port'), dem=num('v66-demurrage'), broker=num('v66-broker'), bank=num('v66-bank'), other=num('v66-other');
+    const operational=port+dem+broker+bank+other;
+    const taxes=duty+kkdf+stamp+vat;
+    const total=taxes+operational;
+    const landed=cifTry+total;
+    const perTon=total/qty;
+    const landedTon=landed/qty;
+    const set=(id,v)=>{if(n(id))n(id).textContent=v};
+    set('v66-out-cif-usd',usd(cifUsd));
+    set('v66-out-cif-try',tr(cifTry));
+    set('v66-out-total',tr(total));
+    set('v66-out-ton',tr(perTon));
+    const rows=[
+      ['FOB / Invoice', usd(fob)+' / '+tr(fob*rate)],
+      ['Navlun', usd(freight)+' / '+tr(freight*rate)],
+      ['Sigorta', usd(ins)+' / '+tr(ins*rate)],
+      ['CIF Matrah', tr(cifTry)],
+      ['Gümrük Vergisi', tr(duty)],
+      ['KKDF', tr(kkdf)],
+      ['Damga / Diğer Resmi', tr(stamp)],
+      ['KDV Matrahı', tr(vatBase)],
+      ['KDV', tr(vat)],
+      ['Liman / Ordino / THC', tr(port)],
+      ['Ardiye / Demuraj', tr(dem)],
+      ['Gümrük Müşavirliği', tr(broker)],
+      ['Banka / Transfer', tr(bank)],
+      ['Diğer', tr(other)],
+      ['Vergi Toplamı', tr(taxes),'total'],
+      ['Operasyon Masrafı', tr(operational),'total'],
+      ['Toplam Masraf', tr(total),'total'],
+      ['Toplam Landed Cost', tr(landed),'grand'],
+      ['Landed Cost / ton', tr(landedTon),'grand']
+    ];
+    if(n('v66-breakdown')) n('v66-breakdown').innerHTML=rows.map(r=>'<div class="v66-row '+(r[2]||'')+'"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>').join('');
+  };
+  const oldCalc=window.calcCustoms;
+  window.calcCustoms=function(){
+    const pg=n('page-customs-calc');
+    if(pg && !n('v66-gtip')){
+      pg.innerHTML=customsHtml();
+      v66GtipChange();
+      v66CalcCustoms();
+    } else if(n('v66-gtip')) {
+      v66CalcCustoms();
+    } else if(typeof oldCalc==='function') {
+      oldCalc();
+    }
+  };
+  document.addEventListener('DOMContentLoaded',function(){
+    setTimeout(function(){
+      if(document.querySelector('.page.active')?.id==='page-customs-calc') window.calcCustoms();
+    },900);
+  });
+})();
+</script>
+
+
+<script id="v66b-global-readability-js">
+(function(){
+  function fixFields(){
+    document.querySelectorAll('select,input,textarea,.fi,.fsel,.e-inp').forEach(el=>{
+      el.classList.add('v66b-readable-field');
+      if(el.tagName==='SELECT'){
+        [...el.options].forEach(o=>{
+          o.style.backgroundColor = document.body.classList.contains('light') ? '#ffffff' : '#0b1118';
+          o.style.color = document.body.classList.contains('light') ? '#111827' : '#eaf1f8';
+        });
+      }
+    });
+  }
+  const oldOpenM = window.openM;
+  if(typeof oldOpenM === 'function' && !oldOpenM._v66bReadable){
+    const wrapped = function(){
+      const r = oldOpenM.apply(this, arguments);
+      setTimeout(fixFields, 80);
+      return r;
+    };
+    wrapped._v66bReadable = true;
+    window.openM = wrapped;
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    setTimeout(fixFields,300);
+    setTimeout(fixFields,1200);
+  });
+  document.addEventListener('click',function(){setTimeout(fixFields,80)},true);
 })();
 </script>
 

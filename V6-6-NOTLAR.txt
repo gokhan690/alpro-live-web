@@ -1,0 +1,21 @@
+V6.6 NOTLARI
+
+Gümrük hesaplama artık daha detaylıdır:
+- FOB / Invoice USD
+- Navlun USD
+- Sigorta USD
+- CIF USD / TRY
+- Gümrük vergisi
+- KKDF opsiyonel
+- Damga / resmi masraf
+- KDV matrahı
+- KDV
+- Liman / ordino / THC
+- Ardiye / demuraj
+- Müşavirlik
+- Banka / transfer
+- Diğer masraflar
+- Ton başı masraf
+- Landed cost / ton
+
+Not: Hesap operasyonel tahmindir; nihai beyan için gümrük müşaviri kontrolü gerekir.

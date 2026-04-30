@@ -1,1 +1,9 @@
-AlPro V6.4B - Products LME fix: A7/A8/Katot Bakır ürünleri, LME -% / LME -USD formülü, tedarikçi/sipariş ekleme düzeltildi.
+AlPro V6.6B - Global Readability Fix
+
+Düzeltilenler:
+1) Sadece ürün/LME değil, tüm input/select/dropdown alanlarının okunurluğu düzeltildi.
+2) Dark mode'da beyaz kalan dropdownlar koyu arka plan + açık yazı yapıldı.
+3) Light mode'da yazılar koyu, arka plan açık kalacak şekilde ayarlandı.
+4) Modal, tablo, filtre, arama, tarih, file input ve option alanları kapsandı.
+5) Browser autofill beyaz patlaması azaltıldı.
+6) V6.6 detaylı gümrük hesaplama ve V6.5 core fix korunur.

@@ -1,6 +1,6 @@
 {
-  "name": "alpro-products-lme-fix",
-  "version": "6.4.1",
+  "name": "alpro-global-readability-fix",
+  "version": "6.6.1",
   "private": true,
   "scripts": {
     "start": "node server.js"

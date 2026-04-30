@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v75-mockup-active-ui",
-  "version": "7.5.0",
+  "name": "alpro-v76-exact-mockup-dashboard",
+  "version": "7.6.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

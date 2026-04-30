@@ -1,0 +1,11 @@
+V7.6 EXACT MOCKUP DASHBOARD
+
+Yükleme:
+1. ZIP'i çıkar
+2. İçindeki dosyaları GitHub repo klasörüne kopyala
+3. GitHub Desktop -> Commit
+4. Push origin
+5. Render -> Deploy latest commit
+
+Commit mesajı:
+Update V7.6 Exact Mockup Dashboard

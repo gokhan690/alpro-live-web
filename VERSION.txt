@@ -1,25 +1,10 @@
-AlPro V7.5 - Mockup Active UI
+AlPro V7.6 - Exact Mockup Dashboard
 
-Bu sürüm kullanıcının beğendiği mockup tasarımını uygulamanın dashboard’una aktive eder.
+Bu sürüm 3 adımı birlikte uygular:
+1) Desktop dashboard iskeleti mockup'a daha yakın yapıldı.
+2) Sidebar + üst header görseldeki premium yapıya yaklaştırıldı.
+3) Mobil dashboard sağdaki telefon görünümüne yaklaştırıldı.
 
-Eklenenler:
-1) Desktop dashboard mockup düzeni:
-   - Büyük AlPro V7.5 başlığı
-   - DEMTA markalama
-   - Premium header: arama, LME, saat, USD/TRY, bildirim, kullanıcı
-   - 6 üst KPI kartı
-   - Kritik uyarılar ve günlük görevler
-   - Son siparişler, lojistik/ETA, finans özeti, haftalık rapor
-   - En altta 4 premium bilgi kartı
-
-2) Mobil dashboard mockup düzeni:
-   - Merhaba ekranı
-   - 2x2 piyasa kartları
-   - Hızlı işlemler
-   - Bugün ne yapmalıyım paneli
-   - Floating + butonu
-   - Alt tabbar
-
-Not:
-Yeni tasarım sadece dashboard aktifken eski dashboard’u gizler.
-Diğer sayfalar ve fonksiyonlar korunur.
+Önemli:
+- Yeni görünüm dashboard sayfasında eski dashboard'u gizleyerek gösterilir.
+- Diğer sayfaların fonksiyonları korunur.

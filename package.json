@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69c-dashboard-search-mobile-fix",
-  "version": "6.9.2",
+  "name": "alpro-v69d-dashboard-mockup-firstpage",
+  "version": "6.9.3",
   "private": true,
   "scripts": {
     "start": "node server.js"

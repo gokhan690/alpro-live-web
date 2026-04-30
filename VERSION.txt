@@ -1,32 +1,14 @@
-AlPro V6.9C - Dashboard Search + Mobile Safe Fix
+AlPro V6.9D - Dashboard Mockup First Page
 
-Bu sürüm V6.9 çalışan tabanı korur.
+Bu sürüm V6.9 tabanını korur.
 
 Yapılanlar:
-1) Dashboard dahil tüm sayfalara üst global arama/header eklendi.
-   - Dashboard
-   - Siparişler
-   - Tedarikçiler
-   - Müşteriler
-   - Faturalar
-   - Banka
-   - Stok
-   - Lojistik / BL / ETA
-   - Raporlar
-
-2) Mobil iyileştirme korunur:
-   - Yeni üst mobil bar
-   - Mobil arama paneli
-   - Alt hızlı tabbar
-   - Floating + butonu
-   - Tablolar yatay kaydırılabilir
-   - Form ve kartlar daha okunur
+1) Dashboard ilk açılan sayfa olarak zorlanır.
+2) Dashboard sayfası fotoğraftaki stile yakın premium mockup düzenine dönüştürüldü.
+3) Mobil dashboard görünümü fotoğraftaki app-style düzene yaklaştırıldı.
+4) V6.9C arama/header ve mobil iyileştirmeler korunur.
 
 Korunanlar:
-- Eski dashboard yapısı
-- Eski sipariş / tedarikçi / müşteri / finans sayfaları
-- Eski fonksiyonlar
+- Diğer sayfalar
 - Supabase / Render yapısı
-
-Not:
-Bu paket tasarımı komple değiştirmez. Sadece arama/header + mobil iyileştirme yapar.
+- Mevcut veri mantığı

@@ -1,9 +1,9 @@
-AlPro V7.0 - Premium Navigation & UI
+AlPro V7.1 - Dark Homepage Concept
 
-Bu sürüm görsel konseptteki premium tasarımı uygulamaya taşır:
-1) Premium koyu lacivert + altın renk paleti.
-2) Sol menü yeniden gruplandı: Ana Sayfa, Ticaret, Lojistik, Finans, Raporlar, Sistem.
-3) Dashboard kartları daha premium ve hiyerarşik hale getirildi.
-4) Topbar, kartlar, tablolar, butonlar, badge'ler standartlaştırıldı.
-5) Mobilde mevcut app-style tabbar ve FAB korunup premium renklendirildi.
-6) V6.9 mobil, V6.7 export/daily, V6.6B okunurluk, V6.6 gümrük, V6.5 core fix korunur.
+Bu sürümde özellikle koyu mod ana sayfa, kullanıcının beğendiği görsel konsepte yaklaştırıldı:
+1) Ana sayfa / dashboard daha premium koyu görünüm aldı.
+2) Sol menü ve logo alanı DEMTA kurumsal hissine göre güçlendirildi.
+3) Sidebar, topbar, dashboard kartları ve section alanları yeniden karartıldı/stilize edildi.
+4) Dashboard üstüne premium hero alanı eklendi.
+5) Altın vurgu ve koyu lacivert finans/trading hissi güçlendirildi.
+6) Önceki V7.0B light mode fix ve tüm eski geliştirmeler korunur.

@@ -1,6 +1,6 @@
 {
-  "name": "alpro-premium-v7",
-  "version": "7.0.0",
+  "name": "alpro-v71-dark-homepage-concept",
+  "version": "7.1.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

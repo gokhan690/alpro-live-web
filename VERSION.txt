@@ -1,10 +1,12 @@
-AlPro V7.6 - Exact Mockup Dashboard
+AlPro V8.0 - Dashboard Rebuild
 
-Bu sürüm 3 adımı birlikte uygular:
-1) Desktop dashboard iskeleti mockup'a daha yakın yapıldı.
-2) Sidebar + üst header görseldeki premium yapıya yaklaştırıldı.
-3) Mobil dashboard sağdaki telefon görünümüne yaklaştırıldı.
+Bu sürüm, kullanıcının gönderdiği V6.9 stabil paket üzerine kuruldu.
+Önceki V7 denemeleri kullanılmadı.
 
-Önemli:
-- Yeni görünüm dashboard sayfasında eski dashboard'u gizleyerek gösterilir.
-- Diğer sayfaların fonksiyonları korunur.
+Yapılan:
+1) Dashboard sayfası izole V8.0 shell ile sıfırdan yeniden kuruldu.
+2) Eski dashboard sadece V8.0 shell başarıyla oluşursa gizlenir.
+3) Desktop görünüm mockup'a daha yakın şekilde tasarlandı.
+4) Mobil dashboard sağdaki telefon mockup'ına yakın ayrı tasarlandı.
+5) Sidebar koyu premium görünüme yaklaştırıldı.
+6) Diğer sayfalar ve fonksiyonlar korunur.

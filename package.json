@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v76-exact-mockup-dashboard",
-  "version": "7.6.0",
+  "name": "alpro-v80-dashboard-rebuild",
+  "version": "8.0.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

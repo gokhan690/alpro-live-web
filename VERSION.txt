@@ -1,15 +1,25 @@
-AlPro V7.4B - Forced Header Fix
+AlPro V7.5 - Mockup Active UI
 
-V7.4 üst bar görünmediyse bu paket onu düzeltir.
-Bu sürüm mevcut topbar class'ına bağlı kalmadan sayfanın en üstüne premium header ekler.
+Bu sürüm kullanıcının beğendiği mockup tasarımını uygulamanın dashboard’una aktive eder.
 
-Eklenen:
-1) Global arama
-2) LME açık durumu
-3) Saat / tarih
-4) USD/TRY
-5) Bildirim
-6) Kullanıcı kartı
+Eklenenler:
+1) Desktop dashboard mockup düzeni:
+   - Büyük AlPro V7.5 başlığı
+   - DEMTA markalama
+   - Premium header: arama, LME, saat, USD/TRY, bildirim, kullanıcı
+   - 6 üst KPI kartı
+   - Kritik uyarılar ve günlük görevler
+   - Son siparişler, lojistik/ETA, finans özeti, haftalık rapor
+   - En altta 4 premium bilgi kartı
+
+2) Mobil dashboard mockup düzeni:
+   - Merhaba ekranı
+   - 2x2 piyasa kartları
+   - Hızlı işlemler
+   - Bugün ne yapmalıyım paneli
+   - Floating + butonu
+   - Alt tabbar
 
 Not:
-Dashboard, tablolar ve fonksiyonlar değiştirilmez.
+Yeni tasarım sadece dashboard aktifken eski dashboard’u gizler.
+Diğer sayfalar ve fonksiyonlar korunur.

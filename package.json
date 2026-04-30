@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v74b-forced-header-fix",
-  "version": "7.4.1",
+  "name": "alpro-v75-mockup-active-ui",
+  "version": "7.5.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

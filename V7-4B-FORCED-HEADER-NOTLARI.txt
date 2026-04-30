@@ -1,7 +1,0 @@
-V7.4B FORCED HEADER FIX
-
-Bu paket V7.4'te görünmeyen header sorununu çözer.
-Header artık topbar class'ına bağlı değil; direkt ana içeriğin en üstüne eklenir.
-
-Yükleme:
-ZIP'i çıkar -> dosyaları repo klasörüne kopyala -> commit/push -> Render deploy.

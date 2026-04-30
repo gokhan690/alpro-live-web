@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v90b-old-base-dashboard-header-only",
-  "version": "9.0.1",
+  "name": "alpro-v69c-dashboard-search-mobile-fix",
+  "version": "6.9.2",
   "private": true,
   "scripts": {
     "start": "node server.js"

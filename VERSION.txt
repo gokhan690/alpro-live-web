@@ -1,18 +1,32 @@
-AlPro V9.0B - Old Base + Dashboard & Header Only
+AlPro V6.9C - Dashboard Search + Mobile Safe Fix
 
-Bu sürüm V9 full rebuild'i iptal eder.
-Eski çalışan V6.9 tabanı korunmuştur.
+Bu sürüm V6.9 çalışan tabanı korur.
 
-Sadece eklenenler:
-1) Üst premium arama/header
-2) Dashboard sayfasına V9 tarzı yeni dashboard
+Yapılanlar:
+1) Dashboard dahil tüm sayfalara üst global arama/header eklendi.
+   - Dashboard
+   - Siparişler
+   - Tedarikçiler
+   - Müşteriler
+   - Faturalar
+   - Banka
+   - Stok
+   - Lojistik / BL / ETA
+   - Raporlar
+
+2) Mobil iyileştirme korunur:
+   - Yeni üst mobil bar
+   - Mobil arama paneli
+   - Alt hızlı tabbar
+   - Floating + butonu
+   - Tablolar yatay kaydırılabilir
+   - Form ve kartlar daha okunur
 
 Korunanlar:
-- Eski sipariş, tedarikçi, müşteri, banka, fatura, stok, rapor sayfaları
+- Eski dashboard yapısı
+- Eski sipariş / tedarikçi / müşteri / finans sayfaları
 - Eski fonksiyonlar
-- Eski mobil yapı
-- server.js / Supabase / Render yapısı
+- Supabase / Render yapısı
 
 Not:
-Bu paket V9 full frontend rebuild değildir.
-Sadece eski dosyaya dashboard + üst arama/header ekler.
+Bu paket tasarımı komple değiştirmez. Sadece arama/header + mobil iyileştirme yapar.

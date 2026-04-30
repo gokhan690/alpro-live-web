@@ -1,5 +1,0 @@
-V7.3 Header + Mobile + Light Fix
-
-- Light mode yumuşatıldı.
-- Üst header: arama, LME durum, saat/tarih, USDTRY, bildirim, kullanıcı kartı.
-- Mobil dashboard: greeting, 2x2 market cards, quick actions, tasks, floating + button, alt tabbar.

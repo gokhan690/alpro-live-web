@@ -1,6 +1,0 @@
-V7.2 Dashboard Mockup + Light Fix
-
-- Dashboard artık mockup hissine daha yakın.
-- Light mode daha dengeli ve yumuşak.
-- Gösterilen sayılar mümkün olduğunda mevcut localStorage / eski dashboard verilerinden alınır.
-- Paket GitHub repo klasörüne kopyalanıp commit/push edilmelidir.

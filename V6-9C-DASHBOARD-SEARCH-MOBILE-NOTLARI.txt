@@ -1,4 +1,4 @@
-V9.0B OLD BASE + DASHBOARD & HEADER ONLY
+V6.9C DASHBOARD SEARCH + MOBILE SAFE FIX
 
 Yükleme:
 1. ZIP'i çıkar
@@ -10,4 +10,4 @@ Yükleme:
 7. Ctrl+F5 yap
 
 Commit mesajı:
-Update V9.0B Dashboard Header Only
+Update V6.9C Dashboard Search Mobile Fix

@@ -1,12 +1,32 @@
-AlPro V8.0 - Dashboard Rebuild
+AlPro V8.1 - Global Mockup UI
 
-Bu sürüm, kullanıcının gönderdiği V6.9 stabil paket üzerine kuruldu.
-Önceki V7 denemeleri kullanılmadı.
+Bu sürüm sadece dashboard'u değil, tüm uygulama genelini mockup tarzına yaklaştırır.
 
-Yapılan:
-1) Dashboard sayfası izole V8.0 shell ile sıfırdan yeniden kuruldu.
-2) Eski dashboard sadece V8.0 shell başarıyla oluşursa gizlenir.
-3) Desktop görünüm mockup'a daha yakın şekilde tasarlandı.
-4) Mobil dashboard sağdaki telefon mockup'ına yakın ayrı tasarlandı.
-5) Sidebar koyu premium görünüme yaklaştırıldı.
-6) Diğer sayfalar ve fonksiyonlar korunur.
+Yapılanlar:
+1) Üst global premium header her sayfada görünür:
+   - Global arama
+   - LME açık durumu
+   - Saat/tarih
+   - USD/TRY
+   - Bildirim
+   - Kullanıcı kartı
+
+2) Tüm sayfalarda koyu premium düzen:
+   - Kartlar
+   - Paneller
+   - Tablolar
+   - Form alanları
+   - Butonlar
+   - Sol menü
+
+3) Dashboard özel mockup sahnesi.
+
+4) Mobilde tüm sayfalarda:
+   - Üst app header
+   - Alt tabbar
+   - Floating + butonu
+   - Kart/form/tablo düzeni
+   - Dashboard'da telefon mockup görünümü
+
+Not:
+Bu paket stabil V6.9 tabanı üzerinden hazırlanmıştır.

@@ -1,0 +1,10 @@
+V6.9 MOBILE APP UI
+
+- Alt tabbar: Ana, Fiyat, Sipariş, Finans, Rapor
+- Sağ altta hızlı + butonu
+- Kompakt topbar
+- Daha iyi drawer menü
+- Responsive kartlar
+- Modal bottom sheet
+- Daha okunur formlar
+- Kaydırmalı tablolar

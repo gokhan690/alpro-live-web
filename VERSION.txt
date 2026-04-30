@@ -1,12 +1,11 @@
-AlPro V6.8 - Mobile UI Fix
+AlPro V6.9 - Mobile App UI
 
-Mobil/tablet düzeltmeleri:
-1) Mobilde sol menü kapalı drawer/panel gibi çalışır.
-2) Topbar daha kompakt hale getirildi.
-3) Kartlar mobilde tek kolona, tablette iki kolona düşer.
-4) Dashboard hızlı eylemler tek satır yatay kaydırmalı hale getirildi.
-5) Tablolar mobilde yatay kaydırmalı ve daha okunur hale getirildi.
-6) Modal pencereler mobilde alttan açılan sheet görünümüne yaklaştırıldı.
-7) Input/select alanları mobilde daha rahat dokunulur hale getirildi.
-8) Alt hızlı erişim barı daha düzenli hale getirildi.
-9) V6.7 export/daily control, V6.6B readability, V6.6 customs ve V6.5 core fix korunur.
+Mobil görünüm daha uygulama gibi yapıldı:
+1) Alt tabbar eklendi.
+2) Hızlı + FAB butonu eklendi.
+3) Dashboard kartları kompakt hale getirildi.
+4) Drawer menü iyileştirildi.
+5) Tablolar mobilde daha iyi kaydırılır hale getirildi.
+6) Modal bottom sheet görünümü iyileştirildi.
+7) Form alanları mobilde daha büyük/okunur hale getirildi.
+8) Topbar daha sade ve kompakt hale getirildi.

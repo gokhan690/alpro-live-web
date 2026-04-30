@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v90-frontend-rebuild",
-  "version": "9.0.0",
+  "name": "alpro-v90b-old-base-dashboard-header-only",
+  "version": "9.0.1",
   "private": true,
   "scripts": {
     "start": "node server.js"

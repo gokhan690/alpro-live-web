@@ -1,23 +1,18 @@
-AlPro V9.0 - Frontend Rebuild
+AlPro V9.0B - Old Base + Dashboard & Header Only
 
-Bu sürümde eski index.html arayüzü yamalanmadı; frontend temiz şekilde yeniden yazıldı.
+Bu sürüm V9 full rebuild'i iptal eder.
+Eski çalışan V6.9 tabanı korunmuştur.
+
+Sadece eklenenler:
+1) Üst premium arama/header
+2) Dashboard sayfasına V9 tarzı yeni dashboard
 
 Korunanlar:
-- server.js
-- package.json
-- Render/Supabase backend yapısı
-- localStorage verileriyle çalışma
-
-Yeniden kurulanlar:
-1) Tüm uygulama iskeleti
-2) Sol menü
-3) Her sayfada premium üst header
-4) Dashboard
-5) Sipariş, tedarikçi, müşteri, finans, fatura, lojistik, rapor sayfaları
-6) Mobil app-style görünüm
-7) Alt mobil tabbar
-8) Floating + butonu
-9) Premium koyu DEMTA/metal trading tasarımı
+- Eski sipariş, tedarikçi, müşteri, banka, fatura, stok, rapor sayfaları
+- Eski fonksiyonlar
+- Eski mobil yapı
+- server.js / Supabase / Render yapısı
 
 Not:
-Bu gerçek V9 frontend rebuild paketidir.
+Bu paket V9 full frontend rebuild değildir.
+Sadece eski dosyaya dashboard + üst arama/header ekler.

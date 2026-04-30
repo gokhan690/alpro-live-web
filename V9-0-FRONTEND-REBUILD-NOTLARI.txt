@@ -1,0 +1,15 @@
+V9.0 FRONTEND REBUILD
+
+Yükleme:
+1. ZIP'i çıkar
+2. İçindeki dosyaları GitHub repo klasörüne kopyala
+3. GitHub Desktop -> Commit
+4. Push origin
+5. Render -> Deploy latest commit
+6. Tarayıcıda Ctrl+F5 yap
+
+Commit mesajı:
+Update V9.0 Frontend Rebuild
+
+Önemli:
+Bu sürümde index.html yeniden yazıldı. Eski UI yamaları yoktur.

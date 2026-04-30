@@ -1,32 +1,23 @@
-AlPro V8.1 - Global Mockup UI
+AlPro V9.0 - Frontend Rebuild
 
-Bu sürüm sadece dashboard'u değil, tüm uygulama genelini mockup tarzına yaklaştırır.
+Bu sürümde eski index.html arayüzü yamalanmadı; frontend temiz şekilde yeniden yazıldı.
 
-Yapılanlar:
-1) Üst global premium header her sayfada görünür:
-   - Global arama
-   - LME açık durumu
-   - Saat/tarih
-   - USD/TRY
-   - Bildirim
-   - Kullanıcı kartı
+Korunanlar:
+- server.js
+- package.json
+- Render/Supabase backend yapısı
+- localStorage verileriyle çalışma
 
-2) Tüm sayfalarda koyu premium düzen:
-   - Kartlar
-   - Paneller
-   - Tablolar
-   - Form alanları
-   - Butonlar
-   - Sol menü
-
-3) Dashboard özel mockup sahnesi.
-
-4) Mobilde tüm sayfalarda:
-   - Üst app header
-   - Alt tabbar
-   - Floating + butonu
-   - Kart/form/tablo düzeni
-   - Dashboard'da telefon mockup görünümü
+Yeniden kurulanlar:
+1) Tüm uygulama iskeleti
+2) Sol menü
+3) Her sayfada premium üst header
+4) Dashboard
+5) Sipariş, tedarikçi, müşteri, finans, fatura, lojistik, rapor sayfaları
+6) Mobil app-style görünüm
+7) Alt mobil tabbar
+8) Floating + butonu
+9) Premium koyu DEMTA/metal trading tasarımı
 
 Not:
-Bu paket stabil V6.9 tabanı üzerinden hazırlanmıştır.
+Bu gerçek V9 frontend rebuild paketidir.

@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v81-global-mockup-ui",
-  "version": "8.1.0",
+  "name": "alpro-v90-frontend-rebuild",
+  "version": "9.0.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

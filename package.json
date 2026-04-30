@@ -1,6 +1,6 @@
 {
-  "name": "alpro-weekly-auto-mobile",
-  "version": "6.3.0",
+  "name": "alpro-products-lme-fix",
+  "version": "6.4.1",
   "private": true,
   "scripts": {
     "start": "node server.js"

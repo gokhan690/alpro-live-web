@@ -1,1 +1,1 @@
-AlPro V6.3 - Haftalık rapor, otomatik fiyat güncelleme modu ve geliştirilmiş mobil/tablet operasyon ekranı eklendi.
+AlPro V6.4B - Products LME fix: A7/A8/Katot Bakır ürünleri, LME -% / LME -USD formülü, tedarikçi/sipariş ekleme düzeltildi.

@@ -1,0 +1,4 @@
+.env
+node_modules
+alpro-shared-db.json
+alpro-audit-log.json

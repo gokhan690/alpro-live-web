@@ -1,0 +1,14 @@
+V6.8 MOBILE UI FIX
+
+Bu sürüm mobil/tablet görünümünü düzeltir:
+- Menü drawer
+- Kompakt topbar
+- Tek kolon kartlar
+- Yatay kaydırmalı hızlı eylemler
+- Yatay kaydırmalı tablolar
+- Mobil uyumlu modal
+- Daha büyük input/select alanları
+- Düzenli alt hızlı bar
+
+Kullanım:
+GitHub repo'ya dosyaları kopyala, commit/push yap, Render deploy latest commit.

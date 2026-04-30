@@ -1,11 +1,12 @@
-AlPro V6.7 - UX Export Daily Control
+AlPro V6.8 - Mobile UI Fix
 
-Eklenenler / Düzeltilenler:
-1) V6.5'te eklenen kalabalık Tüm Modüller bloğu kaldırıldı.
-2) Mobil hızlı erişim tek satır yatay kaydırmalı hale getirildi.
-3) Siparişler, Faturalar, Stok, Banka, Tedarikçiler, Müşteriler için Excel/CSV indir butonu eklendi.
-4) Tedarikçi tablosuna AI analiz butonu eklendi.
-5) Dashboard'a Bugün Ne Yapmalıyım paneli eklendi.
-6) Siparişlerde eksik belge kontrol göstergesi eklendi.
-7) Siparişten lojistik kaydı oluşturma butonu eklendi.
-8) V6.6B global okunurluk, V6.6 gümrük ve V6.5 core fix korunur.
+Mobil/tablet düzeltmeleri:
+1) Mobilde sol menü kapalı drawer/panel gibi çalışır.
+2) Topbar daha kompakt hale getirildi.
+3) Kartlar mobilde tek kolona, tablette iki kolona düşer.
+4) Dashboard hızlı eylemler tek satır yatay kaydırmalı hale getirildi.
+5) Tablolar mobilde yatay kaydırmalı ve daha okunur hale getirildi.
+6) Modal pencereler mobilde alttan açılan sheet görünümüne yaklaştırıldı.
+7) Input/select alanları mobilde daha rahat dokunulur hale getirildi.
+8) Alt hızlı erişim barı daha düzenli hale getirildi.
+9) V6.7 export/daily control, V6.6B readability, V6.6 customs ve V6.5 core fix korunur.

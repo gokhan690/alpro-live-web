@@ -684,7 +684,7 @@ table tr:hover {
 
 
 <style id="v54-premium-ui">
-/* ===== V6.6B PREMIUM UI REVISION ===== */
+/* ===== V6.7 PREMIUM UI REVISION ===== */
 :root{
   --bg:#05080d;
   --surface:#0a1017;
@@ -918,7 +918,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v55-finance-ui">
-/* ===== V6.6B BANKA & ODEME FINANSMAN MODULU ===== */
+/* ===== V6.7 BANKA & ODEME FINANSMAN MODULU ===== */
 .finance-hub{
   margin-top:14px;
   border:1px solid rgba(215,162,58,.18);
@@ -963,7 +963,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v56-hedge-preview-css">
-/* ===== V6.6B HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
+/* ===== V6.7 HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
 .hedge-preview{
   margin:10px 0 12px;
   padding:13px;
@@ -1026,7 +1026,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v57-more-leverage-css">
-/* ===== V6.6B DAHA FAZLA KALDIRAÇ KARTI ===== */
+/* ===== V6.7 DAHA FAZLA KALDIRAÇ KARTI ===== */
 .lev-btn{min-width:54px!important;border-radius:10px!important}
 .lev-btn[data-lev="15"],.lev-btn[data-lev="20"],.lev-btn[data-lev="25"],.lev-btn[data-lev="50"]{
   border-color:rgba(231,76,60,.28)!important;
@@ -1061,7 +1061,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v58-shared-ui">
-/* ===== V6.6B ORTAK KULLANIM / SHARED SERVER ===== */
+/* ===== V6.7 ORTAK KULLANIM / SHARED SERVER ===== */
 .shared-pill{
   display:inline-flex;align-items:center;gap:7px;
   border:1px solid rgba(46,204,113,.28);
@@ -1101,7 +1101,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v63-weekly-auto-mobile-css">
-/* ===== V6.6B WEEKLY REPORT + AUTO PRICE + MOBILE PRO ===== */
+/* ===== V6.7 WEEKLY REPORT + AUTO PRICE + MOBILE PRO ===== */
 .weekly-report-panel{
   border:1px solid rgba(215,162,58,.20);
   border-radius:16px;
@@ -1206,7 +1206,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v65-core-fix-css">
-/* ===== V6.6B CORE FIX ===== */
+/* ===== V6.7 CORE FIX ===== */
 .v65-menu-section{
   margin:10px 8px 6px;
   padding-top:8px;
@@ -1233,7 +1233,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v66-ui-customs-css">
-/* ===== V6.6B SELECT READABILITY + DETAILED CUSTOMS ===== */
+/* ===== V6.7 SELECT READABILITY + DETAILED CUSTOMS ===== */
 select.fsel, .fsel, select.fi {
   background:#0b1118 !important;
   color:#e8eef5 !important;
@@ -1309,7 +1309,7 @@ body.light select.fsel option, body.light .fsel option {
 
 
 <style id="v66b-global-readability-css">
-/* ===== V6.6BB GLOBAL READABILITY FIX ===== */
+/* ===== V6.7B GLOBAL READABILITY FIX ===== */
 /* Uygulamadaki tüm beyaz/okunmayan form ve dropdown alanlarını düzeltir */
 
 :root{
@@ -1555,6 +1555,127 @@ body.light select:-webkit-autofill{
 }
 </style>
 
+
+<style id="v67-ux-export-daily-css">
+/* ===== V6.7 UX + EXPORT + DAILY CONTROL ===== */
+
+/* V6.7'te eklenen kalabalık Tüm Modüller bloğunu kaldır */
+#v65-direct-menu{display:none!important}
+
+/* Dashboard günlük kontrol paneli */
+.v67-daily-panel{
+  margin-bottom:14px;
+  border:1px solid rgba(90,169,230,.20);
+  border-radius:16px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(90,169,230,.11),transparent 34%),
+    linear-gradient(135deg,rgba(90,169,230,.055),rgba(215,162,58,.035));
+}
+.v67-daily-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  padding:13px 14px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.v67-daily-title{font-size:13px;font-weight:900;color:var(--bright)}
+.v67-daily-sub{font-size:10px;color:var(--muted);margin-top:3px}
+.v67-daily-grid{
+  padding:12px 14px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:9px;
+}
+.v67-task{
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:13px;
+  padding:11px;
+  background:rgba(255,255,255,.025);
+}
+.v67-task.red{border-color:rgba(231,76,60,.30);background:rgba(231,76,60,.075)}
+.v67-task.orange{border-color:rgba(243,156,18,.30);background:rgba(243,156,18,.065)}
+.v67-task.green{border-color:rgba(46,204,113,.25);background:rgba(46,204,113,.055)}
+.v67-task .t{font-size:11px;font-weight:900;color:var(--bright);margin-bottom:4px}
+.v67-task .d{font-size:10.5px;color:var(--text);line-height:1.45}
+.v67-task .m{font-size:9px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:.1em}
+
+/* Mobil hızlı erişim tek satır */
+.v67-mobile-strip{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:8px 2px 12px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+.v67-mobile-strip::-webkit-scrollbar{height:5px}
+.v67-mobile-strip::-webkit-scrollbar-thumb{background:rgba(215,162,58,.35);border-radius:99px}
+.v67-mobile-action{
+  min-width:96px;
+  scroll-snap-align:start;
+  border:1px solid rgba(255,255,255,.085);
+  border-radius:13px;
+  padding:10px 9px;
+  background:rgba(255,255,255,.028);
+  color:var(--text);
+  cursor:pointer;
+  text-align:center;
+}
+.v67-mobile-action b{display:block;font-size:18px;margin-bottom:3px}
+.v67-mobile-action span{font-size:10px;font-weight:850;color:var(--bright)}
+.v67-mobile-action:hover{background:rgba(215,162,58,.07);border-color:rgba(215,162,58,.28)}
+
+/* Excel buttons */
+.v67-export-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  border-radius:10px!important;
+  border:1px solid rgba(46,204,113,.28)!important;
+  background:rgba(46,204,113,.08)!important;
+  color:var(--accent3)!important;
+  font-size:11px!important;
+  font-weight:900!important;
+}
+.v67-ai-btn{
+  border:1px solid rgba(124,58,237,.28)!important;
+  background:rgba(124,58,237,.10)!important;
+  color:#c4a2ff!important;
+}
+.v67-doc-missing{
+  display:inline-flex;
+  border-radius:999px;
+  padding:3px 7px;
+  font-size:9px;
+  border:1px solid rgba(243,156,18,.28);
+  background:rgba(243,156,18,.07);
+  color:var(--warn);
+  white-space:nowrap;
+}
+.v67-doc-ok{
+  display:inline-flex;
+  border-radius:999px;
+  padding:3px 7px;
+  font-size:9px;
+  border:1px solid rgba(46,204,113,.25);
+  background:rgba(46,204,113,.055);
+  color:var(--accent3);
+  white-space:nowrap;
+}
+@media(max-width:760px){
+  .dash-quick-btn{
+    min-width:92px!important;
+    padding:9px!important;
+  }
+  .dash-quick-btn div:first-child{font-size:18px!important}
+  .dash-quick-btn div:last-child{font-size:10px!important}
+  .dash-tables{grid-template-columns:1fr!important}
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -1748,7 +1869,7 @@ body.light select:-webkit-autofill{
         <div style="font-size:11px;color:var(--muted);margin-top:2px" id="dash-date"></div>
       </div>
       <div class="stage1-banner">
-        <div><strong>Aşama 1 aktif — V6.6B temiz grafik</strong><br><span>8833 tablet modlu sürüm korunuyor. Canlı fiyat, USD/TRY ve sağlık kontrolleri tek panelde.</span></div>
+        <div><strong>Aşama 1 aktif — V6.7 temiz grafik</strong><br><span>8833 tablet modlu sürüm korunuyor. Canlı fiyat, USD/TRY ve sağlık kontrolleri tek panelde.</span></div>
         <div class="stage1-actions"><span class="stage1-badge">● STABİL SÜRÜM</span><button class="btn bp bsm" onclick="stage1RefreshAll()">Fiyat/Kur Yenile</button><button class="btn bs2 bsm" onclick="P('v5-live')">Canlı Metaller</button></div>
       </div>
       <div class="stage1-grid" id="stage1-dashboard-cards">
@@ -1761,7 +1882,7 @@ body.light select:-webkit-autofill{
       <div class="sec" style="margin-bottom:14px">
         <div class="sh"><div><div class="st">🧩 Aşama 1 Sistem Sağlığı</div><div class="ss">Eski server karışıklığını, fiyat kaynağını ve son kayıt durumunu gösterir.</div></div></div>
         <div class="sb"><div class="stage1-health">
-          <div class="h"><b id="stage1-h-version">V6.6B / 8833</b><span>Tek ana sürüm etiketi eklendi. Eski paketleri karıştırmamak için bu sürümü kullan.</span></div>
+          <div class="h"><b id="stage1-h-version">V6.7 / 8833</b><span>Tek ana sürüm etiketi eklendi. Eski paketleri karıştırmamak için bu sürümü kullan.</span></div>
           <div class="h"><b id="stage1-h-metals">Metal verisi: bekleniyor</b><span>Canlı fiyat alınamazsa son kayıt gösterilir; yanlış sabit değer basılmaz.</span></div>
           <div class="h"><b id="stage1-h-fx">USD/TRY: bekleniyor</b><span>Kur server proxy ile alınır; alınamazsa son kayıt/yok uyarısı verir.</span></div>
         </div></div>
@@ -5424,12 +5545,12 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 
 <div class="page" id="page-v58-shared">
   <div class="shared-banner">
-    <b>👥 Global Readability Fix Modu — V6.6B</b>
+    <b>👥 UX Export Daily Control Modu — V6.7</b>
     <span>Bu modda kayıtlar sadece tarayıcıda değil, server tarafındaki ortak veri dosyasında tutulur. Aynı ağa bağlanan ortakların aynı verileri görmesi hedeflenir.</span>
   </div>
   <div class="sec">
     <div class="sh">
-      <div><div class="st">Global Readability Fix Durumu</div><div class="ss">Server, ağ adresi, veri sağlığı ve yedekleme</div></div>
+      <div><div class="st">UX Export Daily Control Durumu</div><div class="ss">Server, ağ adresi, veri sağlığı ve yedekleme</div></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn bp bsm" onclick="v58RefreshShared()">Yenile</button>
         <button class="btn bs2 bsm" onclick="v58CopyUrl()">Ağ Linkini Kopyala</button>
@@ -5452,7 +5573,7 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 
 <div class="page" id="page-v59-supabase">
   <div class="sec">
-    <div class="sh"><div><div class="st">☁️ Global Readability Fix</div><div class="ss">Cloud veritabanı bağlantı testi ve kurulum</div></div><button class="btn bp" onclick="v59TestSupabase()">Bağlantıyı Test Et</button></div>
+    <div class="sh"><div><div class="st">☁️ UX Export Daily Control</div><div class="ss">Cloud veritabanı bağlantı testi ve kurulum</div></div><button class="btn bp" onclick="v59TestSupabase()">Bağlantıyı Test Et</button></div>
     <div class="sb">
       <div class="al al-i">.env dosyasına SUPABASE_URL ve SUPABASE_SERVICE_KEY yazılırsa kayıtlar Supabase'e gider. Ayar yoksa local JSON yedek mod çalışır.</div>
       <pre class="shared-code" id="v59-sb-result">Test bekleniyor...</pre>
@@ -5478,7 +5599,7 @@ create table if not exists alpro_audit (
   </div>
 </div>
 
-<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div><div class="v5-ribbon" onclick="P('v5-live')">V6.6B • Aşama 1</div>
+<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div><div class="v5-ribbon" onclick="P('v5-live')">V6.7 • Aşama 1</div>
 <script>
 (function(){
 const V5=window.AlProV5={aiMode:'quote',metals:null}; const keys=['suppliers','customers','orders','stock','invoices','sales','customs','reminders','freight','hedges','documents','v5_metal_history'];
@@ -5690,11 +5811,11 @@ const oldP=window.P;window.P=function(id){oldP(id);if(id==='v5-mobile')detect();
 })();
 </script>
 
-<div class="stage1-version" onclick="P('dashboard')">V6.6B AŞAMA 1 • 8833</div>
+<div class="stage1-version" onclick="P('dashboard')">V6.7 AŞAMA 1 • 8833</div>
 
 <script id="stage1-v52-js">
 (function(){
-  const VERSION='V6.6Bb Aşama 1 Global Readability Fix - 8833 Tablet Korundu';
+  const VERSION='V6.7b Aşama 1 UX Export Daily Control - 8833 Tablet Korundu';
   function fmt(n,d=2){n=Number(n);return isFinite(n)?n.toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d}):'--'}
   function setTxt(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
   function pill(id,text,ok){const e=document.getElementById(id);if(e){e.textContent=text;e.className='stage1-pill '+(ok?'ok':'warn')}}
@@ -6128,9 +6249,9 @@ const oldP=window.P;window.P=function(id){oldP(id);if(id==='v5-mobile')detect();
     const nav=document.querySelector('.nav'); if(!nav || document.getElementById('v58-nav')) return;
     let holder=document.createElement('div');
     holder.id='v58-nav';
-    holder.innerHTML='<div class="ns">Ortak</div><div class="ni" onclick="P(\\'v58-shared\\')"><span class="ic">👥</span><span>Global Readability Fix</span></div>';
+    holder.innerHTML='<div class="ns">Ortak</div><div class="ni" onclick="P(\\'v58-shared\\')"><span class="ic">👥</span><span>UX Export Daily Control</span></div>';
     nav.appendChild(holder);
-    if(window.ptitles) ptitles['v58-shared']='Global Readability Fix';
+    if(window.ptitles) ptitles['v58-shared']='UX Export Daily Control';
   }
   const oldP=window.P;
   if(typeof oldP==='function' && !oldP._v58Wrapped){
@@ -6166,9 +6287,9 @@ function addNav(){
   if(!nav||document.getElementById('v59-nav'))return;
   const d=document.createElement('div');
   d.id='v59-nav';
-  d.innerHTML='<div class="ns">Cloud</div><div class="ni" onclick="P(\\'v59-supabase\\')"><span class="ic">☁️</span><span>Global Readability Fix</span></div>';
+  d.innerHTML='<div class="ns">Cloud</div><div class="ni" onclick="P(\\'v59-supabase\\')"><span class="ic">☁️</span><span>UX Export Daily Control</span></div>';
   nav.appendChild(d);
-  if(window.ptitles) ptitles['v59-supabase']='Global Readability Fix';
+  if(window.ptitles) ptitles['v59-supabase']='UX Export Daily Control';
 }
 const oldP=window.P;
 if(typeof oldP==='function'&&!oldP._v59Wrapped){const w=function(id){oldP(id);if(id==='v59-supabase')setTimeout(v59TestSupabase,80)};w._v59Wrapped=true;window.P=w;}
@@ -6451,11 +6572,11 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
       calculator:window.initCostPage, 'customs-calc':window.calcCustoms, bank:window.renderBank,
       freight:window.renderFreight, setup:window.loadSetup, documents:window.renderDocs
     };
-    try{ if(typeof runners[id]==='function') runners[id](); }catch(e){ console.warn('V6.6B runner error', id, e); }
+    try{ if(typeof runners[id]==='function') runners[id](); }catch(e){ console.warn('V6.7 runner error', id, e); }
   }
   window.P = function(id){
     const pg = page(id);
-    if(!pg){ console.warn('V6.6B: page not found', id); return false; }
+    if(!pg){ console.warn('V6.7: page not found', id); return false; }
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
     pg.classList.add('active');
@@ -6562,7 +6683,7 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
       <div class="al al-i">🧮 Detaylı ithalat gümrük masrafı hesaplayıcı. CIF, vergi, KDV, KKDF, liman ve operasyon masraflarını ton başına indirger.</div>
       <div class="v66-customs-wrap">
         <div class="sec">
-          <div class="sh"><div><div class="st">Detaylı Gümrük Hesaplama</div><div class="ss">Alüminyum, katot bakır ve çinko ithalatı için</div></div><span class="v66-pill">V6.6B</span></div>
+          <div class="sh"><div><div class="st">Detaylı Gümrük Hesaplama</div><div class="ss">Alüminyum, katot bakır ve çinko ithalatı için</div></div><span class="v66-pill">V6.7</span></div>
           <div class="sb">
             <div class="fg">
               <div class="fg1"><label class="fl">Ürün / GTİP</label><select class="fsel" id="v66-gtip" onchange="v66GtipChange();v66CalcCustoms()">
@@ -6709,6 +6830,264 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
     setTimeout(fixFields,1200);
   });
   document.addEventListener('click',function(){setTimeout(fixFields,80)},true);
+})();
+</script>
+
+
+<script id="v67-ux-export-daily-js">
+(function(){
+  function n(id){return document.getElementById(id)}
+  function getArr(k){try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return[]}}
+  function daysUntil(d){
+    if(!d) return null;
+    const t=new Date(d); if(isNaN(t)) return null;
+    const today=new Date(); today.setHours(0,0,0,0);
+    return Math.ceil((t-today)/86400000);
+  }
+  function safeText(v){return String(v ?? '').replace(/[<>&]/g, s=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[s]))}
+  function csvEscape(v){
+    v = String(v ?? '');
+    if(/[",;\n\r]/.test(v)) return '"' + v.replace(/"/g,'""') + '"';
+    return v;
+  }
+  function download(name, content, type){
+    const blob=new Blob([content],{type:type||'text/csv;charset=utf-8;'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=name;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},300);
+  }
+  function flatten(obj){
+    const out={};
+    Object.keys(obj||{}).forEach(k=>{
+      const v=obj[k];
+      if(v && typeof v==='object') out[k]=JSON.stringify(v);
+      else out[k]=v;
+    });
+    return out;
+  }
+  window.v67ExportTable = async function(tableName, label){
+    try{
+      let rows=[];
+      if(window.DB && typeof DB.get==='function') rows=await DB.get(tableName);
+      else rows=getArr(tableName);
+      rows=(rows||[]).filter(x=>!x._deleted);
+      if(!rows.length){ if(window.notif) notif('İndirilecek kayıt yok','w'); return; }
+      rows=rows.map(flatten);
+      const headers=[...new Set(rows.flatMap(r=>Object.keys(r)))];
+      const csv = '\ufeff' + headers.map(csvEscape).join(';') + '\n' + rows.map(r=>headers.map(h=>csvEscape(r[h])).join(';')).join('\n');
+      const date=new Date().toISOString().slice(0,10);
+      download((label||tableName)+'-'+date+'.csv', csv);
+      if(window.notif) notif((label||tableName)+' Excel/CSV indirildi','s');
+    }catch(e){
+      alert('Excel indir hatası: '+e.message);
+    }
+  };
+  window.exportToExcel = window.exportToExcel || window.v67ExportTable;
+  window.doExportExcel = window.doExportExcel || window.v67ExportTable;
+
+  function addExportButtons(){
+    const configs=[
+      ['page-orders','orders','Siparisler'],
+      ['page-invoices','invoices','Faturalar'],
+      ['page-stock','stock','Stok'],
+      ['page-bank','bank','Banka-Odeme'],
+      ['page-suppliers','suppliers','Tedarikciler'],
+      ['page-customers','customers','Musteriler']
+    ];
+    configs.forEach(([page,table,label])=>{
+      const pg=n(page); if(!pg || n('v67-export-'+table)) return;
+      const sh=pg.querySelector('.sh');
+      if(sh) sh.insertAdjacentHTML('beforeend', '<button id="v67-export-'+table+'" class="btn bsm v67-export-btn" onclick="v67ExportTable(\''+table+'\',\''+label+'\')">📥 Excel İndir</button>');
+    });
+  }
+
+  function addSupplierAiButtons(){
+    if(!window.renderSup || window.renderSup._v67AiWrapped) return;
+    const old=window.renderSup;
+    const wrapped=async function(){
+      await old.apply(this, arguments);
+      const el=n('t-sup'); if(!el) return;
+      const rows=await (window.DB?DB.get('suppliers'):Promise.resolve(getArr('suppliers')));
+      const map={}; rows.forEach(s=>map[s.id]=s);
+      [...el.querySelectorAll('tr')].forEach((tr,idx)=>{
+        const s=rows.filter(x=>!x._deleted)[idx];
+        if(!s || tr.querySelector('.v67-ai-btn')) return;
+        const last=tr.querySelector('td:last-child');
+        if(last) last.insertAdjacentHTML('beforeend',' <button class="btn bsm v67-ai-btn" onclick="v67SupplierAI(\''+s.id+'\')">🤖 AI</button>');
+      });
+    };
+    wrapped._v67AiWrapped=true;
+    window.renderSup=wrapped;
+  }
+  window.v67SupplierAI = async function(id){
+    const arr=await (window.DB?DB.get('suppliers'):Promise.resolve(getArr('suppliers')));
+    const s=arr.find(x=>x.id===id);
+    const prompt=[
+      'Bu tedarikçiyi ticari açıdan değerlendir:',
+      'Firma: '+(s?.name||'-'),
+      'Ülke: '+(s?.country||'-'),
+      'Ürün: '+(s?.product||'-'),
+      'Kalite: '+(s?.grade||'-'),
+      'Fiyat: '+(s?.priceFormula||s?.price||'-'),
+      'Ödeme: '+(s?.payment||'-'),
+      'Not: '+(s?.note||'-'),
+      '',
+      'Bana riskleri, pazarlık noktalarını ve İngilizce kısa teklif/iletişim mesajı öner.'
+    ].join('\n');
+    if(window.P) P('ai');
+    setTimeout(()=>{
+      const ta=document.querySelector('#page-ai textarea, #page-v5-ai textarea, textarea#ai-msg, textarea[id*="ai"], input[id*="ai"]');
+      if(ta){ta.value=prompt; ta.dispatchEvent(new Event('input',{bubbles:true}));}
+      else navigator.clipboard?.writeText(prompt);
+      if(window.notif) notif('Tedarikçi AI prompt hazırlandı','s');
+    },250);
+  };
+
+  function buildDailyTasks(){
+    const tasks=[];
+    const invoices=getArr('invoices');
+    const orders=getArr('orders');
+    const bank=getArr('bank');
+    const ships=getArr('v61_shipments').concat(getArr('alpro_v61_shipments'));
+    const hedges=getArr('hedges');
+
+    const dueInv=invoices.filter(i=>!i.paid && i.status!=='Ödendi' && daysUntil(i.due||i.dueDate||i.date)<=3);
+    if(dueInv.length) tasks.push(['red','Fatura/Vade Kontrolü',dueInv.length+' fatura 3 gün içinde veya gecikmiş görünüyor.','Finans']);
+
+    const dueBank=bank.filter(b=>['Bekliyor','Pending',''].includes(b.status||'') && daysUntil(b.due||b.dueDate)<=3);
+    if(dueBank.length) tasks.push(['orange','Banka Ödeme/Tahsilat',dueBank.length+' ödeme/tahsilat yaklaşmış.','Banka']);
+
+    const eta=ships.filter(s=>s.status!=='Teslim Edildi' && daysUntil(s.eta)<=1);
+    if(eta.length) tasks.push(['red','ETA / Demuraj Riski',eta.length+' sevkiyat bugün/yarın veya gecikmiş.','Lojistik']);
+
+    const openOrders=orders.filter(o=>!o._deleted && !['Teslim Alındı','Teslim Alindi','İptal Edildi','Iptal Edildi'].includes(o.status||''));
+    const docMissing=openOrders.filter(o=>v67MissingDocs(o).length);
+    if(docMissing.length) tasks.push(['orange','Eksik Belge',docMissing.length+' siparişte BL/MTC/SGS/Invoice benzeri belge eksik.','Belge']);
+
+    const risky=hedges.filter(h=>!h.closed && !h._deleted && Number(h.lev||1)>=10);
+    if(risky.length) tasks.push(['orange','Hedge Risk',risky.length+' pozisyon x10+ kaldıraçta.','Risk']);
+
+    if(!tasks.length) tasks.push(['green','Bugün Kritik İş Yok','Fatura, ETA, belge ve hedge tarafında kritik uyarı görünmüyor.','Günlük']);
+    return tasks;
+  }
+  window.v67RenderDailyPanel=function(){
+    const grid=n('v67-daily-grid'); if(!grid) return;
+    const tasks=buildDailyTasks();
+    grid.innerHTML=tasks.map(t=>'<div class="v67-task '+t[0]+'"><div class="t">'+safeText(t[1])+'</div><div class="d">'+safeText(t[2])+'</div><div class="m">'+safeText(t[3])+'</div></div>').join('');
+  };
+  function addDailyPanel(){
+    const dash=n('page-dashboard'); if(!dash || n('v67-daily-panel')) return;
+    dash.insertAdjacentHTML('afterbegin','<div class="v67-daily-panel" id="v67-daily-panel"><div class="v67-daily-head"><div><div class="v67-daily-title">✅ Bugün Ne Yapmalıyım?</div><div class="v67-daily-sub">Vade, ETA, belge ve hedge risklerinden otomatik günlük görev listesi</div></div><button class="btn bs2 bsm" onclick="v67RenderDailyPanel()">Yenile</button></div><div class="v67-daily-grid" id="v67-daily-grid"></div></div>');
+    v67RenderDailyPanel();
+  }
+
+  window.v67MissingDocs=function(o){
+    const req=['invoice','packing','bl','mtc','sgs'];
+    const labels={invoice:'Invoice',packing:'Packing List',bl:'BL',mtc:'MTC',sgs:'SGS'};
+    return req.filter(k=>!(o[k]||o['doc_'+k]||String(o.note||'').toLowerCase().includes(labels[k].toLowerCase()))).map(k=>labels[k]);
+  };
+
+  function enhanceOrdersForDocsLogistics(){
+    if(!window.renderOrd || window.renderOrd._v67Wrapped) return;
+    const old=window.renderOrd;
+    const wrapped=async function(){
+      await old.apply(this, arguments);
+      const el=n('t-ord'); if(!el) return;
+      const orders=await (window.DB?DB.get('orders'):Promise.resolve(getArr('orders')));
+      const visible=orders.filter(o=>!o._deleted);
+      [...el.querySelectorAll('tr')].forEach((tr,idx)=>{
+        const o=visible[idx];
+        if(!o || tr.querySelector('.v67-doc-missing') || tr.querySelector('.v67-log-btn')) return;
+        const statusCell=tr.children[tr.children.length-2];
+        const action=tr.children[tr.children.length-1];
+        const miss=v67MissingDocs(o);
+        if(statusCell) statusCell.insertAdjacentHTML('beforeend','<div style="margin-top:4px">'+(miss.length?'<span class="v67-doc-missing">Eksik: '+miss.slice(0,2).join(', ')+'</span>':'<span class="v67-doc-ok">Belgeler OK</span>')+'</div>');
+        if(action) action.insertAdjacentHTML('beforeend',' <button class="btn bsm" onclick="v67OrderToLogistics(\''+o.id+'\')">🚢 Lojistik</button>');
+      });
+    };
+    wrapped._v67Wrapped=true;
+    window.renderOrd=wrapped;
+  }
+
+  window.v67OrderToLogistics=async function(id){
+    const orders=await (window.DB?DB.get('orders'):Promise.resolve(getArr('orders')));
+    const o=orders.find(x=>x.id===id);
+    if(!o){alert('Sipariş bulunamadı');return}
+    const item={
+      id:'SHP-'+Date.now().toString(36).toUpperCase(),
+      ship:o.vessel||'',
+      container:o.container||'',
+      product:o.product||o.grade||'',
+      tons:Number(o.qty)||0,
+      pol:o.fromPort||'',
+      pod:o.toPort||'',
+      eta:o.arrival||'',
+      free:7,
+      dem:120,
+      portcost:0,
+      status:o.status==='Yolda'?'Yolda':'Yolda',
+      track:o.blNo||o.no||'',
+      orderNo:o.no||'',
+      createdAt:new Date().toISOString()
+    };
+    const key='v61_shipments';
+    let arr=[];
+    try{arr=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){}
+    arr.unshift(item);
+    localStorage.setItem(key,JSON.stringify(arr));
+    try{if(window.DB){const cloud=await DB.get('v61_shipments'); cloud.unshift(item); await DB.set('v61_shipments',cloud);}}catch(e){}
+    if(window.notif) notif('Sipariş lojistik kulesine aktarıldı','s');
+    if(window.P) P('v61-logistics');
+  };
+
+  function makeMobileStrip(){
+    const mobile=n('page-v5-mobile'); if(!mobile || n('v67-mobile-strip')) return;
+    const target=mobile.querySelector('.mobile-pro-actions') || mobile.querySelector('.sb') || mobile;
+    const html='<div class="v67-mobile-strip" id="v67-mobile-strip">'+
+      [['dashboard','🏠','Ana'],['orders','📦','Sipariş'],['lme','📈','Fiyat'],['hedge','🛡️','Hedge'],['bank','🏦','Finans'],['reports','📅','Rapor'],['stock','🏗️','Stok'],['documents','📎','Belge']]
+      .map(x=>'<button class="v67-mobile-action" onclick="P(\''+x[0]+'\')"><b>'+x[1]+'</b><span>'+x[2]+'</span></button>').join('')+
+      '</div>';
+    target.insertAdjacentHTML('beforebegin',html);
+    if(target.classList.contains('mobile-pro-actions')) target.style.display='none';
+  }
+
+  function removeAllModulesBlock(){
+    document.querySelectorAll('#v65-direct-menu').forEach(x=>x.remove());
+  }
+
+  function init(){
+    removeAllModulesBlock();
+    addExportButtons();
+    addSupplierAiButtons();
+    enhanceOrdersForDocsLogistics();
+    addDailyPanel();
+    makeMobileStrip();
+    if(n('t-sup') && window.renderSup) renderSup();
+    if(n('t-ord') && window.renderOrd) renderOrd();
+  }
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v67Wrapped){
+    const w=function(id){
+      const r=oldP.apply(this,arguments);
+      setTimeout(function(){
+        addExportButtons(); addSupplierAiButtons(); enhanceOrdersForDocsLogistics();
+        if(id==='dashboard') {addDailyPanel(); v67RenderDailyPanel();}
+        if(id==='v5-mobile') makeMobileStrip();
+        if(id==='suppliers' && window.renderSup) renderSup();
+        if(id==='orders' && window.renderOrd) renderOrd();
+      },120);
+      return r;
+    };
+    w._v67Wrapped=true;
+    window.P=w;
+    window.showPage=w;
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){setTimeout(init,1000);});
 })();
 </script>
 

@@ -1,6 +1,6 @@
 {
-  "name": "alpro-global-readability-fix",
-  "version": "6.6.1",
+  "name": "alpro-ux-export-daily",
+  "version": "6.7.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

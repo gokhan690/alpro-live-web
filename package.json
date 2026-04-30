@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v74-safe-topbar",
-  "version": "7.4.0",
+  "name": "alpro-v74b-forced-header-fix",
+  "version": "7.4.1",
   "private": true,
   "scripts": {
     "start": "node server.js"

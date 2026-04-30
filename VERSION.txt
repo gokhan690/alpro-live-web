@@ -1,12 +1,15 @@
-AlPro V7.4 - Safe Topbar Only
+AlPro V7.4B - Forced Header Fix
 
-Bu sürüm sadece üst barı güvenli şekilde yeniler.
-Dashboard, kartlar, tablolar, sipariş/tedarikçi fonksiyonları ve mobil ana yapı değiştirilmez.
+V7.4 üst bar görünmediyse bu paket onu düzeltir.
+Bu sürüm mevcut topbar class'ına bağlı kalmadan sayfanın en üstüne premium header ekler.
 
 Eklenen:
-1) Desktop üst bar: global arama, LME durumu, saat/tarih, USD/TRY, bildirim, kullanıcı kartı.
-2) Dark mode premium görünüm.
-3) Light mode daha yumuşak üst bar.
-4) Mobilde mevcut yapı bozulmaz; topbar sade tutulur.
+1) Global arama
+2) LME açık durumu
+3) Saat / tarih
+4) USD/TRY
+5) Bildirim
+6) Kullanıcı kartı
 
-Bu sürüm V7.3B stabil rollback üstüne güvenli küçük adım olarak hazırlandı.
+Not:
+Dashboard, tablolar ve fonksiyonlar değiştirilmez.

@@ -1,14 +1,29 @@
-AlPro V6.9E - Dashboard Turkish Mobile Fix
+AlPro V6.9F - Dashboard Header Final Fix
 
-Yapılanlar:
-1) Dashboard tamamen Türkçeleştirildi.
-2) Dashboard'daki tüm "Tümünü Gör" butonları çalışır hale getirildi.
-3) Dashboard mobil görünümü uygulama stili olacak şekilde güçlendirildi.
-4) Üst arama/header sütunu sadeleştirildi ve ek modül sayfalarıyla çakışma azaltıldı.
-5) Bazı sayfalarda görünen çift Ekle butonlarından tekrar edenler kaldırıldı.
-6) Dashboard ilk sayfa olarak korunur.
+Bu sürüm V6.9 çalışan tabanı korur.
 
-Korunanlar:
-- Diğer sayfalar
-- Supabase / Render / server.js yapısı
-- Arama sistemi
+Düzeltilenler:
+1) Dashboard görünmeme sorunu giderildi.
+   - Eski bozan V69D/V69E dashboard patch'leri kaldırıldı.
+   - Yeni dashboard ancak başarıyla eklendikten sonra eski dashboard gizlenir.
+
+2) Üst arama/header artık sayfaları kapatmaz.
+   - Header fixed değil, content içinde sticky çalışır.
+   - Sayfa içeriğinin üstüne binmez.
+   - Sağdaki ikinci arama kaldırıldı / ord-search gizlendi.
+
+3) Global arama daha düzgün yapıldı.
+   - Yazdığın metin görünür.
+   - Sonuçlar arama kutusunun altında çıkar.
+   - Sonuca tıklayınca ilgili sayfaya gider.
+
+4) Dashboard tamamen Türkçe.
+   - Tümünü Gör butonları çalışır.
+   - Hızlı işlem butonları çalışır.
+
+5) Mobil dashboard fotoğraftaki app-style görünüme yaklaştırıldı.
+   - Dashboard mobilde telefon/app düzeninde görünür.
+   - Diğer sayfalarda mobil üst bar + alt tabbar korunur.
+
+6) Sipariş sayfasındaki çift ekle sorunu azaltıldı.
+   - Sipariş sayfasında fazla add/ekle butonları gizlenir.

@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69e-dashboard-turkish-mobile-fix",
-  "version": "6.9.4",
+  "name": "alpro-v69f-dashboard-header-final-fix",
+  "version": "6.9.6",
   "private": true,
   "scripts": {
     "start": "node server.js"

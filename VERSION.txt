@@ -1,14 +1,14 @@
-AlPro V6.9D - Dashboard Mockup First Page
-
-Bu sürüm V6.9 tabanını korur.
+AlPro V6.9E - Dashboard Turkish Mobile Fix
 
 Yapılanlar:
-1) Dashboard ilk açılan sayfa olarak zorlanır.
-2) Dashboard sayfası fotoğraftaki stile yakın premium mockup düzenine dönüştürüldü.
-3) Mobil dashboard görünümü fotoğraftaki app-style düzene yaklaştırıldı.
-4) V6.9C arama/header ve mobil iyileştirmeler korunur.
+1) Dashboard tamamen Türkçeleştirildi.
+2) Dashboard'daki tüm "Tümünü Gör" butonları çalışır hale getirildi.
+3) Dashboard mobil görünümü uygulama stili olacak şekilde güçlendirildi.
+4) Üst arama/header sütunu sadeleştirildi ve ek modül sayfalarıyla çakışma azaltıldı.
+5) Bazı sayfalarda görünen çift Ekle butonlarından tekrar edenler kaldırıldı.
+6) Dashboard ilk sayfa olarak korunur.
 
 Korunanlar:
 - Diğer sayfalar
-- Supabase / Render yapısı
-- Mevcut veri mantığı
+- Supabase / Render / server.js yapısı
+- Arama sistemi

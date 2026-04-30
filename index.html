@@ -684,7 +684,7 @@ table tr:hover {
 
 
 <style id="v54-premium-ui">
-/* ===== V6.9 PREMIUM UI REVISION ===== */
+/* ===== V7.0 PREMIUM UI REVISION ===== */
 :root{
   --bg:#05080d;
   --surface:#0a1017;
@@ -918,7 +918,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v55-finance-ui">
-/* ===== V6.9 BANKA & ODEME FINANSMAN MODULU ===== */
+/* ===== V7.0 BANKA & ODEME FINANSMAN MODULU ===== */
 .finance-hub{
   margin-top:14px;
   border:1px solid rgba(215,162,58,.18);
@@ -963,7 +963,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v56-hedge-preview-css">
-/* ===== V6.9 HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
+/* ===== V7.0 HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
 .hedge-preview{
   margin:10px 0 12px;
   padding:13px;
@@ -1026,7 +1026,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v57-more-leverage-css">
-/* ===== V6.9 DAHA FAZLA KALDIRAÇ KARTI ===== */
+/* ===== V7.0 DAHA FAZLA KALDIRAÇ KARTI ===== */
 .lev-btn{min-width:54px!important;border-radius:10px!important}
 .lev-btn[data-lev="15"],.lev-btn[data-lev="20"],.lev-btn[data-lev="25"],.lev-btn[data-lev="50"]{
   border-color:rgba(231,76,60,.28)!important;
@@ -1061,7 +1061,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v58-shared-ui">
-/* ===== V6.9 ORTAK KULLANIM / SHARED SERVER ===== */
+/* ===== V7.0 ORTAK KULLANIM / SHARED SERVER ===== */
 .shared-pill{
   display:inline-flex;align-items:center;gap:7px;
   border:1px solid rgba(46,204,113,.28);
@@ -1101,7 +1101,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v63-weekly-auto-mobile-css">
-/* ===== V6.9 WEEKLY REPORT + AUTO PRICE + MOBILE PRO ===== */
+/* ===== V7.0 WEEKLY REPORT + AUTO PRICE + MOBILE PRO ===== */
 .weekly-report-panel{
   border:1px solid rgba(215,162,58,.20);
   border-radius:16px;
@@ -1206,7 +1206,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v65-core-fix-css">
-/* ===== V6.9 CORE FIX ===== */
+/* ===== V7.0 CORE FIX ===== */
 .v65-menu-section{
   margin:10px 8px 6px;
   padding-top:8px;
@@ -1233,7 +1233,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v66-ui-customs-css">
-/* ===== V6.9 SELECT READABILITY + DETAILED CUSTOMS ===== */
+/* ===== V7.0 SELECT READABILITY + DETAILED CUSTOMS ===== */
 select.fsel, .fsel, select.fi {
   background:#0b1118 !important;
   color:#e8eef5 !important;
@@ -1309,7 +1309,7 @@ body.light select.fsel option, body.light .fsel option {
 
 
 <style id="v66b-global-readability-css">
-/* ===== V6.9B GLOBAL READABILITY FIX ===== */
+/* ===== V7.0B GLOBAL READABILITY FIX ===== */
 /* Uygulamadaki tüm beyaz/okunmayan form ve dropdown alanlarını düzeltir */
 
 :root{
@@ -1557,9 +1557,9 @@ body.light select:-webkit-autofill{
 
 
 <style id="v67-ux-export-daily-css">
-/* ===== V6.9 UX + EXPORT + DAILY CONTROL ===== */
+/* ===== V7.0 UX + EXPORT + DAILY CONTROL ===== */
 
-/* V6.9'te eklenen kalabalık Tüm Modüller bloğunu kaldır */
+/* V7.0'te eklenen kalabalık Tüm Modüller bloğunu kaldır */
 #v65-direct-menu{display:none!important}
 
 /* Dashboard günlük kontrol paneli */
@@ -1678,7 +1678,7 @@ body.light select:-webkit-autofill{
 
 
 <style id="v68-mobile-ui-fix-css">
-/* ===== V6.9 MOBILE UI FIX ===== */
+/* ===== V7.0 MOBILE UI FIX ===== */
 
 /* Mobil genel düzen */
 @media(max-width: 820px){
@@ -2123,6 +2123,308 @@ body.light select:-webkit-autofill{
 }
 </style>
 
+
+<style id="v70-premium-ui-css">
+/* ===== ALPRO V7.0 PREMIUM NAVIGATION & UI ===== */
+:root{
+  --v70-bg:#050b12;
+  --v70-bg2:#07111c;
+  --v70-panel:#0a1522;
+  --v70-panel2:#0e1b2a;
+  --v70-panel3:#101f31;
+  --v70-border:rgba(219,166,73,.20);
+  --v70-border2:rgba(255,255,255,.075);
+  --v70-gold:#d9a342;
+  --v70-gold2:#f0c36a;
+  --v70-blue:#3aa8ff;
+  --v70-green:#35d07f;
+  --v70-red:#ff5a57;
+  --v70-orange:#f2a93b;
+  --v70-text:#edf4fb;
+  --v70-muted:#8fa3b8;
+  --v70-shadow:0 22px 70px rgba(0,0,0,.38);
+}
+
+/* Genel premium arka plan */
+body{
+  background:
+    radial-gradient(circle at 18% 8%, rgba(217,163,66,.11), transparent 22%),
+    radial-gradient(circle at 84% 18%, rgba(58,168,255,.08), transparent 24%),
+    linear-gradient(180deg,#03070d,#07111c 48%,#05080d)!important;
+  color:var(--v70-text)!important;
+}
+
+/* Global panel standartları */
+.sec,.card,.v5-card,.crit-panel,.v67-daily-panel,.weekly-report-panel,.control-tower,.watchdog-panel,.auto-price-panel,.mobile-pro-panel{
+  background:linear-gradient(180deg,rgba(17,33,51,.92),rgba(8,17,29,.94))!important;
+  border:1px solid var(--v70-border2)!important;
+  box-shadow:0 16px 46px rgba(0,0,0,.24)!important;
+  border-radius:18px!important;
+}
+.sec:hover,.card:hover,.v5-card:hover{
+  border-color:rgba(217,163,66,.18)!important;
+}
+
+/* Sol menü premium */
+.side,.sidebar,aside{
+  background:linear-gradient(180deg,#091522,#06101b)!important;
+  border-right:1px solid rgba(217,163,66,.18)!important;
+  box-shadow:18px 0 60px rgba(0,0,0,.22)!important;
+}
+.brand{
+  border-bottom:1px solid rgba(217,163,66,.16)!important;
+  background:linear-gradient(135deg,rgba(217,163,66,.08),rgba(58,168,255,.025))!important;
+}
+.brand:after{
+  content:'Metal Trading & Operations';
+  display:block;
+  margin-top:4px;
+  color:var(--v70-muted);
+  font-size:9px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.ns,.v65-menu-title{
+  color:var(--v70-gold)!important;
+  font-size:9px!important;
+  font-weight:900!important;
+  letter-spacing:.15em!important;
+  text-transform:uppercase!important;
+  margin-top:14px!important;
+}
+.ni{
+  border-radius:12px!important;
+  margin:3px 7px!important;
+  padding:9px 10px!important;
+  color:#c8d6e4!important;
+  border:1px solid transparent!important;
+  transition:.16s ease!important;
+}
+.ni:hover{
+  background:rgba(217,163,66,.07)!important;
+  border-color:rgba(217,163,66,.16)!important;
+  color:#fff!important;
+}
+.ni.active{
+  background:linear-gradient(90deg,rgba(217,163,66,.26),rgba(217,163,66,.08))!important;
+  border-color:rgba(217,163,66,.38)!important;
+  color:#fff!important;
+  box-shadow:inset 3px 0 0 var(--v70-gold)!important;
+}
+.ni .ic{
+  color:var(--v70-gold)!important;
+  filter:drop-shadow(0 0 8px rgba(217,163,66,.20));
+}
+
+/* Topbar premium */
+.topbar{
+  background:linear-gradient(180deg,rgba(8,17,29,.96),rgba(7,14,23,.88))!important;
+  border-bottom:1px solid rgba(217,163,66,.14)!important;
+  box-shadow:0 12px 34px rgba(0,0,0,.22)!important;
+  backdrop-filter:blur(16px)!important;
+}
+.pt{
+  font-size:18px!important;
+  font-weight:950!important;
+  color:var(--v70-text)!important;
+  letter-spacing:-.02em!important;
+}
+.pt:before{
+  content:'AlPro V7.0 · ';
+  color:var(--v70-gold);
+}
+.topbar input,.topbar .fi{
+  background:#07111c!important;
+  border-color:rgba(217,163,66,.22)!important;
+}
+
+/* Buton standardı */
+.btn,.bsm,button{
+  border-radius:12px!important;
+}
+.bp,.btn.bp{
+  background:linear-gradient(135deg,var(--v70-gold),var(--v70-gold2))!important;
+  color:#05080d!important;
+  border:1px solid rgba(255,223,150,.38)!important;
+  font-weight:900!important;
+  box-shadow:0 8px 22px rgba(217,163,66,.18)!important;
+}
+.bs2,.btn.bs2{
+  background:rgba(255,255,255,.045)!important;
+  color:var(--v70-text)!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+}
+.bd,.btn.bd{
+  background:rgba(255,90,87,.08)!important;
+  color:var(--v70-red)!important;
+  border:1px solid rgba(255,90,87,.22)!important;
+}
+
+/* Dashboard premium hiyerarşi */
+#page-dashboard .cards{
+  display:grid!important;
+  grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+#page-dashboard .card{
+  min-height:126px!important;
+  padding:14px!important;
+  position:relative!important;
+  overflow:hidden!important;
+}
+#page-dashboard .card:before{
+  content:'';
+  position:absolute;
+  inset:auto -30px -38px auto;
+  width:96px;
+  height:96px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(217,163,66,.10),transparent 65%);
+}
+.cl,.cl2,.v5-label{
+  color:var(--v70-muted)!important;
+  font-size:9px!important;
+  letter-spacing:.13em!important;
+  text-transform:uppercase!important;
+  font-weight:900!important;
+}
+.cv,.cv2,.v5-kpi{
+  color:#fff!important;
+  font-size:24px!important;
+  font-weight:950!important;
+  letter-spacing:-.03em!important;
+}
+.cs,.cs2,.v5-sub{
+  color:var(--v70-muted)!important;
+}
+
+/* Canlı fiyat kartlarını concept gibi yap */
+.v5-market-card,.v5-chart-card{
+  background:linear-gradient(180deg,rgba(14,30,48,.92),rgba(8,18,31,.95))!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:16px!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.20)!important;
+}
+.v5-market-value{
+  font-size:25px!important;
+  color:#fff!important;
+}
+.v5-market-status.ok,.bg3,.badge-success{
+  color:var(--v70-green)!important;
+}
+
+/* Kritik uyarı + yapılacaklar */
+.crit-panel,.v67-daily-panel{
+  background:linear-gradient(180deg,rgba(18,29,43,.95),rgba(8,17,29,.96))!important;
+}
+.crit-card.red,.v67-task.red{
+  border-color:rgba(255,90,87,.34)!important;
+  background:linear-gradient(135deg,rgba(255,90,87,.12),rgba(255,90,87,.035))!important;
+}
+.crit-card.orange,.v67-task.orange{
+  border-color:rgba(242,169,59,.34)!important;
+  background:linear-gradient(135deg,rgba(242,169,59,.11),rgba(242,169,59,.035))!important;
+}
+.crit-card.green,.v67-task.green{
+  border-color:rgba(53,208,127,.28)!important;
+  background:linear-gradient(135deg,rgba(53,208,127,.09),rgba(53,208,127,.025))!important;
+}
+
+/* Tablolar premium */
+.tw{
+  border:1px solid rgba(255,255,255,.075)!important;
+  border-radius:16px!important;
+  overflow:auto!important;
+  background:rgba(255,255,255,.018)!important;
+}
+table{
+  border-collapse:separate!important;
+  border-spacing:0!important;
+}
+th{
+  background:#0b1725!important;
+  color:#b9cadb!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  text-transform:uppercase!important;
+  letter-spacing:.08em!important;
+}
+td{
+  border-bottom:1px solid rgba(255,255,255,.045)!important;
+}
+tr:hover td{
+  background:rgba(217,163,66,.035)!important;
+}
+
+/* Badge renkleri */
+[class*="badge"],.product-chip,.formula-chip,.v66-pill,.v67-doc-ok,.v67-doc-missing{
+  border-radius:999px!important;
+  font-weight:900!important;
+}
+.product-chip{
+  border-color:rgba(58,168,255,.25)!important;
+  background:rgba(58,168,255,.08)!important;
+}
+.formula-chip{
+  border-color:rgba(217,163,66,.28)!important;
+  background:rgba(217,163,66,.09)!important;
+  color:var(--v70-gold2)!important;
+}
+
+/* Login ekranı premium */
+.login,.login-box,.auth,.auth-card{
+  background:linear-gradient(180deg,rgba(10,21,34,.96),rgba(5,11,18,.98))!important;
+  border:1px solid rgba(217,163,66,.22)!important;
+  box-shadow:0 22px 80px rgba(0,0,0,.42)!important;
+  border-radius:24px!important;
+}
+
+/* Mobil concept */
+@media(max-width:820px){
+  .topbar{
+    border-radius:0 0 20px 20px!important;
+  }
+  #page-dashboard .cards{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:9px!important;
+  }
+  #page-dashboard .card{
+    min-height:98px!important;
+    padding:11px!important;
+  }
+  .cv,.cv2,.v5-kpi{
+    font-size:19px!important;
+  }
+  .v69-mobile-tabbar{
+    background:rgba(6,11,17,.96)!important;
+    border-color:rgba(217,163,66,.25)!important;
+  }
+  .v69-mobile-tabbar button.active{
+    background:linear-gradient(135deg,rgba(217,163,66,.18),rgba(217,163,66,.06))!important;
+    color:var(--v70-gold2)!important;
+  }
+  .v69-fab{
+    background:linear-gradient(135deg,var(--v70-gold),var(--v70-gold2))!important;
+    color:#05080d!important;
+  }
+  .side,.sidebar,aside{
+    background:linear-gradient(180deg,#081522,#050b12)!important;
+  }
+}
+
+/* Concept altın ince ayırıcılar */
+.sh{
+  border-bottom:1px solid rgba(217,163,66,.10)!important;
+}
+.st{
+  color:#fff!important;
+  font-weight:950!important;
+}
+.ss{
+  color:var(--v70-muted)!important;
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -2316,7 +2618,7 @@ body.light select:-webkit-autofill{
         <div style="font-size:11px;color:var(--muted);margin-top:2px" id="dash-date"></div>
       </div>
       <div class="stage1-banner">
-        <div><strong>Aşama 1 aktif — V6.9 temiz grafik</strong><br><span>8833 tablet modlu sürüm korunuyor. Canlı fiyat, USD/TRY ve sağlık kontrolleri tek panelde.</span></div>
+        <div><strong>Aşama 1 aktif — V7.0 temiz grafik</strong><br><span>8833 tablet modlu sürüm korunuyor. Canlı fiyat, USD/TRY ve sağlık kontrolleri tek panelde.</span></div>
         <div class="stage1-actions"><span class="stage1-badge">● STABİL SÜRÜM</span><button class="btn bp bsm" onclick="stage1RefreshAll()">Fiyat/Kur Yenile</button><button class="btn bs2 bsm" onclick="P('v5-live')">Canlı Metaller</button></div>
       </div>
       <div class="stage1-grid" id="stage1-dashboard-cards">
@@ -2329,7 +2631,7 @@ body.light select:-webkit-autofill{
       <div class="sec" style="margin-bottom:14px">
         <div class="sh"><div><div class="st">🧩 Aşama 1 Sistem Sağlığı</div><div class="ss">Eski server karışıklığını, fiyat kaynağını ve son kayıt durumunu gösterir.</div></div></div>
         <div class="sb"><div class="stage1-health">
-          <div class="h"><b id="stage1-h-version">V6.9 / 8833</b><span>Tek ana sürüm etiketi eklendi. Eski paketleri karıştırmamak için bu sürümü kullan.</span></div>
+          <div class="h"><b id="stage1-h-version">V7.0 / 8833</b><span>Tek ana sürüm etiketi eklendi. Eski paketleri karıştırmamak için bu sürümü kullan.</span></div>
           <div class="h"><b id="stage1-h-metals">Metal verisi: bekleniyor</b><span>Canlı fiyat alınamazsa son kayıt gösterilir; yanlış sabit değer basılmaz.</span></div>
           <div class="h"><b id="stage1-h-fx">USD/TRY: bekleniyor</b><span>Kur server proxy ile alınır; alınamazsa son kayıt/yok uyarısı verir.</span></div>
         </div></div>
@@ -5992,12 +6294,12 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 
 <div class="page" id="page-v58-shared">
   <div class="shared-banner">
-    <b>👥 Mobile App UI Modu — V6.9</b>
+    <b>👥 Premium Navigation & UI Modu — V7.0</b>
     <span>Bu modda kayıtlar sadece tarayıcıda değil, server tarafındaki ortak veri dosyasında tutulur. Aynı ağa bağlanan ortakların aynı verileri görmesi hedeflenir.</span>
   </div>
   <div class="sec">
     <div class="sh">
-      <div><div class="st">Mobile App UI Durumu</div><div class="ss">Server, ağ adresi, veri sağlığı ve yedekleme</div></div>
+      <div><div class="st">Premium Navigation & UI Durumu</div><div class="ss">Server, ağ adresi, veri sağlığı ve yedekleme</div></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn bp bsm" onclick="v58RefreshShared()">Yenile</button>
         <button class="btn bs2 bsm" onclick="v58CopyUrl()">Ağ Linkini Kopyala</button>
@@ -6020,7 +6322,7 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 
 <div class="page" id="page-v59-supabase">
   <div class="sec">
-    <div class="sh"><div><div class="st">☁️ Mobile App UI</div><div class="ss">Cloud veritabanı bağlantı testi ve kurulum</div></div><button class="btn bp" onclick="v59TestSupabase()">Bağlantıyı Test Et</button></div>
+    <div class="sh"><div><div class="st">☁️ Premium Navigation & UI</div><div class="ss">Cloud veritabanı bağlantı testi ve kurulum</div></div><button class="btn bp" onclick="v59TestSupabase()">Bağlantıyı Test Et</button></div>
     <div class="sb">
       <div class="al al-i">.env dosyasına SUPABASE_URL ve SUPABASE_SERVICE_KEY yazılırsa kayıtlar Supabase'e gider. Ayar yoksa local JSON yedek mod çalışır.</div>
       <pre class="shared-code" id="v59-sb-result">Test bekleniyor...</pre>
@@ -6046,7 +6348,7 @@ create table if not exists alpro_audit (
   </div>
 </div>
 
-<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div><div class="v5-ribbon" onclick="P('v5-live')">V6.9 • Aşama 1</div>
+<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div><div class="v5-ribbon" onclick="P('v5-live')">V7.0 • Aşama 1</div>
 <script>
 (function(){
 const V5=window.AlProV5={aiMode:'quote',metals:null}; const keys=['suppliers','customers','orders','stock','invoices','sales','customs','reminders','freight','hedges','documents','v5_metal_history'];
@@ -6258,11 +6560,11 @@ const oldP=window.P;window.P=function(id){oldP(id);if(id==='v5-mobile')detect();
 })();
 </script>
 
-<div class="stage1-version" onclick="P('dashboard')">V6.9 AŞAMA 1 • 8833</div>
+<div class="stage1-version" onclick="P('dashboard')">V7.0 AŞAMA 1 • 8833</div>
 
 <script id="stage1-v52-js">
 (function(){
-  const VERSION='V6.9b Aşama 1 Mobile App UI - 8833 Tablet Korundu';
+  const VERSION='V7.0b Aşama 1 Premium Navigation & UI - 8833 Tablet Korundu';
   function fmt(n,d=2){n=Number(n);return isFinite(n)?n.toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d}):'--'}
   function setTxt(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
   function pill(id,text,ok){const e=document.getElementById(id);if(e){e.textContent=text;e.className='stage1-pill '+(ok?'ok':'warn')}}
@@ -6696,9 +6998,9 @@ const oldP=window.P;window.P=function(id){oldP(id);if(id==='v5-mobile')detect();
     const nav=document.querySelector('.nav'); if(!nav || document.getElementById('v58-nav')) return;
     let holder=document.createElement('div');
     holder.id='v58-nav';
-    holder.innerHTML='<div class="ns">Ortak</div><div class="ni" onclick="P(\\'v58-shared\\')"><span class="ic">👥</span><span>Mobile App UI</span></div>';
+    holder.innerHTML='<div class="ns">Ortak</div><div class="ni" onclick="P(\\'v58-shared\\')"><span class="ic">👥</span><span>Premium Navigation & UI</span></div>';
     nav.appendChild(holder);
-    if(window.ptitles) ptitles['v58-shared']='Mobile App UI';
+    if(window.ptitles) ptitles['v58-shared']='Premium Navigation & UI';
   }
   const oldP=window.P;
   if(typeof oldP==='function' && !oldP._v58Wrapped){
@@ -6734,9 +7036,9 @@ function addNav(){
   if(!nav||document.getElementById('v59-nav'))return;
   const d=document.createElement('div');
   d.id='v59-nav';
-  d.innerHTML='<div class="ns">Cloud</div><div class="ni" onclick="P(\\'v59-supabase\\')"><span class="ic">☁️</span><span>Mobile App UI</span></div>';
+  d.innerHTML='<div class="ns">Cloud</div><div class="ni" onclick="P(\\'v59-supabase\\')"><span class="ic">☁️</span><span>Premium Navigation & UI</span></div>';
   nav.appendChild(d);
-  if(window.ptitles) ptitles['v59-supabase']='Mobile App UI';
+  if(window.ptitles) ptitles['v59-supabase']='Premium Navigation & UI';
 }
 const oldP=window.P;
 if(typeof oldP==='function'&&!oldP._v59Wrapped){const w=function(id){oldP(id);if(id==='v59-supabase')setTimeout(v59TestSupabase,80)};w._v59Wrapped=true;window.P=w;}
@@ -7019,11 +7321,11 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
       calculator:window.initCostPage, 'customs-calc':window.calcCustoms, bank:window.renderBank,
       freight:window.renderFreight, setup:window.loadSetup, documents:window.renderDocs
     };
-    try{ if(typeof runners[id]==='function') runners[id](); }catch(e){ console.warn('V6.9 runner error', id, e); }
+    try{ if(typeof runners[id]==='function') runners[id](); }catch(e){ console.warn('V7.0 runner error', id, e); }
   }
   window.P = function(id){
     const pg = page(id);
-    if(!pg){ console.warn('V6.9: page not found', id); return false; }
+    if(!pg){ console.warn('V7.0: page not found', id); return false; }
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
     pg.classList.add('active');
@@ -7130,7 +7432,7 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
       <div class="al al-i">🧮 Detaylı ithalat gümrük masrafı hesaplayıcı. CIF, vergi, KDV, KKDF, liman ve operasyon masraflarını ton başına indirger.</div>
       <div class="v66-customs-wrap">
         <div class="sec">
-          <div class="sh"><div><div class="st">Detaylı Gümrük Hesaplama</div><div class="ss">Alüminyum, katot bakır ve çinko ithalatı için</div></div><span class="v66-pill">V6.9</span></div>
+          <div class="sh"><div><div class="st">Detaylı Gümrük Hesaplama</div><div class="ss">Alüminyum, katot bakır ve çinko ithalatı için</div></div><span class="v66-pill">V7.0</span></div>
           <div class="sb">
             <div class="fg">
               <div class="fg1"><label class="fl">Ürün / GTİP</label><select class="fsel" id="v66-gtip" onchange="v66GtipChange();v66CalcCustoms()">
@@ -7679,6 +7981,72 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
   }
   document.addEventListener('DOMContentLoaded',()=>setTimeout(run,500));
   window.addEventListener('resize',()=>setTimeout(run,120));
+})();
+</script>
+
+
+<script id="v70-premium-ui-js">
+(function(){
+  const V70_MENU = [
+    ['ANA SAYFA', [['dashboard','🏠','Dashboard'],['lme','📈','Canlı Fiyatlar'],['reminders','✅','Bugün Ne Yapmalıyım?']]],
+    ['TİCARET', [['suppliers','🏭','Tedarikçiler'],['orders','🛒','Siparişler'],['customers','👥','Müşteriler']]],
+    ['LOJİSTİK', [['v61-logistics','🚢','Lojistik Kulesi'],['freight','⚓','Navlun'],['customs','🛃','Gümrük Dosyaları'],['customs-calc','🧮','Gümrük Hesaplama'],['documents','📎','Belgeler']]],
+    ['FİNANS', [['bank','🏦','Banka & Ödeme'],['invoices','🧾','Faturalar'],['calculator','💰','Kâr / Maliyet'],['hedge','🛡️','Hedge']]],
+    ['RAPORLAR', [['reports','📋','Haftalık Rapor'],['analytics','📊','Analitik'],['income','💹','Gelir / Gider']]],
+    ['SİSTEM', [['notify','🔔','Bildirimler'],['setup','⚙️','Ayarlar']]]
+  ];
+  function pageExists(id){return !!document.getElementById('page-'+id)}
+  function rebuildNav(){
+    const nav=document.querySelector('.nav');
+    if(!nav || nav.dataset.v70Done) return;
+    let out='';
+    V70_MENU.forEach(([title,items])=>{
+      out+='<div class="ns">'+title+'</div>';
+      items.forEach(([id,ic,label])=>{
+        if(pageExists(id)) out+='<div class="ni" data-page="'+id+'" onclick="P(\''+id+'\')"><span class="ic">'+ic+'</span><span>'+label+'</span></div>';
+      });
+    });
+    nav.innerHTML=out;
+    nav.dataset.v70Done='1';
+  }
+  function addPremiumHeader(){
+    const brand=document.querySelector('.brand');
+    if(brand && !brand.dataset.v70Brand){
+      brand.dataset.v70Brand='1';
+      const t=brand.querySelector('*');
+      if(t && !brand.textContent.includes('V7.0')) {
+        brand.insertAdjacentHTML('beforeend','<div style="margin-top:6px;color:var(--v70-gold);font-size:11px;font-weight:900;letter-spacing:.08em">Premium Navigation & UI</div>');
+      }
+    }
+  }
+  function dashboardClass(){
+    const dash=document.getElementById('page-dashboard');
+    if(dash) dash.classList.add('v70-dashboard');
+  }
+  function activeNav(id){
+    document.querySelectorAll('.ni').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.ni[data-page="'+id+'"]').forEach(x=>x.classList.add('active'));
+  }
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v70Wrapped){
+    const w=function(id){
+      const r=oldP.apply(this,arguments);
+      setTimeout(()=>{activeNav(id);dashboardClass();},60);
+      return r;
+    };
+    w._v70Wrapped=true;
+    window.P=w;
+    window.showPage=w;
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    setTimeout(function(){
+      rebuildNav();
+      addPremiumHeader();
+      dashboardClass();
+      const active=document.querySelector('.page.active')?.id?.replace('page-','')||'dashboard';
+      activeNav(active);
+    },500);
+  });
 })();
 </script>
 

@@ -1,0 +1,12 @@
+V7.0 PREMIUM NAVIGATION & UI
+
+Görsel hedef:
+- DEMTA metal trading paneli hissi
+- Bloomberg/fintech tarzı koyu premium dashboard
+- Altın vurgu rengi
+- Daha düzenli sol menü
+- Daha temiz dashboard hiyerarşisi
+- Mobil app-style görünüm
+
+Yükleme:
+ZIP'i çıkar, içindeki dosyaları GitHub repo klasörüne kopyala, GitHub Desktop'tan commit/push yap, Render'da Deploy latest commit.

@@ -1,11 +1,9 @@
-AlPro V6.9 - Mobile App UI
+AlPro V7.0 - Premium Navigation & UI
 
-Mobil görünüm daha uygulama gibi yapıldı:
-1) Alt tabbar eklendi.
-2) Hızlı + FAB butonu eklendi.
-3) Dashboard kartları kompakt hale getirildi.
-4) Drawer menü iyileştirildi.
-5) Tablolar mobilde daha iyi kaydırılır hale getirildi.
-6) Modal bottom sheet görünümü iyileştirildi.
-7) Form alanları mobilde daha büyük/okunur hale getirildi.
-8) Topbar daha sade ve kompakt hale getirildi.
+Bu sürüm görsel konseptteki premium tasarımı uygulamaya taşır:
+1) Premium koyu lacivert + altın renk paleti.
+2) Sol menü yeniden gruplandı: Ana Sayfa, Ticaret, Lojistik, Finans, Raporlar, Sistem.
+3) Dashboard kartları daha premium ve hiyerarşik hale getirildi.
+4) Topbar, kartlar, tablolar, butonlar, badge'ler standartlaştırıldı.
+5) Mobilde mevcut app-style tabbar ve FAB korunup premium renklendirildi.
+6) V6.9 mobil, V6.7 export/daily, V6.6B okunurluk, V6.6 gümrük, V6.5 core fix korunur.

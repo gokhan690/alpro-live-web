@@ -1,6 +1,6 @@
 {
-  "name": "alpro-mobile-app-ui",
-  "version": "6.9.0",
+  "name": "alpro-premium-v7",
+  "version": "7.0.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

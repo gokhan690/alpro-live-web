@@ -211,7 +211,7 @@ http.createServer(async(req,res)=>{try{
   }
 
   if(u.pathname==='/api/fx'){json(res,200,await getFx());return}
-  if(u.pathname==='/api/health'){json(res,200,{ok:true,port:PORT,version:'V6.9 Mobile App UI',dbMode:SUPABASE_ENABLED?'supabase':'local-json',supabaseConfigured:SUPABASE_ENABLED,lanUrl:lanUrl(),publicUrl:process.env.PUBLIC_URL||null,time:new Date().toISOString()});return}
+  if(u.pathname==='/api/health'){json(res,200,{ok:true,port:PORT,version:'V7.0 Premium Navigation & UI',dbMode:SUPABASE_ENABLED?'supabase':'local-json',supabaseConfigured:SUPABASE_ENABLED,lanUrl:lanUrl(),publicUrl:process.env.PUBLIC_URL||null,time:new Date().toISOString()});return}
   if(req.method==='OPTIONS'){res.writeHead(204,{'Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET,OPTIONS','Access-Control-Allow-Headers':'Content-Type'});res.end();return}
   const safePath=decodeURIComponent(u.pathname.replace(/^\//,'')); if(!safePath.includes('..')&&fs.existsSync(path.join(__dirname,safePath))){serve(res,safePath);return}
   json(res,404,{error:'Not found'});

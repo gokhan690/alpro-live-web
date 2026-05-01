@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69l-header-currency-mobile-fix",
-  "version": "6.9.12",
+  "name": "alpro-v69m-currency-dashboard-widgets",
+  "version": "6.9.13",
   "private": true,
   "scripts": {
     "start": "node server.js"

@@ -1,11 +1,21 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
-Bu sürüm V6.9K üstüne yapılmıştır:
-1) Üst bildirim kutusu düzeltildi.
-2) USD/TRY alanına tıklayınca EUR/TRY olarak değişir; tekrar tıklayınca USD/TRY olur.
-3) Mobil/tablet görünüm hataları azaltıldı.
-4) Arama kutusuna tıklayınca placeholder yazısı kaybolur.
-5) ZIP içinde eski paketler yoktur.
+Bu sürüm V6.9L üstüne yapılmıştır:
+1) USD/TRY alanı dropdown oldu.
+   - USD/TRY
+   - EUR/TRY
+   - GBP/TRY
+   seçilebilir.
+2) Döviz değerleri mümkünse sistemdeki forex alanlarından alınır:
+   - fx-usdtry
+   - fx-eurtry
+   - stage1-usdtry
+   GBP/TRY yoksa USD/TRY üzerinden yaklaşık hesaplanır.
+3) Sipariş ve Tedarikçi sayfasındaki fazla Yeni/Ekle butonları gizlenir.
+4) Dashboard'a Kritik Uyarılar paneli eklendi.
+5) Dashboard'a Haftalık Rapor + Bar Grafik eklendi.
+6) Arama kutusuna tıklayınca placeholder yazısı kaybolur.
+7) ZIP içinde eski paket yoktur.
 
 Commit mesajı:
-Update V6.9L Header Currency Mobile Fix
+Update V6.9M Currency Dashboard Widgets

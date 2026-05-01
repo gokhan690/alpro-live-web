@@ -684,7 +684,7 @@ table tr:hover {
 
 
 <style id="v54-premium-ui">
-/* ===== V6.9G PREMIUM UI REVISION ===== */
+/* ===== V6.9H PREMIUM UI REVISION ===== */
 :root{
   --bg:#05080d;
   --surface:#0a1017;
@@ -918,7 +918,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v55-finance-ui">
-/* ===== V6.9G BANKA & ODEME FINANSMAN MODULU ===== */
+/* ===== V6.9H BANKA & ODEME FINANSMAN MODULU ===== */
 .finance-hub{
   margin-top:14px;
   border:1px solid rgba(215,162,58,.18);
@@ -963,7 +963,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v56-hedge-preview-css">
-/* ===== V6.9G HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
+/* ===== V6.9H HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
 .hedge-preview{
   margin:10px 0 12px;
   padding:13px;
@@ -1026,7 +1026,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v57-more-leverage-css">
-/* ===== V6.9G DAHA FAZLA KALDIRAÇ KARTI ===== */
+/* ===== V6.9H DAHA FAZLA KALDIRAÇ KARTI ===== */
 .lev-btn{min-width:54px!important;border-radius:10px!important}
 .lev-btn[data-lev="15"],.lev-btn[data-lev="20"],.lev-btn[data-lev="25"],.lev-btn[data-lev="50"]{
   border-color:rgba(231,76,60,.28)!important;
@@ -1061,7 +1061,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v58-shared-ui">
-/* ===== V6.9G ORTAK KULLANIM / SHARED SERVER ===== */
+/* ===== V6.9H ORTAK KULLANIM / SHARED SERVER ===== */
 .shared-pill{
   display:inline-flex;align-items:center;gap:7px;
   border:1px solid rgba(46,204,113,.28);
@@ -2648,7 +2648,7 @@ body.v69b-ready #v69b-search-header{
 @media(max-width:820px){#page-dashboard{padding:0!important;background:transparent!important}.v69d-headline,.v69d-grid,.v69d-foot{display:none!important}.v69d-mobile{display:block}.v69d-mobile .v69d-phone{min-height:auto;border-width:1px;border-radius:28px;box-shadow:0 18px 50px rgba(0,0,0,.30);padding-top:26px}}
 </style>
 <style id="v69e-dashboard-tr-mobile-css">
-/* ===== ALPRO V6.9G DASHBOARD TURKISH + MOBILE + HEADER FIX ===== */
+/* ===== ALPRO V6.9H DASHBOARD TURKISH + MOBILE + HEADER FIX ===== */
 :root{
   --v69e-bg:#04101b; --v69e-panel:#091827; --v69e-panel2:#0b1d2f; --v69e-line:rgba(255,255,255,.08); --v69e-gold:#d9a342; --v69e-gold2:#f0c46c; --v69e-blue:#33a1ff; --v69e-orange:#f4a12f; --v69e-green:#41d883; --v69e-text:#eef5fc; --v69e-muted:#8da3b8; --v69e-red:#ff6a63;
 }
@@ -2706,7 +2706,7 @@ body.v69b-ready .content, body.v69b-ready .main{padding-top:76px!important}
 </style>
 
 <style id="v69g-fix-over-e-css">
-/* ===== V6.9G: keep V6.9G, fix dashboard visibility, header blocking, search, duplicate add ===== */
+/* ===== V6.9H: keep V6.9H, fix dashboard visibility, header blocking, search, duplicate add ===== */
 :root{--v69g-gold:#d9a342;--v69g-gold2:#f0c46c;--v69g-green:#41d883;--v69g-muted:#8da3b8;--v69g-text:#eef5fc}
 /* Eski fixed header sayfaları kapatıyordu: onu kapatıp içerik içine yeni header koyuyoruz */
 #v69b-search-header{display:none!important}
@@ -2739,6 +2739,29 @@ body.v69g-dashboard-ok #page-dashboard{display:block!important}
 }
 @media(max-width:1450px){.v69g-header{grid-template-columns:minmax(260px,1fr) 98px 110px 52px 150px}.v69g-header .v69g-cell:nth-child(4){display:none}}
 @media(max-width:1040px){.v69g-header{grid-template-columns:minmax(240px,1fr) 98px 52px}.v69g-header .v69g-cell:nth-child(3),.v69g-header .v69g-cell:nth-child(6){display:none}}
+</style>
+
+
+<style id="v69h-dashboard-visible-light-css">
+/* V6.9H: force dashboard visible + lighter navy theme */
+:root{--h-bg:#0b1724;--h-panel:#132941;--h-panel2:#18324d;--h-line:rgba(255,255,255,.14);--h-gold:#e1ad4e;--h-gold2:#f5cc78;--h-blue:#52b5ff;--h-orange:#f7b04a;--h-green:#4bdd90;--h-red:#ff766f;--h-text:#f4f9ff;--h-muted:#a8bbcc}
+body:not(.light){background:radial-gradient(circle at 18% 0%,rgba(225,173,78,.14),transparent 24%),radial-gradient(circle at 92% 16%,rgba(82,181,255,.10),transparent 26%),linear-gradient(180deg,#081320,#0f2031 50%,#091522)!important;color:var(--h-text)!important}
+/* old dashboard CSS only allows #v69e-dashboard; so we reuse that ID and repaint inside */
+#v69e-dashboard{display:block!important;color:var(--h-text)!important}
+#v69e-dashboard .v69h-root{display:block!important;color:var(--h-text)!important}
+#v69e-dashboard .v69e-wrap,#v69e-dashboard .v69d-wrap{display:none!important}
+#v69d-dashboard,#v69f-dashboard{display:none!important}
+#v69b-search-header,.v69g-header{background:linear-gradient(180deg,rgba(20,42,66,.98),rgba(14,31,50,.98))!important;border-color:var(--h-line)!important;box-shadow:0 12px 34px rgba(0,0,0,.20)!important}
+#v69b-global-search,#v69g-global-search{color:#fff!important;-webkit-text-fill-color:#fff!important}
+.v69h-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin:0 0 16px}.v69h-title{font-size:34px;font-weight:1000;letter-spacing:-.04em;color:var(--h-gold2);text-shadow:0 0 18px rgba(225,173,78,.2)}.v69h-subtitle{font-size:12px;color:var(--h-muted);margin-top:5px}.v69h-demta{text-align:right;min-width:210px}.v69h-demta .big{font-size:40px;line-height:1;color:var(--h-gold2);font-weight:1000;letter-spacing:.04em}.v69h-demta .small{font-size:13px;color:#ecd08c;margin-top:4px}
+.v69h-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:start}.v69h-board{background:linear-gradient(180deg,rgba(18,39,62,.98),rgba(12,27,44,.98));border:1px solid var(--h-line);border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.05)}
+.v69h-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;padding:12px}.v69h-kpi{min-height:142px;padding:13px;border-radius:16px;background:linear-gradient(180deg,rgba(24,50,77,.98),rgba(17,37,59,.98));border:1px solid rgba(255,255,255,.13);position:relative;overflow:hidden}.v69h-kpi:after{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(225,173,78,.68),transparent)}.v69h-lbl{font-size:11px;font-weight:950;color:#ecf4fb}.v69h-sub{font-size:10px;color:var(--h-muted);margin-top:2px}.v69h-val{font-size:25px;font-weight:1000;letter-spacing:-.04em;color:#fff;margin-top:8px;line-height:1.05}.v69h-mini{font-size:11px;font-weight:950;margin-top:6px}.v69h-up{color:var(--h-green)}.v69h-chart{width:100%;height:32px;margin-top:7px}.v69h-note{font-size:11px;color:var(--h-muted);margin-top:10px}.v69h-ringrow{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}.v69h-ring{width:50px;height:50px;border-radius:50%;background:conic-gradient(var(--h-gold) 0 266deg,rgba(255,255,255,.14) 266deg 360deg);position:relative;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:1000}.v69h-ring:after{content:'';position:absolute;inset:7px;background:#132941;border-radius:50%}.v69h-ring span{position:relative;z-index:1}
+.v69h-mid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 12px 12px}.v69h-bottom{display:grid;grid-template-columns:1.18fr 1fr .95fr .95fr;gap:12px;padding:0 12px 12px}.v69h-panel{background:linear-gradient(180deg,rgba(20,43,67,.98),rgba(15,33,53,.98));border:1px solid rgba(255,255,255,.13);border-radius:18px;overflow:hidden}.v69h-ph{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.09)}.v69h-pt{font-size:14px;font-weight:1000;color:#fff}.v69h-link{font-size:10px;color:#b5ddff;font-weight:900;background:transparent;border:0;cursor:pointer}.v69h-link:hover{color:var(--h-gold2)}.v69h-pb{padding:12px 13px}.v69h-alert{display:flex;justify-content:space-between;gap:10px;padding:10px 11px;border-radius:13px;border:1px solid rgba(255,255,255,.09);margin-bottom:8px}.v69h-alert:last-child{margin-bottom:0}.v69h-alert.red{background:linear-gradient(135deg,rgba(255,118,111,.16),rgba(255,118,111,.05));border-color:rgba(255,118,111,.27)}.v69h-alert.orange{background:linear-gradient(135deg,rgba(247,176,74,.16),rgba(247,176,74,.05));border-color:rgba(247,176,74,.27)}.v69h-alert.green{background:linear-gradient(135deg,rgba(75,221,144,.14),rgba(75,221,144,.05));border-color:rgba(75,221,144,.23)}.v69h-alert .ttl{font-size:11px;font-weight:950;color:#fff}.v69h-alert .txt{font-size:9.5px;color:var(--h-muted);margin-top:2px;line-height:1.4}.v69h-alert .tm{font-size:9px;color:#dbe9f5;white-space:nowrap}
+.v69h-task{display:grid;grid-template-columns:56px 1fr auto;gap:8px;align-items:center;padding:8px 2px;border-bottom:1px dashed rgba(255,255,255,.09)}.v69h-task:last-child{border-bottom:0}.v69h-time{font-size:11px;font-weight:950;color:#f3f9ff}.v69h-taskname{font-size:10px;color:#fff}.v69h-tag{border-radius:999px;padding:4px 8px;font-size:8px;letter-spacing:.08em;text-transform:uppercase;font-weight:950;border:1px solid rgba(255,255,255,.11)}.v69h-tag.trade{background:rgba(82,181,255,.12);color:#d4ecff;border-color:rgba(82,181,255,.24)}.v69h-tag.log{background:rgba(75,221,144,.12);color:#cff7df;border-color:rgba(75,221,144,.24)}.v69h-tag.fin{background:rgba(225,173,78,.13);color:#ffebbc;border-color:rgba(225,173,78,.24)}
+.v69h-table{width:100%;border-collapse:collapse}.v69h-table th,.v69h-table td{padding:6px 5px;font-size:9px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left;color:#f2f7fd}.v69h-table th{font-size:8px;color:var(--h-muted);letter-spacing:.08em;text-transform:uppercase;font-weight:950}.v69h-table td:last-child,.v69h-table th:last-child{text-align:right}.v69h-pill{display:inline-block;border-radius:999px;padding:3px 6px;font-size:8px;font-weight:950}.v69h-pill.green{background:rgba(75,221,144,.12);border:1px solid rgba(75,221,144,.24);color:#cdf7df}.v69h-pill.orange{background:rgba(247,176,74,.12);border:1px solid rgba(247,176,74,.24);color:#ffe8b4}.v69h-pill.blue{background:rgba(82,181,255,.12);border:1px solid rgba(82,181,255,.24);color:#d4ecff}.v69h-stat{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.08)}.v69h-stat:last-child{border-bottom:0}.v69h-stat .name{font-size:10px;color:var(--h-muted)}.v69h-stat .num{font-size:12px;font-weight:1000;color:#fff}.v69h-bars{display:flex;gap:8px;align-items:flex-end;height:102px;padding:8px 0 4px}.v69h-bar{flex:1;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#8cc5ff,#4284d1)}.v69h-bar.gold{background:linear-gradient(180deg,#ffdc8a,#d6a13c)}.v69h-barlabels{display:flex;justify-content:space-between;gap:8px;color:var(--h-muted);font-size:9px}.v69h-foot{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}.v69h-fcard{padding:15px 16px;border-radius:18px;background:linear-gradient(180deg,rgba(20,43,67,.98),rgba(14,31,50,.98));border:1px solid rgba(225,173,78,.24);display:flex;gap:12px}.v69h-fcard .ico{width:42px;height:42px;border-radius:14px;background:rgba(225,173,78,.15);color:var(--h-gold2);display:flex;align-items:center;justify-content:center;font-size:22px}.v69h-fcard .name{font-size:13px;color:#fff;font-weight:1000}.v69h-fcard .desc{margin-top:3px;color:var(--h-muted);font-size:10px;line-height:1.42}
+.v69h-phone{background:linear-gradient(180deg,#132941,#0e2135);border:2px solid rgba(255,255,255,.20);border-radius:38px;padding:17px 14px 82px;box-shadow:0 24px 70px rgba(0,0,0,.35);color:#fff;position:relative;overflow:hidden;min-height:590px}.v69h-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:94px;height:25px;border-radius:0 0 18px 18px;background:#07111d;z-index:2}.v69hm-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;position:relative;z-index:3}.v69hm-time{font-size:11px;font-weight:950}.v69hm-brand{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.v69hm-logo{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:1000}.v69hm-a{width:24px;height:24px;border-radius:8px;background:linear-gradient(135deg,var(--h-gold),var(--h-gold2));color:#07101b;display:flex;align-items:center;justify-content:center;font-weight:1000}.v69hm-bell{position:relative;font-size:20px}.v69hm-bell span{position:absolute;top:-4px;right:-4px;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--h-gold),var(--h-gold2));color:#07101b;font-size:9px;font-weight:1000;display:flex;align-items:center;justify-content:center}.v69hm-hello{font-size:24px;font-weight:1000;line-height:1.08}.v69hm-date{font-size:10px;color:var(--h-muted);margin-top:4px;margin-bottom:12px}.v69hm-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.v69hm-card{min-height:96px;padding:10px;border-radius:14px;background:linear-gradient(180deg,rgba(24,50,77,.98),rgba(17,37,59,.98));border:1px solid rgba(255,255,255,.13)}.v69hm-lbl{font-size:9px;font-weight:950;color:var(--h-muted)}.v69hm-val{margin-top:6px;font-size:16px;line-height:1.1;font-weight:1000}.v69hm-mini{margin-top:5px;font-size:10px;font-weight:950}.v69hm-spark{width:100%;height:22px;margin-top:5px}.v69hm-head{display:flex;justify-content:space-between;align-items:center;margin:10px 0 8px;color:#fff;font-size:13px;font-weight:950}.v69hm-head button{background:none;border:0;color:var(--h-gold2);font-size:10px;font-weight:950}.v69hm-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:12px}.v69hm-action{min-height:62px;padding:8px 4px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}.v69hm-action .ico{font-size:17px;color:var(--h-gold2)}.v69hm-action .tx{margin-top:5px;font-size:8px;font-weight:950;line-height:1.2;text-align:center}.v69hm-panel{padding:10px;border-radius:16px;background:linear-gradient(180deg,rgba(20,43,67,.98),rgba(15,33,53,.98));border:1px solid rgba(255,255,255,.13)}.v69hm-ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.v69hm-pt{font-size:13px;font-weight:1000}.v69hm-count{min-width:20px;height:20px;border-radius:999px;padding:0 7px;background:rgba(255,255,255,.08);color:#d8e8f7;font-size:9px;font-weight:950;display:flex;align-items:center;justify-content:center}.v69hm-task{display:grid;grid-template-columns:42px 1fr auto;gap:7px;align-items:center;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.08)}.v69hm-task:last-child{border-bottom:0}.v69hm-time2{font-size:10px;font-weight:950;color:#eaf4fc}.v69hm-tasktext{font-size:8.7px;line-height:1.25;color:#fff}.v69hm-tag{border-radius:999px;padding:3px 6px;font-size:7px;letter-spacing:.08em;text-transform:uppercase;font-weight:950}.v69hm-fab{position:absolute;right:18px;bottom:74px;width:54px;height:54px;border-radius:18px;background:linear-gradient(135deg,var(--h-gold),var(--h-gold2));display:flex;align-items:center;justify-content:center;color:#07101b;font-size:32px;font-weight:1000;box-shadow:0 14px 34px rgba(0,0,0,.34)}.v69hm-tabbar{position:absolute;left:10px;right:10px;bottom:10px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:8px;border-radius:22px;background:rgba(11,27,44,.96);border:1px solid rgba(225,173,78,.24)}.v69hm-tab{background:transparent;border:0;color:#b7c9da;text-align:center;padding:6px 2px;border-radius:14px;font-size:8px;font-weight:950}.v69hm-tab b{display:block;font-size:17px;line-height:1;margin-bottom:3px}.v69hm-tab.active{background:rgba(225,173,78,.16);color:var(--h-gold2)}.v69h-mobile{display:none}
+@media(max-width:1450px){.v69h-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.v69h-bottom{grid-template-columns:1fr 1fr}.v69h-layout{grid-template-columns:minmax(0,1fr) 294px}.v69h-title{font-size:30px}.v69h-demta .big{font-size:34px}}
+@media(max-width:820px){body.v69h-ready #v69b-mobile-top,body.v69h-ready #v69b-mobile-tabbar,body.v69h-ready #v69b-mobile-fab,body.v69h-ready #v69g-mobile-top,body.v69h-ready #v69g-mobile-tabbar,body.v69h-ready #v69g-mobile-fab{display:none!important}body.v69h-ready .content{padding-top:8px!important;padding-bottom:12px!important}#page-dashboard{padding:0!important;background:transparent!important}.v69h-head,.v69h-layout,.v69h-foot{display:none!important}.v69h-mobile{display:block}.v69h-mobile .v69h-phone{min-height:auto;border-width:1px;border-radius:28px;box-shadow:0 18px 50px rgba(0,0,0,.30);padding-top:26px}}
 </style>
 
 </head>
@@ -8521,7 +8544,7 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
         '</div>'+
         '<div class="v69d-side">'+
           '<div class="v69d-phone">'+
-            '<div class="v69d-notch"></div><div class="v69dm-top"><div class="v69dm-time" id="v69dm-time">17:42</div><div>▴ Wi‑Fi ▰</div></div><div class="v69dm-brand"><div class="v69dm-logo"><div class="v69dm-a">A</div><div>AlPro V6.9G</div></div><div class="v69dm-bell">🔔<span>3</span></div></div><div class="v69dm-hello">Merhaba, Mehmet 👋</div><div class="v69dm-date" id="v69dm-date">24 Mayıs 2024</div>'+
+            '<div class="v69d-notch"></div><div class="v69dm-top"><div class="v69dm-time" id="v69dm-time">17:42</div><div>▴ Wi‑Fi ▰</div></div><div class="v69dm-brand"><div class="v69dm-logo"><div class="v69dm-a">A</div><div>AlPro V6.9H</div></div><div class="v69dm-bell">🔔<span>3</span></div></div><div class="v69dm-hello">Merhaba, Mehmet 👋</div><div class="v69dm-date" id="v69dm-date">24 Mayıs 2024</div>'+
             '<div class="v69dm-grid">'+
               '<div class="v69dm-card"><div class="v69dm-lbl">LME Aluminium</div><div class="v69dm-val" id="v69dm-alu">--</div><div class="v69dm-mini v69d-up">+0,73%</div>'+spark('#33a1ff',true)+'</div>'+
               '<div class="v69dm-card"><div class="v69dm-lbl">Copper Cathode</div><div class="v69dm-val" id="v69dm-cop">--</div><div class="v69dm-mini v69d-up">+0,65%</div>'+spark('#f4a12f',true)+'</div>'+
@@ -8651,7 +8674,7 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
         '</div>'+
         '<div class="v69e-side">'+
           '<div class="v69e-phone">'+
-            '<div class="v69e-notch"></div><div class="v69em-top"><div class="v69em-time" id="v69em-time">17:42</div><div>▴ Wi‑Fi ▰</div></div><div class="v69em-brand"><div class="v69em-logo"><div class="v69em-a">A</div><div>AlPro V6.9G</div></div><div class="v69em-bell">🔔<span>3</span></div></div><div class="v69em-hello">Merhaba, Mehmet 👋</div><div class="v69em-date" id="v69em-date">24 Mayıs 2024</div>'+
+            '<div class="v69e-notch"></div><div class="v69em-top"><div class="v69em-time" id="v69em-time">17:42</div><div>▴ Wi‑Fi ▰</div></div><div class="v69em-brand"><div class="v69em-logo"><div class="v69em-a">A</div><div>AlPro V6.9H</div></div><div class="v69em-bell">🔔<span>3</span></div></div><div class="v69em-hello">Merhaba, Mehmet 👋</div><div class="v69em-date" id="v69em-date">24 Mayıs 2024</div>'+
             '<div class="v69em-grid">'+
               '<div class="v69em-card"><div class="v69em-lbl">LME Alüminyum</div><div class="v69em-val" id="v69em-alu">--</div><div class="v69em-mini v69e-up">+0,73%</div>'+spark('#33a1ff',true)+'</div>'+
               '<div class="v69em-card"><div class="v69em-lbl">Bakır Katot</div><div class="v69em-val" id="v69em-cop">--</div><div class="v69em-mini v69e-up">+0,65%</div>'+spark('#f4a12f',true)+'</div>'+
@@ -8767,7 +8790,7 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
   }
   function bindSearch(){const inp=q('v69g-global-search'); if(inp && !inp._v69g){inp._v69g=true; inp.addEventListener('input',()=>renderResults(inp.value)); inp.addEventListener('focus',()=>{if(inp.value)renderResults(inp.value)}); inp.addEventListener('keydown',e=>{if(e.key==='Escape'){const b=q('v69g-results');if(b)b.classList.remove('show');inp.value=''}});} document.addEventListener('click',e=>{if(!e.target.closest('#v69g-header')){const b=q('v69g-results');if(b)b.classList.remove('show')}},{capture:true});}
   function fixDashboard(){
-    // wait for V6.9G dashboard script; if it exists, mark visible. If not, don't hide old dashboard.
+    // wait for V6.9H dashboard script; if it exists, mark visible. If not, don't hide old dashboard.
     const e=q('v69e-dashboard');
     if(e){document.body.classList.add('v69g-dashboard-ok'); return true;}
     return false;
@@ -8788,6 +8811,59 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
   document.addEventListener('DOMContentLoaded',init);
   const old=window.P;
   if(typeof old==='function' && !old._v69gWrapped){const w=function(id){const r=old.apply(this,arguments);setTimeout(update,100);return r};w._v69gWrapped=true;window.P=w;window.showPage=w;}
+})();
+</script>
+
+
+<script id="v69h-dashboard-visible-light-js">
+(function(){
+  function q(id){return document.getElementById(id)}
+  function esc(s){return String(s??'').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))}
+  function ls(k){try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return[]}}
+  function num(v){const n=Number(String(v??'').replace(/[^0-9.-]/g,''));return isNaN(n)?0:n}
+  function fmt(n){const x=Number(String(n??'').replace(',', '.'));return isNaN(x)?String(n??'--'):x.toLocaleString('tr-TR')}
+  function txt(id,f){const e=q(id);return e?(e.textContent||'').trim()||f:f}
+  function nowTime(full){try{return new Date().toLocaleTimeString('tr-TR',full?{hour:'2-digit',minute:'2-digit',second:'2-digit'}:{hour:'2-digit',minute:'2-digit'})}catch(e){return full?'17:42:31':'17:42'}}
+  function nowDate(){try{return new Date().toLocaleDateString('tr-TR',{day:'2-digit',month:'long',year:'numeric'})}catch(e){return '24 Mayıs 2024'}}
+  function daysUntil(d){if(!d)return 999;const t=new Date(d),n=new Date();n.setHours(0,0,0,0);return isNaN(t)?999:Math.ceil((t-n)/86400000)}
+  function go(p){if(window.P)window.P(p);else if(window.showPage)window.showPage(p)}
+  function spark(c,m){return '<svg class="'+(m?'v69hm-spark':'v69h-chart')+'" viewBox="0 0 120 36" preserveAspectRatio="none"><path d="M2 28 C 12 27, 16 16, 26 18 S 40 31, 54 19 S 76 10, 92 18 S 108 8, 118 12" fill="none" stroke="'+c+'" stroke-width="2.4" stroke-linecap="round"/><path d="M2 28 C 12 27, 16 16, 26 18 S 40 31, 54 19 S 76 10, 92 18 S 108 8, 118 12 L118 36 L2 36 Z" fill="'+c+'22"/></svg>'}
+  function phone(){return '<div class="v69h-phone"><div class="v69h-notch"></div><div class="v69hm-top"><div class="v69hm-time" id="v69hm-time">17:42</div><div>▴ Wi‑Fi ▰</div></div><div class="v69hm-brand"><div class="v69hm-logo"><div class="v69hm-a">A</div><div>AlPro V6.9H</div></div><div class="v69hm-bell">🔔<span>3</span></div></div><div class="v69hm-hello">Merhaba, Mehmet 👋</div><div class="v69hm-date" id="v69hm-date">24 Mayıs 2024</div><div class="v69hm-grid"><div class="v69hm-card"><div class="v69hm-lbl">LME Alüminyum</div><div class="v69hm-val" id="v69hm-alu">--</div><div class="v69hm-mini v69h-up">+0,73%</div>'+spark('#52b5ff',1)+'</div><div class="v69hm-card"><div class="v69hm-lbl">Bakır Katot</div><div class="v69hm-val" id="v69hm-cop">--</div><div class="v69hm-mini v69h-up">+0,65%</div>'+spark('#f7b04a',1)+'</div><div class="v69hm-card"><div class="v69hm-lbl">USD/TRY</div><div class="v69hm-val" id="v69hm-usd">--</div><div class="v69hm-mini v69h-up">+0,18%</div>'+spark('#4bdd90',1)+'</div><div class="v69hm-card"><div class="v69hm-lbl">Nakit Pozisyonu</div><div class="v69hm-val" id="v69hm-cash">--</div><div class="v69hm-mini">Kredi Oranı 74%</div></div></div><div class="v69hm-head"><div>Hızlı İşlemler</div><button onclick="P(\'orders\')">Tümünü Gör ›</button></div><div class="v69hm-actions"><button class="v69hm-action" onclick="P(\'orders\')"><div class="ico">📦</div><div class="tx">Yeni Sipariş</div></button><button class="v69hm-action" onclick="P(\'customers\')"><div class="ico">📝</div><div class="tx">Teklif Oluştur</div></button><button class="v69hm-action" onclick="P(\'freight\')"><div class="ico">🚚</div><div class="tx">Navlun Talebi</div></button><button class="v69hm-action" onclick="P(\'invoices\')"><div class="ico">🧾</div><div class="tx">Fatura Oluştur</div></button></div><div class="v69hm-panel"><div class="v69hm-ph"><div class="v69hm-pt">Bugün Ne Yapmalıyım?</div><div class="v69hm-count">5</div></div><div id="v69hm-tasks"></div></div><div class="v69hm-fab" onclick="P(\'orders\')">+</div><div class="v69hm-tabbar"><button class="v69hm-tab active" onclick="P(\'dashboard\')"><b>⌂</b>Ana</button><button class="v69hm-tab" onclick="P(\'lme\')"><b>⌁</b>Fiyat</button><button class="v69hm-tab" onclick="P(\'orders\')"><b>🛒</b>Sipariş</button><button class="v69hm-tab" onclick="P(\'bank\')"><b>🏦</b>Finans</button><button class="v69hm-tab" onclick="P(\'reports\')"><b>▥</b>Rapor</button></div></div>'}
+  function build(){
+    const d=q('page-dashboard'); if(!d)return false;
+    let dash=q('v69e-dashboard');
+    if(!dash){dash=document.createElement('div');dash.id='v69e-dashboard';d.insertBefore(dash,d.firstChild)}
+    dash.innerHTML='<div class="v69h-root"><div class="v69h-head"><div><div class="v69h-title">AlPro Premium Dashboard</div><div class="v69h-subtitle">İlk sayfa olarak premium yönetim paneli • ticaret, lojistik ve finans görünümü</div></div><div class="v69h-demta"><div class="big">DEMTA</div><div class="small">Metal Trading & Operations</div></div></div><div class="v69h-layout"><div class="v69h-board"><div class="v69h-kpis"><div class="v69h-kpi"><div class="v69h-lbl">LME Alüminyum</div><div class="v69h-sub">3M Cash</div><div class="v69h-val" id="v69h-alu">--</div><div class="v69h-mini v69h-up">+18,50 (+0,73%)</div>'+spark('#52b5ff',0)+'</div><div class="v69h-kpi"><div class="v69h-lbl">Bakır Katot</div><div class="v69h-sub">3M Cash</div><div class="v69h-val" id="v69h-cop">--</div><div class="v69h-mini v69h-up">+65,00 (+0,65%)</div>'+spark('#f7b04a',0)+'</div><div class="v69h-kpi"><div class="v69h-lbl">Çinko</div><div class="v69h-sub">3M Cash</div><div class="v69h-val" id="v69h-zin">--</div><div class="v69h-mini v69h-up">+22,00 (+0,76%)</div>'+spark('#52b5ff',0)+'</div><div class="v69h-kpi"><div class="v69h-lbl">USD/TRY</div><div class="v69h-sub">Spot</div><div class="v69h-val" id="v69h-usd">--</div><div class="v69h-mini v69h-up">+0,0590 (+0,18%)</div>'+spark('#4bdd90',0)+'</div><div class="v69h-kpi"><div class="v69h-lbl">Açık Siparişler</div><div class="v69h-sub">Tüm siparişler</div><div class="v69h-val" id="v69h-orders">0</div><div class="v69h-note">Toplam Değer<br><strong id="v69h-ordervalue">USD 18.750.250</strong></div></div><div class="v69h-kpi"><div class="v69h-lbl">Nakit Pozisyonu</div><div class="v69h-sub">Toplam nakit</div><div class="v69h-val" id="v69h-cash">--</div><div class="v69h-ringrow"><div class="v69h-sub">Kullanılabilir<br>Kredi Oranı</div><div class="v69h-ring" id="v69h-ring"><span>74%</span></div></div></div></div><div class="v69h-mid"><div class="v69h-panel"><div class="v69h-ph"><div class="v69h-pt">🚨 Kritik Uyarılar</div><button class="v69h-link" onclick="P(\'notify\')">Tümünü Gör</button></div><div class="v69h-pb" id="v69h-alerts"></div></div><div class="v69h-panel"><div class="v69h-ph"><div class="v69h-pt">✅ Bugün Ne Yapmalıyım?</div><button class="v69h-link" onclick="P(\'reminders\')">Tümünü Gör</button></div><div class="v69h-pb" id="v69h-tasks"></div></div></div><div class="v69h-bottom"><div class="v69h-panel"><div class="v69h-ph"><div class="v69h-pt">Son Siparişler</div><button class="v69h-link" onclick="P(\'orders\')">Tümünü Gör</button></div><div class="v69h-pb"><table class="v69h-table"><thead><tr><th>Sipariş No</th><th>Müşteri</th><th>Ürün</th><th>Miktar</th><th>Durum</th></tr></thead><tbody id="v69h-orderRows"></tbody></table></div></div><div class="v69h-panel"><div class="v69h-ph"><div class="v69h-pt">Lojistik / ETA</div><button class="v69h-link" onclick="P(\'freight\')">Tümünü Gör</button></div><div class="v69h-pb"><table class="v69h-table"><thead><tr><th>BL / Ref</th><th>Rota</th><th>ETA</th><th>Durum</th></tr></thead><tbody id="v69h-shipRows"></tbody></table></div></div><div class="v69h-panel"><div class="v69h-ph"><div class="v69h-pt">Finans Özeti</div><button class="v69h-link" onclick="P(\'bank\')">Tümünü Gör</button></div><div class="v69h-pb" id="v69h-finance"></div></div><div class="v69h-panel"><div class="v69h-ph"><div class="v69h-pt">Haftalık Rapor Özeti</div><button class="v69h-link" onclick="P(\'reports\')">Tümünü Gör</button></div><div class="v69h-pb"><div class="v69h-bars" id="v69h-bars"></div><div class="v69h-barlabels"><span>Pzt</span><span>Sal</span><span>Çar</span><span>Per</span><span>Cum</span><span>Cmt</span><span>Paz</span></div></div></div></div></div><div class="v69h-side">'+phone()+'</div></div><div class="v69h-foot"><div class="v69h-fcard"><div class="ico">🛡️</div><div><div class="name">Güvenli</div><div class="desc">Kurumsal güvenlik standartları ve veri koruma</div></div></div><div class="v69h-fcard"><div class="ico">⚡</div><div><div class="name">Hızlı</div><div class="desc">Yüksek performanslı altyapı ve akıllı süreçler</div></div></div><div class="v69h-fcard"><div class="ico">📊</div><div><div class="name">Veri Odaklı</div><div class="desc">Gerçek zamanlı verilerle akıllı karar desteği</div></div></div><div class="v69h-fcard"><div class="ico">🌍</div><div><div class="name">Küresel Uyumlu</div><div class="desc">LME, gümrük ve finans süreçleri ile tam uyum</div></div></div></div><div class="v69h-mobile"></div></div>';
+    document.body.classList.add('v69h-ready');
+    return true;
+  }
+  function pill(s){s=String(s||'').toLowerCase(); if(/onay|tamam|paid|confirm/.test(s))return 'green'; if(/plan|bek/.test(s))return 'orange'; if(/yol|ship|open|progress/.test(s))return 'blue'; return 'green'}
+  function render(){
+    if(!build())return;
+    const orders=ls('orders').filter(x=>!x._deleted), invoices=ls('invoices').filter(x=>!x._deleted), bank=ls('bank').filter(x=>!x._deleted), income=ls('income').filter(x=>!x._deleted), hedges=ls('hedges').filter(x=>!x._deleted&&!x.closed);
+    let ships=ls('v61_shipments'); if(!ships.length)ships=ls('alpro_v61_shipments'); ships=ships.filter(x=>!x._deleted);
+    const alu=txt('stage1-alu','2.552,00'),cop=txt('stage1-cop','10.045,50'),zin=txt('stage1-zin','2.936,00'),usd=txt('stage1-usdtry','32,4287');
+    [['v69h-alu',alu],['v69h-cop',cop],['v69h-zin',zin],['v69h-usd',usd],['v69hm-alu',alu],['v69hm-cop',cop],['v69hm-usd',usd]].forEach(([id,v])=>{const e=q(id);if(e)e.textContent=v});
+    const open=orders.length||23, orderVal=orders.reduce((a,o)=>a+num(o.total||o.amount||o.value),0)||18750250, recv=invoices.reduce((a,i)=>a+num(i.amount||i.total||i.value),0)||2105420; let cash=bank.reduce((a,b)=>a+num(b.amount||b.total||b.value),0)||5842310; const pnl=income.reduce((a,b)=>a+num(b.amount||b.total||b.value),0)||742150;
+    const set=(id,v)=>{const e=q(id);if(e)e.textContent=v}; set('v69h-orders',open); set('v69h-ordervalue','USD '+fmt(orderVal)); set('v69h-cash','USD '+fmt(cash)); set('v69hm-cash','USD '+fmt(cash));
+    const ratio=Math.max(40,Math.min(90,74-(hedges.length?Math.min(16,hedges.length*2):0))); const ring=q('v69h-ring'); if(ring){ring.innerHTML='<span>'+ratio+'%</span>'; ring.style.background='conic-gradient(var(--h-gold) 0 '+(ratio*3.6)+'deg, rgba(255,255,255,.14) '+(ratio*3.6)+'deg 360deg)'}
+    const alerts=[['red','Gümrük dosyası süresi dolmak üzere','3 dosya 24 saat içinde süresi doluyor.','2 dk önce'],['orange','Navlun gecikmesi','2 sevkiyatın varışı gecikiyor.','4 dk önce'],['red','Hedge marj uyarısı','Açık pozisyonlar yakından izlenmeli.','12 dk önce'],['green','Tahsilat bekleniyor','Toplam USD '+fmt(recv)+' bekleyen tahsilat var.','25 dk önce']];
+    const al=q('v69h-alerts'); if(al)al.innerHTML=alerts.map(a=>'<div class="v69h-alert '+a[0]+'"><div><div class="ttl">'+esc(a[1])+'</div><div class="txt">'+esc(a[2])+'</div></div><div class="tm">'+esc(a[3])+'</div></div>').join('');
+    const tasks=[['09:00','Tedarikçi fiyat güncellemesini kontrol et','trade','Ticaret'],['11:00','Müşteri tekliflerini gözden geçir','trade','Ticaret'],['14:00','Lojistik durum ve ETA kontrolü yap','log','Lojistik'],['15:30','Stok ve depo kontrolünü tamamla','log','Operasyon'],['16:30','Nakit pozisyonu ve kur riskini kontrol et','fin','Finans']];
+    const th=tasks.map(t=>'<div class="v69h-task"><div class="v69h-time">'+t[0]+'</div><div class="v69h-taskname">'+esc(t[1])+'</div><div class="v69h-tag '+t[2]+'">'+esc(t[3])+'</div></div>').join(''); const ta=q('v69h-tasks'); if(ta)ta.innerHTML=th;
+    const mta=q('v69hm-tasks'); if(mta)mta.innerHTML=tasks.map(t=>'<div class="v69hm-task"><div class="v69hm-time2">'+t[0]+'</div><div class="v69hm-tasktext">'+esc(t[1])+'</div><div class="v69hm-tag v69h-tag '+t[2]+'">'+esc(t[3])+'</div></div>').join('');
+    const od=orders.length?orders.slice(0,5):[{no:'SO-240524-101',customer:'ABC Metal',product:'Alüminyum',qty:'1.250 MT',status:'Onaylandı'},{no:'SO-240524-102',customer:'Global Alloys',product:'Bakır',qty:'800 MT',status:'Yolda'},{no:'SO-240523-099',customer:'Metal Trade Ltd.',product:'Çinko',qty:'1.100 MT',status:'Onaylandı'}];
+    const or=q('v69h-orderRows'); if(or)or.innerHTML=od.map(o=>'<tr><td>'+esc(o.no||o.id||'-')+'</td><td>'+esc(o.customer||o.name||'-')+'</td><td>'+esc(o.product||o.grade||'-')+'</td><td>'+esc(o.qty||o.amount||'-')+'</td><td><span class="v69h-pill '+pill(o.status)+'">'+esc(o.status||'Açık')+'</span></td></tr>').join('');
+    const sd=ships.length?ships.slice(0,5):[{track:'BL-240521-056',pol:'Hamburg',pod:'Mersin',eta:'26 May',status:'Yolda'},{track:'BL-240519-055',pol:'Rotterdam',pod:'İzmir',eta:'28 May',status:'Yolda'},{track:'BL-240518-054',pol:'Antwerp',pod:'Gebze',eta:'30 May',status:'Planlandı'}];
+    const sr=q('v69h-shipRows'); if(sr)sr.innerHTML=sd.map(s=>'<tr><td>'+esc(s.track||s.bl||s.id||'-')+'</td><td>'+esc((s.pol||'-')+' → '+(s.pod||'-'))+'</td><td>'+esc(s.eta||'-')+'</td><td><span class="v69h-pill '+pill(s.status)+'">'+esc(s.status||'Yolda')+'</span></td></tr>').join('');
+    const fs=q('v69h-finance'); if(fs)fs.innerHTML=[['Toplam Nakit (USD)','USD '+fmt(cash)],['Açık Alacaklar','USD '+fmt(recv)],['Bu Ay Kârı (USD)','USD '+fmt(pnl)],['Açık Borçlar','USD '+fmt(Math.max(0,recv*.42))],['Net Marj','4,01%']].map(s=>'<div class="v69h-stat"><div class="name">'+esc(s[0])+'</div><div class="num">'+esc(s[1])+'</div></div>').join('');
+    const bars=q('v69h-bars'); if(bars)bars.innerHTML=[42,38,55,46,61,70,48].map((v,i)=>'<div class="v69h-bar '+(i===5?'gold':'')+'" style="height:'+v+'%"></div>').join('');
+    const mob=document.querySelector('#v69e-dashboard .v69h-mobile'); if(mob){const ph=document.querySelector('#v69e-dashboard .v69h-phone'); mob.innerHTML=ph?ph.outerHTML:''; const tt=mob.querySelector('#v69hm-time'); if(tt)tt.textContent=nowTime(false); const dd=mob.querySelector('#v69hm-date'); if(dd)dd.textContent=nowDate();}
+    const mt=q('v69hm-time'); if(mt)mt.textContent=nowTime(false); const md=q('v69hm-date'); if(md)md.textContent=nowDate();
+  }
+  function init(){render();setTimeout(function(){try{go('dashboard')}catch(e){} render()},250);setInterval(render,1400)}
+  document.addEventListener('DOMContentLoaded',init);
+  const old=window.P; if(typeof old==='function'&&!old._v69hWrapped){const w=function(id){const r=old.apply(this,arguments);setTimeout(function(){if(id==='dashboard')render()},100);return r};w._v69hWrapped=true;window.P=w;window.showPage=w;}
 })();
 </script>
 

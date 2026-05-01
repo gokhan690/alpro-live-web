@@ -1,13 +1,13 @@
-AlPro V6.9G - Fix Over E
+AlPro V6.9H - Dashboard Visible + Light Theme
 
-Bu paket V6.9E üstünden hazırlandı; eski C tabanına döndürmez.
+Bu sürüm V6.9G üstünden düzeltildi.
 
-Düzeltmeler:
-1) Dashboard görünmeme problemi için E dashboard görünürlük garantisi eklendi.
-2) Üst arama/header artık fixed değil; içerik içinde sticky, sayfaları kapatmaz.
-3) Arama yazısı görünür ve sonuçlar kutunun altında çıkar.
-4) Sağdaki ikinci sipariş araması gizlendi.
-5) Sipariş sayfasında fazladan Ekle/Yeni Sipariş butonları gizlenir.
-6) Dashboard mobilde dış barlar gizlenir; app/telefon görünümü öne çıkar.
+Yapılanlar:
+1) Dashboard görünmeme sorunu için mevcut #v69e-dashboard güvenli şekilde yeniden dolduruldu.
+2) Eski dashboard CSS kurallarıyla çakışmaması için aynı v69e-dashboard ID kullanıldı.
+3) Renkler bir tık açıldı: paneller daha açık lacivert, çizgiler ve yazılar daha okunur.
+4) Mobil dashboard app-style görünüm korunur.
+5) Dashboard ilk sayfa olmaya devam eder.
 
-Not: V69F gibi C tabanından değil, V69E paketinin üstünden düzeltildi.
+Commit mesajı:
+Update V6.9H Dashboard Visible Light Theme

@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69g-fix-over-e",
-  "version": "6.9.7",
+  "name": "alpro-v69h-dashboard-visible-light-theme",
+  "version": "6.9.8",
   "private": true,
   "scripts": {
     "start": "node server.js"

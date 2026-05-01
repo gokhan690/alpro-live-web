@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69r-full-black-mobile-app-shell",
-  "version": "6.9.18",
+  "name": "alpro-v69s-all-pages-premium-app-theme",
+  "version": "6.9.19",
   "private": true,
   "scripts": {
     "start": "node server.js"

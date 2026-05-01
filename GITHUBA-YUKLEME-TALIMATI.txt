@@ -1,14 +1,15 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
-V6.9R:
-1) Mobilde sadece dashboard değil, tüm sayfalar siyah premium app shell kullanır.
-2) Sol üst menü butonu eklendi; genel menüden tüm sayfalara geçilir.
-3) Menü içinde isim alanı eklendi. Yazdığın isim "Merhaba, ..." bölümünde görünür ve kaydedilir.
-4) Dashboard fotoğraftaki siyah mobil app görünümünü korur.
-5) Diğer sayfalar da siyah premium kart/form/tablo temasına alınır.
-6) Döviz dropdown mobilde artık küçük alana sıkışmaz; tam genişlikte alt sheet olarak açılır.
-7) V6.9Q/P/O özellikleri korunur.
-8) Syntax check yapıldı.
+V6.9S:
+1) Premium siyah app görünümü artık sadece mobilde değil, masaüstü + tablet + mobilde tüm sayfalara uygulanır.
+2) Sidebar, topbar, kartlar, formlar, tablolar, modallar ve dashboard panelleri aynı siyah premium tema ile uyumludur.
+3) Mobilde V6.9R shell korunur:
+   - genel menü
+   - isim alanı
+   - alttan açılan FX döviz sheet
+   - siyah mobil dashboard
+4) V6.9Q/P/O/R özellikleri korunur.
+5) Syntax check yapıldı.
 
 Commit mesajı:
-Update V6.9R Full Black Mobile App Shell
+Update V6.9S All Pages Premium App Theme

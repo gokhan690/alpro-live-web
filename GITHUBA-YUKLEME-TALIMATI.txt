@@ -1,21 +1,21 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
-Bu sürüm V6.9L üstüne yapılmıştır:
-1) USD/TRY alanı dropdown oldu.
+Bu sürüm V6.9M'deki JavaScript syntax hatasını düzeltir.
+Önemli:
+- Eski V6.9M çalışmıyordu çünkü script hata veriyordu.
+- Bu sürümde inline onclick kullanılmadı; event listener kullanıldı.
+- Node syntax check yapıldı.
+
+Eklenenler:
+1) USD/TRY alanı dropdown:
    - USD/TRY
    - EUR/TRY
    - GBP/TRY
-   seçilebilir.
-2) Döviz değerleri mümkünse sistemdeki forex alanlarından alınır:
-   - fx-usdtry
-   - fx-eurtry
-   - stage1-usdtry
-   GBP/TRY yoksa USD/TRY üzerinden yaklaşık hesaplanır.
-3) Sipariş ve Tedarikçi sayfasındaki fazla Yeni/Ekle butonları gizlenir.
-4) Dashboard'a Kritik Uyarılar paneli eklendi.
-5) Dashboard'a Haftalık Rapor + Bar Grafik eklendi.
-6) Arama kutusuna tıklayınca placeholder yazısı kaybolur.
-7) ZIP içinde eski paket yoktur.
+2) Dashboard:
+   - Kritik Uyarılar paneli
+   - Haftalık Rapor + Bar Grafik
+3) Sipariş ve Tedarikçi sayfasında fazla Yeni/Ekle butonu gizleme
+4) Arama kutusuna tıklayınca placeholder kaybolur
 
 Commit mesajı:
-Update V6.9M Currency Dashboard Widgets
+Update V6.9N Fixed Currency Dashboard Widgets

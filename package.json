@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69q-real-black-mobile-dashboard",
-  "version": "6.9.17",
+  "name": "alpro-v69r-full-black-mobile-app-shell",
+  "version": "6.9.18",
   "private": true,
   "scripts": {
     "start": "node server.js"

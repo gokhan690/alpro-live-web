@@ -1,18 +1,14 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
-V6.9Q:
-1) Mobil dashboard fotoğraftaki siyah premium app görünümüne çevrildi.
-2) Masaüstü görünüm korunur.
-3) Telefonda dashboard aktifken:
-   - Siyah app ekranı
-   - KPI kartları
-   - Hızlı işlemler
-   - Bugün Ne Yapmalıyım paneli
-   - Alt mobil tabbar
-   - Altın + butonu
-   görünür.
-4) V6.9P'deki renk düzeni, gerçek döviz dropdown, dashboard widgetları ve çift buton temizliği korunur.
-5) Syntax check yapıldı.
+V6.9R:
+1) Mobilde sadece dashboard değil, tüm sayfalar siyah premium app shell kullanır.
+2) Sol üst menü butonu eklendi; genel menüden tüm sayfalara geçilir.
+3) Menü içinde isim alanı eklendi. Yazdığın isim "Merhaba, ..." bölümünde görünür ve kaydedilir.
+4) Dashboard fotoğraftaki siyah mobil app görünümünü korur.
+5) Diğer sayfalar da siyah premium kart/form/tablo temasına alınır.
+6) Döviz dropdown mobilde artık küçük alana sıkışmaz; tam genişlikte alt sheet olarak açılır.
+7) V6.9Q/P/O özellikleri korunur.
+8) Syntax check yapıldı.
 
 Commit mesajı:
-Update V6.9Q Real Black Mobile Dashboard
+Update V6.9R Full Black Mobile App Shell

@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69n-fixed-currency-dashboard-widgets",
-  "version": "6.9.14",
+  "name": "alpro-v69o-real-fx-dropdown-layout-fix",
+  "version": "6.9.15",
   "private": true,
   "scripts": {
     "start": "node server.js"

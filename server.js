@@ -122,13 +122,30 @@ async function getFx(){
   const txt = await requestText('https://open.er-api.com/v6/latest/USD');
   let j;
   try{ j=JSON.parse(txt); }catch(e){ throw new Error('FX JSON parse error'); }
-  const usdtry = j && j.rates ? Number(j.rates.TRY) : null;
+  const rates = j && j.rates ? j.rates : {};
+  const usdtry = Number(rates.TRY);
+  const eurPerUsd = Number(rates.EUR);
+  const gbpPerUsd = Number(rates.GBP);
+  const eurtry = usdtry && eurPerUsd ? usdtry / eurPerUsd : null;
+  const gbptry = usdtry && gbpPerUsd ? usdtry / gbpPerUsd : null;
+  const eurusd = eurPerUsd ? 1 / eurPerUsd : null;
+  const gbpusd = gbpPerUsd ? 1 / gbpPerUsd : null;
   if(!usdtry || !Number.isFinite(usdtry)) throw new Error('USD/TRY bulunamadı');
-  const data = {source:'open.er-api.com', base:'USD', quote:'TRY', usdtry, fetchedAt:new Date().toISOString()};
+  const data = {
+    source:'open.er-api.com',
+    base:'USD',
+    quote:'TRY',
+    usdtry,
+    eurtry: Number.isFinite(eurtry) ? eurtry : null,
+    gbptry: Number.isFinite(gbptry) ? gbptry : null,
+    eurusd: Number.isFinite(eurusd) ? eurusd : null,
+    gbpusd: Number.isFinite(gbpusd) ? gbpusd : null,
+    rates:{ USDTRY: usdtry, EURTRY: Number.isFinite(eurtry) ? eurtry : null, GBPTRY: Number.isFinite(gbptry) ? gbptry : null },
+    fetchedAt:new Date().toISOString()
+  };
   fxCache={data, at:Date.now()};
   return data;
 }
-
 
 const DB_FILE = path.join(__dirname,'alpro-shared-db.json');
 const AUDIT_FILE = path.join(__dirname,'alpro-audit-log.json');
@@ -211,7 +228,7 @@ http.createServer(async(req,res)=>{try{
   }
 
   if(u.pathname==='/api/fx'){json(res,200,await getFx());return}
-  if(u.pathname==='/api/health'){json(res,200,{ok:true,port:PORT,version:'V6.9N Fixed Currency Dashboard Widgets',dbMode:SUPABASE_ENABLED?'supabase':'local-json',supabaseConfigured:SUPABASE_ENABLED,lanUrl:lanUrl(),publicUrl:process.env.PUBLIC_URL||null,time:new Date().toISOString()});return}
+  if(u.pathname==='/api/health'){json(res,200,{ok:true,port:PORT,version:'V6.9O Real FX Dropdown Layout Fix',dbMode:SUPABASE_ENABLED?'supabase':'local-json',supabaseConfigured:SUPABASE_ENABLED,lanUrl:lanUrl(),publicUrl:process.env.PUBLIC_URL||null,time:new Date().toISOString()});return}
   if(req.method==='OPTIONS'){res.writeHead(204,{'Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET,OPTIONS','Access-Control-Allow-Headers':'Content-Type'});res.end();return}
   const safePath=decodeURIComponent(u.pathname.replace(/^\//,'')); if(!safePath.includes('..')&&fs.existsSync(path.join(__dirname,safePath))){serve(res,safePath);return}
   json(res,404,{error:'Not found'});

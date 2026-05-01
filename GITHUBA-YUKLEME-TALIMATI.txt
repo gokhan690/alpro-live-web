@@ -1,21 +1,16 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
-Bu sürüm V6.9M'deki JavaScript syntax hatasını düzeltir.
-Önemli:
-- Eski V6.9M çalışmıyordu çünkü script hata veriyordu.
-- Bu sürümde inline onclick kullanılmadı; event listener kullanıldı.
-- Node syntax check yapıldı.
-
-Eklenenler:
-1) USD/TRY alanı dropdown:
+V6.9O düzeltmeleri:
+1) Topbardaki döviz alanı gerçek /api/fx verisini kullanır.
    - USD/TRY
-   - EUR/TRY
-   - GBP/TRY
-2) Dashboard:
-   - Kritik Uyarılar paneli
-   - Haftalık Rapor + Bar Grafik
-3) Sipariş ve Tedarikçi sayfasında fazla Yeni/Ekle butonu gizleme
-4) Arama kutusuna tıklayınca placeholder kaybolur
+   - EUR/TRY = USD API içindeki EUR çaprazından hesaplanır
+   - GBP/TRY = USD API içindeki GBP çaprazından hesaplanır
+2) server.js içindeki /api/fx endpoint'i artık usdtry, eurtry, gbptry döndürür.
+3) V69K scriptinin seçilen döviz değerini her saniye USD ile ezmesi engellendi.
+4) Kritik Uyarılar + Haftalık Rapor paneli dashboard kartlarının altına düzgün yerleştirildi.
+5) Sipariş ve tedarikçi sayfalarındaki aynı işlevli fazla Yeni/Ekle butonu gizlenir.
+6) Arama placeholder tıklanınca kaybolur.
+7) Syntax check yapıldı.
 
 Commit mesajı:
-Update V6.9N Fixed Currency Dashboard Widgets
+Update V6.9O Real FX Layout Fix

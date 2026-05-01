@@ -684,7 +684,7 @@ table tr:hover {
 
 
 <style id="v54-premium-ui">
-/* ===== V6.9K PREMIUM UI REVISION ===== */
+/* ===== V6.9L PREMIUM UI REVISION ===== */
 :root{
   --bg:#05080d;
   --surface:#0a1017;
@@ -918,7 +918,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v55-finance-ui">
-/* ===== V6.9K BANKA & ODEME FINANSMAN MODULU ===== */
+/* ===== V6.9L BANKA & ODEME FINANSMAN MODULU ===== */
 .finance-hub{
   margin-top:14px;
   border:1px solid rgba(215,162,58,.18);
@@ -963,7 +963,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v56-hedge-preview-css">
-/* ===== V6.9K HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
+/* ===== V6.9L HEDGE KALDIRAÇ ÖN GÖSTERİMİ ===== */
 .hedge-preview{
   margin:10px 0 12px;
   padding:13px;
@@ -1026,7 +1026,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v57-more-leverage-css">
-/* ===== V6.9K DAHA FAZLA KALDIRAÇ KARTI ===== */
+/* ===== V6.9L DAHA FAZLA KALDIRAÇ KARTI ===== */
 .lev-btn{min-width:54px!important;border-radius:10px!important}
 .lev-btn[data-lev="15"],.lev-btn[data-lev="20"],.lev-btn[data-lev="25"],.lev-btn[data-lev="50"]{
   border-color:rgba(231,76,60,.28)!important;
@@ -1061,7 +1061,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v58-shared-ui">
-/* ===== V6.9K ORTAK KULLANIM / SHARED SERVER ===== */
+/* ===== V6.9L ORTAK KULLANIM / SHARED SERVER ===== */
 .shared-pill{
   display:inline-flex;align-items:center;gap:7px;
   border:1px solid rgba(46,204,113,.28);
@@ -1101,7 +1101,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v63-weekly-auto-mobile-css">
-/* ===== V6.9K WEEKLY REPORT + AUTO PRICE + MOBILE PRO ===== */
+/* ===== V6.9L WEEKLY REPORT + AUTO PRICE + MOBILE PRO ===== */
 .weekly-report-panel{
   border:1px solid rgba(215,162,58,.20);
   border-radius:16px;
@@ -1206,7 +1206,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v65-core-fix-css">
-/* ===== V6.9K CORE FIX ===== */
+/* ===== V6.9L CORE FIX ===== */
 .v65-menu-section{
   margin:10px 8px 6px;
   padding-top:8px;
@@ -1233,7 +1233,7 @@ table td{border-bottom-color:rgba(255,255,255,.055)!important}
 
 
 <style id="v66-ui-customs-css">
-/* ===== V6.9K SELECT READABILITY + DETAILED CUSTOMS ===== */
+/* ===== V6.9L SELECT READABILITY + DETAILED CUSTOMS ===== */
 select.fsel, .fsel, select.fi {
   background:#0b1118 !important;
   color:#e8eef5 !important;
@@ -1309,7 +1309,7 @@ body.light select.fsel option, body.light .fsel option {
 
 
 <style id="v66b-global-readability-css">
-/* ===== V6.9KB GLOBAL READABILITY FIX ===== */
+/* ===== V6.9LB GLOBAL READABILITY FIX ===== */
 /* Uygulamadaki tüm beyaz/okunmayan form ve dropdown alanlarını düzeltir */
 
 :root{
@@ -1557,9 +1557,9 @@ body.light select:-webkit-autofill{
 
 
 <style id="v67-ux-export-daily-css">
-/* ===== V6.9K UX + EXPORT + DAILY CONTROL ===== */
+/* ===== V6.9L UX + EXPORT + DAILY CONTROL ===== */
 
-/* V6.9K'te eklenen kalabalık Tüm Modüller bloğunu kaldır */
+/* V6.9L'te eklenen kalabalık Tüm Modüller bloğunu kaldır */
 #v65-direct-menu{display:none!important}
 
 /* Dashboard günlük kontrol paneli */
@@ -1678,7 +1678,7 @@ body.light select:-webkit-autofill{
 
 
 <style id="v68-mobile-ui-fix-css">
-/* ===== V6.9K MOBILE UI FIX ===== */
+/* ===== V6.9L MOBILE UI FIX ===== */
 
 /* Mobil genel düzen */
 @media(max-width: 820px){
@@ -2134,7 +2134,7 @@ body.light select:-webkit-autofill{
 
 
 <style id="v69k-premium-search-header-css">
-/* ===== ALPRO V6.9K PREMIUM SEARCH HEADER ===== */
+/* ===== ALPRO V6.9L PREMIUM SEARCH HEADER ===== */
 /* Dashboard eski/stabil kalır. Sadece arama/header ve genel renk düzeni yenilenir. */
 
 :root{
@@ -2701,6 +2701,294 @@ body:not(.light) td{
 }
 </style>
 
+
+<style id="v69l-header-currency-mobile-fix-css">
+/* ===== ALPRO V6.9L HEADER + CURRENCY + MOBILE/TABLET FIX ===== */
+
+/* 1) Üst bildirim kutusu: sarı badge daha düzgün */
+.v69k-bell{
+  background:rgba(255,255,255,.035)!important;
+  border-left:1px solid rgba(255,255,255,.08)!important;
+  border-right:1px solid rgba(255,255,255,.08)!important;
+  cursor:pointer!important;
+  transition:.16s ease!important;
+}
+.v69k-bell:hover{
+  background:rgba(224,173,79,.10)!important;
+}
+.v69k-badge{
+  top:8px!important;
+  right:10px!important;
+  min-width:18px!important;
+  height:18px!important;
+  border-radius:999px!important;
+  background:linear-gradient(135deg,#e0ad4f,#f4ca75)!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+  box-shadow:0 7px 18px rgba(224,173,79,.28)!important;
+  color:#07101b!important;
+  font-size:9px!important;
+  font-weight:1000!important;
+}
+#v69l-notify-pop{
+  position:absolute;
+  top:68px;
+  right:0;
+  width:310px;
+  display:none;
+  z-index:2600;
+  background:linear-gradient(180deg,#142a42,#0d1d2f);
+  border:1px solid rgba(224,173,79,.26);
+  border-radius:18px;
+  box-shadow:0 24px 58px rgba(0,0,0,.38);
+  padding:10px;
+}
+#v69l-notify-pop.show{display:block}
+.v69l-notify-title{
+  color:#fff;
+  font-size:13px;
+  font-weight:1000;
+  padding:5px 7px 9px;
+}
+.v69l-notify-item{
+  padding:10px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);
+  margin-bottom:8px;
+}
+.v69l-notify-item:last-child{margin-bottom:0}
+.v69l-notify-item strong{
+  display:block;
+  color:#fff;
+  font-size:11px;
+  margin-bottom:3px;
+}
+.v69l-notify-item span{
+  display:block;
+  color:#a7b9ca;
+  font-size:10px;
+  line-height:1.35;
+}
+
+/* 2) USD/TRY - EUR/TRY tıklanabilir alan */
+#v69k-currency-cell,
+.v69l-currency-cell{
+  cursor:pointer!important;
+  user-select:none!important;
+  transition:.16s ease!important;
+  position:relative!important;
+}
+#v69k-currency-cell:hover,
+.v69l-currency-cell:hover{
+  background:rgba(224,173,79,.075)!important;
+}
+.v69l-switch-hint{
+  margin-top:2px;
+  color:#f4ca75!important;
+  font-size:8px!important;
+  font-weight:900!important;
+  letter-spacing:.03em!important;
+}
+
+/* 4) Arama placeholder tıklanınca kaybolsun */
+#v69k-search-input:focus::placeholder,
+#v69k-mobile-search:focus::placeholder{
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+}
+
+/* Arama kutusu focus hali daha temiz */
+#v69k-search-input:focus{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+}
+.v69k-searchbox:focus-within{
+  border-color:rgba(224,173,79,.48)!important;
+  box-shadow:0 0 0 3px rgba(224,173,79,.12), inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+
+/* 3) Mobil + Tablet düzeltmeleri */
+@media(min-width:821px) and (max-width:1180px){
+  #v69k-premium-header{
+    grid-template-columns:minmax(260px,1fr) 104px 120px 56px 150px!important;
+    border-radius:18px!important;
+  }
+  #v69k-premium-header .v69k-hcell{
+    min-height:58px!important;
+    padding:8px 10px!important;
+  }
+  #v69k-premium-header .v69k-hcell:nth-child(4){
+    display:none!important;
+  }
+  .v69k-v{
+    font-size:12px!important;
+  }
+  .v69k-user-name{
+    font-size:11px!important;
+  }
+  .v69k-user-sub{
+    font-size:8px!important;
+  }
+  body .content,
+  body .main{
+    overflow-x:hidden!important;
+  }
+  .cards,.v5-grid,.weekly-kpis,.crit-grid,.v67-daily-grid,.control-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .tw,.table-wrap,.table-responsive,.tbl-wrap{
+    overflow-x:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+}
+
+@media(max-width:820px){
+  /* Mobilde üst bar çakışmasın */
+  #v69k-mobile-top{
+    min-height:58px!important;
+    height:58px!important;
+    border-radius:20px!important;
+  }
+  body.v69k-ready .content,
+  body.v69k-ready .main,
+  body .content,
+  body .main{
+    padding-top:76px!important;
+    padding-bottom:98px!important;
+    padding-left:8px!important;
+    padding-right:8px!important;
+    overflow-x:hidden!important;
+  }
+  /* Mobil arama paneli daha geniş ve görünür */
+  #v69k-mobile-search-panel{
+    top:74px!important;
+    left:8px!important;
+    right:8px!important;
+    max-height:calc(100vh - 160px)!important;
+    overflow:auto!important;
+  }
+  #v69k-mobile-search{
+    display:block!important;
+    width:100%!important;
+    height:48px!important;
+    min-height:48px!important;
+    color:#fff!important;
+    -webkit-text-fill-color:#fff!important;
+    background:#102338!important;
+    border:1px solid rgba(255,255,255,.16)!important;
+  }
+  #v69k-mobile-results{
+    max-height:calc(100vh - 230px)!important;
+    overflow:auto!important;
+  }
+
+  /* Mobil/tablet sayfalarında içerik taşmasın */
+  .content > *,
+  .page,
+  .sec,
+  .card,
+  .v5-card,
+  .crit-panel,
+  .weekly-report-panel,
+  .v67-daily-panel,
+  .control-tower,
+  .watchdog-panel,
+  .auto-price-panel,
+  .mobile-pro-panel{
+    max-width:100%!important;
+  }
+
+  .cards,
+  .v5-grid,
+  .weekly-kpis,
+  .crit-grid,
+  .v67-daily-grid,
+  .control-grid,
+  .grid,
+  .row{
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+
+  .sh{
+    align-items:flex-start!important;
+  }
+
+  .sh .toolbar,
+  .sh .actions,
+  .toolbar,
+  .actions{
+    width:100%!important;
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:8px!important;
+  }
+
+  .sh .toolbar > *,
+  .sh .actions > *,
+  .toolbar > *,
+  .actions > *{
+    flex:1 1 auto!important;
+  }
+
+  .tw,
+  .table-wrap,
+  .table-responsive,
+  .tbl-wrap{
+    overflow-x:auto!important;
+    max-width:100%!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+
+  table{
+    min-width:720px!important;
+  }
+
+  /* Bazı modal/formlar ekrandan taşmasın */
+  .mo,
+  .modal,
+  .dialog{
+    width:calc(100vw - 16px)!important;
+    max-width:calc(100vw - 16px)!important;
+    max-height:calc(100vh - 24px)!important;
+    overflow:auto!important;
+    border-radius:20px!important;
+  }
+
+  .fg,
+  .form-grid,
+  .fields,
+  form{
+    grid-template-columns:1fr!important;
+  }
+
+  /* Alt tabbar daha güvenli */
+  #v69k-mobile-tabbar{
+    min-height:68px!important;
+    padding:8px!important;
+  }
+  #v69k-mobile-tabbar button{
+    min-height:50px!important;
+  }
+}
+
+/* Çok küçük telefon */
+@media(max-width:390px){
+  .v69k-m-time{
+    display:none!important;
+  }
+  .v69k-m-sub{
+    max-width:120px!important;
+  }
+  #v69k-mobile-tabbar button{
+    font-size:8px!important;
+  }
+  #v69k-mobile-tabbar button b{
+    font-size:17px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -2894,7 +3182,7 @@ body:not(.light) td{
         <div style="font-size:11px;color:var(--muted);margin-top:2px" id="dash-date"></div>
       </div>
       <div class="stage1-banner">
-        <div><strong>Aşama 1 aktif — V6.9K temiz grafik</strong><br><span>8833 tablet modlu sürüm korunuyor. Canlı fiyat, USD/TRY ve sağlık kontrolleri tek panelde.</span></div>
+        <div><strong>Aşama 1 aktif — V6.9L temiz grafik</strong><br><span>8833 tablet modlu sürüm korunuyor. Canlı fiyat, USD/TRY ve sağlık kontrolleri tek panelde.</span></div>
         <div class="stage1-actions"><span class="stage1-badge">● STABİL SÜRÜM</span><button class="btn bp bsm" onclick="stage1RefreshAll()">Fiyat/Kur Yenile</button><button class="btn bs2 bsm" onclick="P('v5-live')">Canlı Metaller</button></div>
       </div>
       <div class="stage1-grid" id="stage1-dashboard-cards">
@@ -2907,7 +3195,7 @@ body:not(.light) td{
       <div class="sec" style="margin-bottom:14px">
         <div class="sh"><div><div class="st">🧩 Aşama 1 Sistem Sağlığı</div><div class="ss">Eski server karışıklığını, fiyat kaynağını ve son kayıt durumunu gösterir.</div></div></div>
         <div class="sb"><div class="stage1-health">
-          <div class="h"><b id="stage1-h-version">V6.9K / 8833</b><span>Tek ana sürüm etiketi eklendi. Eski paketleri karıştırmamak için bu sürümü kullan.</span></div>
+          <div class="h"><b id="stage1-h-version">V6.9L / 8833</b><span>Tek ana sürüm etiketi eklendi. Eski paketleri karıştırmamak için bu sürümü kullan.</span></div>
           <div class="h"><b id="stage1-h-metals">Metal verisi: bekleniyor</b><span>Canlı fiyat alınamazsa son kayıt gösterilir; yanlış sabit değer basılmaz.</span></div>
           <div class="h"><b id="stage1-h-fx">USD/TRY: bekleniyor</b><span>Kur server proxy ile alınır; alınamazsa son kayıt/yok uyarısı verir.</span></div>
         </div></div>
@@ -6570,7 +6858,7 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 
 <div class="page" id="page-v58-shared">
   <div class="shared-banner">
-    <b>👥 Search + Mobile Safe Fix Modu — V6.9K</b>
+    <b>👥 Search + Mobile Safe Fix Modu — V6.9L</b>
     <span>Bu modda kayıtlar sadece tarayıcıda değil, server tarafındaki ortak veri dosyasında tutulur. Aynı ağa bağlanan ortakların aynı verileri görmesi hedeflenir.</span>
   </div>
   <div class="sec">
@@ -6624,7 +6912,7 @@ create table if not exists alpro_audit (
   </div>
 </div>
 
-<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div><div class="v5-ribbon" onclick="P('v5-live')">V6.9K • Aşama 1</div>
+<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div><div class="v5-ribbon" onclick="P('v5-live')">V6.9L • Aşama 1</div>
 <script>
 (function(){
 const V5=window.AlProV5={aiMode:'quote',metals:null}; const keys=['suppliers','customers','orders','stock','invoices','sales','customs','reminders','freight','hedges','documents','v5_metal_history'];
@@ -6836,11 +7124,11 @@ const oldP=window.P;window.P=function(id){oldP(id);if(id==='v5-mobile')detect();
 })();
 </script>
 
-<div class="stage1-version" onclick="P('dashboard')">V6.9K AŞAMA 1 • 8833</div>
+<div class="stage1-version" onclick="P('dashboard')">V6.9L AŞAMA 1 • 8833</div>
 
 <script id="stage1-v52-js">
 (function(){
-  const VERSION='V6.9Kb Aşama 1 Search + Mobile Safe Fix - 8833 Tablet Korundu';
+  const VERSION='V6.9Lb Aşama 1 Search + Mobile Safe Fix - 8833 Tablet Korundu';
   function fmt(n,d=2){n=Number(n);return isFinite(n)?n.toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d}):'--'}
   function setTxt(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
   function pill(id,text,ok){const e=document.getElementById(id);if(e){e.textContent=text;e.className='stage1-pill '+(ok?'ok':'warn')}}
@@ -7597,11 +7885,11 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
       calculator:window.initCostPage, 'customs-calc':window.calcCustoms, bank:window.renderBank,
       freight:window.renderFreight, setup:window.loadSetup, documents:window.renderDocs
     };
-    try{ if(typeof runners[id]==='function') runners[id](); }catch(e){ console.warn('V6.9K runner error', id, e); }
+    try{ if(typeof runners[id]==='function') runners[id](); }catch(e){ console.warn('V6.9L runner error', id, e); }
   }
   window.P = function(id){
     const pg = page(id);
-    if(!pg){ console.warn('V6.9K: page not found', id); return false; }
+    if(!pg){ console.warn('V6.9L: page not found', id); return false; }
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
     pg.classList.add('active');
@@ -7708,7 +7996,7 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
       <div class="al al-i">🧮 Detaylı ithalat gümrük masrafı hesaplayıcı. CIF, vergi, KDV, KKDF, liman ve operasyon masraflarını ton başına indirger.</div>
       <div class="v66-customs-wrap">
         <div class="sec">
-          <div class="sh"><div><div class="st">Detaylı Gümrük Hesaplama</div><div class="ss">Alüminyum, katot bakır ve çinko ithalatı için</div></div><span class="v66-pill">V6.9K</span></div>
+          <div class="sh"><div><div class="st">Detaylı Gümrük Hesaplama</div><div class="ss">Alüminyum, katot bakır ve çinko ithalatı için</div></div><span class="v66-pill">V6.9L</span></div>
           <div class="sb">
             <div class="fg">
               <div class="fg1"><label class="fl">Ürün / GTİP</label><select class="fsel" id="v66-gtip" onchange="v66GtipChange();v66CalcCustoms()">
@@ -8311,7 +8599,7 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
     if(!q('v69k-mobile-top')){
       const top=document.createElement('div');
       top.id='v69k-mobile-top';
-      top.innerHTML='<div class="v69k-m-left"><div class="v69k-m-logo">A</div><div><div class="v69k-m-title">AlPro V6.9K</div><div class="v69k-m-sub" id="v69k-mobile-page">Metal Trading</div></div></div><div class="v69k-m-right"><button class="v69k-m-search" id="v69k-mobile-search-btn">⌕</button><div class="v69k-m-time" id="v69k-mobile-time">--:--</div><div class="v69k-m-bell">🔔<span>3</span></div></div>';
+      top.innerHTML='<div class="v69k-m-left"><div class="v69k-m-logo">A</div><div><div class="v69k-m-title">AlPro V6.9L</div><div class="v69k-m-sub" id="v69k-mobile-page">Metal Trading</div></div></div><div class="v69k-m-right"><button class="v69k-m-search" id="v69k-mobile-search-btn">⌕</button><div class="v69k-m-time" id="v69k-mobile-time">--:--</div><div class="v69k-m-bell">🔔<span>3</span></div></div>';
       document.body.appendChild(top);
     }
     if(!q('v69k-mobile-search-panel')){
@@ -8454,6 +8742,187 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
       return r;
     };
     w._v69kWrapped=true;
+    window.P=w;
+    window.showPage=w;
+  }
+})();
+</script>
+
+
+<script id="v69l-header-currency-mobile-fix-js">
+(function(){
+  function q(id){return document.getElementById(id)}
+  function txt(id,f){const e=q(id);return e?(e.textContent||'').trim()||f:f}
+  function nowTime(full){try{return new Date().toLocaleTimeString('tr-TR',full?{hour:'2-digit',minute:'2-digit',second:'2-digit'}:{hour:'2-digit',minute:'2-digit'})}catch(e){return full?'17:42:31':'17:42'}}
+  function activePage(){const a=document.querySelector('.page.active');return a?a.id.replace('page-',''):'dashboard'}
+  function go(p){if(window.P)window.P(p);else if(window.showPage)window.showPage(p)}
+
+  const pageNames={
+    dashboard:'Dashboard',lme:'Canlı Fiyatlar',forex:'Döviz',history:'Geçmiş',
+    orders:'Siparişler',suppliers:'Tedarikçiler',customers:'Müşteriler',
+    invoices:'Faturalar',bank:'Banka',stock:'Stok',reports:'Raporlar',
+    analytics:'Analitik',income:'Gelir',freight:'Navlun',customs:'Gümrük',
+    documents:'Belgeler',hedge:'Hedge',calculator:'Maliyet',
+    notify:'Bildirimler',setup:'Ayarlar',reminders:'Hatırlatıcılar',ai:'AI Asistan'
+  };
+
+  let currencyMode = localStorage.getItem('alpro_currency_mode') || 'USDTRY';
+
+  function parseRate(v){
+    const n = Number(String(v||'').replace(/\./g,'').replace(',','.').replace(/[^0-9.]/g,''));
+    return isNaN(n) || !n ? null : n;
+  }
+
+  function fmtTR(n){
+    try{return Number(n).toLocaleString('tr-TR',{minimumFractionDigits:4,maximumFractionDigits:4})}
+    catch(e){return String(n)}
+  }
+
+  function getUsdRate(){
+    return parseRate(txt('stage1-usdtry','32,4287')) || 32.4287;
+  }
+
+  function getEurRate(){
+    // Eğer sistemde EUR/TRY alanı varsa onu kullan. Yoksa yaklaşık çapraz kur hesapla.
+    const ids=['stage1-eurtry','eurtry','eur-try','v69k-eurtry'];
+    for(const id of ids){
+      const n=parseRate(txt(id,''));
+      if(n) return n;
+    }
+    return getUsdRate()*1.085; // fallback yaklaşık
+  }
+
+  function makeCurrencyClickable(){
+    const usd = q('v69k-usdtop');
+    if(!usd) return;
+
+    const cell = usd.closest('.v69k-hcell');
+    if(!cell || cell._v69lCurrency) return;
+
+    cell._v69lCurrency = true;
+    cell.id = 'v69k-currency-cell';
+    cell.classList.add('v69l-currency-cell');
+    cell.title = 'USD/TRY ve EUR/TRY arasında değiştirmek için tıkla';
+    cell.addEventListener('click', function(){
+      currencyMode = currencyMode === 'USDTRY' ? 'EURTRY' : 'USDTRY';
+      localStorage.setItem('alpro_currency_mode', currencyMode);
+      updateCurrency();
+    });
+
+    const hint=document.createElement('div');
+    hint.className='v69l-switch-hint';
+    hint.id='v69l-currency-hint';
+    hint.textContent='Tıkla: EUR/TRY';
+    cell.appendChild(hint);
+  }
+
+  function updateCurrency(){
+    const labelCell = q('v69k-currency-cell');
+    const value = q('v69k-usdtop');
+    if(!value) return;
+
+    const k = labelCell ? labelCell.querySelector('.v69k-k') : null;
+    const hint = q('v69l-currency-hint');
+
+    if(currencyMode === 'EURTRY'){
+      if(k) k.textContent='EUR/TRY';
+      value.textContent=fmtTR(getEurRate());
+      if(hint) hint.textContent='Tıkla: USD/TRY';
+    }else{
+      if(k) k.textContent='USD/TRY';
+      value.textContent=fmtTR(getUsdRate());
+      if(hint) hint.textContent='Tıkla: EUR/TRY';
+    }
+  }
+
+  function makeNotifyBetter(){
+    const bell=document.querySelector('.v69k-bell');
+    if(!bell || bell._v69lNotify) return;
+    bell._v69lNotify=true;
+
+    const pop=document.createElement('div');
+    pop.id='v69l-notify-pop';
+    pop.innerHTML=
+      '<div class="v69l-notify-title">Bildirimler</div>'+
+      '<div class="v69l-notify-item"><strong>Fiyat uyarısı</strong><span>LME ve kur hareketlerini kontrol et.</span></div>'+
+      '<div class="v69l-notify-item"><strong>Vade kontrolü</strong><span>Yaklaşan fatura ve ödeme vadelerini gözden geçir.</span></div>'+
+      '<div class="v69l-notify-item"><strong>Lojistik</strong><span>ETA yaklaşan sevkiyatları kontrol et.</span></div>';
+    bell.appendChild(pop);
+
+    bell.addEventListener('click', function(e){
+      e.stopPropagation();
+      pop.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.v69k-bell')) pop.classList.remove('show');
+    });
+  }
+
+  function clearPlaceholderOnFocus(){
+    [['v69k-search-input','Ara: sipariş, müşteri, BL, fatura, sayfa...'],['v69k-mobile-search','Ara: sipariş, müşteri, BL, fatura']].forEach(([id,ph])=>{
+      const input=q(id);
+      if(!input || input._v69lPlaceholder) return;
+      input._v69lPlaceholder=true;
+      input.setAttribute('data-ph', input.getAttribute('placeholder') || ph);
+      input.addEventListener('focus', function(){ this.setAttribute('placeholder',''); });
+      input.addEventListener('blur', function(){ if(!this.value) this.setAttribute('placeholder', this.getAttribute('data-ph') || ph); });
+    });
+  }
+
+  function updateMobileTablet(){
+    const p=activePage();
+    const label=q('v69k-mobile-page');
+    if(label) label.textContent=pageNames[p] || 'Metal Trading';
+
+    const t=q('v69k-mobile-time');
+    if(t) t.textContent=nowTime(false);
+
+    document.querySelectorAll('#v69k-mobile-tabbar button').forEach(btn=>{
+      btn.classList.toggle('active', btn.getAttribute('data-tab')===p);
+    });
+
+    // Mobil/tablet sayfalarında yanlış display almış gridleri normalize et
+    if(window.innerWidth <= 820){
+      document.querySelectorAll('.tw,.table-wrap,.table-responsive,.tbl-wrap').forEach(el=>{
+        el.style.overflowX='auto';
+      });
+    }
+  }
+
+  function init(){
+    document.body.classList.add('v69l-ready');
+    makeCurrencyClickable();
+    updateCurrency();
+    makeNotifyBetter();
+    clearPlaceholderOnFocus();
+    updateMobileTablet();
+
+    setInterval(function(){
+      makeCurrencyClickable();
+      updateCurrency();
+      makeNotifyBetter();
+      clearPlaceholderOnFocus();
+      updateMobileTablet();
+    },1000);
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v69lWrapped){
+    const w=function(id){
+      const r=oldP.apply(this, arguments);
+      setTimeout(function(){
+        makeCurrencyClickable();
+        updateCurrency();
+        makeNotifyBetter();
+        clearPlaceholderOnFocus();
+        updateMobileTablet();
+      },120);
+      return r;
+    };
+    w._v69lWrapped=true;
     window.P=w;
     window.showPage=w;
   }

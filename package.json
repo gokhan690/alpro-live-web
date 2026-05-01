@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69k-premium-search-header",
-  "version": "6.9.11",
+  "name": "alpro-v69l-header-currency-mobile-fix",
+  "version": "6.9.12",
   "private": true,
   "scripts": {
     "start": "node server.js"

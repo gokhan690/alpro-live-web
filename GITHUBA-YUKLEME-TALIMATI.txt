@@ -1,14 +1,11 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
-Bu sürüm:
-- Dashboard mockup yapmaz; eski stabil dashboard kalır.
-- Çalışmayan dashboard paketlerindeki güzel premium arama/header tarzını geri getirir.
-- Arama yazısı net görünür.
-- Arama sonuçları kutunun altında çıkar.
-- Sağdaki ekstra aramaları gizler.
-- Sol menü + ana ekran renkleri aynı koyu lacivert sisteme alınır.
-- Mobilde premium üst bar + alt tabbar kullanır.
-- ZIP içinde eski paketler yoktur.
+Bu sürüm V6.9K üstüne yapılmıştır:
+1) Üst bildirim kutusu düzeltildi.
+2) USD/TRY alanına tıklayınca EUR/TRY olarak değişir; tekrar tıklayınca USD/TRY olur.
+3) Mobil/tablet görünüm hataları azaltıldı.
+4) Arama kutusuna tıklayınca placeholder yazısı kaybolur.
+5) ZIP içinde eski paketler yoktur.
 
 Commit mesajı:
-Update V6.9K Premium Search Header
+Update V6.9L Header Currency Mobile Fix

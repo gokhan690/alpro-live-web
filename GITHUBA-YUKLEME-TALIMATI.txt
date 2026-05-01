@@ -1,0 +1,16 @@
+SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
+
+GitHub ana dizinde şöyle görünmeli:
+index.html
+server.js
+package.json
+render.yaml
+Procfile
+.env.example
+.gitignore
+SUPABASE-SETUP.sql
+
+Eski ZIP paketlerini, eski AlPro klasörlerini ve eski BASLAT dosyalarını yükleme.
+
+Commit mesajı:
+Update V6.9H Minimal Upload

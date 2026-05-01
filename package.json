@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69h-dashboard-visible-light-theme",
-  "version": "6.9.8",
+  "name": "alpro-v69i-clean-stable-theme",
+  "version": "6.9.9",
   "private": true,
   "scripts": {
     "start": "node server.js"

@@ -1,6 +1,13 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
-GitHub ana dizinde şöyle görünmeli:
+Bu sürüm:
+- Dashboard mockup denemelerini kaldırır.
+- Eski çalışan dashboard'u geri getirir.
+- Üst arama + mobil iyileştirmeyi korur.
+- Sol menü ve ana ekran rengini aynı koyu lacivert sisteme alır.
+- ZIP içinde eski paketler / BAT dosyaları / eski notlar yoktur.
+
+GitHub ana dizinde özellikle şunlar olmalı:
 index.html
 server.js
 package.json
@@ -10,7 +17,15 @@ Procfile
 .gitignore
 SUPABASE-SETUP.sql
 
-Eski ZIP paketlerini, eski AlPro klasörlerini ve eski BASLAT dosyalarını yükleme.
+Yükleme:
+1) Bu klasörün içine gir
+2) Tüm dosyaları seç
+3) GitHub repo ana klasörüne kopyala
+4) Replace / Değiştir de
+5) GitHub Desktop -> Commit
+6) Push origin
+7) Render -> Manual Deploy -> Deploy latest commit
+8) Tarayıcıda Ctrl + F5
 
 Commit mesajı:
-Update V6.9H Minimal Upload
+Update V6.9I Clean Stable Theme

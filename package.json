@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69s-all-pages-premium-app-theme",
-  "version": "6.9.19",
+  "name": "alpro-v69u-today-advanced-charts-auto-backup",
+  "version": "6.9.21",
   "private": true,
   "scripts": {
     "start": "node server.js"

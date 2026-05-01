@@ -1,15 +1,14 @@
-SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
-
-V6.9S:
-1) Premium siyah app görünümü artık sadece mobilde değil, masaüstü + tablet + mobilde tüm sayfalara uygulanır.
-2) Sidebar, topbar, kartlar, formlar, tablolar, modallar ve dashboard panelleri aynı siyah premium tema ile uyumludur.
-3) Mobilde V6.9R shell korunur:
-   - genel menü
-   - isim alanı
-   - alttan açılan FX döviz sheet
-   - siyah mobil dashboard
-4) V6.9Q/P/O/R özellikleri korunur.
-5) Syntax check yapıldı.
+V6.9U:
+1) Dashboard'daki Bugün Ne Yapmalıyım paneli temiz ve düzgün yeniden kuruldu.
+2) Mini grafiğe tıklayınca gelişmiş grafik modalı açılır.
+3) Modalda Saatlik / Günlük / Haftalık / Aylık seçimi var.
+4) Grafikte mouse veya dokunma ile noktanın saat/gün ve fiyat bilgisi görünür.
+5) Veri Koruma artık otomatik yedek alır:
+   - Her 60 saniyede
+   - Sayfa kapanırken
+   - alpro_auto_backup ve alpro_last_backup içine kaydeder
+6) Aşama 1 Sistem Sağlığı gizli kalır.
+7) V6.9T/S/R özellikleri korunur.
 
 Commit mesajı:
-Update V6.9S All Pages Premium App Theme
+Update V6.9U Today Advanced Charts Auto Backup

@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69j-mobile-polish",
-  "version": "6.9.10",
+  "name": "alpro-v69k-premium-search-header",
+  "version": "6.9.11",
   "private": true,
   "scripts": {
     "start": "node server.js"

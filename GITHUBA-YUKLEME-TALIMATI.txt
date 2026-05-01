@@ -1,15 +1,14 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
 Bu sürüm:
-- V6.9I temiz/stabil tabanı korur.
-- Masaüstüne dokunmaz.
-- Sadece mobil görünümü düzeltir.
-- Üst mobil barı daha düzgün yapar.
-- Alt mobil tabbarı daha düzgün yapar.
-- Floating + butonunu iyileştirir.
-- Kartları mobilde tek kolona alır.
-- Tabloları yatay kaydırılabilir yapar.
-- Form ve butonları mobilde daha okunur ve basılabilir yapar.
+- Dashboard mockup yapmaz; eski stabil dashboard kalır.
+- Çalışmayan dashboard paketlerindeki güzel premium arama/header tarzını geri getirir.
+- Arama yazısı net görünür.
+- Arama sonuçları kutunun altında çıkar.
+- Sağdaki ekstra aramaları gizler.
+- Sol menü + ana ekran renkleri aynı koyu lacivert sisteme alınır.
+- Mobilde premium üst bar + alt tabbar kullanır.
+- ZIP içinde eski paketler yoktur.
 
 Commit mesajı:
-Update V6.9J Mobile Polish
+Update V6.9K Premium Search Header

@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69o-real-fx-dropdown-layout-fix",
-  "version": "6.9.15",
+  "name": "alpro-v69q-real-black-mobile-dashboard",
+  "version": "6.9.17",
   "private": true,
   "scripts": {
     "start": "node server.js"

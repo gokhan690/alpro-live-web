@@ -1,16 +1,18 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
-V6.9O düzeltmeleri:
-1) Topbardaki döviz alanı gerçek /api/fx verisini kullanır.
-   - USD/TRY
-   - EUR/TRY = USD API içindeki EUR çaprazından hesaplanır
-   - GBP/TRY = USD API içindeki GBP çaprazından hesaplanır
-2) server.js içindeki /api/fx endpoint'i artık usdtry, eurtry, gbptry döndürür.
-3) V69K scriptinin seçilen döviz değerini her saniye USD ile ezmesi engellendi.
-4) Kritik Uyarılar + Haftalık Rapor paneli dashboard kartlarının altına düzgün yerleştirildi.
-5) Sipariş ve tedarikçi sayfalarındaki aynı işlevli fazla Yeni/Ekle butonu gizlenir.
-6) Arama placeholder tıklanınca kaybolur.
-7) Syntax check yapıldı.
+V6.9Q:
+1) Mobil dashboard fotoğraftaki siyah premium app görünümüne çevrildi.
+2) Masaüstü görünüm korunur.
+3) Telefonda dashboard aktifken:
+   - Siyah app ekranı
+   - KPI kartları
+   - Hızlı işlemler
+   - Bugün Ne Yapmalıyım paneli
+   - Alt mobil tabbar
+   - Altın + butonu
+   görünür.
+4) V6.9P'deki renk düzeni, gerçek döviz dropdown, dashboard widgetları ve çift buton temizliği korunur.
+5) Syntax check yapıldı.
 
 Commit mesajı:
-Update V6.9O Real FX Layout Fix
+Update V6.9Q Real Black Mobile Dashboard

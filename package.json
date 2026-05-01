@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69i-clean-stable-theme",
-  "version": "6.9.9",
+  "name": "alpro-v69j-mobile-polish",
+  "version": "6.9.10",
   "private": true,
   "scripts": {
     "start": "node server.js"

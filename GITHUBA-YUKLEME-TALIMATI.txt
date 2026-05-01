@@ -1,31 +1,15 @@
 SADECE BU KLASÖRÜN İÇİNDEKİ DOSYALARI GITHUB REPO ANA DİZİNİNE KOY.
 
 Bu sürüm:
-- Dashboard mockup denemelerini kaldırır.
-- Eski çalışan dashboard'u geri getirir.
-- Üst arama + mobil iyileştirmeyi korur.
-- Sol menü ve ana ekran rengini aynı koyu lacivert sisteme alır.
-- ZIP içinde eski paketler / BAT dosyaları / eski notlar yoktur.
-
-GitHub ana dizinde özellikle şunlar olmalı:
-index.html
-server.js
-package.json
-render.yaml
-Procfile
-.env.example
-.gitignore
-SUPABASE-SETUP.sql
-
-Yükleme:
-1) Bu klasörün içine gir
-2) Tüm dosyaları seç
-3) GitHub repo ana klasörüne kopyala
-4) Replace / Değiştir de
-5) GitHub Desktop -> Commit
-6) Push origin
-7) Render -> Manual Deploy -> Deploy latest commit
-8) Tarayıcıda Ctrl + F5
+- V6.9I temiz/stabil tabanı korur.
+- Masaüstüne dokunmaz.
+- Sadece mobil görünümü düzeltir.
+- Üst mobil barı daha düzgün yapar.
+- Alt mobil tabbarı daha düzgün yapar.
+- Floating + butonunu iyileştirir.
+- Kartları mobilde tek kolona alır.
+- Tabloları yatay kaydırılabilir yapar.
+- Form ve butonları mobilde daha okunur ve basılabilir yapar.
 
 Commit mesajı:
-Update V6.9I Clean Stable Theme
+Update V6.9J Mobile Polish

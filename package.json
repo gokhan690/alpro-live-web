@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69f-dashboard-header-final-fix",
-  "version": "6.9.6",
+  "name": "alpro-v69g-fix-over-e",
+  "version": "6.9.7",
   "private": true,
   "scripts": {
     "start": "node server.js"

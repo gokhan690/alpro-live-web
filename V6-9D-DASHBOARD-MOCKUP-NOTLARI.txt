@@ -1,0 +1,10 @@
+Yükleme:
+1. ZIP'i çıkar
+2. İçindekileri repo ana klasörüne kopyala
+3. Replace / Değiştir
+4. Commit + Push
+5. Render -> Deploy latest commit
+6. Ctrl + F5
+
+Commit mesajı:
+Update V6.9D Dashboard Mockup First Page

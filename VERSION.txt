@@ -1,29 +1,13 @@
-AlPro V6.9F - Dashboard Header Final Fix
+AlPro V6.9G - Fix Over E
 
-Bu sürüm V6.9 çalışan tabanı korur.
+Bu paket V6.9E üstünden hazırlandı; eski C tabanına döndürmez.
 
-Düzeltilenler:
-1) Dashboard görünmeme sorunu giderildi.
-   - Eski bozan V69D/V69E dashboard patch'leri kaldırıldı.
-   - Yeni dashboard ancak başarıyla eklendikten sonra eski dashboard gizlenir.
+Düzeltmeler:
+1) Dashboard görünmeme problemi için E dashboard görünürlük garantisi eklendi.
+2) Üst arama/header artık fixed değil; içerik içinde sticky, sayfaları kapatmaz.
+3) Arama yazısı görünür ve sonuçlar kutunun altında çıkar.
+4) Sağdaki ikinci sipariş araması gizlendi.
+5) Sipariş sayfasında fazladan Ekle/Yeni Sipariş butonları gizlenir.
+6) Dashboard mobilde dış barlar gizlenir; app/telefon görünümü öne çıkar.
 
-2) Üst arama/header artık sayfaları kapatmaz.
-   - Header fixed değil, content içinde sticky çalışır.
-   - Sayfa içeriğinin üstüne binmez.
-   - Sağdaki ikinci arama kaldırıldı / ord-search gizlendi.
-
-3) Global arama daha düzgün yapıldı.
-   - Yazdığın metin görünür.
-   - Sonuçlar arama kutusunun altında çıkar.
-   - Sonuca tıklayınca ilgili sayfaya gider.
-
-4) Dashboard tamamen Türkçe.
-   - Tümünü Gör butonları çalışır.
-   - Hızlı işlem butonları çalışır.
-
-5) Mobil dashboard fotoğraftaki app-style görünüme yaklaştırıldı.
-   - Dashboard mobilde telefon/app düzeninde görünür.
-   - Diğer sayfalarda mobil üst bar + alt tabbar korunur.
-
-6) Sipariş sayfasındaki çift ekle sorunu azaltıldı.
-   - Sipariş sayfasında fazla add/ekle butonları gizlenir.
+Not: V69F gibi C tabanından değil, V69E paketinin üstünden düzeltildi.

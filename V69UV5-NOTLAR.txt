@@ -1,0 +1,59 @@
+AlPro V6.9U-V5 - GERCEK DATA + COP KUTUSU + EXTRA KARTLAR
+
+==> COP KUTUSU SISTEMI <==
+1) Tedarikciler sayfasinda sag ust kosede 🗑 Cop Kutusu butonu
+2) Siparisler sayfasinda sag ust kosede 🗑 Cop Kutusu butonu
+3) Sildiginde direkt silmiyor, "_deleted: true" isaretliyor
+4) Cop kutusuna tikla -> silinenleri gor
+5) "Geri Al" butonu ile kurtarabilirsin
+6) "Kalici Sil" ile temelli silebilirsin
+7) Gumruk dropdown'da silinenler GORUNMEZ (sadece aktifler)
+
+==> DASHBOARD GERCEK DATA <==
+1) Demo veriler (ABC Metal, Hamburg→Mersin) KALDIRILDI
+2) Son Siparisler tablosu -> kendi siparislerin
+3) Lojistik/ETA tablosu -> kendi sevkiyatlarin
+4) Finans Ozeti -> banka kayitlarindan otomatik (USD/TRY ayri)
+5) Aylik Ozet -> aktif tedarikci/musteri/siparis sayilari
+6) Veri yoksa "Henuz X yok, Ekle ->" yazıyor ve yeni ekleme sayfasina git
+
+==> EXTRA KARTLAR (Ust kart sirasinda) <==
+1) AÇIK SİPARİŞLER kart - aktif siparis sayisi + toplam deger
+2) NAKİT POZİSYON kart - banka USD + TRY + likidite donut
+3) Bu 2 kart fiyat kartlarinin yanına eklendi (Stage1 grid icine)
+
+==> DETAYLI MINI GRAFIK <==
+1) Stage1 fiyat kartlari altinda gercekci grafik
+2) Local LME history (300 nokta) varsa onu kullaniyor
+3) Yoksa simule ediyor
+4) Min/Max yazili, yuzde renkli
+5) 1S/1G/1H/1A/1Y periyot secici
+
+==> KORUNAN SEYLER <==
+- V6.9U Premium ust arama header
+- Bugun Ne Yapmaliyim panel (kendi gorevlerin)
+- Mini grafik tikla -> gelismis modal
+- Veri Koruma otomatik yedek
+- Kritik Uyarilar
+- Haftalik Rapor + Bar Grafik
+- Hizli Eylem (6 buton)
+- Tam siyah tema + altin aksanlar
+- Server.js, Supabase, render.yaml degismedi
+
+==> DUZELTILEN <==
+- V58/V59 syntax hatasi
+- calc(), calcSc(), calcCustoms() null guard
+- delOrder eski TAMAMEN silen versiyon -> _deleted true yapan versiyon
+
+DEPLOY:
+1) ZIP indir
+2) GitHub repo ana dizinine ic dosyalari koy
+3) Push -> Render auto deploy
+4) Hard refresh (Ctrl+Shift+R)
+
+TEKNIK:
+- 30 script blok, 0 hata
+- 614 KB
+
+KOMUT MESAJI:
+V6.9U-V5 Cop Kutusu + Gercek Data + Acik Sip/Nakit Kartlari

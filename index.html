@@ -665,6 +665,50 @@ aside.side, .side, nav.nav { background: #050505 !important; }
 .modal, .modal-content { background: #050505 !important; }
 .mobile-tabbar, .mobile-top, .mobile-fab { background: #000 !important; }
 input, select, textarea { background: #0a0a0a !important; border: 1px solid rgba(232,160,32,0.2) !important; color: #e8e8e8 !important; }
+
+/* === V71 Stage1 kartlarinda DETAYLI mini grafik === */
+.v71-detail-chart {
+  width: 100%;
+  height: 80px;
+  display: block;
+  margin-top: 10px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.v71-detail-chart:hover {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(232,160,32,0.3);
+}
+.v71-chart-label {
+  font-size: 9px;
+  color: #5a6a7a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.v71-chart-label .pos { color: #2ecc71; font-family: monospace; }
+.v71-chart-label .neg { color: #e74c3c; font-family: monospace; }
+.v71-chart-period {
+  font-size: 8.5px;
+  color: #7a8a98;
+  margin-top: 4px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.v71-chart-period span {
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.v71-chart-period span.active {
+  background: rgba(232,160,32,0.15);
+  color: #e8a020;
+}
 </style>
 
 <style id="v5-8833-refine-style">
@@ -5838,11 +5882,29 @@ async function renderDB(){
 
 
 async function renderOrd(){
-  var a=await DB.get('orders');
+  var aAll=await DB.get('orders') || [];
+  var a=aAll.filter(function(o){return !o._deleted;}); // SILINENLERI HARIC TUT
+  var trashCount=aAll.filter(function(o){return o._deleted;}).length;
   var el=document.getElementById('t-ord');
   if(!el) return;
   var ob=document.getElementById('ob');
   if(ob) ob.textContent=a.filter(function(o){return o.status!=='Teslim Alindi';}).length;
+  // Cop kutusu butonu - tabloyu wrap'leyen secimde uste ekle
+  var trashBtnHost=document.getElementById('orders-trash-btn');
+  if(!trashBtnHost){
+    var ordersPage=document.getElementById('page-orders');
+    if(ordersPage){
+      var btnDiv=document.createElement('div');
+      btnDiv.id='orders-trash-btn';
+      btnDiv.style.cssText='display:flex;justify-content:flex-end;margin:8px 0';
+      btnDiv.innerHTML='<button onclick="openTrash(\'orders\')" style="background:rgba(231,76,60,0.1);color:#e74c3c;border:1px solid rgba(231,76,60,0.3);padding:6px 12px;border-radius:5px;cursor:pointer;font-size:11px">🗑 Cop Kutusu (<span id="orders-trash-cnt">0</span>)</button>';
+      var firstSec=ordersPage.querySelector('.sec, .psec, table');
+      if(firstSec){ordersPage.insertBefore(btnDiv,firstSec);}
+      else{ordersPage.appendChild(btnDiv);}
+    }
+  }
+  var trashCnt=document.getElementById('orders-trash-cnt');
+  if(trashCnt) trashCnt.textContent=trashCount;
   if(!a.length){el.innerHTML='<tr><td colspan="8" style="color:var(--muted);text-align:center;padding:14px">Siparis yok</td></tr>';return;}
   el.innerHTML=a.map(function(o){
     var opts=['Siparis Verildi','Uretimde','Yuklendi','Yolda','Gumrukte','Teslim Alindi','Iptal Edildi'].map(function(s){
@@ -5868,12 +5930,25 @@ async function renderOrd(){
 }
 
 async function delOrder(id){
-  if(!confirm('Bu siparisi silmek istediginize emin misiniz?')) return;
+  if(!confirm('Bu siparisi silmek istediginize emin misiniz?\n(Cop kutusuna gidecek, geri alabilirsin)')) return;
+  var a=await DB.get('orders');
+  var i=a.findIndex(function(x){return x.id===id;});
+  if(i>-1){a[i]._deleted=true;a[i]._deletedAt=new Date().toISOString();await DB.set('orders',a);}
+  renderOrd();renderDB();notif('Siparis cop kutusuna tasındı','s');
+}
+window.restoreOrder=async function(id){
+  var a=await DB.get('orders');
+  var i=a.findIndex(function(x){return x.id===id;});
+  if(i>-1){delete a[i]._deleted;delete a[i]._deletedAt;await DB.set('orders',a);}
+  renderOrd();renderDB();notif('Siparis geri yuklendi','s');
+};
+window.permanentDelOrder=async function(id){
+  if(!confirm('Bu siparisi TAMAMEN silmek istiyor musun? (Geri alinamaz)')) return;
   var a=await DB.get('orders');
   a=a.filter(function(x){return x.id!==id;});
   await DB.set('orders',a);
-  renderOrd();renderDB();notif('Siparis silindi','s');
-}
+  renderOrd();notif('Siparis kalici silindi','d');
+};
 
 async function cancelOrder(id){
   if(!confirm('Siparisi iptal etmek istediginize emin misiniz?')) return;
@@ -5883,15 +5958,6 @@ async function cancelOrder(id){
   renderOrd();renderDB();notif('Siparis iptal edildi','w');
 }
 
-async function delOrder(id) {
-  if(!confirm('Bu siparişi TAMAMEN silmek istediğinize emin misiniz? (Geri alınamaz)')) return;
-  var a = await DB.get('orders');
-  a = a.filter(function(x){return x.id !== id;});
-  await DB.set('orders', a);
-  renderOrd();
-  renderDB();
-  notif('Sipariş silindi!','s');
-}
 
 async function cancelOrder(id) {
   if(!confirm('Bu siparişi iptal etmek istediğinize emin misiniz?')) return;
@@ -11328,52 +11394,12 @@ const oldP=window.P;if(typeof oldP==='function'&&!oldP._v69tWrapped){const w=fun
 
 
 <script>
-/* V70 Premium Mockup Widgets - dashboard'a otomatik ekle */
+/* V70 - DASHBOARD GERCEK DATA WIDGETS */
 (function(){
-  var V70_WIDGETS_HTML = `
-<div class="v70-pcards">
-  <div class="v70-pc"><div class="v70-pcl">LME ALÜMİNYUM</div><div class="v70-pcs">3M Cash · USD/MT</div><div class="v70-pcv" style="color:#e8a020" id="v70-alu">2.552,00</div><div class="v70-pcc">+18,50 (+0,73%)</div><svg class="v70-pcsp" id="v70-sp-alu" viewBox="0 0 200 30" preserveAspectRatio="none"></svg></div>
-  <div class="v70-pc"><div class="v70-pcl">BAKIR KATOT</div><div class="v70-pcs">3M Cash · USD/MT</div><div class="v70-pcv" style="color:#d97706" id="v70-cop">10.045,50</div><div class="v70-pcc">+65,00 (+0,65%)</div><svg class="v70-pcsp" id="v70-sp-cop" viewBox="0 0 200 30" preserveAspectRatio="none"></svg></div>
-  <div class="v70-pc"><div class="v70-pcl">ÇİNKO</div><div class="v70-pcs">3M Cash · USD/MT</div><div class="v70-pcv" style="color:#bbb" id="v70-zin">2.936,00</div><div class="v70-pcc">+22,00 (+0,76%)</div><svg class="v70-pcsp" id="v70-sp-zin" viewBox="0 0 200 30" preserveAspectRatio="none"></svg></div>
-  <div class="v70-pc"><div class="v70-pcl">USD / TRY</div><div class="v70-pcs">Spot</div><div class="v70-pcv" style="color:#3aa6f4" id="v70-fx">32,4287</div><div class="v70-pcc">+0,0590 (+0,18%)</div><svg class="v70-pcsp" id="v70-sp-fx" viewBox="0 0 200 30" preserveAspectRatio="none"></svg></div>
-  <div class="v70-pc"><div class="v70-pcl">AÇIK SİPARİŞLER 🛒</div><div class="v70-pcs">Tüm Siparişler</div><div class="v70-pcv" style="color:#2ecc71" id="v70-orders">23</div><div class="v70-pcc" style="color:#7a8a98">Toplam Değer<br><span style="color:#cfd8e0" id="v70-orders-tot">USD 18.750.250</span></div></div>
-  <div class="v70-pc"><div class="v70-pcl">NAKİT POZİSYON</div><div class="v70-pcs">Toplam Nakit</div><div class="v70-pcv" style="color:#e8a020;font-size:14px" id="v70-cash-usd">USD 5.842.310</div><div class="v70-pcv" style="color:#cfd8e0;font-size:13px;margin-top:2px" id="v70-cash-try">TRY 189.654.210</div><div style="position:absolute;bottom:8px;right:10px;font-size:9px;color:#7a8a98;text-align:right">Kullanılabilir<br>Kredi Oranı</div><svg class="v70-donut" viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" fill="none" stroke="rgba(232,160,32,0.15)" stroke-width="3"/><circle cx="18" cy="18" r="14" fill="none" stroke="#e8a020" stroke-width="3" stroke-dasharray="65 100" transform="rotate(-90 18 18)"/><text x="18" y="20.5" text-anchor="middle" fill="#e8a020" font-size="9" font-weight="700">74%</text></svg></div>
-</div>
-<div class="v70-dgr">
-  <div class="v70-psec"><div class="v70-psh"><div class="v70-pst">📦 Son Siparişler</div><span class="v70-link" onclick="if(typeof P===&#39;function&#39;)P(&#39;orders&#39;)">Tümünü Gör</span></div><table class="v70-tbl"><thead><tr><th>No</th><th>Müşteri</th><th>Ürün</th><th>Miktar</th><th>Durum</th></tr></thead><tbody>
-    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240524-101</td><td>ABC Metal</td><td>Aluminium</td><td>1.250 MT</td><td><span class="v70-bdg v70-bdg-ok">Onaylandı</span></td></tr>
-    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240521-056</td><td>Global Alloys</td><td>Copper</td><td>800 MT</td><td><span class="v70-bdg v70-bdg-wt">Beklemede</span></td></tr>
-    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240523-099</td><td>Metal Trade</td><td>Zinc</td><td>1.100 MT</td><td><span class="v70-bdg v70-bdg-ok">Onaylandı</span></td></tr>
-    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240523-098</td><td>XYZ Trading</td><td>Aluminium</td><td>600 MT</td><td><span class="v70-bdg v70-bdg-pl">Hazırlanıyor</span></td></tr>
-    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240523-097</td><td>Iron & Co.</td><td>Copper</td><td>950 MT</td><td><span class="v70-bdg v70-bdg-ok">Onaylandı</span></td></tr>
-  </tbody></table></div>
-  <div class="v70-psec"><div class="v70-psh"><div class="v70-pst">🚢 Lojistik / ETA</div><span class="v70-link" onclick="if(typeof P===&#39;function&#39;)P(&#39;freight&#39;)">Tümünü Gör</span></div><table class="v70-tbl"><thead><tr><th>BL</th><th>Liman</th><th>ETA</th><th>Durum</th></tr></thead><tbody>
-    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240521-101</td><td>Hamburg → Mersin</td><td>26 May</td><td><span class="v70-bdg v70-bdg-wt">Yolda</span></td></tr>
-    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240519-055</td><td>Rotterdam → İzmir</td><td>28 May</td><td><span class="v70-bdg v70-bdg-wt">Yolda</span></td></tr>
-    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240518-054</td><td>Antwerp → Gebze</td><td>30 May</td><td><span class="v70-bdg v70-bdg-pl">Planlandı</span></td></tr>
-    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240517-053</td><td>Singapore → Mersin</td><td>05 Haz</td><td><span class="v70-bdg v70-bdg-pl">Planlandı</span></td></tr>
-    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240516-052</td><td>Houston → Aliağa</td><td>08 Haz</td><td><span class="v70-bdg v70-bdg-pl">Planlandı</span></td></tr>
-  </tbody></table></div>
-</div>
-<div class="v70-dgr">
-  <div class="v70-psec"><div class="v70-psh"><div class="v70-pst">🏦 Finans Özeti</div></div><div class="v70-psb">
-    <div class="v70-fr"><span class="v70-fl">Toplam Nakit (USD)</span><span class="v70-fv gn">5.842.310</span></div>
-    <div class="v70-fr"><span class="v70-fl">Toplam Nakit (TRY)</span><span class="v70-fv gn">189.654.210</span></div>
-    <div class="v70-fr"><span class="v70-fl">Açık Alacaklar</span><span class="v70-fv" style="color:#e8a020">3.245.780</span></div>
-    <div class="v70-fr"><span class="v70-fl">Açık Borçlar</span><span class="v70-fv rd">2.105.420</span></div>
-    <div class="v70-fr"><span class="v70-fl">Bu Ay Kar (USD)</span><span class="v70-fv gn">742.150</span></div>
-    <div class="v70-fr"><span class="v70-fl">Kâr Marjı</span><span class="v70-fv">3,62%</span></div>
-  </div></div>
-  <div class="v70-psec"><div class="v70-psh"><div class="v70-pst">📊 Aylık Özet</div></div><div class="v70-psb">
-    <div class="v70-fr"><span class="v70-fl">Toplam Ciro (USD)</span><span><span class="v70-fv">12.450.000</span><span class="v70-fd">+14,2%</span></span></div>
-    <div class="v70-fr"><span class="v70-fl">Toplam Kâr (USD)</span><span><span class="v70-fv gn">498.750</span><span class="v70-fd">+8,7%</span></span></div>
-    <div class="v70-fr"><span class="v70-fl">Ort. Kâr Marjı</span><span><span class="v70-fv">4,01%</span><span class="v70-fd">+0,6%</span></span></div>
-    <div class="v70-fr"><span class="v70-fl">Toplam Sevkiyat</span><span class="v70-fv">8 BL · 6.450 MT</span></div>
-    <div class="v70-fr"><span class="v70-fl">Aktif Müşteri</span><span class="v70-fv">12 firma</span></div>
-    <div class="v70-fr"><span class="v70-fl">Tedarikçi Skoru</span><span class="v70-fv gn">A+ (95/100)</span></div>
-  </div></div>
-</div>
-`;
+  
+  function fmtUsd(n){return '$' + Math.round(n||0).toLocaleString('tr-TR');}
+  function fmtTry(n){return '₺' + Math.round(n||0).toLocaleString('tr-TR');}
+  function fmtNum(n){return Math.round(n||0).toLocaleString('tr-TR');}
   
   function v70Sp(id, d, c){
     var v = document.getElementById(id);
@@ -11384,55 +11410,150 @@ const oldP=window.P;if(typeof oldP==='function'&&!oldP._v69tWrapped){const w=fun
                   '<polygon points="0,30 '+pts+' 200,30" fill="'+c+'" opacity="0.15"/>';
   }
   
-  function v70Render(){
+  async function v70Render(){
     var dash = document.getElementById('page-dashboard');
     if(!dash) return;
     
-    // Zaten varsa kaldir, yeniden ekle
+    // GERCEK VERILER cek
+    var orders = [], freight = [], bank = [], invoices = [], hedge = [];
+    try {
+      orders = (await DB.get('orders') || []).filter(function(o){return !o._deleted;});
+      freight = (await DB.get('freight') || []).filter(function(f){return !f._deleted;});
+      bank = (await DB.get('bank') || []).filter(function(b){return !b._deleted;});
+      invoices = (await DB.get('invoices') || []).filter(function(i){return !i._deleted;});
+      hedge = (await DB.get('hedge') || []).filter(function(h){return !h._deleted;});
+    } catch(e){ console.log('V70 data err:', e.message); }
+    
+    // Hesaplar
+    var openOrders = orders.filter(function(o){return o.status !== 'Teslim Alindi' && o.status !== 'Iptal Edildi';});
+    var openOrdersValue = openOrders.reduce(function(s,o){return s + (Number(o.qty)*Number(o.price)||0);}, 0);
+    var openOrdersTon = openOrders.reduce(function(s,o){return s + (Number(o.qty)||0);}, 0);
+    
+    var totUsd = 0, totTry = 0;
+    bank.forEach(function(b){
+      var amt = Number(b.balance||b.amount||0);
+      if(b.currency === 'TRY' || b.currency === 'TL') totTry += amt;
+      else totUsd += amt;
+    });
+    
+    var receivable = invoices.filter(function(i){return (i.type==='sale'||i.type==='satis') && !i.paid;}).reduce(function(s,i){return s+Number(i.amount||0);}, 0);
+    var payable = invoices.filter(function(i){return i.type!=='sale' && i.type!=='satis' && !i.paid;}).reduce(function(s,i){return s+Number(i.amount||0);}, 0);
+    
+    // Eski v70 widget'i varsa kaldir
     var old = document.getElementById('v70-mockup-widgets');
     if(old) old.remove();
     
     var w = document.createElement('div');
     w.id = 'v70-mockup-widgets';
-    w.innerHTML = V70_WIDGETS_HTML;
+    
+    // SON SIPARISLER tablosu
+    var ordersHtml = '';
+    if(orders.length === 0){
+      ordersHtml = '<tr><td colspan="5" style="text-align:center;padding:30px;color:#7a8a98">Henuz siparis yok. <a href="javascript:void(0)" onclick="P(&quot;orders&quot;)" style="color:#e8a020">Yeni Siparis Ekle &rarr;</a></td></tr>';
+    } else {
+      ordersHtml = orders.slice(0, 5).map(function(o){
+        var bdgClass = 'v70-bdg-pl';
+        if(o.status === 'Teslim Alindi') bdgClass = 'v70-bdg-ok';
+        else if(o.status === 'Yolda' || o.status === 'Gumrukte') bdgClass = 'v70-bdg-wt';
+        return '<tr><td style="font-family:monospace;color:#3aa6f4">' + (o.no||'-') + '</td>' +
+          '<td>' + (o.supplier||'-') + '</td>' +
+          '<td>' + (o.product||o.metal||'-') + '</td>' +
+          '<td>' + (o.qty||0) + ' MT</td>' +
+          '<td><span class="v70-bdg ' + bdgClass + '">' + (o.status||'-') + '</span></td></tr>';
+      }).join('');
+    }
+    
+    // LOJISTIK / ETA
+    var freightHtml = '';
+    var freightData = freight.length > 0 ? freight : orders.filter(function(o){return o.blNo || o.eta || o.port;});
+    if(freightData.length === 0){
+      freightHtml = '<tr><td colspan="4" style="text-align:center;padding:30px;color:#7a8a98">Henuz sevkiyat yok. <a href="javascript:void(0)" onclick="P(&quot;freight&quot;)" style="color:#e8a020">Navlun Ekle &rarr;</a></td></tr>';
+    } else {
+      freightHtml = freightData.slice(0, 5).map(function(f){
+        var bdgClass = 'v70-bdg-pl';
+        if(f.status === 'Yolda' || f.shipStatus === 'Yolda') bdgClass = 'v70-bdg-wt';
+        if(f.status === 'Teslim Alindi') bdgClass = 'v70-bdg-ok';
+        var route = (f.fromPort || f.from || '?') + ' &rarr; ' + (f.toPort || f.to || f.port || '?');
+        return '<tr><td style="font-family:monospace;color:#3aa6f4">' + (f.blNo || f.no || '-') + '</td>' +
+          '<td>' + route + '</td>' +
+          '<td>' + (f.eta || '-') + '</td>' +
+          '<td><span class="v70-bdg ' + bdgClass + '">' + (f.status || f.shipStatus || 'Planlandi') + '</span></td></tr>';
+      }).join('');
+    }
+    
+    // Toplam ciro - bu ay (sadece bu ay ki teslim alinanlar)
+    var thisMonth = new Date().getMonth();
+    var monthRevenue = invoices.filter(function(i){
+      if(i.paid && i.date){
+        var d = new Date(i.date);
+        return d.getMonth() === thisMonth && (i.type === 'sale' || i.type === 'satis');
+      }
+      return false;
+    }).reduce(function(s,i){return s + Number(i.amount||0);}, 0);
+    
+    // Toplam aktif musteri
+    var customers = [];
+    try { customers = (await DB.get('customers') || []).filter(function(c){return !c._deleted;}); } catch(e){}
+    
+    // Tedarikci skoru ortalama
+    var suppliers = [];
+    try { suppliers = (await DB.get('suppliers') || []).filter(function(s){return !s._deleted;}); } catch(e){}
+    
+    // ORTALAMA KAR MARJI
+    var totalProfit = 0, totalCost = 0;
+    invoices.forEach(function(i){
+      if(i.type === 'sale' || i.type === 'satis'){
+        totalProfit += Number(i.profit || 0);
+        totalCost += Number(i.cost || i.amount || 0);
+      }
+    });
+    var avgMargin = totalCost > 0 ? (totalProfit / totalCost * 100) : 0;
+    
+    w.innerHTML = '' +
+      '<div class="v70-dgr">' +
+        '<div class="v70-psec"><div class="v70-psh"><div class="v70-pst">📦 Son Siparişler</div>' +
+          '<span class="v70-link" onclick="P(&quot;orders&quot;)">Tümünü Gör</span></div>' +
+          '<table class="v70-tbl"><thead><tr><th>No</th><th>Tedarikçi</th><th>Ürün</th><th>Miktar</th><th>Durum</th></tr></thead><tbody>' + ordersHtml + '</tbody></table></div>' +
+        '<div class="v70-psec"><div class="v70-psh"><div class="v70-pst">🚢 Lojistik / ETA</div>' +
+          '<span class="v70-link" onclick="P(&quot;freight&quot;)">Tümünü Gör</span></div>' +
+          '<table class="v70-tbl"><thead><tr><th>BL</th><th>Liman</th><th>ETA</th><th>Durum</th></tr></thead><tbody>' + freightHtml + '</tbody></table></div>' +
+      '</div>' +
+      '<div class="v70-dgr">' +
+        '<div class="v70-psec"><div class="v70-psh"><div class="v70-pst">🏦 Finans Özeti</div></div><div class="v70-psb">' +
+          '<div class="v70-fr"><span class="v70-fl">Toplam Nakit (USD)</span><span class="v70-fv ' + (totUsd > 0 ? 'gn' : '') + '">' + fmtUsd(totUsd) + '</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Toplam Nakit (TRY)</span><span class="v70-fv ' + (totTry > 0 ? 'gn' : '') + '">' + fmtTry(totTry) + '</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Açık Alacaklar</span><span class="v70-fv" style="color:#e8a020">' + fmtUsd(receivable) + '</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Açık Borçlar</span><span class="v70-fv ' + (payable > 0 ? 'rd' : '') + '">' + fmtUsd(payable) + '</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Bu Ay Ciro (USD)</span><span class="v70-fv gn">' + fmtUsd(monthRevenue) + '</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Kâr Marjı</span><span class="v70-fv">' + avgMargin.toFixed(2) + '%</span></div>' +
+        '</div></div>' +
+        '<div class="v70-psec"><div class="v70-psh"><div class="v70-pst">📊 Aylık Özet</div></div><div class="v70-psb">' +
+          '<div class="v70-fr"><span class="v70-fl">Toplam Aktif Sipariş</span><span class="v70-fv">' + openOrders.length + ' adet</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Toplam Açık Tonaj</span><span class="v70-fv">' + fmtNum(openOrdersTon) + ' MT</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Toplam Açık Değer</span><span class="v70-fv">' + fmtUsd(openOrdersValue) + '</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Aktif Sevkiyat</span><span class="v70-fv">' + (freight.filter(function(f){return f.status !== 'Teslim Alindi';}).length) + ' BL</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Aktif Müşteri</span><span class="v70-fv">' + customers.length + ' firma</span></div>' +
+          '<div class="v70-fr"><span class="v70-fl">Aktif Tedarikçi</span><span class="v70-fv">' + suppliers.length + ' firma</span></div>' +
+        '</div></div>' +
+      '</div>';
     
     // Stage1 cards'in altina yerlestir
     var stage1Cards = document.getElementById('stage1-dashboard-cards');
     if(stage1Cards && stage1Cards.parentNode === dash){
       stage1Cards.parentNode.insertBefore(w, stage1Cards.nextSibling);
     } else {
-      // Bulunamadiysa basa
-      dash.insertBefore(w, dash.firstChild);
+      dash.appendChild(w);
     }
-    
-    // Sparkline ciz
-    var alu = (window.LIVE_LME_PRICES && LIVE_LME_PRICES.ALU) || 2552;
-    var cop = (window.LIVE_LME_PRICES && LIVE_LME_PRICES.COP) || 10045.5;
-    var zin = (window.LIVE_LME_PRICES && LIVE_LME_PRICES.ZIN) || 2936;
-    var fx = parseFloat(localStorage.getItem('usdtry')) || 32.4287;
-    
-    v70Sp('v70-sp-alu', [alu*0.99, alu*0.995, alu*1.0, alu*1.002, alu*1.001, alu*1.005, alu], '#e8a020');
-    v70Sp('v70-sp-cop', [cop*0.99, cop*0.995, cop*1.0, cop*1.002, cop*1.001, cop*1.005, cop], '#d97706');
-    v70Sp('v70-sp-zin', [zin*0.99, zin*0.995, zin*1.0, zin*1.002, zin*1.001, zin*1.005, zin], '#bbb');
-    v70Sp('v70-sp-fx', [fx*0.998, fx*0.999, fx*1.0, fx*1.001, fx*1.0, fx*1.001, fx], '#3aa6f4');
-    
-    // Canli fiyat varsa kart degerlerini guncelle
-    var nf = function(n, d){return Number(n).toLocaleString('tr-TR', {minimumFractionDigits: d||2, maximumFractionDigits: d||2});};
-    var aluE = document.getElementById('v70-alu'); if(aluE) aluE.textContent = nf(alu);
-    var copE = document.getElementById('v70-cop'); if(copE) copE.textContent = nf(cop);
-    var zinE = document.getElementById('v70-zin'); if(zinE) zinE.textContent = nf(zin);
-    var fxE = document.getElementById('v70-fx'); if(fxE) fxE.textContent = nf(fx, 4);
   }
   
-  // Sayfa yuklenince calistir
+  // Sayfa yuklenince + degistikce calistir
   function init(){
-    v70Render();
-    // Sayfa degisimlerinde de calistir (P() fonksiyonu page-dashboard'i yeniden render edebilir)
+    setTimeout(v70Render, 1500);
     setInterval(function(){
-      if(!document.getElementById('v70-mockup-widgets') && document.getElementById('page-dashboard')){
-        v70Render();
+      if(document.getElementById('page-dashboard') && document.getElementById('page-dashboard').style.display !== 'none'){
+        if(!document.getElementById('v70-mockup-widgets')) v70Render();
       }
-    }, 2000);
+    }, 3000);
   }
   
   if(document.readyState === 'loading') {
@@ -11442,5 +11563,325 @@ const oldP=window.P;if(typeof oldP==='function'&&!oldP._v69tWrapped){const w=fun
   }
 })();
 </script>
-</body>
+
+<script>
+/* V71 - Stage1 kartlarinda DETAYLI mini grafik */
+(function(){
+  // Her metal icin fiyat history (gercek + simule)
+  var V71_HISTORY = { ALU: [], COP: [], ZIN: [], FX: [] };
+  
+  function readPrice(elemId) {
+    var el = document.getElementById(elemId);
+    if(!el) return null;
+    var t = el.textContent.replace(/\./g, '').replace(',', '.').replace(/[^0-9.]/g, '');
+    return parseFloat(t) || null;
+  }
+  
+  function pushHistory(key, price) {
+    if(!price) return;
+    var arr = V71_HISTORY[key];
+    if(arr.length === 0 || arr[arr.length - 1] !== price) {
+      arr.push(price);
+      if(arr.length > 30) arr.shift();
+    }
+  }
+  
+  function genHistory(basePrice, count) {
+    var pts = [];
+    var p = basePrice * 0.99;
+    for(var i = 0; i < count; i++){
+      p += (Math.random() - 0.45) * basePrice * 0.003;
+      p = Math.max(basePrice * 0.985, Math.min(basePrice * 1.015, p));
+      pts.push(p);
+    }
+    pts[pts.length - 1] = basePrice;
+    return pts;
+  }
+  
+  function drawChart(svgId, points, color){
+    var svg = document.getElementById(svgId);
+    if(!svg || !points.length) return;
+    var min = Math.min.apply(null, points);
+    var max = Math.max.apply(null, points);
+    var range = max - min || 1;
+    var coords = points.map(function(pt, i){
+      var x = (i / (points.length - 1)) * 300;
+      var y = 75 - ((pt - min) / range * 65);
+      return x + ',' + y;
+    }).join(' ');
+    var lastY = 75 - ((points[points.length-1] - min) / range * 65);
+    var gridLines = '';
+    for(var g = 1; g <= 3; g++){
+      var y = (g * 80) / 4;
+      gridLines += '<line x1="0" y1="' + y + '" x2="300" y2="' + y + '" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>';
+    }
+    svg.innerHTML = gridLines +
+      '<polygon points="0,80 ' + coords + ' 300,80" fill="' + color + '" opacity="0.15"/>' +
+      '<polyline points="' + coords + '" fill="none" stroke="' + color + '" stroke-width="1.8"/>' +
+      '<circle cx="300" cy="' + lastY + '" r="3" fill="' + color + '"/>' +
+      '<circle cx="300" cy="' + lastY + '" r="6" fill="' + color + '" opacity="0.3"/>';
+  }
+  
+  function v71Render(){
+    var stage1Cards = document.querySelectorAll('#stage1-dashboard-cards > div');
+    if(stage1Cards.length === 0) return;
+    
+    // Canli fiyatlar
+    var aluPrice = readPrice('stage1-alu') || 3518.40;
+    var copPrice = readPrice('stage1-cop') || 13258.60;
+    var zinPrice = readPrice('stage1-zin') || 3340.45;
+    var fxPrice = readPrice('stage1-usdtry') || 45.14;
+    
+    pushHistory('ALU', aluPrice);
+    pushHistory('COP', copPrice);
+    pushHistory('ZIN', zinPrice);
+    pushHistory('FX', fxPrice);
+    
+    var configs = [
+      {key: 'ALU', label: 'ALÜMİNYUM', color: '#e8a020', price: aluPrice},
+      {key: 'COP', label: 'BAKIR', color: '#d97706', price: copPrice},
+      {key: 'ZIN', label: 'ÇİNKO', color: '#bbb', price: zinPrice},
+      {key: 'FX',  label: 'USD/TRY', color: '#3aa6f4', price: fxPrice}
+    ];
+    
+    stage1Cards.forEach(function(card, i){
+      if(i >= 4) return;
+      var cfg = configs[i];
+      
+      // Eski grafigi kaldir
+      var oldChart = card.querySelector('.v71-detail-chart');
+      if(oldChart) oldChart.parentNode.remove();
+      
+      // History yetersizse simule
+      var pts = V71_HISTORY[cfg.key];
+      if(pts.length < 5) {
+        // localStorage'da v5_metal_history varmi - 300 noktali gercek data
+        try {
+          var hist = JSON.parse(localStorage.getItem('v5_metal_history') || '[]');
+          if(hist.length > 5){
+            var metalKey = cfg.key === 'ALU' ? 'aluminium' : (cfg.key === 'COP' ? 'copper' : (cfg.key === 'ZIN' ? 'zinc' : null));
+            if(metalKey){
+              pts = hist.slice(0, 30).reverse().map(function(h){return Number(h.metals && h.metals[metalKey] && h.metals[metalKey].price) || cfg.price;}).filter(function(p){return p > 0;});
+            }
+          }
+        } catch(e){}
+        if(pts.length < 5) pts = genHistory(cfg.price, 30);
+      }
+      
+      var min = Math.min.apply(null, pts);
+      var max = Math.max.apply(null, pts);
+      var first = pts[0], last = pts[pts.length - 1];
+      var change = last - first;
+      var changePct = (change / first) * 100;
+      var isPos = change >= 0;
+      var changeClass = isPos ? 'pos' : 'neg';
+      var changeSign = isPos ? '+' : '';
+      
+      // Detayli grafik wrap'i
+      var svgId = 'v71-chart-' + i;
+      var wrap = document.createElement('div');
+      wrap.innerHTML = 
+        '<svg class="v71-detail-chart" id="' + svgId + '" viewBox="0 0 300 80" preserveAspectRatio="none"></svg>' +
+        '<div class="v71-chart-label">' +
+          '<span style="color:#5a6a7a">Min: <span style="color:#cfd8e0;font-family:monospace">' + min.toFixed(2) + '</span></span>' +
+          '<span class="' + changeClass + '">' + changeSign + change.toFixed(2) + ' (' + changeSign + changePct.toFixed(2) + '%)</span>' +
+          '<span style="color:#5a6a7a">Max: <span style="color:#cfd8e0;font-family:monospace">' + max.toFixed(2) + '</span></span>' +
+        '</div>' +
+        '<div class="v71-chart-period">' +
+          '<span data-p="1H">1S</span>' +
+          '<span class="active" data-p="1D">1G</span>' +
+          '<span data-p="1W">1H</span>' +
+          '<span data-p="1M">1A</span>' +
+          '<span data-p="1Y">1Y</span>' +
+        '</div>';
+      card.appendChild(wrap);
+      
+      drawChart(svgId, pts, cfg.color);
+    });
+  }
+  
+  function init(){
+    setTimeout(v71Render, 1500);
+    // Her 5 saniyede yenile
+    setInterval(v71Render, 5000);
+  }
+  
+  if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<script>
+// === V70 Tedarikci/Siparis Cop Kutusu Sistemi ===
+window.delSupplier = async function(id) {
+  if(!confirm('Bu tedarikciyi cop kutusuna tasimak istiyor musun?')) return;
+  var a = await DB.get('suppliers') || [];
+  var i = a.findIndex(function(x){return x.id===id;});
+  if(i>-1){a[i]._deleted=true;a[i]._deletedAt=new Date().toISOString();await DB.set('suppliers',a);}
+  if(typeof renderSup==='function') renderSup();
+  if(typeof renderDB==='function') renderDB();
+  if(typeof notif==='function') notif('Tedarikci cop kutusuna tasindi','s');
+};
+window.restoreSupplier = async function(id) {
+  var a = await DB.get('suppliers') || [];
+  var i = a.findIndex(function(x){return x.id===id;});
+  if(i>-1){delete a[i]._deleted;delete a[i]._deletedAt;await DB.set('suppliers',a);}
+  if(typeof renderSup==='function') renderSup();
+  if(typeof notif==='function') notif('Tedarikci geri yuklendi','s');
+};
+window.permanentDelSupplier = async function(id) {
+  if(!confirm('Bu tedarikciyi TAMAMEN silmek istiyor musun? (Geri alinamaz)')) return;
+  var a = await DB.get('suppliers') || [];
+  a = a.filter(function(x){return x.id!==id;});
+  await DB.set('suppliers', a);
+  if(typeof renderSup==='function') renderSup();
+  if(typeof notif==='function') notif('Tedarikci kalici silindi','d');
+};
+
+// Cop kutusu paneli render fonksiyonu - hem tedarikci hem siparis icin
+window.renderTrash = async function(type) {
+  var data = await DB.get(type) || [];
+  var deleted = data.filter(function(x){return x._deleted;});
+  var listId = type === 'suppliers' ? 'sup-trash-list' : 'ord-trash-list';
+  var el = document.getElementById(listId);
+  if(!el) return;
+  if(deleted.length === 0) {
+    el.innerHTML = '<div style="padding:20px;text-align:center;color:#7a8a98;font-size:11px">Cop kutusu bos</div>';
+    return;
+  }
+  el.innerHTML = deleted.map(function(d){
+    var label = type === 'suppliers' ? (d.name || d.firma || d.id) : (d.no || d.id);
+    var sub = type === 'suppliers' ? (d.country || '') : ((d.supplier || '') + ' • ' + (d.qty || 0) + 't');
+    var deletedAt = d._deletedAt ? new Date(d._deletedAt).toLocaleDateString('tr-TR') : '';
+    var restoreFn = type === 'suppliers' ? 'restoreSupplier' : 'restoreOrder';
+    var permDelFn = type === 'suppliers' ? 'permanentDelSupplier' : 'permanentDelOrder';
+    return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:11px">' +
+      '<div><div style="color:#cfd8e0;font-weight:600">' + label + '</div>' +
+      '<div style="color:#7a8a98;font-size:9px">' + sub + ' • Silindi: ' + deletedAt + '</div></div>' +
+      '<div style="display:flex;gap:6px">' +
+        '<button onclick="' + restoreFn + '(' + JSON.stringify(d.id) + ').then(()=>renderTrash(' + JSON.stringify(type) + '))" style="background:rgba(46,204,113,0.15);color:#2ecc71;border:1px solid rgba(46,204,113,0.3);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:10px">↩ Geri Al</button>' +
+        '<button onclick="' + permDelFn + '(' + JSON.stringify(d.id) + ').then(()=>renderTrash(' + JSON.stringify(type) + '))" style="background:rgba(231,76,60,0.15);color:#e74c3c;border:1px solid rgba(231,76,60,0.3);padding:4px 8px;border-radius:4px;cursor:pointer;font-size:10px">✕ Kalici Sil</button>' +
+      '</div></div>';
+  }).join('');
+};
+
+// Cop kutusu modal acma
+window.openTrash = function(type) {
+  var modalId = type + '-trash-modal';
+  var existing = document.getElementById(modalId);
+  if(existing) { existing.style.display='flex'; renderTrash(type); return; }
+  
+  var title = type === 'suppliers' ? 'Tedarikci Cop Kutusu' : 'Siparis Cop Kutusu';
+  var listId = type === 'suppliers' ? 'sup-trash-list' : 'ord-trash-list';
+  
+  var modal = document.createElement('div');
+  modal.id = modalId;
+  modal.style.cssText = 'display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center';
+  modal.innerHTML = '<div style="background:#0a0a0a;border:1px solid rgba(232,160,32,0.3);border-radius:8px;width:500px;max-width:95%;max-height:80vh;overflow:hidden;display:flex;flex-direction:column">' +
+    '<div style="padding:14px 18px;border-bottom:1px solid rgba(232,160,32,0.2);display:flex;justify-content:space-between;align-items:center">' +
+      '<div style="font-size:14px;font-weight:700;color:#e8e8e8">🗑 ' + title + '</div>' +
+      '<button onclick="document.getElementById(' + JSON.stringify(modalId) + ').style.display=&quot;none&quot;" style="background:none;border:none;color:#cfd8e0;font-size:18px;cursor:pointer">×</button>' +
+    '</div>' +
+    '<div id="' + listId + '" style="overflow-y:auto;flex:1;padding:6px"></div>' +
+  '</div>';
+  document.body.appendChild(modal);
+  renderTrash(type);
+};
+</script>
+<script>
+/* V70 - DB.get('orders') wrapper - silinenleri filtrele (eski kodu kirma diye opsiyonel) */
+(function(){
+  if(typeof DB === 'undefined' || !DB.get) return;
+  var origDbGet = DB.get;
+  DB.getActive = async function(table) {
+    var data = await origDbGet.call(DB, table);
+    if(!Array.isArray(data)) return data;
+    return data.filter(function(x){return !x._deleted;});
+  };
+  // DB.get artik aktif olanlari donduren default - opsiyonel parametre ile silinmisleri de getir
+  DB.getAll = async function(table) {
+    return await origDbGet.call(DB, table);
+  };
+})();
+</script>
+
+<script>
+/* V71 - Stage1 kartlarina Acik Siparisler + Nakit Pozisyon EKLE */
+(function(){
+  function fmtUsd(n){return '$' + Math.round(n||0).toLocaleString('tr-TR');}
+  
+  async function addExtraCards(){
+    var grid = document.getElementById('stage1-dashboard-cards');
+    if(!grid) return;
+    
+    // 5. ve 6. karti ekle - eger ekli degilse
+    if(document.getElementById('stage1-orders-card')) return;
+    
+    // GERCEK DATA cek
+    var orders = [], bank = [];
+    try{
+      orders = (await DB.get('orders') || []).filter(function(o){return !o._deleted;});
+      bank = (await DB.get('bank') || []).filter(function(b){return !b._deleted;});
+    }catch(e){}
+    
+    var openOrders = orders.filter(function(o){return o.status !== 'Teslim Alindi' && o.status !== 'Iptal Edildi';});
+    var openValue = openOrders.reduce(function(s,o){return s+(Number(o.qty)*Number(o.price)||0);}, 0);
+    var totUsd = 0, totTry = 0;
+    bank.forEach(function(b){
+      var amt = Number(b.balance||b.amount||0);
+      if(b.currency==='TRY'||b.currency==='TL') totTry+=amt;
+      else totUsd+=amt;
+    });
+    
+    // Card 5: Acik Siparisler
+    var card5 = document.createElement('div');
+    card5.id = 'stage1-orders-card';
+    card5.className = 'stage1-card';
+    card5.style.cssText = 'background:linear-gradient(135deg,#0a0a0a 0%,#000 100%);border:1px solid rgba(46,204,113,0.25);border-radius:8px;padding:14px;position:relative';
+    card5.innerHTML = 
+      '<div style="font-size:9.5px;color:#8a9ba8;text-transform:uppercase;letter-spacing:0.08em;font-weight:700">AÇIK SİPARİŞLER 🛒</div>' +
+      '<div style="font-size:9px;color:#5a6a7a;margin-bottom:8px">Tüm Siparişler</div>' +
+      '<div style="font-family:monospace;font-size:32px;font-weight:700;color:#2ecc71;line-height:1;margin-bottom:6px">' + openOrders.length + '</div>' +
+      '<div style="font-size:10px;color:#7a8a98">Toplam Değer</div>' +
+      '<div style="font-family:monospace;font-size:14px;color:#cfd8e0;font-weight:700">' + fmtUsd(openValue) + '</div>' +
+      '<div onclick="P(&quot;orders&quot;)" style="margin-top:8px;font-size:9.5px;color:#e8a020;cursor:pointer">Siparişleri Gör →</div>';
+    
+    // Card 6: Nakit Pozisyon
+    var pct = totUsd > 0 ? Math.min(99, Math.round((totUsd / 10000000) * 100)) : 0;
+    var card6 = document.createElement('div');
+    card6.id = 'stage1-cash-card';
+    card6.className = 'stage1-card';
+    card6.style.cssText = 'background:linear-gradient(135deg,#0a0a0a 0%,#000 100%);border:1px solid rgba(232,160,32,0.25);border-radius:8px;padding:14px;position:relative;overflow:hidden';
+    card6.innerHTML = 
+      '<div style="font-size:9.5px;color:#8a9ba8;text-transform:uppercase;letter-spacing:0.08em;font-weight:700">NAKİT POZİSYON 💰</div>' +
+      '<div style="font-size:9px;color:#5a6a7a;margin-bottom:8px">Toplam Nakit</div>' +
+      '<div style="font-family:monospace;font-size:14px;font-weight:700;color:#e8a020">' + fmtUsd(totUsd) + '</div>' +
+      '<div style="font-family:monospace;font-size:13px;color:#cfd8e0;margin-top:2px">₺' + Math.round(totTry).toLocaleString('tr-TR') + '</div>' +
+      '<div style="position:absolute;bottom:10px;right:10px;font-size:8.5px;color:#7a8a98;text-align:right">Toplam<br>Likidite</div>' +
+      '<svg viewBox="0 0 36 36" style="position:absolute;right:14px;bottom:38px;width:46px;height:46px">' +
+        '<circle cx="18" cy="18" r="14" fill="none" stroke="rgba(232,160,32,0.15)" stroke-width="3"/>' +
+        '<circle cx="18" cy="18" r="14" fill="none" stroke="#e8a020" stroke-width="3" stroke-dasharray="' + pct + ' 100" transform="rotate(-90 18 18)"/>' +
+        '<text x="18" y="20.5" text-anchor="middle" fill="#e8a020" font-size="9" font-weight="700">' + pct + '%</text>' +
+      '</svg>' +
+      '<div onclick="P(&quot;bank&quot;)" style="margin-top:18px;font-size:9.5px;color:#e8a020;cursor:pointer">Banka Görüntüle →</div>';
+    
+    grid.appendChild(card5);
+    grid.appendChild(card6);
+  }
+  
+  function init(){
+    setTimeout(addExtraCards, 1800);
+    // Yenile her 5 saniye
+    setInterval(addExtraCards, 5000);
+  }
+  
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script></body>
 </html>

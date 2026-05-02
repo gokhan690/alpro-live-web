@@ -1,0 +1,38 @@
+AlPro V6.9U-V3 - SIYAH TEMA + GORSEL PANELLER
+
+YENI: TAM SIYAH TEMA
+✓ Tum sayfa siyah arka plan (eski lacivert kayboldu)
+✓ Sol menu siyah
+✓ Tum kartlar siyah gradient + altin cerceve
+✓ Tablolar siyah
+✓ Modal'lar siyah
+✓ Mobil tabbar siyah
+✓ Inputlar siyah
+✓ Yazilar net (beyaz/altin/yesil/turuncu vurgular)
+
+ZATEN VAR (V6.9U + V70):
+✓ Premium ust arama header
+✓ Bugun Ne Yapmaliyim (saatler + kategori)
+✓ Mini grafik modal (Saatlik/Gunluk/Haftalik/Aylik)
+✓ Veri Koruma otomatik yedek
+✓ Kritik Uyarilar paneli
+✓ Haftalik Rapor + Bar Grafik
+✓ Hizli Eylem (6 buton)
+✓ V70 6 Premium kart sparkline'li (LME ALU/Bakir/Cinko/USD/Acik Sip 23/Nakit Pozisyon 74% donut)
+✓ Son Siparisler tablosu (5 demo)
+✓ Lojistik/ETA tablosu (5 demo BL)
+✓ Finans Ozeti + Aylik Ozet panelleri
+
+DUZELTILEN:
+✓ V58/V59 syntax hatasi
+✓ calc() null guard
+
+DEPLOY:
+1) ZIP'i indir, ic dosyalari GitHub repo ana dizinine koy
+2) Push -> Render otomatik deploy
+3) Hard refresh (Ctrl+Shift+R)
+4) Tum sayfa SIYAH gozukmesi gerekir
+
+TEKNIK:
+- 26 script, 0 hata
+- 593 KB

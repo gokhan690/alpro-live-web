@@ -601,6 +601,70 @@ table tr:hover {
 .dash-row:last-child {
   border-bottom: none;
 }
+
+/* === V70 GORSEL UYUMLU PREMIUM PANELS === */
+.v70-pcards{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:14px 0}
+@media(max-width:1300px){.v70-pcards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.v70-pcards{grid-template-columns:repeat(2,1fr)}}
+.v70-pc{background:linear-gradient(135deg,#0a1620,#0d1a26);border:1px solid rgba(232,160,32,0.18);border-radius:8px;padding:13px;position:relative;overflow:hidden;min-height:140px}
+.v70-pc:hover{border-color:rgba(232,160,32,0.5)}
+.v70-pcl{font-size:9.5px;color:#8a9ba8;text-transform:uppercase;letter-spacing:0.08em;font-weight:700}
+.v70-pcs{font-size:9px;color:#5a6a7a;margin-bottom:8px}
+.v70-pcv{font-family:'SF Mono',Menlo,monospace;font-size:21px;font-weight:700;letter-spacing:-0.5px;line-height:1.1;margin-bottom:3px}
+.v70-pcc{font-size:11px;font-family:monospace;color:#2ecc71;margin-bottom:4px}
+.v70-pcsp{width:100%;height:30px;display:block;margin-top:4px}
+.v70-donut{position:absolute;right:12px;bottom:12px;width:48px;height:48px}
+.v70-dgr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+@media(max-width:900px){.v70-dgr{grid-template-columns:1fr}}
+.v70-psec{background:linear-gradient(135deg,#0a1620,#0d1a26);border:1px solid rgba(232,160,32,0.15);border-radius:8px;overflow:hidden}
+.v70-psh{padding:12px 16px;border-bottom:1px solid rgba(232,160,32,0.12);display:flex;justify-content:space-between;align-items:center}
+.v70-pst{font-size:13px;font-weight:700;color:#e8e8e8}
+.v70-psb{padding:6px 16px}
+.v70-link{color:#e8a020;font-size:11px;cursor:pointer}
+.v70-tbl{width:100%;border-collapse:collapse;font-size:11px}
+.v70-tbl th{padding:9px 12px;text-align:left;color:#5a6a7a;font-size:9.5px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;background:rgba(0,0,0,0.2);border-bottom:1px solid rgba(232,160,32,0.1)}
+.v70-tbl td{padding:10px 12px;color:#cfd8e0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.v70-tbl tr:last-child td{border-bottom:none}
+.v70-bdg{font-size:9.5px;font-weight:700;padding:3px 9px;border-radius:10px}
+.v70-bdg-ok{background:rgba(46,204,113,0.15);color:#2ecc71}
+.v70-bdg-wt{background:rgba(243,156,18,0.15);color:#f39c12}
+.v70-bdg-pl{background:rgba(58,166,244,0.15);color:#3aa6f4}
+.v70-fr{display:flex;justify-content:space-between;align-items:center;padding:9px 0;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.v70-fr:last-child{border-bottom:none}
+.v70-fl{color:#9aa8b6}
+.v70-fv{font-family:monospace;font-weight:700;color:#e8e8e8}
+.v70-fv.gn{color:#2ecc71}
+.v70-fv.rd{color:#e74c3c}
+.v70-fd{font-size:10px;color:#2ecc71;margin-left:6px;font-weight:600}
+
+/* === V70 TAM SIYAH TEMA + ALTIN AKSAN === */
+body { background: #000 !important; }
+.app { background: #000 !important; }
+main, .main, section.content, #content { background: #000 !important; }
+aside.side, .side, nav.nav { background: #050505 !important; }
+.nav-cat { background: #0a0a0a !important; border: 1px solid rgba(232,160,32,0.25) !important; }
+.topbar, .v6-header, header.topbar { background: #000 !important; border-bottom: 1px solid rgba(232,160,32,0.2) !important; }
+.stage1-banner { background: linear-gradient(135deg, #0a0a0a 0%, #050505 100%) !important; border: 1px solid rgba(232,160,32,0.18) !important; }
+#stage1-dashboard-cards .stage1-card,
+#stage1-dashboard-cards > div { background: linear-gradient(135deg, #0a0a0a 0%, #000 100%) !important; border: 1px solid rgba(232,160,32,0.18) !important; }
+.sec, .psec { background: linear-gradient(135deg, #0a0a0a 0%, #000 100%) !important; border: 1px solid rgba(232,160,32,0.18) !important; }
+.v70-pc { background: linear-gradient(135deg, #0a0a0a 0%, #000 100%) !important; border: 1px solid rgba(232,160,32,0.18) !important; }
+.v70-psec { background: linear-gradient(135deg, #0a0a0a 0%, #000 100%) !important; border: 1px solid rgba(232,160,32,0.18) !important; }
+.v70-tbl th { background: rgba(0,0,0,0.6) !important; }
+.v67-daily-panel,
+#v69u-today-panel,
+#v69t-data-guard,
+.v69q-task-panel,
+.v69u-today-panel,
+[id*="data-guard"] { background: linear-gradient(135deg, #0a0a0a 0%, #000 100%) !important; border: 1px solid rgba(232,160,32,0.18) !important; }
+[class*="krit"], [id*="krit"] { background: linear-gradient(135deg, #0a0a0a 0%, #050505 100%) !important; }
+.dash-quick { background: linear-gradient(135deg, #0a0a0a 0%, #000 100%) !important; border: 1px solid rgba(232,160,32,0.18) !important; }
+.dash-quick > div, .dash-quick-item { background: rgba(0,0,0,0.5) !important; border: 1px solid rgba(232,160,32,0.15) !important; }
+.dash-quick > div:hover { border-color: #e8a020 !important; background: rgba(232,160,32,0.08) !important; }
+.dash-tables, [id*="dash-due"] { background: linear-gradient(135deg, #0a0a0a 0%, #000 100%) !important; }
+.modal, .modal-content { background: #050505 !important; }
+.mobile-tabbar, .mobile-top, .mobile-fab { background: #000 !important; }
+input, select, textarea { background: #0a0a0a !important; border: 1px solid rgba(232,160,32,0.2) !important; color: #e8e8e8 !important; }
 </style>
 
 <style id="v5-8833-refine-style">
@@ -5536,10 +5600,10 @@ function updateFreightRate(){
 // ===== GÜMRÜK MASRAF HESAP =====
 function gtipChange(){const rates={'7601.10.00':4,'7601.20.99':4,'7604.10.10':5,'7605.11.00':5};const sel=document.getElementById('gtip-sel').value.split(' ')[0];document.getElementById('gtip-rate').value=rates[sel]||4;calcCustoms()}
 function calcCustoms(){
-  const cif=Number(document.getElementById('cif-val').value)||0;
-  const rate=Number(document.getElementById('cif-rate').value)||38.2;
-  const qty=Number(document.getElementById('cif-qty').value)||1;
-  const gRate=Number(document.getElementById('gtip-rate').value)||4;
+  const cif=Number((document.getElementById('cif-val')||{}).value)||0;
+  const rate=Number((document.getElementById('cif-rate')||{}).value)||38.2;
+  const qty=Number((document.getElementById('cif-qty')||{}).value)||1;
+  const gRate=Number((document.getElementById('gtip-rate')||{}).value)||4;
   const cifTRY=cif*rate;
   const gv=cifTRY*(gRate/100);
   const mat=cifTRY+gv;
@@ -7307,7 +7371,7 @@ async function renderIncome(){
 }
 
 function calc(){
-  const lme=Number(document.getElementById('c-lme').value)||0,pre=Number(document.getElementById('c-pre').value)||0,qty=Number(document.getElementById('c-qty').value)||0,rate=Number(document.getElementById('c-rate').value)||38.2,frt=Number(document.getElementById('c-frt').value)||0,ins=Number(document.getElementById('c-ins').value)||0,cus=Number(document.getElementById('c-cus').value)||4,sto=Number(document.getElementById('c-sto').value)||0,sel=Number(document.getElementById('c-sel').value)||0;
+  const lme=Number((document.getElementById('c-lme')||{}).value)||0,pre=Number((document.getElementById('c-pre')||{}).value)||0,qty=Number((document.getElementById('c-qty')||{}).value)||0,rate=Number((document.getElementById('c-rate')||{}).value)||38.2,frt=Number((document.getElementById('c-frt')||{}).value)||0,ins=Number((document.getElementById('c-ins')||{}).value)||0,cus=Number((document.getElementById('c-cus')||{}).value)||4,sto=Number((document.getElementById('c-sto')||{}).value)||0,sel=Number((document.getElementById('c-sel')||{}).value)||0;
   const buy=(lme+pre)*qty,cif=buy+frt*qty+ins*qty,cusFee=cif*(cus/100),kdv=(cif+cusFee)*0.20,cost=(cif+cusFee+kdv)*rate+sto*qty,cton=qty>0?cost/qty:0,rev=sel*qty*rate,prf=rev-cost,mrg=rev>0?(prf/rev)*100:0;
   document.getElementById('r-buy').textContent=fU(buy)+' → '+fT(buy*rate);
   document.getElementById('r-frt').textContent=fU(frt*qty);
@@ -9019,9 +9083,9 @@ const oldP=window.P;window.P=function(id){oldP(id);if(id==='v5-mobile')detect();
     const nav=document.querySelector('.nav'); if(!nav || document.getElementById('v58-nav')) return;
     let holder=document.createElement('div');
     holder.id='v58-nav';
-    holder.innerHTML='<div class="ns">Ortak</div><div class="ni" onclick="P(\\'v58-shared\\')"><span class="ic">👥</span><span>Search + Mobile Safe Fix</span></div>';
+    holder.innerHTML='<div class="ns">Ortak</div><div class="ni" onclick="P(&#39;v58-shared&#39;)"><span class="ic">👥</span><span>Ortak Kullanım</span></div>';
     nav.appendChild(holder);
-    if(window.ptitles) ptitles['v58-shared']='Search + Mobile Safe Fix';
+    if(window.ptitles) ptitles['v58-shared']='Ortak Kullanım';
   }
   const oldP=window.P;
   if(typeof oldP==='function' && !oldP._v58Wrapped){
@@ -9057,9 +9121,9 @@ function addNav(){
   if(!nav||document.getElementById('v59-nav'))return;
   const d=document.createElement('div');
   d.id='v59-nav';
-  d.innerHTML='<div class="ns">Cloud</div><div class="ni" onclick="P(\\'v59-supabase\\')"><span class="ic">☁️</span><span>Search + Mobile Safe Fix</span></div>';
+  d.innerHTML='<div class="ns">Cloud</div><div class="ni" onclick="P(&#39;v59-supabase&#39;)"><span class="ic">☁️</span><span>Supabase Cloud</span></div>';
   nav.appendChild(d);
-  if(window.ptitles) ptitles['v59-supabase']='Search + Mobile Safe Fix';
+  if(window.ptitles) ptitles['v59-supabase']='Supabase Cloud';
 }
 const oldP=window.P;
 if(typeof oldP==='function'&&!oldP._v59Wrapped){const w=function(id){oldP(id);if(id==='v59-supabase')setTimeout(v59TestSupabase,80)};w._v59Wrapped=true;window.P=w;}
@@ -11262,5 +11326,121 @@ const oldP=window.P;if(typeof oldP==='function'&&!oldP._v69tWrapped){const w=fun
 })();
 </script>
 
+
+<script>
+/* V70 Premium Mockup Widgets - dashboard'a otomatik ekle */
+(function(){
+  var V70_WIDGETS_HTML = `
+<div class="v70-pcards">
+  <div class="v70-pc"><div class="v70-pcl">LME ALÜMİNYUM</div><div class="v70-pcs">3M Cash · USD/MT</div><div class="v70-pcv" style="color:#e8a020" id="v70-alu">2.552,00</div><div class="v70-pcc">+18,50 (+0,73%)</div><svg class="v70-pcsp" id="v70-sp-alu" viewBox="0 0 200 30" preserveAspectRatio="none"></svg></div>
+  <div class="v70-pc"><div class="v70-pcl">BAKIR KATOT</div><div class="v70-pcs">3M Cash · USD/MT</div><div class="v70-pcv" style="color:#d97706" id="v70-cop">10.045,50</div><div class="v70-pcc">+65,00 (+0,65%)</div><svg class="v70-pcsp" id="v70-sp-cop" viewBox="0 0 200 30" preserveAspectRatio="none"></svg></div>
+  <div class="v70-pc"><div class="v70-pcl">ÇİNKO</div><div class="v70-pcs">3M Cash · USD/MT</div><div class="v70-pcv" style="color:#bbb" id="v70-zin">2.936,00</div><div class="v70-pcc">+22,00 (+0,76%)</div><svg class="v70-pcsp" id="v70-sp-zin" viewBox="0 0 200 30" preserveAspectRatio="none"></svg></div>
+  <div class="v70-pc"><div class="v70-pcl">USD / TRY</div><div class="v70-pcs">Spot</div><div class="v70-pcv" style="color:#3aa6f4" id="v70-fx">32,4287</div><div class="v70-pcc">+0,0590 (+0,18%)</div><svg class="v70-pcsp" id="v70-sp-fx" viewBox="0 0 200 30" preserveAspectRatio="none"></svg></div>
+  <div class="v70-pc"><div class="v70-pcl">AÇIK SİPARİŞLER 🛒</div><div class="v70-pcs">Tüm Siparişler</div><div class="v70-pcv" style="color:#2ecc71" id="v70-orders">23</div><div class="v70-pcc" style="color:#7a8a98">Toplam Değer<br><span style="color:#cfd8e0" id="v70-orders-tot">USD 18.750.250</span></div></div>
+  <div class="v70-pc"><div class="v70-pcl">NAKİT POZİSYON</div><div class="v70-pcs">Toplam Nakit</div><div class="v70-pcv" style="color:#e8a020;font-size:14px" id="v70-cash-usd">USD 5.842.310</div><div class="v70-pcv" style="color:#cfd8e0;font-size:13px;margin-top:2px" id="v70-cash-try">TRY 189.654.210</div><div style="position:absolute;bottom:8px;right:10px;font-size:9px;color:#7a8a98;text-align:right">Kullanılabilir<br>Kredi Oranı</div><svg class="v70-donut" viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" fill="none" stroke="rgba(232,160,32,0.15)" stroke-width="3"/><circle cx="18" cy="18" r="14" fill="none" stroke="#e8a020" stroke-width="3" stroke-dasharray="65 100" transform="rotate(-90 18 18)"/><text x="18" y="20.5" text-anchor="middle" fill="#e8a020" font-size="9" font-weight="700">74%</text></svg></div>
+</div>
+<div class="v70-dgr">
+  <div class="v70-psec"><div class="v70-psh"><div class="v70-pst">📦 Son Siparişler</div><span class="v70-link" onclick="if(typeof P===&#39;function&#39;)P(&#39;orders&#39;)">Tümünü Gör</span></div><table class="v70-tbl"><thead><tr><th>No</th><th>Müşteri</th><th>Ürün</th><th>Miktar</th><th>Durum</th></tr></thead><tbody>
+    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240524-101</td><td>ABC Metal</td><td>Aluminium</td><td>1.250 MT</td><td><span class="v70-bdg v70-bdg-ok">Onaylandı</span></td></tr>
+    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240521-056</td><td>Global Alloys</td><td>Copper</td><td>800 MT</td><td><span class="v70-bdg v70-bdg-wt">Beklemede</span></td></tr>
+    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240523-099</td><td>Metal Trade</td><td>Zinc</td><td>1.100 MT</td><td><span class="v70-bdg v70-bdg-ok">Onaylandı</span></td></tr>
+    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240523-098</td><td>XYZ Trading</td><td>Aluminium</td><td>600 MT</td><td><span class="v70-bdg v70-bdg-pl">Hazırlanıyor</span></td></tr>
+    <tr><td style="font-family:monospace;color:#3aa6f4">SO-240523-097</td><td>Iron & Co.</td><td>Copper</td><td>950 MT</td><td><span class="v70-bdg v70-bdg-ok">Onaylandı</span></td></tr>
+  </tbody></table></div>
+  <div class="v70-psec"><div class="v70-psh"><div class="v70-pst">🚢 Lojistik / ETA</div><span class="v70-link" onclick="if(typeof P===&#39;function&#39;)P(&#39;freight&#39;)">Tümünü Gör</span></div><table class="v70-tbl"><thead><tr><th>BL</th><th>Liman</th><th>ETA</th><th>Durum</th></tr></thead><tbody>
+    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240521-101</td><td>Hamburg → Mersin</td><td>26 May</td><td><span class="v70-bdg v70-bdg-wt">Yolda</span></td></tr>
+    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240519-055</td><td>Rotterdam → İzmir</td><td>28 May</td><td><span class="v70-bdg v70-bdg-wt">Yolda</span></td></tr>
+    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240518-054</td><td>Antwerp → Gebze</td><td>30 May</td><td><span class="v70-bdg v70-bdg-pl">Planlandı</span></td></tr>
+    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240517-053</td><td>Singapore → Mersin</td><td>05 Haz</td><td><span class="v70-bdg v70-bdg-pl">Planlandı</span></td></tr>
+    <tr><td style="font-family:monospace;color:#3aa6f4">BL-240516-052</td><td>Houston → Aliağa</td><td>08 Haz</td><td><span class="v70-bdg v70-bdg-pl">Planlandı</span></td></tr>
+  </tbody></table></div>
+</div>
+<div class="v70-dgr">
+  <div class="v70-psec"><div class="v70-psh"><div class="v70-pst">🏦 Finans Özeti</div></div><div class="v70-psb">
+    <div class="v70-fr"><span class="v70-fl">Toplam Nakit (USD)</span><span class="v70-fv gn">5.842.310</span></div>
+    <div class="v70-fr"><span class="v70-fl">Toplam Nakit (TRY)</span><span class="v70-fv gn">189.654.210</span></div>
+    <div class="v70-fr"><span class="v70-fl">Açık Alacaklar</span><span class="v70-fv" style="color:#e8a020">3.245.780</span></div>
+    <div class="v70-fr"><span class="v70-fl">Açık Borçlar</span><span class="v70-fv rd">2.105.420</span></div>
+    <div class="v70-fr"><span class="v70-fl">Bu Ay Kar (USD)</span><span class="v70-fv gn">742.150</span></div>
+    <div class="v70-fr"><span class="v70-fl">Kâr Marjı</span><span class="v70-fv">3,62%</span></div>
+  </div></div>
+  <div class="v70-psec"><div class="v70-psh"><div class="v70-pst">📊 Aylık Özet</div></div><div class="v70-psb">
+    <div class="v70-fr"><span class="v70-fl">Toplam Ciro (USD)</span><span><span class="v70-fv">12.450.000</span><span class="v70-fd">+14,2%</span></span></div>
+    <div class="v70-fr"><span class="v70-fl">Toplam Kâr (USD)</span><span><span class="v70-fv gn">498.750</span><span class="v70-fd">+8,7%</span></span></div>
+    <div class="v70-fr"><span class="v70-fl">Ort. Kâr Marjı</span><span><span class="v70-fv">4,01%</span><span class="v70-fd">+0,6%</span></span></div>
+    <div class="v70-fr"><span class="v70-fl">Toplam Sevkiyat</span><span class="v70-fv">8 BL · 6.450 MT</span></div>
+    <div class="v70-fr"><span class="v70-fl">Aktif Müşteri</span><span class="v70-fv">12 firma</span></div>
+    <div class="v70-fr"><span class="v70-fl">Tedarikçi Skoru</span><span class="v70-fv gn">A+ (95/100)</span></div>
+  </div></div>
+</div>
+`;
+  
+  function v70Sp(id, d, c){
+    var v = document.getElementById(id);
+    if(!v) return;
+    var mn = Math.min.apply(null, d), mx = Math.max.apply(null, d), r = mx-mn || 1;
+    var pts = d.map(function(p, i){return (i/(d.length-1))*200 + ',' + (28 - ((p-mn)/r)*22);}).join(' ');
+    v.innerHTML = '<polyline points="'+pts+'" fill="none" stroke="'+c+'" stroke-width="1.5"/>' +
+                  '<polygon points="0,30 '+pts+' 200,30" fill="'+c+'" opacity="0.15"/>';
+  }
+  
+  function v70Render(){
+    var dash = document.getElementById('page-dashboard');
+    if(!dash) return;
+    
+    // Zaten varsa kaldir, yeniden ekle
+    var old = document.getElementById('v70-mockup-widgets');
+    if(old) old.remove();
+    
+    var w = document.createElement('div');
+    w.id = 'v70-mockup-widgets';
+    w.innerHTML = V70_WIDGETS_HTML;
+    
+    // Stage1 cards'in altina yerlestir
+    var stage1Cards = document.getElementById('stage1-dashboard-cards');
+    if(stage1Cards && stage1Cards.parentNode === dash){
+      stage1Cards.parentNode.insertBefore(w, stage1Cards.nextSibling);
+    } else {
+      // Bulunamadiysa basa
+      dash.insertBefore(w, dash.firstChild);
+    }
+    
+    // Sparkline ciz
+    var alu = (window.LIVE_LME_PRICES && LIVE_LME_PRICES.ALU) || 2552;
+    var cop = (window.LIVE_LME_PRICES && LIVE_LME_PRICES.COP) || 10045.5;
+    var zin = (window.LIVE_LME_PRICES && LIVE_LME_PRICES.ZIN) || 2936;
+    var fx = parseFloat(localStorage.getItem('usdtry')) || 32.4287;
+    
+    v70Sp('v70-sp-alu', [alu*0.99, alu*0.995, alu*1.0, alu*1.002, alu*1.001, alu*1.005, alu], '#e8a020');
+    v70Sp('v70-sp-cop', [cop*0.99, cop*0.995, cop*1.0, cop*1.002, cop*1.001, cop*1.005, cop], '#d97706');
+    v70Sp('v70-sp-zin', [zin*0.99, zin*0.995, zin*1.0, zin*1.002, zin*1.001, zin*1.005, zin], '#bbb');
+    v70Sp('v70-sp-fx', [fx*0.998, fx*0.999, fx*1.0, fx*1.001, fx*1.0, fx*1.001, fx], '#3aa6f4');
+    
+    // Canli fiyat varsa kart degerlerini guncelle
+    var nf = function(n, d){return Number(n).toLocaleString('tr-TR', {minimumFractionDigits: d||2, maximumFractionDigits: d||2});};
+    var aluE = document.getElementById('v70-alu'); if(aluE) aluE.textContent = nf(alu);
+    var copE = document.getElementById('v70-cop'); if(copE) copE.textContent = nf(cop);
+    var zinE = document.getElementById('v70-zin'); if(zinE) zinE.textContent = nf(zin);
+    var fxE = document.getElementById('v70-fx'); if(fxE) fxE.textContent = nf(fx, 4);
+  }
+  
+  // Sayfa yuklenince calistir
+  function init(){
+    v70Render();
+    // Sayfa degisimlerinde de calistir (P() fonksiyonu page-dashboard'i yeniden render edebilir)
+    setInterval(function(){
+      if(!document.getElementById('v70-mockup-widgets') && document.getElementById('page-dashboard')){
+        v70Render();
+      }
+    }, 2000);
+  }
+  
+  if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){setTimeout(init, 1000);});
+  } else {
+    setTimeout(init, 1000);
+  }
+})();
+</script>
 </body>
 </html>

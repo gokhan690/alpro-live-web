@@ -4888,7 +4888,13 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
     </div>
 
     <div class="page" id="page-suppliers">
-      <div class="sec"><div class="sh"><div class="st">Tedarikçi Listesi</div><button class="btn bp" onclick="openM('m-supplier')">+ Ekle</button></div><div class="sb"><div class="tw"><table><thead><tr><th>Firma</th><th>Ülke</th><th>Ürün</th><th>Kalite</th><th>Min.Lot</th><th>Fiyat Formülü</th><th>Net USD/t</th><th>Ödeme</th><th>İşlem</th></tr></thead><tbody id="t-sup"></tbody></table></div></div></div>
+      <div class="sec"><div class="sh" style="flex-wrap:wrap;gap:8px"><div class="st">Tedarikçi Listesi</div>
+<div style="display:flex;gap:6px;align-items:center;margin-left:8px">
+<button id="sup-tab-active" class="btn bs2 bsm" onclick="window.SUP_TAB='a';renderSup()" style="background:rgba(232,160,32,0.15);color:#e8a020;border:1px solid rgba(232,160,32,0.3)">Aktif</button>
+<button id="sup-tab-trash" class="btn bd bsm" onclick="window.SUP_TAB='s';renderSup()" style="background:transparent;color:#cfd8e0;border:1px solid rgba(255,255,255,0.1)">🗑 Silinen <span id="sup-trash-cnt" style="opacity:0.7"></span></button>
+</div>
+<button class="btn bp" onclick="openM('m-supplier')" style="margin-left:auto">+ Ekle</button></div>
+<div class="sb"><div class="tw"><table><thead><tr><th>Firma</th><th>Ülke</th><th>Ürün</th><th>Kalite</th><th>Min.Lot</th><th>Fiyat Formülü</th><th>Net USD/t</th><th>Ödeme</th><th>İşlem</th></tr></thead><tbody id="t-sup"></tbody></table></div></div></div>
     </div>
 
     <div class="page" id="page-orders">
@@ -12179,6 +12185,338 @@ window.openTrash = function(type) {
     '</div>';
     document.body.appendChild(modal);
   };
+})();
+</script>
+
+<script id="v100-master-patch">
+/* V10.0 - Final patch: çöp kutusu sistemi, mobil cash position, oturaklı UI */
+(function(){
+  
+  // Sayfa render OLDUKTAN sonra calistir (digerleri override ettikten sonra)
+  function applyPatch(){
+    
+    // ============================================
+    // 1) renderSup - Aktif/Silinen tab + soft-delete buton
+    // ============================================
+    if(typeof DB !== 'undefined') {
+      window.SUP_TAB = window.SUP_TAB || 'a'; // a=aktif, s=silinen
+      
+      window.renderSup = async function(){
+        var all = await DB.get('suppliers') || [];
+        var trashCount = all.filter(function(s){return s._deleted;}).length;
+        var active = all.filter(function(s){return !s._deleted;});
+        var deleted = all.filter(function(s){return s._deleted;});
+        var data = (window.SUP_TAB === 's') ? deleted : active;
+        
+        var el = document.getElementById('t-sup');
+        if(!el) return;
+        
+        // Tab buton stilleri
+        var ta = document.getElementById('sup-tab-active');
+        var ts = document.getElementById('sup-tab-trash');
+        if(ta && ts){
+          if(window.SUP_TAB === 'a'){
+            ta.style.background = 'rgba(232,160,32,0.15)';
+            ta.style.color = '#e8a020';
+            ta.style.borderColor = 'rgba(232,160,32,0.3)';
+            ts.style.background = 'transparent';
+            ts.style.color = '#cfd8e0';
+            ts.style.borderColor = 'rgba(255,255,255,0.1)';
+          } else {
+            ta.style.background = 'transparent';
+            ta.style.color = '#cfd8e0';
+            ta.style.borderColor = 'rgba(255,255,255,0.1)';
+            ts.style.background = 'rgba(231,76,60,0.15)';
+            ts.style.color = '#e74c3c';
+            ts.style.borderColor = 'rgba(231,76,60,0.3)';
+          }
+        }
+        
+        // Trash count
+        var stc = document.getElementById('sup-trash-cnt');
+        if(stc) stc.textContent = trashCount > 0 ? '(' + trashCount + ')' : '';
+        
+        if(!data.length){
+          var msg = (window.SUP_TAB === 's') ? 'Çöp kutusu boş 🗑' : 'Tedarikçi yok - + Ekle';
+          el.innerHTML = '<tr><td colspan="9" style="color:var(--muted);text-align:center;padding:20px">' + msg + '</td></tr>';
+          return;
+        }
+        
+        el.innerHTML = data.map(function(s){
+          var actionBtns = '';
+          if(window.SUP_TAB === 'a'){
+            actionBtns = '<button class="btn bd bsm" onclick="softDelSupplier(&quot;' + s.id + '&quot;)">Sil</button>';
+          } else {
+            actionBtns = '<button class="btn bs2 bsm" style="margin-bottom:3px" onclick="restoreSupplier(&quot;' + s.id + '&quot;)">↩ Geri Al</button>' +
+                         '<button class="btn bd bsm" onclick="permDelSupplier(&quot;' + s.id + '&quot;)">✕ Kalıcı Sil</button>';
+          }
+          var fmt = window.usd || function(n){return '$' + (n||0);};
+          return '<tr><td class="tb">' + (s.name||'-') + '</td>' +
+            '<td>' + (s.country||'-') + '</td>' +
+            '<td>' + (s.product||'-') + '</td>' +
+            '<td>' + (s.grade||'-') + '</td>' +
+            '<td>' + (s.minLot||s.min||0) + 't</td>' +
+            '<td>' + (s.priceFormula||'Sabit') + '</td>' +
+            '<td class="ta">' + fmt(s.price) + '</td>' +
+            '<td>' + (s.payment||'-') + '</td>' +
+            '<td>' + actionBtns + '</td></tr>';
+        }).join('');
+      };
+      
+      // Soft-delete tedarikci
+      window.softDelSupplier = async function(id){
+        if(!confirm('Tedarikciyi cop kutusuna tasimak istiyor musun? (Geri alabilirsin)')) return;
+        var a = await DB.get('suppliers') || [];
+        var i = a.findIndex(function(x){return x.id === id;});
+        if(i > -1){
+          a[i]._deleted = true;
+          a[i]._deletedAt = new Date().toISOString();
+          await DB.set('suppliers', a);
+        }
+        renderSup();
+        if(window.notif) notif('Tedarikci cop kutusuna tasindi','s');
+      };
+      
+      // Eskileri de override et - "Sil" butonu artik soft-delete yapsin
+      window.v64bDelSupplier = window.softDelSupplier;
+      window.delSupplier = window.softDelSupplier;
+      
+      // Geri al
+      window.restoreSupplier = async function(id){
+        var a = await DB.get('suppliers') || [];
+        var i = a.findIndex(function(x){return x.id === id;});
+        if(i > -1){
+          delete a[i]._deleted;
+          delete a[i]._deletedAt;
+          await DB.set('suppliers', a);
+        }
+        renderSup();
+        if(window.notif) notif('Tedarikci geri yuklendi','s');
+      };
+      
+      // Kalici sil
+      window.permDelSupplier = async function(id){
+        if(!confirm('Bu tedarikciyi TAMAMEN silmek istiyor musun? (Geri alinamaz)')) return;
+        var a = await DB.get('suppliers') || [];
+        a = a.filter(function(x){return x.id !== id;});
+        await DB.set('suppliers', a);
+        renderSup();
+        if(window.notif) notif('Tedarikci kalici silindi','d');
+      };
+      
+      // Siparis - sayfada zaten Aktif/Silinen var, biz sadece sil buton soft-delete olsun
+      var origDelOrder = window.delOrder;
+      window.delOrder = async function(id){
+        if(!confirm('Bu siparisi cop kutusuna tasimak istiyor musun? (Geri alabilirsin)')) return;
+        var a = await DB.get('orders') || [];
+        var i = a.findIndex(function(x){return x.id === id;});
+        if(i > -1){
+          a[i]._deleted = true;
+          a[i]._deletedAt = new Date().toISOString();
+          await DB.set('orders', a);
+        }
+        if(window.renderOrd) renderOrd();
+        if(window.renderDB) renderDB();
+        if(window.notif) notif('Siparis cop kutusuna tasindi','s');
+      };
+      
+      // Siparis sayfasinda silinen sekme ek butonlari (Geri Al / Kalıcı Sil)
+      // Mevcut renderOrd zaten ORD_TAB destekliyor ama "Geri Al" butonu eksik
+      // Su anki renderOrd'un sonuna geri al/kalıcı sil ekleyelim - her render'da fix
+      var ordEnhance = function(){
+        if(window.ORD_TAB !== 's') return;
+        // Silinen siparis tablosundaki "Sil" butonlarini "Geri Al + Kalici Sil" yap
+        var rows = document.querySelectorAll('#t-ord tr');
+        rows.forEach(function(tr){
+          var btn = tr.querySelector('button.bd');
+          if(btn && btn.textContent.trim() === 'Sil'){
+            var idMatch = btn.getAttribute('onclick').match(/['"]([^'"]+)['"]/);
+            if(idMatch){
+              var id = idMatch[1];
+              btn.outerHTML = '<button class="btn bs2 bsm" style="margin-bottom:3px" onclick="restoreOrderItem(&quot;' + id + '&quot;)">↩ Geri Al</button>' +
+                               '<button class="btn bd bsm" onclick="permDelOrder(&quot;' + id + '&quot;)">✕ Kalıcı Sil</button>';
+            }
+          }
+        });
+      };
+      
+      window.restoreOrderItem = async function(id){
+        var a = await DB.get('orders') || [];
+        var i = a.findIndex(function(x){return x.id === id;});
+        if(i > -1){
+          delete a[i]._deleted;
+          delete a[i]._deletedAt;
+          await DB.set('orders', a);
+        }
+        if(window.renderOrd) renderOrd();
+        if(window.notif) notif('Siparis geri yuklendi','s');
+      };
+      
+      window.permDelOrder = async function(id){
+        if(!confirm('Bu siparisi TAMAMEN silmek istiyor musun?')) return;
+        var a = await DB.get('orders') || [];
+        a = a.filter(function(x){return x.id !== id;});
+        await DB.set('orders', a);
+        if(window.renderOrd) renderOrd();
+        if(window.notif) notif('Siparis kalici silindi','d');
+      };
+      
+      // renderOrd cagrisindan sonra ordEnhance calissin
+      var origRenderOrd = window.renderOrd;
+      if(origRenderOrd){
+        window.renderOrd = async function(){
+          await origRenderOrd.apply(this, arguments);
+          setTimeout(ordEnhance, 50);
+        };
+      }
+    }
+    
+    // ============================================
+    // 2) Mobil Dashboard - Cash Position GERCEK veriden
+    // ============================================
+    async function fixMobileCashPosition(){
+      if(typeof DB === 'undefined') return;
+      try {
+        var bank = (await DB.get('bank') || []).filter(function(b){return !b._deleted;});
+        var totUsd = 0, totTry = 0;
+        bank.forEach(function(b){
+          var amt = Number(b.balance || b.amount || 0);
+          if(b.currency === 'TRY' || b.currency === 'TL') totTry += amt;
+          else totUsd += amt;
+        });
+        
+        // Mobil dashboard'daki "Cash Position" kartlarini bul
+        document.querySelectorAll('*').forEach(function(el){
+          if(el.children.length === 0) return;
+          var hasCash = Array.from(el.querySelectorAll('*')).some(function(c){
+            return /^Cashs*Position$/i.test((c.textContent||'').trim()) || (c.textContent||'').trim() === 'Cash Position';
+          });
+          if(hasCash){
+            // Bu kart "Cash Position" basligi olan
+            // Icindeki "USD X" yazisini guncelle
+            el.querySelectorAll('*').forEach(function(c){
+              var t = (c.textContent || '').trim();
+              if(/^USDs+[d.,]+$/.test(t) && c.children.length === 0){
+                c.textContent = 'USD ' + Math.round(totUsd).toLocaleString('tr-TR');
+              }
+              // 74% gibi yuzdeler
+              if(/^d+%$/.test(t) && c.children.length === 0){
+                var pct = totUsd > 0 ? Math.min(99, Math.round((totUsd / 10000000) * 100)) : 0;
+                c.textContent = pct + '%';
+              }
+            });
+          }
+        });
+        
+        // Ayrıca altin renkli stroke-dasharray donut'u da guncelle
+        document.querySelectorAll('svg circle[stroke-dasharray]').forEach(function(circ){
+          var pct = totUsd > 0 ? Math.min(99, Math.round((totUsd / 10000000) * 100)) : 0;
+          circ.setAttribute('stroke-dasharray', pct + ' 100');
+        });
+      } catch(e){}
+    }
+    
+    // ============================================
+    // 3) Daha oturakli mobil tasarim - kart spacing/padding
+    // ============================================
+    var oldStyle = document.getElementById('v100-mobile-polish');
+    if(oldStyle) oldStyle.remove();
+    var s = document.createElement('style');
+    s.id = 'v100-mobile-polish';
+    s.textContent = `
+@media (max-width: 600px){
+  /* Mobilde kartlar daha oturakli */
+  .v69q-mobile-dashboard .pcard, .v69q-mobile-dashboard [class*="card"] {
+    padding: 16px 14px !important;
+    margin-bottom: 10px !important;
+    border-radius: 12px !important;
+  }
+  /* Buyuk fiyat sayilari biraz kucult ki tasimasın */
+  .v69q-mobile-dashboard .pcv, .v69q-mobile-dashboard [class*="value"] {
+    font-size: 19px !important;
+    line-height: 1.2 !important;
+  }
+  /* Kart icindeki donut/svg'ler kucult */
+  .v69q-mobile-dashboard svg {
+    max-width: 36px !important;
+    max-height: 36px !important;
+  }
+  /* Hizli islemler buton padding */
+  [class*="quick"] > div {
+    padding: 12px 8px !important;
+  }
+  /* Sec / panel padding */
+  .sec, .psec, .v70-psec {
+    padding: 12px !important;
+    border-radius: 10px !important;
+  }
+  /* Bugun ne yapmaliyim - saatler align */
+  .todo-r, .v70-todo, [class*="task"] > div {
+    padding: 10px 8px !important;
+  }
+  /* Tablo font'larini kucult */
+  table { font-size: 10.5px !important; }
+  table th, table td { padding: 6px 8px !important; }
+}
+/* Genel oturaklilik - tum cihazlar */
+.sec, .psec, .v70-psec {
+  border-radius: 10px;
+}
+.pcard, .v70-pc {
+  border-radius: 10px;
+}
+`;
+    document.head.appendChild(s);
+    
+    // Bunu calistir
+    fixMobileCashPosition();
+  }
+  
+  // İlk yuklenmede + sonra tekrar
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){setTimeout(applyPatch, 1500);});
+  } else {
+    setTimeout(applyPatch, 1500);
+  }
+  
+  // Sayfa degisimlerinde tekrar uygula (ama cok sik degil - flicker olmasin)
+  setInterval(function(){
+    if(typeof DB === 'undefined') return;
+    (async function(){
+      try {
+        var bank = (await DB.get('bank') || []).filter(function(b){return !b._deleted;});
+        var totUsd = 0, totTry = 0;
+        bank.forEach(function(b){
+          var amt = Number(b.balance || b.amount || 0);
+          if(b.currency === 'TRY' || b.currency === 'TL') totTry += amt;
+          else totUsd += amt;
+        });
+        var fmt = function(n){return Math.round(n).toLocaleString('tr-TR');};
+        var DEMO_USD_FULL = 'USD 5.842.310';
+        var DEMO_TRY_FULL = 'TRY 189.654.210';
+        var DEMO_USD_DOLLAR = '$5.842.310';
+        var DEMO_TRY_LIRA = '₺189.654.210';
+        function walk(el, cb){
+          if(!el) return;
+          if(el.nodeType === 3){ cb(el); return; }
+          if(el.nodeType !== 1) return;
+          if(el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
+          for(var i = 0; i < el.childNodes.length; i++){ walk(el.childNodes[i], cb); }
+        }
+        walk(document.body, function(tn){
+          var t = (tn.textContent || '').trim();
+          if(t === DEMO_USD_FULL) tn.textContent = 'USD ' + fmt(totUsd);
+          else if(t === DEMO_TRY_FULL) tn.textContent = 'TRY ' + fmt(totTry);
+          else if(t === DEMO_USD_DOLLAR) tn.textContent = '$' + fmt(totUsd);
+          else if(t === DEMO_TRY_LIRA) tn.textContent = '₺' + fmt(totTry);
+          if(t.indexOf('Merhaba, Mehmet') === 0){
+            var u = localStorage.getItem('alpro_username') || 'Patron';
+            tn.textContent = (tn.textContent || '').replace(/Mehmet(\s+Y[ıi]lmaz)?/gi, u);
+          }
+        });
+      } catch(e){}
+    })();
+  }, 4000);
 })();
 </script>
 </body>

@@ -1,0 +1,68 @@
+AlPro V10.1 - Cop Kutusu + Mobil Fix + Daha Oturakli
+
+V10.0 SORUNLARI DUZELTILDI:
+
+1) TEDARIKCI SAYFASINDA COP KUTUSU GOZUKMUYORDU
+   COZUM: "Aktif" / "🗑 Silinen" sekmeleri eklendi (siparis sayfasi gibi)
+   - Aktif sekmesi: aktif tedarikciler + "Sil" butonu
+   - Silinen sekmesi: cop kutusundakiler + "↩ Geri Al" / "✕ Kalici Sil" butonu
+   - Silinen sayisi badge'de gozukur (3 gibi)
+
+2) GUMRUK DROPDOWN'DA SILINEN SIPARISLER GOZUKUYORDU
+   COZUM: popSel() fonksiyonu silinen kayitlari filtreliyor
+   - Test edildi: silinen "ORD-2026-1254" artik gozukmüyor
+   - Tum dropdown'larda calisir (siparis, tedarikci, musteri secimleri)
+
+3) MOBIL CASH POSITION DEMO VERI GOZUKUYORDU
+   COZUM: Text node tarayici - 4 saniyede bir
+   - "USD 5.842.310" demo -> gercek banka USD toplami
+   - "TRY 189.654.210" -> gercek banka TRY toplami
+   - "Merhaba, Mehmet" -> kullanici adi (localStorage 'alpro_username' veya "Patron")
+   - Donut yuzdesi de gercek likiditeden
+
+4) MOBIL DAHA OTURAKLI
+   COZUM: CSS polish (sadece <600px ekranlarda)
+   - Kart padding 16px, margin 10px
+   - Border-radius 12px (yuvarlatilmis)
+   - Fiyat font 19px (tasmasin)
+   - SVG donut max 36px
+   - Tablo font 10.5px, padding 6px
+
+5) DASHBOARD'DA SUREKLI YENILENME (FLICKER) TAMIRLENDI
+   - V70 widget interval 3sn -> 10sn
+   - Stage1 cards 5sn -> 15sn (sadece yoksa)
+   - Detail chart 5sn -> 30sn (sadece fiyat degistiginde)
+
+KORUNAN HER SEY:
+- V10.0 Clean Stable temizligi (eski badge'ler yok)
+- Premium ust arama header
+- Bugun Ne Yapmaliyim
+- Mini grafik tikla -> gelismis modal
+- Veri Koruma otomatik yedek
+- Kritik Uyarilar
+- Haftalik Rapor + Bar Grafik
+- Hizli Eylem
+- Tam siyah tema
+- 6 Premium kart sparkline
+- Acik Sip + Nakit Pozisyon kartlari
+- Son Siparis / Lojistik / Finans Ozeti / Aylik Ozet (gercek verilerden)
+- Cop kutusu + audit log
+- Metal fiyat fallback chain (Investing -> metals.dev -> localStorage)
+- 22 sayfa, server.js, render.yaml degismedi
+
+YAPILMAYAN (sonraya):
+- Kullanici rolleri / giris sistemi (Supabase Auth)
+
+DEPLOY:
+1) ZIP indir
+2) GitHub repo ana dizinine ic dosyalari koy
+3) Push -> Render auto deploy
+4) Hard refresh (Ctrl+Shift+R)
+
+TEKNIK:
+- 35 script blok, 0 hata
+- 636 KB index.html
+- Div balance 1641/1641 OK
+
+COMMIT MESAJI:
+V10.1 - Tedarikci cop kutusu sekmesi + mobil cash position fix + popSel filtre

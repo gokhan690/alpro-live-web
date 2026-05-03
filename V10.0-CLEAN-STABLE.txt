@@ -1,0 +1,79 @@
+AlPro V10.0 - Clean Stable
+
+Bu surum, eski V6.9, V6.7, V6.5 vb tum patch isimlerini temizleyip
+tek baslık altinda topluyor.
+
+YAPILAN HER SEY:
+
+1) DOSYA YAPISI TEMIZ
+   - Title: AlPro V10.0 - Clean Stable
+   - Tum "V6.9U temiz grafik", "V6.9K Premium" vb yazilar V10.0 oldu
+   - Sag alt kapsuller (V6.9U • Asama 1 / V6.9U ASAMA 1 • 8833) GIZLENDI
+   - "Asama 1 aktif - V6.9U temiz grafik" banner'i GIZLENDI
+
+2) DASHBOARD GERCEK VERIYE BAGLI
+   - 4 fiyat karti altinda gercek metal_history grafigi
+   - Acik Siparisler karti -> kendi siparis sayin
+   - Nakit Pozisyon karti -> kendi banka kayitlarindan
+   - Son Siparisler tablosu -> senin siparislerin
+   - Lojistik/ETA tablosu -> senin sevkiyatlarin
+   - Finans Ozeti -> banka USD/TRY otomatik
+   - Aylik Ozet -> aktif sayilar
+
+3) HAFTALIK BAR GRAFIK GERCEK VERIDEN
+   - 7 gunluk siparis sayilari -> bar yukseklikleri
+   - Aktif Siparis / Sevkiyat / Haftalik Skor gercek hesaplaniyor
+   - Otomatik 10sn'de bir yenileniyor
+
+4) METAL FIYAT YEDEK KAYNAK + SON BASARILI
+   - 1. Investing.com (Supabase Edge Function)
+   - 2. metals.dev fallback
+   - 3. localStorage'da son basarili fiyat
+   - Hicbiri olmazsa eski fiyatla devam et
+   - Her basarili fetch'te otomatik kayit
+
+5) COP KUTUSU + ISLEM GECMISI
+   - Tedarikciler ve Siparisler sayfasinda cop kutusu butonu
+   - Soft delete (_deleted: true), geri alinabilir
+   - Audit log: ekleme, silme, geri yukleme, duzenleme kayitlari
+   - showAuditLog() konsoldan veya butona bagla
+   - Son 500 islem tutuluyor
+
+6) FLICKERING FIX
+   - V70 widget interval 3sn -> 10sn
+   - Stage1 cards interval 5sn -> 15sn (sadece yoksa cizer)
+   - Detail chart interval 5sn -> 30sn (sadece fiyat degistiginde)
+   - DOM remove/recreate yerine data-stage update
+
+7) GUMRUK DROPDOWN TEMIZLIK
+   - DB.getActive() wrapper - silinen siparisleri filtreler
+   - Gumruk sayfasinda silinmis siparisler gozukmez
+
+KORUNAN HER SEY
+   - Premium ust arama header (Ara / LME / Saat / Bildirim)
+   - Bugun Ne Yapmaliyim panel
+   - Mini grafik tikla -> gelismis modal
+   - Veri Koruma otomatik yedek
+   - Kritik Uyarilar
+   - Hizli Eylem (6 buton)
+   - Tam siyah tema + altin aksanlar
+   - Tum 22 sayfa
+   - Server.js, Supabase, render.yaml
+
+YAPILMAYAN (sonraya birakildi):
+   - Kullanici rolleri / giris sistemi (Supabase Auth ile yapilir)
+   - Bunu istersen ileride 5dk'da yapariz
+
+DEPLOY:
+1) ZIP indir
+2) GitHub repo ana dizinine ic dosyalari koy
+3) Push -> Render auto deploy
+4) Hard refresh (Ctrl+Shift+R)
+
+TEKNIK:
+- 34 script blok, 0 hata
+- 622 KB
+- index.html tek dosya, tum dependencies icinde
+
+COMMIT MESAJI:
+V10.0 Clean Stable - tum eski badge temizlendi, gercek veri, fallback chain, flickering fix

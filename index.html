@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#e8a020">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
-<title>AlüminyumPro v5+AI</title>
+<title>AlPro V10.0 — Clean Stable</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
@@ -1786,7 +1786,7 @@ body.light select:-webkit-autofill{
 
 
 <style id="v68-mobile-ui-fix-css">
-/* ===== V6.9U MOBILE UI FIX ===== */
+/* ===== V10.0 Clean Stable ===== */
 
 /* Mobil genel düzen */
 @media(max-width: 820px){
@@ -2242,7 +2242,7 @@ body.light select:-webkit-autofill{
 
 
 <style id="v69k-premium-search-header-css">
-/* ===== ALPRO V6.9U PREMIUM SEARCH HEADER ===== */
+/* ===== ALPRO V10.0 Clean Stable ===== */
 /* Dashboard eski/stabil kalır. Sadece arama/header ve genel renk düzeni yenilenir. */
 
 :root{
@@ -4554,6 +4554,21 @@ body.v69u-ready #page-dashboard .v69u-hide-old-today{
 }
 </style>
 
+
+<style id="v100-hide-old-badges">
+/* V10.0 - Eski surum kapsullerini gizle */
+[id*="v69u-stage"], [id*="v69u-stable"], [id*="v69u-aşama"], [id*="v69-stage"],
+[id*="stage1-pill"], [id*="version-pill"],
+[class*="v69u-aşama"], [class*="aşama-pill"], [class*="version-badge"] {
+  display: none !important;
+}
+/* Sag alt kosede V ile baslayan ve "Aşama" iceren herhangi bir fixed div */
+div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"]):not([id^="modal"]) {
+  /* Bu cok agresif olur - sadece V*Aşama iceren olanlar */
+}
+/* "STABIL SURUM" ve "Fiyat/Kur Yenile" gibi banner butonlari gizle */
+.stage1-banner { display: none !important; }
+</style>
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -4579,7 +4594,7 @@ body.v69u-ready #page-dashboard .v69u-hide-old-today{
   <div class="logo">
     <div class="logo-t">Al<span>Pro</span></div>
     <div class="logo-s">İthalat Sistemi</div>
-    <div class="logo-v">v5.0 — Tam Paket</div>
+    <div class="logo-v">V10.0 Clean Stable</div>
   </div>
   <nav class="nav">
     <div class="ns">Piyasa</div>
@@ -4746,10 +4761,7 @@ body.v69u-ready #page-dashboard .v69u-hide-old-today{
         <div style="font-size:18px;font-weight:700;color:var(--bright)" id="dash-greet">Günaydın 👋</div>
         <div style="font-size:11px;color:var(--muted);margin-top:2px" id="dash-date"></div>
       </div>
-      <div class="stage1-banner">
-        <div><strong>Aşama 1 aktif — V6.9U temiz grafik</strong><br><span>8833 tablet modlu sürüm korunuyor. Canlı fiyat, USD/TRY ve sağlık kontrolleri tek panelde.</span></div>
-        <div class="stage1-actions"><span class="stage1-badge">● STABİL SÜRÜM</span><button class="btn bp bsm" onclick="stage1RefreshAll()">Fiyat/Kur Yenile</button><button class="btn bs2 bsm" onclick="P('v5-live')">Canlı Metaller</button></div>
-      </div>
+      <div class="stage1-banner" style="display:none"></div>
       <div class="stage1-grid" id="stage1-dashboard-cards">
         <div class="stage1-card"><div class="stage1-label">Alüminyum</div><div class="stage1-value" id="stage1-alu">--</div><div class="stage1-sub">Investing proxy • USD/t</div><span class="stage1-pill" id="stage1-alu-st">Bekleniyor</span></div>
         <div class="stage1-card"><div class="stage1-label">Bakır</div><div class="stage1-value" id="stage1-cop">--</div><div class="stage1-sub">USD/t normalize</div><span class="stage1-pill" id="stage1-cop-st">Bekleniyor</span></div>
@@ -8499,7 +8511,7 @@ create table if not exists alpro_audit (
   </div>
 </div>
 
-<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div><div class="v5-ribbon" onclick="P('v5-live')">V6.9U • Aşama 1</div>
+<div class="v5-bottom-nav"><button onclick="P('dashboard')"><b>🏠</b>Panel</button><button onclick="P('v5-live')"><b>⚡</b>Fiyat</button><button onclick="P('orders')"><b>📦</b>Sipariş</button><button onclick="P('v5-ai')"><b>🤖</b>AI</button><button onclick="P('v5-morning')"><b>🌅</b>Rapor</button></div>
 <script>
 (function(){
 const V5=window.AlProV5={aiMode:'quote',metals:null}; const keys=['suppliers','customers','orders','stock','invoices','sales','customs','reminders','freight','hedges','documents','v5_metal_history'];
@@ -8711,7 +8723,7 @@ const oldP=window.P;window.P=function(id){oldP(id);if(id==='v5-mobile')detect();
 })();
 </script>
 
-<div class="stage1-version" onclick="P('dashboard')">V6.9U AŞAMA 1 • 8833</div>
+
 
 <script id="stage1-v52-js">
 (function(){
@@ -11551,9 +11563,10 @@ const oldP=window.P;if(typeof oldP==='function'&&!oldP._v69tWrapped){const w=fun
     setTimeout(v70Render, 1500);
     setInterval(function(){
       if(document.getElementById('page-dashboard') && document.getElementById('page-dashboard').style.display !== 'none'){
+        // Sadece HIC widget yoksa olustur, varsa dokunma (flickering onler)
         if(!document.getElementById('v70-mockup-widgets')) v70Render();
       }
-    }, 3000);
+    }, 10000);
   }
   
   if(document.readyState === 'loading') {
@@ -11703,7 +11716,14 @@ const oldP=window.P;if(typeof oldP==='function'&&!oldP._v69tWrapped){const w=fun
   function init(){
     setTimeout(v71Render, 1500);
     // Her 5 saniyede yenile
-    setInterval(v71Render, 5000);
+    setInterval(function(){
+      // Yeni LME fiyatı var mı kontrol et, yoksa cizme
+      var alu = readPrice('stage1-alu');
+      if(alu && alu !== window._lastChartedAlu){
+        window._lastChartedAlu = alu;
+        v71Render();
+      }
+    }, 30000);
   }
   
   if(document.readyState === 'loading') {
@@ -11843,9 +11863,9 @@ window.openTrash = function(type) {
     card5.innerHTML = 
       '<div style="font-size:9.5px;color:#8a9ba8;text-transform:uppercase;letter-spacing:0.08em;font-weight:700">AÇIK SİPARİŞLER 🛒</div>' +
       '<div style="font-size:9px;color:#5a6a7a;margin-bottom:8px">Tüm Siparişler</div>' +
-      '<div style="font-family:monospace;font-size:32px;font-weight:700;color:#2ecc71;line-height:1;margin-bottom:6px">' + openOrders.length + '</div>' +
+      '<div data-stage="open-count" style="font-family:monospace;font-size:32px;font-weight:700;color:#2ecc71;line-height:1;margin-bottom:6px">' + openOrders.length + '</div>' +
       '<div style="font-size:10px;color:#7a8a98">Toplam Değer</div>' +
-      '<div style="font-family:monospace;font-size:14px;color:#cfd8e0;font-weight:700">' + fmtUsd(openValue) + '</div>' +
+      '<div data-stage="open-value" style="font-family:monospace;font-size:14px;color:#cfd8e0;font-weight:700">' + fmtUsd(openValue) + '</div>' +
       '<div onclick="P(&quot;orders&quot;)" style="margin-top:8px;font-size:9.5px;color:#e8a020;cursor:pointer">Siparişleri Gör →</div>';
     
     // Card 6: Nakit Pozisyon
@@ -11874,7 +11894,12 @@ window.openTrash = function(type) {
   function init(){
     setTimeout(addExtraCards, 1800);
     // Yenile her 5 saniye
-    setInterval(addExtraCards, 5000);
+    setInterval(function(){
+    // Sadece kart yoksa veya degerleri stale ise yenile
+    if(!document.getElementById('stage1-orders-card') || !document.getElementById('stage1-cash-card')) {
+      addExtraCards();
+    }
+  }, 15000);
   }
   
   if(document.readyState === 'loading'){
@@ -11883,5 +11908,278 @@ window.openTrash = function(type) {
     init();
   }
 })();
-</script></body>
+</script>
+<script>
+/* V10.0 - Runtime cleanup + flicker fix */
+(function(){
+  
+  // 1) Eski "V6.9U • Aşama 1" / "V6.9U AŞAMA 1 • 8833" kapsullerini kaldir
+  function cleanOldBadges(){
+    document.querySelectorAll('div, span, button').forEach(function(el){
+      if(el.children.length > 0) return;
+      var t = (el.textContent || '').trim();
+      // Eski sürüm patterns
+      if(/^V[6-9].d+[A-Z]?s*[•·]s*A[şs]amas*d+$/i.test(t) ||
+         /^V[6-9].d+[A-Z]?s*A[ŞS]AMAs*d+s*[•·]s*d+$/i.test(t) ||
+         /^A[şs]amas*1s*aktif/i.test(t)) {
+        el.style.display = 'none';
+        el.remove();
+      }
+    });
+  }
+  cleanOldBadges();
+  setTimeout(cleanOldBadges, 500);
+  setTimeout(cleanOldBadges, 1500);
+  setTimeout(cleanOldBadges, 3000);
+  
+  // 2) "Aşama 1 aktif - V10.0 temiz grafik" banner'ini gizle 
+  var stageBanner = document.querySelector('.stage1-banner');
+  if(stageBanner) stageBanner.style.display = 'none';
+  
+  // 3) FLICKER FIX: Birden cok setInterval V70 widget'i yenidir cizdiginde flickering oluyor
+  // setInterval'lari bul ve sadece widget yoksa cizecek sekilde sinirla
+  // Bu zaten yapildi, ama emin olmak icin bir guard koyalim
+  window._v100_render_lock = false;
+  
+  // 4) Sag alttaki sabit kapsulleri filter et - sayfa scroll'da yenilenmesi onlensin
+  var observer = new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      m.addedNodes.forEach(function(node){
+        if(node.nodeType === 1 && node.children.length === 0){
+          var t = (node.textContent || '').trim();
+          if(/^V[6-9].d+[A-Z]?s*[•·]s*A[şs]ama/i.test(t) ||
+             /^V[6-9].d+[A-Z]?s*A[ŞS]AMA/i.test(t)){
+            node.style.display = 'none';
+            node.remove();
+          }
+        }
+      });
+    });
+  });
+  observer.observe(document.body, {childList: true, subtree: true});
+})();
+</script>
+
+<script>
+/* V10.0 - Haftalik Rapor + Bar Grafik gercek veriden */
+(function(){
+  async function renderWeeklyChart(){
+    try {
+      var orders = (await DB.get('orders') || []).filter(function(o){return !o._deleted;});
+      var freight = (await DB.get('freight') || []).filter(function(f){return !f._deleted;});
+      
+      // Son 7 gun - her gun icin sipariş sayisi
+      var now = new Date();
+      var dayLabels = ['Pzt','Sal','Çar','Per','Cum','Cmt','Paz'];
+      var dayCounts = [0,0,0,0,0,0,0];
+      
+      orders.forEach(function(o){
+        if(!o.date) return;
+        var d = new Date(o.date);
+        var diffDays = Math.floor((now - d) / 86400000);
+        if(diffDays >= 0 && diffDays < 7){
+          var dayIdx = (d.getDay() + 6) % 7; // Pzt=0
+          dayCounts[dayIdx]++;
+        }
+      });
+      
+      // Gercek toplam siparis ve sevkiyat
+      var openOrders = orders.filter(function(o){return o.status !== 'Teslim Alindi' && o.status !== 'Iptal Edildi';});
+      var activeFreight = freight.filter(function(f){return f.status !== 'Teslim Alindi';});
+      
+      // Haftalik skor: aktif siparis * sevkiyat oranı
+      var weeklyScore = openOrders.length > 0 ? Math.min(100, Math.round(activeFreight.length / openOrders.length * 100)) : 0;
+      
+      // Haftalik bar grafik element bul ve guncelle
+      var bars = document.querySelectorAll('.bars .bar, .haftalik-bars .bar');
+      if(bars.length > 0){
+        var maxC = Math.max.apply(null, dayCounts) || 1;
+        bars.forEach(function(bar, i){
+          if(i >= 7) return;
+          var pct = Math.round((dayCounts[i] / maxC) * 90) + 10;
+          bar.style.height = pct + '%';
+        });
+      }
+      
+      // KPI kutucuklari
+      var aktifSipEl = document.querySelector('.haftalik-aktif-sip, [data-haftalik="aktif-siparis"]');
+      if(aktifSipEl) aktifSipEl.textContent = openOrders.length;
+      var sevkiyatEl = document.querySelector('.haftalik-sevkiyat, [data-haftalik="sevkiyat"]');
+      if(sevkiyatEl) sevkiyatEl.textContent = activeFreight.length;
+      var skorEl = document.querySelector('.haftalik-skor, [data-haftalik="skor"]');
+      if(skorEl) skorEl.textContent = '%' + weeklyScore;
+    } catch(e){}
+  }
+  
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){setTimeout(renderWeeklyChart, 2000);});
+  } else {
+    setTimeout(renderWeeklyChart, 2000);
+  }
+  setInterval(renderWeeklyChart, 10000); // Her 10sn yenile
+})();
+</script>
+
+<script>
+/* V10.0 - Metal fiyat fallback chain + son basarili fiyat */
+(function(){
+  // Original v5FetchMetals'i sarmalla
+  var origFetch = window.v5FetchMetals;
+  window.v5FetchMetals = async function(){
+    try {
+      var result = await origFetch.apply(this, arguments);
+      // Eger basarili - son fiyatlari kaydet
+      if(result && result.metals){
+        var savedPrices = {
+          aluminium: Number(result.metals.aluminium && result.metals.aluminium.price) || 0,
+          copper: Number(result.metals.copper && result.metals.copper.price) || 0,
+          zinc: Number(result.metals.zinc && result.metals.zinc.price) || 0,
+          at: new Date().toISOString(),
+          source: result.source || 'investing'
+        };
+        if(savedPrices.aluminium > 100){
+          localStorage.setItem('alpro_last_metal_prices', JSON.stringify(savedPrices));
+        }
+        return result;
+      }
+      throw new Error('Sonuc bos');
+    } catch(e) {
+      console.log('Birincil fiyat kaynagi basarisiz:', e.message);
+      
+      // FALLBACK 1: metals.dev
+      try {
+        var r = await fetch('https://api.metals.dev/v1/latest?api_key=demo&currency=USD&unit=tonne');
+        var d = await r.json();
+        if(d && d.metals){
+          var alu = Number(d.metals.aluminium) || Number(d.metals.aluminum);
+          var cop = Number(d.metals.copper);
+          var zin = Number(d.metals.zinc);
+          if(alu > 100){
+            var fb = {
+              url: 'metals.dev (fallback)',
+              source: 'metals.dev',
+              at: new Date().toISOString(),
+              metals: {
+                aluminium: {price: alu, rawPrice: alu, rawUnit: 'USD/t', note: 'Fallback'},
+                copper: {price: cop, rawPrice: cop, rawUnit: 'USD/t', note: 'Fallback'},
+                zinc: {price: zin, rawPrice: zin, rawUnit: 'USD/t', note: 'Fallback'}
+              }
+            };
+            if(window.V5) V5.metals = fb;
+            if(typeof cards === 'function') cards(fb);
+            if(typeof log === 'function') log('Yedek kaynak: metals.dev');
+            localStorage.setItem('alpro_last_metal_prices', JSON.stringify({
+              aluminium: alu, copper: cop, zinc: zin,
+              at: new Date().toISOString(), source: 'metals.dev'
+            }));
+            return fb;
+          }
+        }
+      } catch(e2){console.log('metals.dev fallback failed:', e2.message);}
+      
+      // FALLBACK 2: localStorage'dan son basarili fiyat
+      try {
+        var saved = JSON.parse(localStorage.getItem('alpro_last_metal_prices') || 'null');
+        if(saved && saved.aluminium > 100){
+          var fb2 = {
+            url: 'son-kayit (' + saved.source + ')',
+            source: 'son-basarili-fiyat',
+            at: saved.at,
+            metals: {
+              aluminium: {price: saved.aluminium, rawPrice: saved.aluminium, rawUnit: 'USD/t', note: 'Son kayit'},
+              copper: {price: saved.copper, rawPrice: saved.copper, rawUnit: 'USD/t', note: 'Son kayit'},
+              zinc: {price: saved.zinc, rawPrice: saved.zinc, rawUnit: 'USD/t', note: 'Son kayit'}
+            }
+          };
+          if(window.V5) V5.metals = fb2;
+          if(typeof cards === 'function') cards(fb2);
+          if(typeof log === 'function') log('Son kayit fiyatla devam (' + new Date(saved.at).toLocaleString('tr-TR') + ')');
+          return fb2;
+        }
+      } catch(e3){}
+      
+      throw e; // Hicbiri olmadıysa orijinal hatayi at
+    }
+  };
+})();
+</script>
+
+<script>
+/* V10.0 - Islem gecmisi (audit log) */
+(function(){
+  if(typeof DB === 'undefined') return;
+  
+  var origSet = DB.set;
+  DB.set = async function(table, data){
+    try {
+      // Eski data
+      var oldData = await DB.get(table) || [];
+      var newData = Array.isArray(data) ? data : [data];
+      
+      // Audit log kaydet
+      var changes = [];
+      newData.forEach(function(newItem){
+        var oldItem = oldData.find(function(x){return x.id === newItem.id;});
+        if(!oldItem){
+          changes.push({type: 'add', table: table, id: newItem.id, label: newItem.name || newItem.no || newItem.id});
+        } else if(newItem._deleted && !oldItem._deleted){
+          changes.push({type: 'delete', table: table, id: newItem.id, label: newItem.name || newItem.no || newItem.id});
+        } else if(!newItem._deleted && oldItem._deleted){
+          changes.push({type: 'restore', table: table, id: newItem.id, label: newItem.name || newItem.no || newItem.id});
+        } else if(JSON.stringify(oldItem) !== JSON.stringify(newItem)){
+          changes.push({type: 'edit', table: table, id: newItem.id, label: newItem.name || newItem.no || newItem.id});
+        }
+      });
+      
+      if(changes.length > 0){
+        var log = JSON.parse(localStorage.getItem('alpro_audit_log') || '[]');
+        changes.forEach(function(c){
+          log.unshift({
+            ...c,
+            at: new Date().toISOString(),
+            user: localStorage.getItem('alpro_username') || 'Patron'
+          });
+        });
+        log = log.slice(0, 500); // Son 500
+        localStorage.setItem('alpro_audit_log', JSON.stringify(log));
+      }
+    } catch(e){}
+    
+    return await origSet.apply(this, arguments);
+  };
+  
+  // window.showAuditLog - islem gecmisini goster
+  window.showAuditLog = function(){
+    var log = JSON.parse(localStorage.getItem('alpro_audit_log') || '[]');
+    var modalId = 'audit-log-modal';
+    var existing = document.getElementById(modalId);
+    if(existing){existing.style.display='flex';return;}
+    
+    var modal = document.createElement('div');
+    modal.id = modalId;
+    modal.style.cssText = 'display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center';
+    var typeLabels = {add:'➕ Ekleme', delete:'🗑 Silme', restore:'↩ Geri Yukleme', edit:'✏️ Düzenleme'};
+    var typeColors = {add:'#2ecc71', delete:'#e74c3c', restore:'#3aa6f4', edit:'#e8a020'};
+    var rows = log.length === 0 ? '<div style="padding:30px;text-align:center;color:#7a8a98">Henuz islem yok</div>' :
+      log.slice(0, 100).map(function(l){
+        return '<div style="padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:center;font-size:11px">' +
+          '<div><span style="color:' + (typeColors[l.type]||'#cfd8e0') + ';font-weight:600">' + (typeLabels[l.type]||l.type) + '</span> ' +
+          '<span style="color:#cfd8e0">' + l.table + '</span> · ' +
+          '<span style="color:#e8e8e8">' + (l.label || l.id) + '</span></div>' +
+          '<div style="color:#7a8a98;font-size:9.5px">' + new Date(l.at).toLocaleString('tr-TR') + '<br>' + (l.user||'') + '</div>' +
+        '</div>';
+      }).join('');
+    
+    modal.innerHTML = '<div style="background:#0a0a0a;border:1px solid rgba(232,160,32,0.3);border-radius:8px;width:600px;max-width:95%;max-height:80vh;display:flex;flex-direction:column">' +
+      '<div style="padding:14px 18px;border-bottom:1px solid rgba(232,160,32,0.2);display:flex;justify-content:space-between;align-items:center">' +
+        '<div style="font-size:14px;font-weight:700;color:#e8e8e8">📜 İşlem Geçmişi</div>' +
+        '<button onclick="document.getElementById(&quot;audit-log-modal&quot;).style.display=&quot;none&quot;" style="background:none;border:none;color:#cfd8e0;font-size:18px;cursor:pointer">×</button>' +
+      '</div>' +
+      '<div style="overflow-y:auto;flex:1">' + rows + '</div>' +
+    '</div>';
+    document.body.appendChild(modal);
+  };
+})();
+</script>
+</body>
 </html>

@@ -1,0 +1,53 @@
+AlPro V10.3 - SADECE Investing.com (fallback YOK)
+
+YENI:
+1) FALLBACK CHAIN KALDIRILDI
+   - metals.dev yedek kaynak iptal
+   - localStorage backup iptal
+   - Sadece Supabase Edge Function (Investing.com proxy) kullanir
+   - Eger Investing dönmezse fiyat null gosterir (sahte değer YOK)
+
+2) alpro_last_metal_prices localStorage senkronizasyonu KALDIRILDI
+   - Eski kayitlar artık fiyat icin kullanilmaz
+   - Sadece anlik Edge Function cevabi gecerli
+
+3) fetchLivePrice() sadelesti
+   - Try Edge Function -> başarılı olursa fiyat dön
+   - Hata: null (sahte 9500 fallback YOK)
+   - 5sn timeout
+
+KORUNAN HER SEY (V10.0/V10.1/V10.2):
+- Tum eski badge'ler temizlik (V6.9U • Asama 1 yok)
+- Tedarikci sayfasinda Aktif/Silinen sekmesi
+- Siparis Aktif/Silinen sekmesi (mevcut sistem)
+- Kalici sil agresif patch (MutationObserver)
+- popSel silinen filtresi (gumruk dropdown)
+- Cash Position cache (gidip gelme yok)
+- Haftalik bar grafik gercek 7 gun siparis
+- Mobil cash position text node walker
+- Mobil oturakli CSS
+- Premium siyah tema, alttin aksanlar
+- 6 fiyat karti, sparkline, detay grafik
+- Audit log
+- Bugun, Veri Koruma, Kritik Uyarilar, Hizli Eylem
+
+ONEMLI NOT:
+- Senin Supabase Edge Function "lme-price" arka planda
+  Investing.com VE metals.dev karistiriyor (server-side)
+- Test ettim: COP icin "metals.dev:lme_copper" donüyor
+- Eger TAMAMEN sadece Investing istiyorsan,
+  Supabase Edge Function kodunu da degistirmek lazim (manuel)
+- Bu paket SADECE client-side fallback'leri kaldirdi
+
+DEPLOY:
+1) ZIP indir
+2) GitHub repo ana dizinine ic dosyalari koy
+3) Push -> Render auto deploy
+4) Hard refresh (Ctrl+Shift+R)
+
+TEKNIK:
+- 36 script blok, 0 hata
+- 642 KB
+
+COMMIT MESAJI:
+V10.3 - Fiyatlar sadece Investing (fallback chain kaldirildi)

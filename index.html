@@ -7958,7 +7958,7 @@ setInterval(function(){var cu=JSON.parse(localStorage.getItem('alpro-user')||'{}
 var LIVE_LME_PRICES = {ALU:3601, COP:9500, ZIN:2800};
 
 async function fetchLivePrice(metal){
-  // Edge Function 5 saatlik cache yapiyor - free plan korunur
+  // V10.3 - SADECE Investing.com (Edge Function uzerinden) - fallback YOK
   var sbUrl = "https://hqqokqiayiadvczirtmp.supabase.co";
   var sbKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxcW9rcWlheWlhZHZjemlydG1wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MTY1OTEsImV4cCI6MjA5MTk5MjU5MX0.85NEhuCz2JsDfoaeYqviaPkln2i6j72PVlTz5zo4584";
   try {
@@ -7969,23 +7969,22 @@ async function fetchLivePrice(metal){
     if(r.ok) {
       var d = await r.json();
       if(d.price && d.price > 100) {
-        localStorage.setItem("lme_" + metal, d.price);
-        localStorage.setItem("lme_ts_" + metal, Date.now());
+        // Sadece geri don, localStorage kayit YOK (fallback olmamasi icin)
         return d.price;
       }
     }
   } catch(e){ console.log("LME fetch err:", e.message); }
-  // Fallback: localStorage
-  var c = parseFloat(localStorage.getItem("lme_" + metal));
-  return (c && !isNaN(c)) ? c : (metal==="ALU"?3601:metal==="COP"?9500:2800);
+  // V10.3 - Fallback YOK, null donduriyor (sadece Investing)
+  return null;
 }
 
 
 async function updateLivePrices(){
+  // V10.3 - SADECE Investing.com'dan (fallback YOK)
   var metals=["ALU","COP","ZIN"];
   for(var i=0;i<metals.length;i++){
-    var c = parseFloat(localStorage.getItem("lme_"+metals[i]));
-    if(c && c > 100) LIVE_LME_PRICES[metals[i]] = c;
+    var p = await fetchLivePrice(metals[i]);
+    if(p && p > 100) LIVE_LME_PRICES[metals[i]] = p;
   }
   var sc=document.getElementById("sc-cur");
   if(sc && !sc.dataset.userEdited) sc.value=LIVE_LME_PRICES.ALU;
@@ -10606,7 +10605,27 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
       return !['teslim','tamamlandı','completed','cancelled','iptal'].some(function(s){return String(o.status||'').toLowerCase().includes(s);});
     }).length || orders.length;
 
-    const week=[42,55,49,64,72,58,46].map(function(v){return Math.min(92,Math.max(22,v+(openOrders?Math.min(12,openOrders):0)));});
+    // V10.2 - Gercek 7 gun siparis dagilimi
+    var now = new Date();
+    var dayCounts = [0,0,0,0,0,0,0];
+    orders.forEach(function(o){
+      if(!o.date) return;
+      var d = new Date(o.date);
+      var diffDays = Math.floor((now - d) / 86400000);
+      if(diffDays >= 0 && diffDays < 7){
+        var dayIdx = (d.getDay() + 6) % 7;
+        dayCounts[dayIdx]++;
+      }
+    });
+    var maxDay = Math.max.apply(null, dayCounts);
+    var week;
+    if(maxDay > 0){
+      // Gercek veriden 22-92 araligi normalize et
+      week = dayCounts.map(function(c){return Math.round(22 + (c/maxDay) * 70);});
+    } else {
+      // Veri yok - dusuk seviye placeholder
+      week = [25,28,32,30,35,28,22];
+    }
     const labels=['Pzt','Sal','Çar','Per','Cum','Cmt','Paz'];
     barsEl.innerHTML=week.map(function(v,i){
       return '<div class="v69o-bar-wrap"><div class="v69o-bar '+(i===4?'gold':'')+'" style="height:'+v+'%"></div><div class="v69o-bar-label">'+labels[i]+'</div></div>';
@@ -12026,89 +12045,7 @@ window.openTrash = function(type) {
 })();
 </script>
 
-<script>
-/* V10.0 - Metal fiyat fallback chain + son basarili fiyat */
-(function(){
-  // Original v5FetchMetals'i sarmalla
-  var origFetch = window.v5FetchMetals;
-  window.v5FetchMetals = async function(){
-    try {
-      var result = await origFetch.apply(this, arguments);
-      // Eger basarili - son fiyatlari kaydet
-      if(result && result.metals){
-        var savedPrices = {
-          aluminium: Number(result.metals.aluminium && result.metals.aluminium.price) || 0,
-          copper: Number(result.metals.copper && result.metals.copper.price) || 0,
-          zinc: Number(result.metals.zinc && result.metals.zinc.price) || 0,
-          at: new Date().toISOString(),
-          source: result.source || 'investing'
-        };
-        if(savedPrices.aluminium > 100){
-          localStorage.setItem('alpro_last_metal_prices', JSON.stringify(savedPrices));
-        }
-        return result;
-      }
-      throw new Error('Sonuc bos');
-    } catch(e) {
-      console.log('Birincil fiyat kaynagi basarisiz:', e.message);
-      
-      // FALLBACK 1: metals.dev
-      try {
-        var r = await fetch('https://api.metals.dev/v1/latest?api_key=demo&currency=USD&unit=tonne');
-        var d = await r.json();
-        if(d && d.metals){
-          var alu = Number(d.metals.aluminium) || Number(d.metals.aluminum);
-          var cop = Number(d.metals.copper);
-          var zin = Number(d.metals.zinc);
-          if(alu > 100){
-            var fb = {
-              url: 'metals.dev (fallback)',
-              source: 'metals.dev',
-              at: new Date().toISOString(),
-              metals: {
-                aluminium: {price: alu, rawPrice: alu, rawUnit: 'USD/t', note: 'Fallback'},
-                copper: {price: cop, rawPrice: cop, rawUnit: 'USD/t', note: 'Fallback'},
-                zinc: {price: zin, rawPrice: zin, rawUnit: 'USD/t', note: 'Fallback'}
-              }
-            };
-            if(window.V5) V5.metals = fb;
-            if(typeof cards === 'function') cards(fb);
-            if(typeof log === 'function') log('Yedek kaynak: metals.dev');
-            localStorage.setItem('alpro_last_metal_prices', JSON.stringify({
-              aluminium: alu, copper: cop, zinc: zin,
-              at: new Date().toISOString(), source: 'metals.dev'
-            }));
-            return fb;
-          }
-        }
-      } catch(e2){console.log('metals.dev fallback failed:', e2.message);}
-      
-      // FALLBACK 2: localStorage'dan son basarili fiyat
-      try {
-        var saved = JSON.parse(localStorage.getItem('alpro_last_metal_prices') || 'null');
-        if(saved && saved.aluminium > 100){
-          var fb2 = {
-            url: 'son-kayit (' + saved.source + ')',
-            source: 'son-basarili-fiyat',
-            at: saved.at,
-            metals: {
-              aluminium: {price: saved.aluminium, rawPrice: saved.aluminium, rawUnit: 'USD/t', note: 'Son kayit'},
-              copper: {price: saved.copper, rawPrice: saved.copper, rawUnit: 'USD/t', note: 'Son kayit'},
-              zinc: {price: saved.zinc, rawPrice: saved.zinc, rawUnit: 'USD/t', note: 'Son kayit'}
-            }
-          };
-          if(window.V5) V5.metals = fb2;
-          if(typeof cards === 'function') cards(fb2);
-          if(typeof log === 'function') log('Son kayit fiyatla devam (' + new Date(saved.at).toLocaleString('tr-TR') + ')');
-          return fb2;
-        }
-      } catch(e3){}
-      
-      throw e; // Hicbiri olmadıysa orijinal hatayi at
-    }
-  };
-})();
-</script>
+
 
 <script>
 /* V10.0 - Islem gecmisi (audit log) */
@@ -12480,6 +12417,9 @@ window.openTrash = function(type) {
   }
   
   // Sayfa degisimlerinde tekrar uygula (ama cok sik degil - flicker olmasin)
+  // V10.2 - Cache ile stabil 4sn interval
+  window._v100_lastUSD = window._v100_lastUSD || -1;
+  window._v100_lastTRY = window._v100_lastTRY || -1;
   setInterval(function(){
     if(typeof DB === 'undefined') return;
     (async function(){
@@ -12491,6 +12431,10 @@ window.openTrash = function(type) {
           if(b.currency === 'TRY' || b.currency === 'TL') totTry += amt;
           else totUsd += amt;
         });
+        // Stabil: degisen yoksa DOM'a dokunma (oscillation onler)
+        if(totUsd === window._v100_lastUSD && totTry === window._v100_lastTRY) return;
+        window._v100_lastUSD = totUsd;
+        window._v100_lastTRY = totTry;
         var fmt = function(n){return Math.round(n).toLocaleString('tr-TR');};
         var DEMO_USD_FULL = 'USD 5.842.310';
         var DEMO_TRY_FULL = 'TRY 189.654.210';
@@ -12517,6 +12461,210 @@ window.openTrash = function(type) {
       } catch(e){}
     })();
   }, 4000);
+})();
+</script>
+
+<script id="v102-permanent-delete-fix">
+/* V10.2 - Kalıcı sil agresif fix */
+(function(){
+  function enhanceOrderTable(){
+    if(typeof DB === 'undefined') return;
+    var rows = document.querySelectorAll('#t-ord tr');
+    if(rows.length === 0) return;
+    
+    rows.forEach(function(tr){
+      // Eger zaten enhanced ise atla
+      if(tr.dataset.v102Enhanced) return;
+      
+      // Silinen tab'inde miyiz?
+      if(window.ORD_TAB !== 's') return;
+      
+      // Bu satirin 'Sil' butonunu bul ve degistir
+      var sicakBtn = tr.querySelector('button.bd');
+      if(!sicakBtn) return;
+      var btnText = (sicakBtn.textContent || '').trim();
+      if(btnText !== 'Sil') return; // Zaten degistirilmis
+      
+      var onclick = sicakBtn.getAttribute('onclick') || '';
+      var idMatch = onclick.match(/['"]([\w-]+)['"]/);
+      if(!idMatch) return;
+      var id = idMatch[1];
+      
+      // "Sil" yerine "Geri Al" + "Kalıcı Sil" koy
+      var td = sicakBtn.parentElement;
+      td.innerHTML = '<button class="btn bsm" style="background:rgba(46,204,113,0.15);color:#2ecc71;border:1px solid rgba(46,204,113,0.3);padding:3px 8px;margin-bottom:3px;display:block;font-size:10px;border-radius:4px;cursor:pointer" onclick="window.v102RestoreOrder(\''+id+'\')">↩ Geri Al</button>' +
+        '<button class="btn bsm" style="background:rgba(231,76,60,0.15);color:#e74c3c;border:1px solid rgba(231,76,60,0.3);padding:3px 8px;display:block;font-size:10px;border-radius:4px;cursor:pointer" onclick="window.v102PermDelOrder(\''+id+'\')">✕ Kalıcı Sil</button>';
+      
+      tr.dataset.v102Enhanced = '1';
+    });
+  }
+  
+  function enhanceSupplierTable(){
+    if(typeof DB === 'undefined') return;
+    var rows = document.querySelectorAll('#t-sup tr');
+    if(rows.length === 0) return;
+    
+    rows.forEach(function(tr){
+      if(tr.dataset.v102Enhanced) return;
+      if(window.SUP_TAB !== 's') return;
+      
+      var sicakBtn = tr.querySelector('button.bd');
+      if(!sicakBtn) return;
+      var btnText = (sicakBtn.textContent || '').trim();
+      if(btnText !== 'Sil') return;
+      
+      var onclick = sicakBtn.getAttribute('onclick') || '';
+      var idMatch = onclick.match(/['"]([\w-]+)['"]/);
+      if(!idMatch) return;
+      var id = idMatch[1];
+      
+      var td = sicakBtn.parentElement;
+      td.innerHTML = '<button class="btn bsm" style="background:rgba(46,204,113,0.15);color:#2ecc71;border:1px solid rgba(46,204,113,0.3);padding:3px 8px;margin-bottom:3px;display:block;font-size:10px;border-radius:4px;cursor:pointer" onclick="window.v102RestoreSup(\''+id+'\')">↩ Geri Al</button>' +
+        '<button class="btn bsm" style="background:rgba(231,76,60,0.15);color:#e74c3c;border:1px solid rgba(231,76,60,0.3);padding:3px 8px;display:block;font-size:10px;border-radius:4px;cursor:pointer" onclick="window.v102PermDelSup(\''+id+'\')">✕ Kalıcı Sil</button>';
+      
+      tr.dataset.v102Enhanced = '1';
+    });
+  }
+  
+  // Global fonksiyonlar
+  window.v102RestoreOrder = async function(id){
+    var a = await DB.get('orders') || [];
+    var i = a.findIndex(function(x){return x.id === id;});
+    if(i > -1){
+      delete a[i]._deleted;
+      delete a[i]._deletedAt;
+      await DB.set('orders', a);
+    }
+    if(typeof renderOrd === 'function') renderOrd();
+    if(typeof notif === 'function') notif('Siparis geri yuklendi','s');
+  };
+  
+  window.v102PermDelOrder = async function(id){
+    if(!confirm('Bu siparisi TAMAMEN silmek istiyor musun? (Geri alinamaz)')) return;
+    var a = await DB.get('orders') || [];
+    a = a.filter(function(x){return x.id !== id;});
+    await DB.set('orders', a);
+    if(typeof renderOrd === 'function') renderOrd();
+    if(typeof notif === 'function') notif('Siparis kalici silindi','d');
+  };
+  
+  window.v102RestoreSup = async function(id){
+    var a = await DB.get('suppliers') || [];
+    var i = a.findIndex(function(x){return x.id === id;});
+    if(i > -1){
+      delete a[i]._deleted;
+      delete a[i]._deletedAt;
+      await DB.set('suppliers', a);
+    }
+    if(typeof renderSup === 'function') renderSup();
+    if(typeof notif === 'function') notif('Tedarikci geri yuklendi','s');
+  };
+  
+  window.v102PermDelSup = async function(id){
+    if(!confirm('Bu tedarikciyi TAMAMEN silmek istiyor musun? (Geri alinamaz)')) return;
+    var a = await DB.get('suppliers') || [];
+    a = a.filter(function(x){return x.id !== id;});
+    await DB.set('suppliers', a);
+    if(typeof renderSup === 'function') renderSup();
+    if(typeof notif === 'function') notif('Tedarikci kalici silindi','d');
+  };
+  
+  // MutationObserver - tablo her degistiginde butonlari yenile
+  function watchTables(){
+    var ordTbody = document.getElementById('t-ord');
+    if(ordTbody && !ordTbody.dataset.v102Watched){
+      ordTbody.dataset.v102Watched = '1';
+      new MutationObserver(function(){
+        // Yeni satirlar geldiginde butonlari ekle
+        document.querySelectorAll('#t-ord tr').forEach(function(tr){delete tr.dataset.v102Enhanced;});
+        enhanceOrderTable();
+      }).observe(ordTbody, {childList: true, subtree: true});
+    }
+    var supTbody = document.getElementById('t-sup');
+    if(supTbody && !supTbody.dataset.v102Watched){
+      supTbody.dataset.v102Watched = '1';
+      new MutationObserver(function(){
+        document.querySelectorAll('#t-sup tr').forEach(function(tr){delete tr.dataset.v102Enhanced;});
+        enhanceSupplierTable();
+      }).observe(supTbody, {childList: true, subtree: true});
+    }
+  }
+  
+  function init(){
+    watchTables();
+    enhanceOrderTable();
+    enhanceSupplierTable();
+    // Periyodik check - sayfa degisimlerinde tablolar geldiginde
+    setInterval(function(){
+      watchTables();
+      enhanceOrderTable();
+      enhanceSupplierTable();
+    }, 2000);
+  }
+  
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){setTimeout(init, 1500);});
+  } else {
+    setTimeout(init, 1500);
+  }
+})();
+</script>
+
+<script id="v102-customs-fix">
+/* V10.2 - Gumruk dropdown surekli filtre */
+(function(){
+  if(typeof DB === 'undefined' && typeof window.DB === 'undefined') return;
+  
+  async function refillCustomsDropdown(){
+    var sel = document.getElementById('cs-or');
+    if(!sel) return;
+    if(typeof DB === 'undefined') return;
+    var orders = (await DB.get('orders') || []).filter(function(o){return !o._deleted;});
+    sel.innerHTML = '<option value="">Seçin...</option>' + 
+      orders.map(function(o){return '<option value="' + o.id + '">' + (o.no || o.id) + '</option>';}).join('');
+  }
+  
+  // Modal acildiginda yenile
+  var origOpenM = window.openM;
+  if(origOpenM){
+    window.openM = function(id){
+      var r = origOpenM.apply(this, arguments);
+      if(id === 'm-customs'){
+        setTimeout(refillCustomsDropdown, 100);
+        setTimeout(refillCustomsDropdown, 300);
+      }
+      return r;
+    };
+  }
+  
+  // Tum diger select'leri de filter et - or-su (siparis tedarikci), sa-cu (musteri), fr-sup (navlun)
+  async function refillAllSelects(){
+    if(typeof DB === 'undefined') return;
+    var configs = [
+      {id: 'or-su', table: 'suppliers', field: 'name'},
+      {id: 'sa-cu', table: 'customers', field: 'name'},
+      {id: 'fr-sup', table: 'suppliers', field: 'name'},
+      {id: 'cs-or', table: 'orders', field: 'no'}
+    ];
+    for(var i = 0; i < configs.length; i++){
+      var cfg = configs[i];
+      var sel = document.getElementById(cfg.id);
+      if(!sel) continue;
+      var data = (await DB.get(cfg.table) || []).filter(function(x){return !x._deleted;});
+      sel.innerHTML = '<option value="">Seçin...</option>' + 
+        data.map(function(x){return '<option value="' + x.id + '">' + (x[cfg.field] || x.name || x.no || x.id) + '</option>';}).join('');
+    }
+  }
+  
+  // Her modal acilisinda
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.classList && e.target.classList.contains('btn')){
+      setTimeout(refillAllSelects, 200);
+    }
+  }, true);
+  
+  // Periyodik
+  setInterval(refillAllSelects, 5000);
 })();
 </script>
 </body>

@@ -1,4 +1,4 @@
-// AlPro V5 - ORİJİNAL KORUNDU + Canlı Investing Proxy
+// AlPro V10.6 - ORİJİNAL KORUNDU + Canlı Investing Proxy
 // Çalıştır: node server.js  -> http://localhost:8833
 const http = require('http');
 const https = require('https');
@@ -186,7 +186,43 @@ async function getMetals(){
     zinc:{symbol:'ZINC',name:'Zinc',unit:'USD/t',...zinc}
   }};
   const missing=Object.values(data.metals).filter(x=>x.price===null).map(x=>x.name); if(missing.length)data.warning='Ayrıştırılamadı: '+missing.join(', ');
-  cache={data,at:Date.now()}; return data;
+  cache={data,at:Date.now()}; 
+  // son6_v106_mcu3_override: Copper ana kaynak MCU3
+  try{
+    const mcu3 = await getMCU3CopperPrice();
+    if(mcu3 && mcu3.price){
+      if(data.metals){
+        data.metals.copper = {
+          symbol:'MCU3',
+          name:'London Copper / Bakır Vadeli İşlemleri',
+          unit:'USD/t',
+          price:mcu3.price,
+          rawPrice:mcu3.price,
+          rawUnit:'USD/t',
+          note:'Primary copper source: Investing.com MCU3 direct',
+          source:mcu3.source,
+          url:mcu3.url,
+          fetchedAt:mcu3.fetchedAt
+        };
+      }else{
+        data.copper = {
+          symbol:'MCU3',
+          name:'London Copper / Bakır Vadeli İşlemleri',
+          unit:'USD/t',
+          price:mcu3.price,
+          source:mcu3.source,
+          url:mcu3.url,
+          fetchedAt:mcu3.fetchedAt
+        };
+      }
+      data.copperPrimarySource='MCU3';
+    }
+  }catch(e){
+    data.copperPrimarySource='MCU3 failed, fallback used';
+    data.copperPrimaryError=e.message;
+  }
+
+return data;
 }
 
 let fxCache = { data:null, at:0 };
@@ -265,7 +301,17 @@ function serve(res,file){const full=path.join(__dirname,file); if(!fs.existsSync
 http.createServer(async(req,res)=>{try{
   const u=new URL(req.url,'http://localhost:'+PORT);
   if(u.pathname==='/'||u.pathname==='/index.html'){serve(res,'index.html');return}
-  if(u.pathname==='/api/metals'){json(res,200,await getMetals());return}
+  
+  if(u.pathname==='/api/mcu3-copper'){
+    try{
+      json(res,200,await getMCU3CopperPrice());
+    }catch(e){
+      json(res,503,{error:e.message,symbol:'MCU3',source:'Investing.com MCU3 direct:failed',url:MCU3_COPPER_URL});
+    }
+    return;
+  }
+
+if(u.pathname==='/api/metals'){json(res,200,await getMetals());return}
 
   if(u.pathname==='/api/db-summary'){if(SUPABASE_ENABLED){json(res,200,await sbSummary());return} json(res,200,dbSummary());return}
   if(u.pathname==='/api/audit'){const limit=Number(u.searchParams.get('limit')||20); if(SUPABASE_ENABLED){const rows=await sbAuditList(limit); json(res,200,{mode:'supabase',items:(rows||[]).map(r=>({at:r.created_at,actor:r.actor,action:r.action,table:r.table_name,record_id:r.record_id,meta:r.meta}))});return} const a=readJsonFile(AUDIT_FILE,[]); json(res,200,{mode:'local-json',items:a.slice(0,limit)});return}
@@ -301,8 +347,8 @@ http.createServer(async(req,res)=>{try{
   }
 
   if(u.pathname==='/api/fx'){json(res,200,await getFx());return}
-  if(u.pathname==='/api/health'){json(res,200,{ok:true,port:PORT,version:'V6.9U Today Advanced Charts Auto Backup',dbMode:SUPABASE_ENABLED?'supabase':'local-json',supabaseConfigured:SUPABASE_ENABLED,lanUrl:lanUrl(),publicUrl:process.env.PUBLIC_URL||null,time:new Date().toISOString()});return}
+  if(u.pathname==='/api/health'){json(res,200,{ok:true,port:PORT,version:'V10.6 Today Advanced Charts Auto Backup',dbMode:SUPABASE_ENABLED?'supabase':'local-json',supabaseConfigured:SUPABASE_ENABLED,lanUrl:lanUrl(),publicUrl:process.env.PUBLIC_URL||null,time:new Date().toISOString()});return}
   if(req.method==='OPTIONS'){res.writeHead(204,{'Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET,OPTIONS','Access-Control-Allow-Headers':'Content-Type'});res.end();return}
   const safePath=decodeURIComponent(u.pathname.replace(/^\//,'')); if(!safePath.includes('..')&&fs.existsSync(path.join(__dirname,safePath))){serve(res,safePath);return}
   json(res,404,{error:'Not found'});
-}catch(e){json(res,500,{error:e.message,detail:'Investing verisi alınamadı. Bot koruması, bölgesel engel veya HTML yapısı değişmiş olabilir.'})}}).listen(PORT,()=>{console.log('AlPro V5.9 AŞAMA 1 çalışıyor: http://localhost:'+PORT);console.log('Bu sürümde eski modüller silinmedi; V5 ekleri sol menüye eklendi.');});
+}catch(e){json(res,500,{error:e.message,detail:'Investing verisi alınamadı. Bot koruması, bölgesel engel veya HTML yapısı değişmiş olabilir.'})}}).listen(PORT,()=>{console.log('AlPro V10.6.9 AŞAMA 1 çalışıyor: http://localhost:'+PORT);console.log('Bu sürümde eski modüller silinmedi; V5 ekleri sol menüye eklendi.');});

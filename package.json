@@ -1,6 +1,6 @@
 {
-  "name": "alpro-v69u-today-advanced-charts-auto-backup",
-  "version": "6.9.21",
+  "name": "aluminyumpro-son6-v106-stable-mcu3",
+  "version": "10.6.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

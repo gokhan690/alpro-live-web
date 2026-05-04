@@ -1,14 +1,12 @@
-V6.9U:
-1) Dashboard'daki Bugün Ne Yapmalıyım paneli temiz ve düzgün yeniden kuruldu.
-2) Mini grafiğe tıklayınca gelişmiş grafik modalı açılır.
-3) Modalda Saatlik / Günlük / Haftalık / Aylık seçimi var.
-4) Grafikte mouse veya dokunma ile noktanın saat/gün ve fiyat bilgisi görünür.
-5) Veri Koruma artık otomatik yedek alır:
-   - Her 60 saniyede
-   - Sayfa kapanırken
-   - alpro_auto_backup ve alpro_last_backup içine kaydeder
-6) Aşama 1 Sistem Sağlığı gizli kalır.
-7) V6.9T/S/R özellikleri korunur.
+AluminyumPro Son6 V10.6 Stable MCU3
+
+Bu klasördeki dosyaları GitHub repo ana dizinine koy.
+
+Özet:
+- Son 6 ana stabil paket baz alındı.
+- Eski sürüm yazıları temizlendi.
+- /api/mcu3-copper net eklendi.
+- /api/metals copper önce MCU3 dener, olmazsa eski fallback kullanır.
 
 Commit mesajı:
-Update V6.9U Today Advanced Charts Auto Backup
+Update Son6 V10.6 Stable MCU3

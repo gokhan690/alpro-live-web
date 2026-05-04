@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-son6-v123-cash-percent-blur-fix",
-  "version": "12.3.0",
+  "name": "aluminyumpro-v12-4-clean",
+  "version": "12.4.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

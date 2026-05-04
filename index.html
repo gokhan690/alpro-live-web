@@ -6038,6 +6038,118 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 }
 </style>
 
+
+<style id="v124-mobile-shell-desktop-guard-css">
+/* ===== V12.4 MOBILE SHELL DESKTOP GUARD + SAFE TOP ===== */
+
+#alpro-clean-top,
+#alpro-clean-bottom,
+#alpro-clean-backdrop,
+#alpro-clean-drawer{
+  display:none !important;
+}
+
+@media(min-width:821px){
+  body{
+    overflow-x:auto !important;
+  }
+  body.v69r-mobile,
+  body.v69q-mobile-dashboard-active{
+    overflow-x:auto !important;
+  }
+  body:not(.force-mobile) #alpro-clean-top,
+  body:not(.force-mobile) #alpro-clean-bottom,
+  body:not(.force-mobile) #alpro-clean-backdrop,
+  body:not(.force-mobile) #alpro-clean-drawer{
+    display:none !important;
+    pointer-events:none !important;
+  }
+  body:not(.force-mobile) .content,
+  body:not(.force-mobile) .main,
+  body:not(.force-mobile) .page{
+    filter:none !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+}
+
+@media(max-width:820px){
+  :root{
+    --alpro-safe-top: env(safe-area-inset-top, 0px);
+    --alpro-top-gap: 6px;
+    --alpro-top-height: 54px;
+  }
+
+  #alpro-clean-top{
+    display:flex !important;
+    position:fixed !important;
+    top:calc(var(--alpro-safe-top) + var(--alpro-top-gap)) !important;
+    left:10px !important;
+    right:10px !important;
+    height:var(--alpro-top-height) !important;
+    min-height:var(--alpro-top-height) !important;
+    z-index:90000 !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:10px !important;
+    padding:7px 10px !important;
+    border-radius:20px !important;
+    background:linear-gradient(180deg,rgba(10,10,11,.98),rgba(5,5,6,.96)) !important;
+    border:1px solid rgba(255,255,255,.12) !important;
+    box-shadow:0 14px 36px rgba(0,0,0,.42) !important;
+    backdrop-filter:blur(8px) !important;
+    -webkit-backdrop-filter:blur(8px) !important;
+    box-sizing:border-box !important;
+    pointer-events:auto !important;
+  }
+
+  #alpro-clean-bottom{
+    display:flex !important;
+    position:fixed !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    height:calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+    padding:8px 10px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index:90000 !important;
+    box-sizing:border-box !important;
+    pointer-events:auto !important;
+  }
+
+  #alpro-clean-backdrop.show{
+    display:block !important;
+  }
+  #alpro-clean-drawer{
+    display:block !important;
+  }
+
+  body.v69r-mobile .content,
+  body.v69r-mobile .main,
+  body.v69r-mobile .page,
+  body.v69q-mobile-dashboard-active .content,
+  body.v69q-mobile-dashboard-active .main,
+  body.v69q-mobile-dashboard-active .page#page-dashboard{
+    padding-top:calc(var(--alpro-safe-top) + 72px) !important;
+    padding-bottom:calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  #v69r-mobile-top,
+  #v69r-mobile-nav,
+  #v69r-menu-backdrop,
+  #v69r-menu-drawer{
+    display:none !important;
+    pointer-events:none !important;
+  }
+
+  #alpro-clean-top button,
+  #alpro-clean-bottom button,
+  #alpro-clean-drawer button{
+    touch-action:manipulation !important;
+    -webkit-tap-highlight-color:transparent !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -16901,6 +17013,87 @@ window.openTrash = function(type) {
     window.P=wrapped;
     window.showPage=wrapped;
   }
+})();
+</script>
+
+
+<script id="v124-mobile-shell-desktop-guard-js">
+(function(){
+  function q(id){return document.getElementById(id)}
+  function isMobileWidth(){return window.innerWidth <= 820}
+  function hideCleanShellDesktop(){
+    if(isMobileWidth()) return;
+    ['alpro-clean-top','alpro-clean-bottom','alpro-clean-backdrop','alpro-clean-drawer'].forEach(id=>{
+      const el=q(id);
+      if(el){
+        el.style.display='none';
+        el.style.pointerEvents='none';
+      }
+    });
+    document.body.classList.remove('v69r-mobile','v69q-mobile-dashboard-active');
+    document.querySelectorAll('.content,.main,.page').forEach(el=>{
+      el.style.filter='none';
+      el.style.backdropFilter='none';
+      el.style.webkitBackdropFilter='none';
+    });
+  }
+
+  function showCleanShellMobile(){
+    if(!isMobileWidth()) return;
+    const top=q('alpro-clean-top');
+    const bottom=q('alpro-clean-bottom');
+    if(top){
+      top.style.display='flex';
+      top.style.pointerEvents='auto';
+    }
+    if(bottom){
+      bottom.style.display='flex';
+      bottom.style.pointerEvents='auto';
+    }
+    document.body.classList.add('v69r-mobile');
+  }
+
+  function fixBrokenRawShell(){
+    if(!isMobileWidth()){
+      hideCleanShellDesktop();
+      return;
+    }
+    showCleanShellMobile();
+  }
+
+  function fixTopTouchArea(){
+    if(!isMobileWidth()) return;
+    const top=q('alpro-clean-top');
+    if(top){
+      top.style.top='calc(env(safe-area-inset-top, 0px) + 6px)';
+      top.style.height='54px';
+      top.style.minHeight='54px';
+    }
+  }
+
+  function init(){
+    fixBrokenRawShell();
+    fixTopTouchArea();
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    init();
+    setTimeout(init,120);
+    setTimeout(init,500);
+    setTimeout(init,1500);
+  });
+
+  window.addEventListener('resize',function(){
+    setTimeout(init,80);
+    setTimeout(init,300);
+  });
+
+  window.addEventListener('orientationchange',function(){
+    setTimeout(init,150);
+    setTimeout(init,650);
+  });
+
+  setInterval(init,2000);
 })();
 </script>
 

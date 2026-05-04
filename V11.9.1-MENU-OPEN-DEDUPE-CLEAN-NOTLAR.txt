@@ -1,0 +1,23 @@
+AluminyumPro Son6 V11.9.1 Menu Open Dedupe Clean
+
+Bu sürümde:
+1) v69r mobil menü scripti temizden kuruldu.
+2) Genel menü/hamburger açılmama sorunu düzeltildi.
+3) Eski V11.6/V11.7/V11.8 duplicate menü scriptleri kaldırıldı.
+4) Ana Sayfa / Fiyat / Rapor gibi öğelerin ikişer tane oluşması engellendi.
+5) Hızlı işlemler genel menüye eklendi:
+   - Yeni Sipariş / Siparişler
+   - Teklif Oluştur
+   - Navlun Talebi
+   - Fatura Oluştur
+6) Diğer modüller tek ve nizami şekilde genel menüde:
+   - Gümrük Hesap
+   - Gelir/Gider
+   - Hatırlatıcılar
+   - Hedging
+   - Analitik
+   - Sabah Raporu
+   - Stok
+
+Commit:
+Fix mobile general menu open duplicates clean

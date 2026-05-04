@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-son6-v117-real-drawer-pages",
-  "version": "11.7.0",
+  "name": "aluminyumpro-son6-v123-cash-percent-blur-fix",
+  "version": "12.3.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

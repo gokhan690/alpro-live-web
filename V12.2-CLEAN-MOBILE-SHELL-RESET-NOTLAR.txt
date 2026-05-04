@@ -1,0 +1,15 @@
+AluminyumPro Son6 V12.2 Clean Mobile Shell Reset
+
+Bu sürümde:
+1) Eski mobil topbar/nav/drawer mobilde gizlendi.
+2) Sıfırdan temiz mobil üst bar kuruldu.
+3) Sıfırdan temiz mobil alt bar kuruldu.
+4) Sıfırdan temiz genel menü/drawer kuruldu.
+5) Alt bar sadece sayfa açar.
+6) Genel menü sadece hamburgerden açılır.
+7) Ana sayfada hamburger kesin görünür.
+8) Hızlı İşlemler kaldırıldı.
+9) Eski overlay/backdrop alt butonlara basmayı engellemez.
+
+Commit:
+Reset clean mobile shell

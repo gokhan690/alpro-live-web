@@ -1,0 +1,11 @@
+AluminyumPro Son6 V11.8 Mobile Shell Polish
+
+Bu sürümde:
+1) Üst mobil çubuk (menü + sayfa adı + FX + arama) bütün sayfalarda düzenlendi.
+2) Alt mobil navigasyon (Ana / Fiyat / Sipariş / Finans / Rapor) sabit ve daha düzgün hale getirildi.
+3) Soldan açılan menü gridinde yeni modüller doğal şekilde yer aldı.
+4) Canlı Fiyatlar sayfasında üst ve alt shell düzgün görünür.
+5) Dashboard özel mobil görünümü korunur; diğer sayfalarda global shell görünür.
+
+Commit:
+Update Son6 V11.8 Mobile shell polish

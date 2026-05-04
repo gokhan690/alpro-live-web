@@ -1,11 +1,10 @@
-AluminyumPro Son6 V11.7 Real Drawer Pages Fix
+AluminyumPro Son6 V12.3 Cash Percent Blur Fix
 
 GitHub repo ana dizinine bu klasördeki dosyaları koy.
 
 Commit mesajı:
-Update Son6 V11.7 Real Drawer Pages Fix
+Fix cash percent zero and mobile blur
 
 Kontrol:
-- Sol/yandan açılan menüde yeni modüller ana liste içinde görünsün.
-- Tıklayınca sayfa ana ekranda açılsın.
-- Ayrı Ek Modüller kutusu görünmesin.
+- Cash Position USD 0 ise halka 0% mı?
+- Ana sayfa dışındaki sayfalar net mi, bulanıklık kalktı mı?

@@ -1,0 +1,13 @@
+AluminyumPro Son6 V12.1 Mobile Click Logic Fix
+
+Bu sürümde:
+1) Alt bardaki Fiyat/Ana/Sipariş/Finans/Rapor tıklanınca sadece ilgili sayfa açılır.
+2) Alt bar artık genel menüyü açmaz.
+3) Genel menü sadece sol üst hamburgerden açılır.
+4) Ana sayfada hamburger görünür ve çalışır.
+5) Kapalı backdrop/overlay tıklama yakalamasın diye pointer-events kapatıldı.
+6) Dashboard hızlı işlemler kaldırıldı.
+7) Tek alt bar kuralı güçlendirildi.
+
+Commit:
+Fix mobile click logic menu only hamburger

@@ -5296,99 +5296,7 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 }
 </style>
 
-<style id="v114-mobile-drawer-cash-css">
-/* ===== V11.4 MOBILE DRAWER + CASH FIX ===== */
 
-@media(max-width:820px){
-  /* Cash Position kesin sığsın */
-  #v69q-cash{
-    font-size:clamp(18px,6.2vw,26px)!important;
-    line-height:1.05!important;
-    letter-spacing:-.04em!important;
-    white-space:nowrap!important;
-    overflow:visible!important;
-    text-overflow:clip!important;
-    max-width:calc(100% - 76px)!important;
-    display:block!important;
-  }
-  .v69q-kpi-card:has(#v69q-cash){
-    min-height:172px!important;
-  }
-  .v69q-kpi-card:has(#v69q-cash) .v69q-ring-wrap{
-    width:56px!important;
-    height:56px!important;
-    right:12px!important;
-    bottom:12px!important;
-  }
-  .v69q-kpi-card:has(#v69q-cash) .v69q-ring-wrap span{
-    font-size:13px!important;
-  }
-
-  /* Ana dashboard hızlı işlemleri yine 4 adet ve düzgün kalsın */
-  .v69q-actions{
-    grid-template-columns:repeat(4,minmax(0,1fr))!important;
-    gap:8px!important;
-  }
-  .v69q-action{
-    min-height:72px!important;
-  }
-
-  /* Sol/yandan açılan menüye yeni modül grubu */
-  .v114-drawer-section{
-    margin:12px 12px 10px!important;
-    padding:10px!important;
-    border-radius:18px!important;
-    background:linear-gradient(180deg,rgba(244,202,117,.085),rgba(255,255,255,.025))!important;
-    border:1px solid rgba(244,202,117,.22)!important;
-  }
-  .v114-drawer-title{
-    color:#f4ca75!important;
-    font-size:11px!important;
-    font-weight:1000!important;
-    letter-spacing:.08em!important;
-    text-transform:uppercase!important;
-    margin:0 0 8px!important;
-  }
-  .v114-drawer-grid{
-    display:grid!important;
-    grid-template-columns:1fr 1fr!important;
-    gap:7px!important;
-  }
-  .v114-drawer-item{
-    min-height:48px!important;
-    border-radius:13px!important;
-    border:1px solid rgba(255,255,255,.12)!important;
-    background:rgba(255,255,255,.045)!important;
-    color:#fff!important;
-    display:flex!important;
-    align-items:center!important;
-    gap:7px!important;
-    padding:8px!important;
-    font-size:10px!important;
-    font-weight:900!important;
-    text-align:left!important;
-  }
-  .v114-drawer-item .ico{
-    color:#f4ca75!important;
-    font-size:16px!important;
-    width:18px!important;
-    text-align:center!important;
-    flex:0 0 18px!important;
-  }
-  .v114-drawer-item .txt{
-    min-width:0!important;
-    white-space:normal!important;
-    line-height:1.1!important;
-  }
-
-  /* v69r drawer içindeki liste taşmasın */
-  #v69r-menu-drawer{
-    overflow-y:auto!important;
-    overscroll-behavior:contain!important;
-    padding-bottom:24px!important;
-  }
-}
-</style>
 
 
 <style id="v115-real-cash-zero-css">
@@ -5405,158 +5313,727 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 </style>
 
 
-<style id="v116-mobile-menu-integrated-css">
-/* ===== V11.6 MOBILE MENU INTEGRATED MODULES ===== */
+
+
+
+
+
+
+
+
+
+<style id="v119-menu-open-dedupe-css">
+/* ===== V11.9 MENU OPEN + DEDUPE FIX ===== */
 @media(max-width:820px){
-  /* Eski ayrı Ek Modüller kutusu varsa gizle; yeni modüller ana menü listesine entegre edilir */
-  #v114-drawer-section{
-    display:none!important;
-  }
-
-  .v116-menu-separator{
-    margin:12px 14px 8px!important;
-    padding-top:10px!important;
-    border-top:1px solid rgba(255,255,255,.10)!important;
-    color:#f4ca75!important;
-    font-size:10px!important;
-    font-weight:1000!important;
-    letter-spacing:.10em!important;
-    text-transform:uppercase!important;
-  }
-
-  .v116-menu-item{
-    width:calc(100% - 24px)!important;
-    margin:0 12px 7px!important;
-    min-height:46px!important;
-    border-radius:14px!important;
-    border:1px solid rgba(255,255,255,.11)!important;
-    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.022))!important;
-    color:#f7f7f7!important;
-    display:flex!important;
-    align-items:center!important;
-    gap:11px!important;
-    padding:0 12px!important;
-    text-align:left!important;
-    font-size:13px!important;
-    font-weight:850!important;
-    cursor:pointer!important;
-    box-sizing:border-box!important;
-  }
-  .v116-menu-item:hover,
-  .v116-menu-item:active{
-    border-color:rgba(244,202,117,.34)!important;
-    background:rgba(244,202,117,.10)!important;
-  }
-  .v116-menu-item .ico{
-    width:24px!important;
-    height:24px!important;
-    border-radius:9px!important;
-    background:rgba(244,202,117,.12)!important;
-    border:1px solid rgba(244,202,117,.20)!important;
-    color:#f4ca75!important;
-    display:flex!important;
-    align-items:center!important;
-    justify-content:center!important;
-    font-size:14px!important;
-    flex:0 0 24px!important;
-  }
-  .v116-menu-item .txt{
-    min-width:0!important;
-    flex:1!important;
-    overflow:hidden!important;
-    text-overflow:ellipsis!important;
-    white-space:nowrap!important;
-  }
-  .v116-menu-item .sub{
-    color:rgba(255,255,255,.42)!important;
-    font-size:11px!important;
-    font-weight:900!important;
-  }
-
-  /* Drawer scrollbar ve düzen */
-  #v69r-menu-drawer{
-    overflow-y:auto!important;
-    overscroll-behavior:contain!important;
-    padding-bottom:28px!important;
-  }
-
-  /* Cash real zero fix korunur */
-  #v69q-cash{
-    max-width:calc(100% - 76px)!important;
-    white-space:nowrap!important;
-    overflow:visible!important;
-    text-overflow:clip!important;
-  }
-}
-</style>
-
-
-<style id="v117-real-drawer-pages-css">
-/* ===== V11.7 REAL DRAWER PAGES FIX ===== */
-@media(max-width:820px){
-  /* Eski ayrı Ek Modüller kutusunu tamamen gizle */
   #v114-drawer-section,
   #v116-menu-modules{
     display:none!important;
   }
 
-  /* Soldaki ana menüdeki tüm satırlar aynı nizami görünümde olsun */
-  #v69r-menu-drawer .v69r-menu-item,
-  #v69r-menu-drawer [data-go],
-  #v69r-menu-drawer .v117-forced-menu-item{
-    width:calc(100% - 24px)!important;
-    margin:0 12px 7px!important;
-    min-height:48px!important;
-    border-radius:14px!important;
-    box-sizing:border-box!important;
+  body.v69r-mobile #v69r-mobile-top{
+    position:fixed!important;
+    top:10px!important;
+    left:10px!important;
+    right:10px!important;
+    z-index:7100!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    padding:8px 10px!important;
+    min-height:56px!important;
+    border-radius:22px!important;
+    background:linear-gradient(180deg,rgba(8,8,8,.96),rgba(7,7,8,.92))!important;
+    border:1px solid rgba(255,255,255,.10)!important;
+    box-shadow:0 14px 36px rgba(0,0,0,.38)!important;
+    backdrop-filter:blur(8px)!important;
+  }
+  body.v69q-mobile-dashboard-active #v69r-mobile-top,
+  body.v69q-mobile-dashboard-active #v69r-mobile-nav{
+    display:none!important;
   }
 
-  #v69r-menu-drawer .v117-forced-menu-item{
+  body.v69r-mobile #v69r-mobile-top .v69r-top-left{
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    min-width:0!important;
+    flex:1!important;
+  }
+  body.v69r-mobile #v69r-mobile-top .v69r-top-right{
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+    flex:0 0 auto!important;
+  }
+  body.v69r-mobile #v69r-menu-btn,
+  body.v69r-mobile #v69r-fx-btn,
+  body.v69r-mobile #v69r-search-btn{
+    width:40px!important;
+    height:40px!important;
+    border-radius:14px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
     border:1px solid rgba(255,255,255,.11)!important;
-    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.022))!important;
+    background:rgba(255,255,255,.04)!important;
+    color:#f4ca75!important;
+    font-size:18px!important;
+  }
+  body.v69r-mobile #v69r-page-name{
+    display:block!important;
+    color:#fff!important;
+    font-size:16px!important;
+    font-weight:1000!important;
+    line-height:1.05!important;
+    max-width:160px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+  body.v69r-mobile #v69r-page-sub{
+    display:block!important;
+    color:rgba(255,255,255,.52)!important;
+    font-size:11px!important;
+    line-height:1.05!important;
+    max-width:170px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    margin-top:2px!important;
+  }
+
+  body.v69r-mobile #v69r-menu-drawer{
+    display:block;
+    overflow-y:auto!important;
+    padding:14px 14px 28px!important;
+    width:min(92vw,360px)!important;
+    max-width:360px!important;
+    z-index:7300!important;
+    background:linear-gradient(180deg,#0b0b0c,#060607)!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+    box-shadow:0 28px 60px rgba(0,0,0,.45)!important;
+  }
+  body.v69r-mobile #v69r-menu-backdrop{
+    z-index:7290!important;
+  }
+
+  body.v69r-mobile .v69r-menu-grid{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+  }
+  body.v69r-mobile .v69r-menu-item{
+    min-height:54px!important;
+    border-radius:15px!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+    background:rgba(255,255,255,.045)!important;
     color:#fff!important;
     display:flex!important;
     align-items:center!important;
-    gap:12px!important;
-    padding:0 12px!important;
+    gap:9px!important;
+    padding:10px!important;
     text-align:left!important;
-    font-size:13px!important;
-    font-weight:850!important;
+    box-sizing:border-box!important;
   }
-  #v69r-menu-drawer .v117-forced-menu-item b{
-    width:26px!important;
-    height:26px!important;
-    border-radius:9px!important;
-    background:rgba(244,202,117,.12)!important;
-    border:1px solid rgba(244,202,117,.20)!important;
+  body.v69r-mobile .v69r-menu-item b{
+    color:#f4ca75!important;
+    font-size:18px!important;
+    min-width:22px!important;
+    display:flex!important;
+    justify-content:center!important;
+  }
+  body.v69r-mobile .v69r-menu-item span{
+    font-size:12px!important;
+    font-weight:900!important;
+    line-height:1.1!important;
+    white-space:normal!important;
+  }
+  body.v69r-mobile .v69r-menu-item.active{
+    background:rgba(244,202,117,.14)!important;
+    border-color:rgba(244,202,117,.30)!important;
+  }
+
+  body.v69r-mobile .content,
+  body.v69r-mobile .main,
+  body.v69r-mobile .page{
+    padding-top:72px!important;
+    padding-bottom:90px!important;
+  }
+  body.v69q-mobile-dashboard-active .content,
+  body.v69q-mobile-dashboard-active .main,
+  body.v69q-mobile-dashboard-active .page#page-dashboard{
+    padding-top:0!important;
+  }
+
+  body.v69r-mobile #v69r-mobile-nav{
+    position:fixed!important;
+    left:10px!important;
+    right:10px!important;
+    bottom:8px!important;
+    z-index:7100!important;
+    height:68px!important;
+    padding:8px 10px 10px!important;
+    display:flex!important;
+    justify-content:space-between!important;
+    gap:4px!important;
+    background:linear-gradient(180deg,rgba(7,7,8,.98),rgba(5,5,6,.98))!important;
+    border-top:1px solid rgba(255,255,255,.09)!important;
+  }
+  body.v69r-mobile .v69r-nav-item{
+    flex:1!important;
+    min-width:0!important;
+    border:none!important;
+    background:transparent!important;
+    color:rgba(255,255,255,.66)!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:4px!important;
+  }
+  body.v69r-mobile .v69r-nav-item.active{
+    color:#f4ca75!important;
+  }
+}
+</style>
+
+
+
+
+
+<style id="v121-mobile-click-logic-fix-css">
+/* ===== V12.1 MOBILE CLICK LOGIC FIX ===== */
+@media(max-width:820px){
+  /* Dashboard dahil her sayfada tek üst bar görünsün */
+  body.v69r-mobile #v69r-mobile-top,
+  body.v69q-mobile-dashboard-active #v69r-mobile-top{
+    display:flex!important;
+    position:fixed!important;
+    top:8px!important;
+    left:10px!important;
+    right:10px!important;
+    z-index:7600!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    min-height:56px!important;
+    padding:8px 10px!important;
+    border-radius:22px!important;
+    background:linear-gradient(180deg,rgba(8,8,8,.98),rgba(7,7,8,.94))!important;
+    border:1px solid rgba(255,255,255,.11)!important;
+    box-shadow:0 14px 36px rgba(0,0,0,.38)!important;
+    pointer-events:auto!important;
+  }
+
+  body.v69r-mobile #v69r-mobile-top .v69r-top-left{
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    min-width:0!important;
+    flex:1!important;
+  }
+  body.v69r-mobile #v69r-mobile-top .v69r-top-right{
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+    flex:0 0 auto!important;
+  }
+
+  #v69r-menu-btn,
+  #v69r-fx-btn,
+  #v69r-search-btn{
+    width:40px!important;
+    height:40px!important;
+    min-width:40px!important;
+    border-radius:14px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+    background:rgba(255,255,255,.05)!important;
+    color:#f4ca75!important;
+    font-size:18px!important;
+    pointer-events:auto!important;
+  }
+
+  #v69r-page-name{
+    display:block!important;
+    color:#fff!important;
+    font-size:16px!important;
+    font-weight:1000!important;
+    line-height:1.05!important;
+    max-width:160px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+  #v69r-page-sub{
+    display:block!important;
+    color:rgba(255,255,255,.52)!important;
+    font-size:11px!important;
+    line-height:1.05!important;
+    max-width:170px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    margin-top:2px!important;
+  }
+
+  /* Tek alt bar: sadece v69r nav */
+  .v69q-bottom-nav,
+  .v69q-nav-item{
+    display:none!important;
+    pointer-events:none!important;
+  }
+
+  body.v69r-mobile #v69r-mobile-nav,
+  body.v69q-mobile-dashboard-active #v69r-mobile-nav{
+    display:flex!important;
+    position:fixed!important;
+    left:0!important;
+    right:0!important;
+    bottom:0!important;
+    z-index:7500!important;
+    height:72px!important;
+    padding:8px 10px 10px!important;
+    align-items:stretch!important;
+    justify-content:space-between!important;
+    gap:4px!important;
+    background:linear-gradient(180deg,rgba(8,8,9,.98),rgba(5,5,6,.99))!important;
+    border-top:1px solid rgba(255,255,255,.09)!important;
+    box-shadow:0 -10px 30px rgba(0,0,0,.32)!important;
+    pointer-events:auto!important;
+  }
+
+  #v69r-mobile-nav .v69r-nav-item{
+    flex:1!important;
+    min-width:0!important;
+    border:none!important;
+    background:transparent!important;
+    color:rgba(255,255,255,.66)!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:4px!important;
+    padding:6px 2px!important;
+    border-radius:12px!important;
+    pointer-events:auto!important;
+  }
+  #v69r-mobile-nav .v69r-nav-item b{
+    font-size:15px!important;
+    line-height:1!important;
+  }
+  #v69r-mobile-nav .v69r-nav-item span{
+    font-size:11px!important;
+    font-weight:900!important;
+    white-space:nowrap!important;
+  }
+  #v69r-mobile-nav .v69r-nav-item.active{
+    color:#f4ca75!important;
+  }
+
+  /* Drawer/backdrop kapalıyken kesin tıklama yakalamasın */
+  #v69r-menu-backdrop:not(.show),
+  #v69r-fx-backdrop:not(.show){
+    display:none!important;
+    pointer-events:none!important;
+  }
+  #v69r-menu-backdrop.show,
+  #v69r-fx-backdrop.show{
+    display:block!important;
+    pointer-events:auto!important;
+  }
+
+  #v69r-menu-drawer{
+    z-index:7700!important;
+    pointer-events:auto!important;
+    overflow-y:auto!important;
+  }
+  #v69r-menu-drawer:not(.show){
+    pointer-events:none!important;
+  }
+
+  /* İçerik üst bar ve alt bar altında kalsın */
+  body.v69r-mobile .content,
+  body.v69r-mobile .main,
+  body.v69r-mobile .page,
+  body.v69q-mobile-dashboard-active .content,
+  body.v69q-mobile-dashboard-active .main,
+  body.v69q-mobile-dashboard-active .page#page-dashboard{
+    padding-top:76px!important;
+    padding-bottom:88px!important;
+  }
+
+  /* Dashboard'daki hızlı işlemleri kaldır */
+  body.v69q-mobile-dashboard-active .v69q-section-head,
+  body.v69q-mobile-dashboard-active .v69q-actions,
+  body.v69q-mobile-dashboard-active #v112-mobile-actions,
+  body.v69q-mobile-dashboard-active .v112-mobile-actions{
+    display:none!important;
+  }
+
+  body.v69q-mobile-dashboard-active .v69q-status,
+  body.v69q-mobile-dashboard-active .v69q-header{
+    display:none!important;
+  }
+}
+</style>
+
+
+<style id="v122-clean-mobile-shell-css">
+/* ===== V12.2 CLEAN MOBILE SHELL RESET ===== */
+@media(max-width:820px){
+  /* Eski mobil shell ve eski navlar tamamen pasif */
+  #v69r-mobile-top,
+  #v69r-mobile-nav,
+  #v69r-menu-backdrop,
+  #v69r-menu-drawer,
+  #v69r-fx-backdrop,
+  #v69r-fx-sheet,
+  .v69q-bottom-nav,
+  .v69q-nav-item,
+  #v112-mobile-actions,
+  .v112-mobile-actions{
+    display:none!important;
+    pointer-events:none!important;
+  }
+
+  /* Dashboard hızlı işlemler kaldır */
+  .v69q-section-head,
+  .v69q-actions{
+    display:none!important;
+  }
+
+  /* Dashboard kendi status/header kısmı gizli: tek üst bar bizim */
+  .v69q-status,
+  .v69q-header{
+    display:none!important;
+  }
+
+  html,body{
+    overflow-x:hidden!important;
+  }
+
+  body{
+    background:#050607!important;
+  }
+
+  .content,.main,.page{
+    padding-top:76px!important;
+    padding-bottom:88px!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+    box-sizing:border-box!important;
+  }
+
+  /* TEMİZ ÜST BAR */
+  #alpro-clean-top{
+    position:fixed!important;
+    top:8px!important;
+    left:10px!important;
+    right:10px!important;
+    z-index:90000!important;
+    height:56px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    padding:8px 10px!important;
+    border-radius:22px!important;
+    background:linear-gradient(180deg,rgba(10,10,11,.98),rgba(5,5,6,.96))!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+    box-shadow:0 14px 36px rgba(0,0,0,.42)!important;
+    backdrop-filter:blur(8px)!important;
+    box-sizing:border-box!important;
+  }
+  #alpro-clean-top .left{
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    min-width:0!important;
+    flex:1!important;
+  }
+  #alpro-clean-top .right{
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+    flex:0 0 auto!important;
+  }
+  .alpro-clean-iconbtn{
+    width:40px!important;
+    height:40px!important;
+    min-width:40px!important;
+    border-radius:14px!important;
+    border:1px solid rgba(255,255,255,.13)!important;
+    background:rgba(255,255,255,.05)!important;
     color:#f4ca75!important;
     display:flex!important;
     align-items:center!important;
     justify-content:center!important;
-    flex:0 0 26px!important;
-    font-size:14px!important;
+    font-size:18px!important;
+    font-weight:1000!important;
+    padding:0!important;
+    cursor:pointer!important;
   }
-  #v69r-menu-drawer .v117-forced-menu-item span{
-    display:flex!important;
-    flex-direction:column!important;
-    min-width:0!important;
-  }
-  #v69r-menu-drawer .v117-forced-menu-item strong{
+  #alpro-clean-title{
+    display:block!important;
     color:#fff!important;
-    font-size:13px!important;
+    font-size:16px!important;
+    font-weight:1000!important;
     line-height:1.05!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    max-width:170px!important;
   }
-  #v69r-menu-drawer .v117-forced-menu-item em{
-    color:rgba(255,255,255,.46)!important;
-    font-style:normal!important;
+  #alpro-clean-sub{
+    display:block!important;
+    color:rgba(255,255,255,.55)!important;
     font-size:11px!important;
-    line-height:1.1!important;
-    margin-top:3px!important;
+    line-height:1.05!important;
+    margin-top:2px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    max-width:180px!important;
   }
 
-  #v69r-menu-drawer{
+  /* TEMİZ ALT NAV */
+  #alpro-clean-bottom{
+    position:fixed!important;
+    left:0!important;
+    right:0!important;
+    bottom:0!important;
+    z-index:90000!important;
+    height:72px!important;
+    display:flex!important;
+    align-items:stretch!important;
+    justify-content:space-between!important;
+    gap:4px!important;
+    padding:8px 10px 10px!important;
+    background:linear-gradient(180deg,rgba(8,8,9,.98),rgba(4,4,5,.99))!important;
+    border-top:1px solid rgba(255,255,255,.09)!important;
+    box-shadow:0 -10px 30px rgba(0,0,0,.35)!important;
+    box-sizing:border-box!important;
+  }
+  .alpro-clean-navitem{
+    flex:1!important;
+    min-width:0!important;
+    border:none!important;
+    background:transparent!important;
+    color:rgba(255,255,255,.66)!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:4px!important;
+    border-radius:12px!important;
+    padding:6px 2px!important;
+    cursor:pointer!important;
+  }
+  .alpro-clean-navitem b{
+    font-size:15px!important;
+    line-height:1!important;
+    color:inherit!important;
+  }
+  .alpro-clean-navitem span{
+    font-size:11px!important;
+    font-weight:900!important;
+    line-height:1.05!important;
+    white-space:nowrap!important;
+  }
+  .alpro-clean-navitem.active{
+    color:#f4ca75!important;
+  }
+
+  /* TEMİZ DRAWER */
+  #alpro-clean-backdrop{
+    position:fixed!important;
+    inset:0!important;
+    display:none!important;
+    z-index:91000!important;
+    background:rgba(0,0,0,.55)!important;
+    backdrop-filter:blur(4px)!important;
+  }
+  #alpro-clean-backdrop.show{
+    display:block!important;
+  }
+  #alpro-clean-drawer{
+    position:fixed!important;
+    top:0!important;
+    left:0!important;
+    bottom:0!important;
+    width:min(92vw,360px)!important;
+    max-width:360px!important;
+    z-index:92000!important;
+    transform:translateX(-105%)!important;
+    transition:transform .22s ease!important;
+    background:linear-gradient(180deg,#0b0b0c,#060607)!important;
+    border-right:1px solid rgba(255,255,255,.12)!important;
+    box-shadow:0 28px 60px rgba(0,0,0,.55)!important;
+    padding:14px!important;
     overflow-y:auto!important;
-    padding-bottom:32px!important;
+    box-sizing:border-box!important;
+    color:#fff!important;
+  }
+  #alpro-clean-drawer.show{
+    transform:translateX(0)!important;
+  }
+  .alpro-clean-drawer-head{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    margin-bottom:14px!important;
+  }
+  .alpro-clean-brand{
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    color:#fff!important;
+    font-size:16px!important;
+    font-weight:1000!important;
+  }
+  .alpro-clean-logo{
+    color:#f4ca75!important;
+    font-size:32px!important;
+    line-height:1!important;
+    font-weight:1000!important;
+  }
+  .alpro-clean-close{
+    width:40px!important;
+    height:40px!important;
+    border-radius:14px!important;
+    border:1px solid rgba(255,255,255,.13)!important;
+    background:rgba(255,255,255,.05)!important;
+    color:#fff!important;
+    font-size:20px!important;
+  }
+  .alpro-clean-namebox{
+    margin-bottom:14px!important;
+    padding:12px!important;
+    border-radius:16px!important;
+    background:rgba(255,255,255,.045)!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+  }
+  .alpro-clean-namebox label{
+    display:block!important;
+    color:rgba(255,255,255,.62)!important;
+    font-size:11px!important;
+    font-weight:900!important;
+    margin-bottom:7px!important;
+  }
+  #alpro-clean-name{
+    width:100%!important;
+    height:44px!important;
+    border-radius:14px!important;
+    border:1px solid rgba(255,255,255,.15)!important;
+    background:rgba(255,255,255,.07)!important;
+    color:#fff!important;
+    padding:0 12px!important;
+    box-sizing:border-box!important;
+  }
+  .alpro-clean-section{
+    margin:4px 0 10px!important;
+    color:#f4ca75!important;
+    font-size:11px!important;
+    font-weight:1000!important;
+    letter-spacing:.12em!important;
+    text-transform:uppercase!important;
+  }
+  .alpro-clean-grid{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+  }
+  .alpro-clean-menuitem{
+    min-height:54px!important;
+    border-radius:15px!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+    background:rgba(255,255,255,.045)!important;
+    color:#fff!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:9px!important;
+    padding:10px!important;
+    text-align:left!important;
+    box-sizing:border-box!important;
+    cursor:pointer!important;
+  }
+  .alpro-clean-menuitem b{
+    color:#f4ca75!important;
+    font-size:18px!important;
+    min-width:22px!important;
+    display:flex!important;
+    justify-content:center!important;
+  }
+  .alpro-clean-menuitem span{
+    font-size:12px!important;
+    font-weight:900!important;
+    line-height:1.1!important;
+    white-space:normal!important;
+  }
+  .alpro-clean-menuitem.active{
+    background:rgba(244,202,117,.14)!important;
+    border-color:rgba(244,202,117,.30)!important;
+  }
+}
+</style>
+
+
+<style id="v123-cash-percent-blur-css">
+/* ===== V12.3 CASH PERCENT + BLUR FIX ===== */
+@media(max-width:820px){
+  /* Ana sayfa dışı blur/kararma kalıntılarını kapat */
+  body.v69r-mobile .page,
+  body.v69r-mobile .content,
+  body.v69r-mobile .main,
+  body.v69r-mobile section,
+  body.v69r-mobile .card,
+  body.v69r-mobile .panel,
+  body.v69r-mobile .v111-panel{
+    filter:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+
+  /* Menü ve FX açık değilken backdrop kesin kapalı */
+  #alpro-clean-backdrop:not(.show),
+  #v69r-menu-backdrop:not(.show),
+  #v69r-fx-backdrop:not(.show){
+    display:none!important;
+    opacity:0!important;
+    pointer-events:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+
+  /* Eski blur class / overlay kalıntıları */
+  .blur,
+  .blurred,
+  .is-blur,
+  .modal-blur,
+  .search-open .content,
+  .drawer-open .content,
+  body:not(.drawer-open) .backdrop,
+  body:not(.drawer-open) .overlay{
+    filter:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+
+  /* Cash ring demo yüzdesi 0 görünüm */
+  #v69q-cash-percent,
+  .v69q-ring-wrap span,
+  .cash-ring span,
+  [data-cash-percent]{
+    color:#fff!important;
+  }
+
+  .v69q-kpi-card:has(#v69q-cash) .v69q-ring-wrap,
+  .cash-ring,
+  .v69q-ring-wrap{
+    --p:0!important;
   }
 }
 </style>
@@ -11967,30 +12444,25 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
 <script id="v69r-full-mobile-app-shell-js">
 (function(){
   function q(id){return document.getElementById(id);}
-  function resolveMobileRoute(p){
-    if(p==='customs-calc' && !document.getElementById('page-customs-calc')) return 'customs';
-    if(p==='income' && !document.getElementById('page-income')) return document.getElementById('page-bank') ? 'bank' : 'dashboard';
-    if(p==='analytics' && !document.getElementById('page-analytics')) return document.getElementById('page-reports') ? 'reports' : 'dashboard';
-    if(p==='reports' && !document.getElementById('page-reports')) return document.getElementById('page-v5-morning') ? 'v5-morning' : 'dashboard';
-    return p;
-  }
-  function go(p){p=resolveMobileRoute(p);if(window.P)window.P(p);else if(window.showPage)window.showPage(p);}
-  function activePage(){const a=document.querySelector('.page.active');return a?a.id.replace('page-',''):'dashboard';}
-  function esc(s){return String(s ?? '').replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m];});}
+  function esc(s){return String(s ?? '').replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
   function getName(){return localStorage.getItem('alpro_mobile_name') || 'Mehmet';}
   function setName(v){const name=String(v||'').trim() || 'Mehmet';localStorage.setItem('alpro_mobile_name',name);updateName();}
+  function activePage(){const a=document.querySelector('.page.active');return a?a.id.replace('page-',''):'dashboard';}
+  function pageExists(id){return !!q('page-'+id);}
+
   const pages=[
     ['dashboard','⌂','Ana Sayfa','Dashboard'],
     ['lme','⌁','Canlı Fiyatlar','LME ve metaller'],
     ['orders','🛒','Siparişler','Ticaret'],
+    ['quotes','□','Teklif Oluştur','Ticaret'],
     ['suppliers','▦','Tedarikçiler','Ticaret'],
     ['customers','👥','Müşteriler','Ticaret'],
-    ['freight','▱','Navlun','Lojistik'],
+    ['freight','▱','Navlun Talebi','Lojistik'],
     ['customs','▧','Gümrük','Lojistik'],
     ['customs-calc','▥','Gümrük Hesap','Lojistik'],
     ['bank','▥','Banka','Finans'],
     ['income','₺','Gelir / Gider','Finans'],
-    ['invoices','□','Faturalar','Finans'],
+    ['invoices','□','Fatura Oluştur','Finans'],
     ['stock','▣','Stok','Operasyon'],
     ['reminders','◷','Hatırlatıcılar','Sistem'],
     ['hedge','⌁','Hedging','Risk'],
@@ -12000,84 +12472,265 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
     ['notify','♧','Bildirimler','Sistem'],
     ['setup','⚙','Ayarlar','Sistem']
   ];
+
+  function resolveRoute(p){
+    if(p==='customs-calc' && !pageExists('customs-calc')) return pageExists('customs') ? 'customs' : 'dashboard';
+    if(p==='income' && !pageExists('income')) return pageExists('bank') ? 'bank' : 'dashboard';
+    if(p==='analytics' && !pageExists('analytics')) return pageExists('reports') ? 'reports' : 'dashboard';
+    if(p==='quotes' && !pageExists('quotes')) return pageExists('customers') ? 'customers' : 'dashboard';
+    if(p==='reports' && !pageExists('reports')) return pageExists('v5-morning') ? 'v5-morning' : 'dashboard';
+    if(!pageExists(p)) return 'dashboard';
+    return p;
+  }
+
+  function go(p){
+    const target=resolveRoute(p);
+    if(window.P && window.P !== go){ window.P(target); return; }
+    if(window.showPage && window.showPage !== go){ window.showPage(target); return; }
+    const el=q('page-'+target);
+    if(el){
+      document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+      el.classList.add('active');
+      updateShell();
+    }
+  }
+
   function pageTitle(id){const f=pages.find(p=>p[0]===id);return f?f[2]:'AlPro';}
   function pageSub(id){const f=pages.find(p=>p[0]===id);return f?f[3]:'Metal Trading';}
+  function menuButtons(){
+    const seen={};
+    return pages.filter(p=>{if(seen[p[0]]) return false; seen[p[0]]=true; return true;})
+      .map(p=>'<button class="v69r-menu-item" type="button" data-go="'+p[0]+'"><b>'+p[1]+'</b><span>'+p[2]+'</span></button>')
+      .join('');
+  }
+
   function buildShell(){
     if(!q('v69r-mobile-top')){
-      const top=document.createElement('div');top.id='v69r-mobile-top';
+      const top=document.createElement('div');
+      top.id='v69r-mobile-top';
       top.innerHTML='<div class="v69r-top-left"><button class="v69r-menu-btn" type="button" id="v69r-menu-btn">☰</button><div class="v69r-page-title"><strong id="v69r-page-name">AlPro</strong><span id="v69r-page-sub">Metal Trading</span></div></div><div class="v69r-top-right"><button class="v69r-fx-btn" type="button" id="v69r-fx-btn">FX</button><button class="v69r-search-btn" type="button" id="v69r-search-btn">⌕</button></div>';
       document.body.appendChild(top);
     }
+
     if(!q('v69r-mobile-nav')){
-      const nav=document.createElement('div');nav.id='v69r-mobile-nav';
-      nav.innerHTML='<button class="v69r-nav-item" type="button" data-go="dashboard"><b>⌂</b><span>Ana</span></button><button class="v69r-nav-item" type="button" data-go="lme"><b>⌁</b><span>Fiyat</span></button><button class="v69r-nav-item" type="button" data-go="orders"><b>🛒</b><span>Sipariş</span></button><button class="v69r-nav-item" type="button" data-go="bank"><b>▥</b><span>Finans</span></button><button class="v69r-nav-item" type="button" data-go="reports"><b>▥</b><span>Rapor</span></button>';
+      const nav=document.createElement('div');
+      nav.id='v69r-mobile-nav';
+      nav.innerHTML='<button class="v69r-nav-item" type="button" data-go="dashboard"><b>⌂</b><span>Ana</span></button><button class="v69r-nav-item" type="button" data-go="lme"><b>⌁</b><span>Fiyat</span></button><button class="v69r-nav-item" type="button" data-go="orders"><b>🛒</b><span>Sipariş</span></button><button class="v69r-nav-item" type="button" data-go="bank"><b>▥</b><span>Finans</span></button><button class="v69r-nav-item" type="button" data-go="reports"><b>☀</b><span>Rapor</span></button>';
       document.body.appendChild(nav);
     }
-    if(!q('v69r-menu-backdrop')){const b=document.createElement('div');b.id='v69r-menu-backdrop';document.body.appendChild(b);}
+
+    if(!q('v69r-menu-backdrop')){
+      const b=document.createElement('div');
+      b.id='v69r-menu-backdrop';
+      document.body.appendChild(b);
+    }
+
     if(!q('v69r-menu-drawer')){
-      const drawer=document.createElement('div');drawer.id='v69r-menu-drawer';
-      const menuButtons=pages.map(p=>'<button class="v69r-menu-item" type="button" data-go="'+p[0]+'"><b>'+p[1]+'</b><span>'+p[2]+'</span></button>').join('');
-      drawer.innerHTML='<div class="v69r-drawer-head"><div class="v69r-drawer-brand"><div class="v69r-drawer-logo">A</div><div>AlPro</div></div><button class="v69r-close" type="button" id="v69r-close-menu">×</button></div><div class="v69r-name-box"><label>Merhaba isminde görünecek ad</label><input id="v69r-name-input" placeholder="İsim yaz" value="'+esc(getName())+'"></div><div class="v69r-menu-section">Genel Menü</div><div class="v69r-menu-grid">'+menuButtons+'</div>';
+      const drawer=document.createElement('div');
+      drawer.id='v69r-menu-drawer';
+      drawer.innerHTML='<div class="v69r-drawer-head"><div class="v69r-drawer-brand"><div class="v69r-drawer-logo">A</div><div>AlPro</div></div><button class="v69r-close" type="button" id="v69r-close-menu">×</button></div><div class="v69r-name-box"><label>Merhaba isminde görünecek ad</label><input id="v69r-name-input" placeholder="İsim yaz" value="'+esc(getName())+'"></div><div class="v69r-menu-section">Genel Menü</div><div class="v69r-menu-grid">'+menuButtons()+'</div>';
       document.body.appendChild(drawer);
     }
-    if(!q('v69r-fx-backdrop')){const b=document.createElement('div');b.id='v69r-fx-backdrop';document.body.appendChild(b);}
+
+    if(!q('v69r-fx-backdrop')){
+      const b=document.createElement('div');
+      b.id='v69r-fx-backdrop';
+      document.body.appendChild(b);
+    }
+
     if(!q('v69r-fx-sheet')){
-      const sheet=document.createElement('div');sheet.id='v69r-fx-sheet';
+      const sheet=document.createElement('div');
+      sheet.id='v69r-fx-sheet';
       sheet.innerHTML='<div class="v69r-fx-head"><div class="v69r-fx-title">Döviz Seç</div><button class="v69r-fx-close" type="button" id="v69r-fx-close">×</button></div><div id="v69r-fx-list"></div>';
       document.body.appendChild(sheet);
     }
+
     bindShell();
   }
+
   function bindShell(){
-    const menuBtn=q('v69r-menu-btn'); if(menuBtn&&!menuBtn._v69r){menuBtn._v69r=true;menuBtn.onclick=openMenu;}
-    const closeMenu=q('v69r-close-menu'); if(closeMenu&&!closeMenu._v69r){closeMenu._v69r=true;closeMenu.onclick=closeDrawer;}
-    const menuBackdrop=q('v69r-menu-backdrop'); if(menuBackdrop&&!menuBackdrop._v69r){menuBackdrop._v69r=true;menuBackdrop.onclick=closeDrawer;}
-    document.querySelectorAll('.v69r-menu-item,.v69r-nav-item').forEach(btn=>{if(btn._v69rNav)return;btn._v69rNav=true;btn.addEventListener('click',function(){closeDrawer();go(this.getAttribute('data-go'));});});
-    const nameInput=q('v69r-name-input'); if(nameInput&&!nameInput._v69r){nameInput._v69r=true;nameInput.addEventListener('input',function(){setName(this.value);});nameInput.addEventListener('change',function(){setName(this.value);});}
-    const searchBtn=q('v69r-search-btn'); if(searchBtn&&!searchBtn._v69r){searchBtn._v69r=true;searchBtn.onclick=function(){const panel=q('v69k-mobile-search-panel');if(panel){panel.classList.toggle('show');setTimeout(()=>{const input=q('v69k-mobile-search');if(input)input.focus();},80);}};}
-    const fxBtn=q('v69r-fx-btn'); if(fxBtn&&!fxBtn._v69r){fxBtn._v69r=true;fxBtn.onclick=openFxSheet;}
-    const fxClose=q('v69r-fx-close'); if(fxClose&&!fxClose._v69r){fxClose._v69r=true;fxClose.onclick=closeFxSheet;}
-    const fxBackdrop=q('v69r-fx-backdrop'); if(fxBackdrop&&!fxBackdrop._v69r){fxBackdrop._v69r=true;fxBackdrop.onclick=closeFxSheet;}
-  }
-  function openMenu(){q('v69r-menu-backdrop').classList.add('show');q('v69r-menu-drawer').classList.add('show');}
-  function closeDrawer(){const b=q('v69r-menu-backdrop'),d=q('v69r-menu-drawer');if(b)b.classList.remove('show');if(d)d.classList.remove('show');}
-  function getFxOptionsFromDesktop(){
-    const opts=[];document.querySelectorAll('#v69o-currency-menu .v69o-currency-option').forEach(el=>{const rateEl=el.querySelector('.v69o-currency-rate');const smallEl=el.querySelector('.v69o-currency-rate small');let rate=(rateEl?rateEl.textContent:'');let small=smallEl?smallEl.textContent:'';if(small)rate=rate.replace(small,'');opts.push({code:el.getAttribute('data-code')||'',disabled:el.getAttribute('data-disabled')==='1'||el.classList.contains('disabled'),label:(el.querySelector('.v69o-currency-left strong')||{}).textContent||'',name:(el.querySelector('.v69o-currency-left span')||{}).textContent||'',rate:rate.trim(),small:small,active:el.classList.contains('active')});});return opts;
-  }
-  function openFxSheet(){
-    const desktopCell=q('v69o-currency-cell'); if(desktopCell){desktopCell.click();setTimeout(()=>{const m=q('v69o-currency-menu');if(m)m.classList.remove('show');renderFxSheet();},60);}else renderFxSheet();
-    q('v69r-fx-backdrop').classList.add('show');q('v69r-fx-sheet').classList.add('show');
-  }
-  function closeFxSheet(){const b=q('v69r-fx-backdrop'),s=q('v69r-fx-sheet');if(b)b.classList.remove('show');if(s)s.classList.remove('show');}
-  function renderFxSheet(){
-    const list=q('v69r-fx-list'); if(!list)return;let opts=getFxOptionsFromDesktop();if(!opts.length){opts=[{code:'USDTRY',label:'USD/TRY',name:'Amerikan Doları',rate:'--',small:'Yükleniyor',disabled:false,active:true},{code:'EURTRY',label:'EUR/TRY',name:'Euro',rate:'--',small:'Yükleniyor',disabled:true,active:false},{code:'GBPTRY',label:'GBP/TRY',name:'İngiliz Sterlini',rate:'--',small:'Yükleniyor',disabled:true,active:false}];}
-    list.innerHTML=opts.map(o=>'<button class="v69r-fx-option '+(o.active?'active':'')+' '+(o.disabled?'disabled':'')+'" type="button" data-code="'+esc(o.code)+'" data-disabled="'+(o.disabled?'1':'0')+'"><div class="v69r-fx-left"><strong>'+esc(o.label)+'</strong><span>'+esc(o.name)+'</span></div><div class="v69r-fx-rate">'+esc(o.rate)+'<small>'+esc(o.small)+'</small></div></button>').join('');
-    list.querySelectorAll('.v69r-fx-option').forEach(btn=>{btn.addEventListener('click',function(){if(this.getAttribute('data-disabled')==='1')return;const code=this.getAttribute('data-code');const desktopOpt=document.querySelector('#v69o-currency-menu .v69o-currency-option[data-code="'+code+'"]');if(desktopOpt)desktopOpt.click();closeFxSheet();setTimeout(updateChrome,120);});});
-  }
-  
-  function v117EnsureDrawerPages(){
+    const menuBtn=q('v69r-menu-btn');
+    if(menuBtn && !menuBtn._v69rNew){
+      menuBtn._v69rNew=true;
+      menuBtn.onclick=function(e){e.preventDefault();openMenu();};
+    }
+
+    const closeMenu=q('v69r-close-menu');
+    if(closeMenu && !closeMenu._v69rNew){
+      closeMenu._v69rNew=true;
+      closeMenu.onclick=closeDrawer;
+    }
+
+    const menuBackdrop=q('v69r-menu-backdrop');
+    if(menuBackdrop && !menuBackdrop._v69rNew){
+      menuBackdrop._v69rNew=true;
+      menuBackdrop.onclick=closeDrawer;
+    }
+
     const drawer=q('v69r-menu-drawer');
-    if(!drawer) return;
-    const existing=[].slice.call(drawer.querySelectorAll('[data-go]')).map(function(x){return x.getAttribute('data-go');});
-    pages.forEach(function(p){
-      if(existing.indexOf(p[0])!==-1) return;
-      const btn=document.createElement('button');
-      btn.className='v69r-menu-item v117-forced-menu-item';
-      btn.type='button';
-      btn.setAttribute('data-go',p[0]);
-      btn.innerHTML='<b>'+p[1]+'</b><span><strong>'+p[2]+'</strong><em>'+p[3]+'</em></span>';
-      btn.addEventListener('click',function(){go(p[0]);});
-      drawer.appendChild(btn);
+    if(drawer && !drawer._v69rNew){
+      drawer._v69rNew=true;
+      drawer.addEventListener('click',function(e){
+        const btn=e.target.closest && e.target.closest('.v69r-menu-item');
+        if(!btn) return;
+        e.preventDefault();
+        const p=btn.getAttribute('data-go');
+        closeDrawer();
+        go(p);
+      },true);
+    }
+
+    document.querySelectorAll('.v69r-nav-item').forEach(btn=>{
+      if(btn._v69rNew) return;
+      btn._v69rNew=true;
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        go(this.getAttribute('data-go'));
+      });
     });
+
+    const nameInput=q('v69r-name-input');
+    if(nameInput && !nameInput._v69rNew){
+      nameInput._v69rNew=true;
+      nameInput.addEventListener('input',function(){setName(this.value);});
+      nameInput.addEventListener('change',function(){setName(this.value);});
+    }
+
+    const searchBtn=q('v69r-search-btn');
+    if(searchBtn && !searchBtn._v69rNew){
+      searchBtn._v69rNew=true;
+      searchBtn.onclick=function(){
+        const panel=q('v69k-mobile-search-panel');
+        if(panel){
+          panel.classList.toggle('show');
+          setTimeout(()=>{const input=q('v69k-mobile-search');if(input)input.focus();},80);
+        }
+      };
+    }
+
+    const fxBtn=q('v69r-fx-btn');
+    if(fxBtn && !fxBtn._v69rNew){
+      fxBtn._v69rNew=true;
+      fxBtn.onclick=openFxSheet;
+    }
+
+    const fxClose=q('v69r-fx-close');
+    if(fxClose && !fxClose._v69rNew){
+      fxClose._v69rNew=true;
+      fxClose.onclick=closeFxSheet;
+    }
+
+    const fxBackdrop=q('v69r-fx-backdrop');
+    if(fxBackdrop && !fxBackdrop._v69rNew){
+      fxBackdrop._v69rNew=true;
+      fxBackdrop.onclick=closeFxSheet;
+    }
   }
 
-function updateName(){const name=getName();document.querySelectorAll('.v69q-hello').forEach(el=>{el.textContent='Merhaba, '+name+' 👋';});}
-  function updateChrome(){
-    const mobile=window.innerWidth<=820;document.body.classList.toggle('v69r-mobile',mobile);if(!mobile)return;buildShell(); v117EnsureDrawerPages();const p=activePage();const name=q('v69r-page-name'),sub=q('v69r-page-sub');if(name)name.textContent=pageTitle(p);if(sub)sub.textContent=pageSub(p);document.querySelectorAll('.v69r-nav-item').forEach(btn=>btn.classList.toggle('active',btn.getAttribute('data-go')===p));document.querySelectorAll('.v69r-menu-item').forEach(btn=>btn.classList.toggle('active',btn.getAttribute('data-go')===p));updateName();
+  function openMenu(){
+    const drawer=q('v69r-menu-drawer'), b=q('v69r-menu-backdrop');
+    if(drawer){
+      const grid=drawer.querySelector('.v69r-menu-grid');
+      if(grid) grid.innerHTML=menuButtons();
+      drawer.classList.add('show');
+      drawer.style.display='block';
+    }
+    if(b){
+      b.classList.add('show');
+      b.style.display='block';
+    }
+    bindShell();
   }
-  function init(){buildShell(); v117EnsureDrawerPages();updateChrome();setInterval(updateChrome,700);}
-  document.addEventListener('DOMContentLoaded',init);window.addEventListener('resize',updateChrome);
-  const oldP=window.P;if(typeof oldP==='function'&&!oldP._v69rWrapped){const w=function(id){const r=oldP.apply(this,arguments);setTimeout(updateChrome,120);return r;};w._v69rWrapped=true;window.P=w;window.showPage=w;}
+
+  function closeDrawer(){
+    const b=q('v69r-menu-backdrop'), d=q('v69r-menu-drawer');
+    if(b){b.classList.remove('show');b.style.display='none';}
+    if(d){d.classList.remove('show');}
+  }
+
+  function getFxOptionsFromDesktop(){
+    const opts=[];
+    document.querySelectorAll('#v69o-currency-menu .v69o-currency-item').forEach(x=>{
+      opts.push({
+        label:(x.querySelector('.v69k-k')||x).textContent.trim(),
+        sub:(x.querySelector('.v69k-s')||{textContent:''}).textContent.trim(),
+        disabled:x.classList.contains('disabled')
+      });
+    });
+    if(opts.length) return opts;
+    return [
+      {label:'USD/TRY',sub:'Dolar kuru'},
+      {label:'EUR/TRY',sub:'Euro kuru'},
+      {label:'GBP/TRY',sub:'Sterlin kuru'}
+    ];
+  }
+
+  function openFxSheet(){
+    const list=q('v69r-fx-list');
+    if(list){
+      list.innerHTML=getFxOptionsFromDesktop().map(o=>'<button class="v69r-fx-option '+(o.disabled?'disabled':'')+'" type="button"><div class="v69r-fx-left"><strong>'+esc(o.label)+'</strong><span>'+esc(o.sub||'')+'</span></div><div class="v69r-fx-rate">Seç</div></button>').join('');
+    }
+    const b=q('v69r-fx-backdrop'), s=q('v69r-fx-sheet');
+    if(b)b.classList.add('show');
+    if(s)s.classList.add('show');
+  }
+
+  function closeFxSheet(){
+    const b=q('v69r-fx-backdrop'), s=q('v69r-fx-sheet');
+    if(b)b.classList.remove('show');
+    if(s)s.classList.remove('show');
+  }
+
+  function updateName(){
+    const el=document.querySelector('.v69q-hello');
+    if(el) el.textContent='Merhaba, '+getName()+' 👋';
+  }
+
+  function updateShell(){
+    const id=activePage();
+    const mobile=window.innerWidth<=820 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+    document.body.classList.toggle('v69r-mobile', mobile);
+    document.body.classList.toggle('v69q-mobile-dashboard-active', mobile && id==='dashboard');
+
+    const name=q('v69r-page-name'), sub=q('v69r-page-sub');
+    if(name) name.textContent=pageTitle(id);
+    if(sub) sub.textContent=pageSub(id);
+
+    document.querySelectorAll('.v69r-nav-item').forEach(btn=>{
+      const g=btn.getAttribute('data-go');
+      btn.classList.toggle('active', g===id || (id==='v5-morning' && g==='reports'));
+    });
+
+    document.querySelectorAll('.v69r-menu-item').forEach(btn=>{
+      const g=btn.getAttribute('data-go');
+      btn.classList.toggle('active', g===id || (id==='v5-morning' && g==='reports'));
+    });
+
+    updateName();
+  }
+
+  function init(){
+    buildShell();
+    updateShell();
+    setInterval(updateShell,900);
+  }
+
+  document.addEventListener('DOMContentLoaded',init);
+  if(document.readyState!=='loading') init();
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v69rCleanWrapped){
+    const wrapped=function(id){
+      const r=oldP.apply(this,arguments);
+      setTimeout(updateShell,120);
+      return r;
+    };
+    wrapped._v69rCleanWrapped=true;
+    window.P=wrapped;
+    window.showPage=wrapped;
+  }
+
+  window.addEventListener('resize',updateShell);
 })();
 </script>
 
@@ -15544,143 +16197,7 @@ window.openTrash = function(type) {
 })();
 </script>
 
-<script id="v114-mobile-drawer-cash-js">
-(function(){
-  const MODULES=[
-    {label:'Hatırlatıcılar', icon:'◷', page:'reminders'},
-    {label:'Gümrük Hesap', icon:'▥', page:'customs-calc'},
-    {label:'Faturalar', icon:'▧', page:'invoices'},
-    {label:'Stok', icon:'▣', page:'stock'},
-    {label:'Sabah Raporu', icon:'☀', page:'reports'},
-    {label:'Hedging', icon:'⌁', page:'hedge'},
-    {label:'Analitik', icon:'◫', page:'analytics'},
-    {label:'Gelir / Gider', icon:'₺', page:'income'}
-  ];
 
-  function q(id){return document.getElementById(id)}
-  function mobile(){return window.innerWidth<=820 || /Mobi|Android|iPhone/i.test(navigator.userAgent)}
-  function pageExists(p){return !!q('page-'+p)}
-  function resolvePage(p){
-    if(p==='customs-calc' && pageExists('customs-calc')) return 'customs-calc';
-    if(p==='customs-calc') return 'customs';
-    if(p==='income' && pageExists('income')) return 'income';
-    if(p==='income') return 'bank';
-    if(p==='analytics' && pageExists('analytics')) return 'analytics';
-    if(p==='analytics') return 'reports';
-    return p;
-  }
-  function go(p){
-    const target=resolvePage(p);
-    try{
-      if(typeof window.P==='function') return window.P(target);
-      if(typeof window.showPage==='function') return window.showPage(target);
-    }catch(e){}
-    const el=q('page-'+target);
-    if(el){
-      document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-      el.classList.add('active');
-    }
-  }
-
-  function findDrawer(){
-    return q('v69r-menu-drawer') || q('v69r-mobile-nav') || document.querySelector('.mobile-drawer,.drawer,.side');
-  }
-
-  function injectDrawerModules(){
-    if(!mobile()) return;
-    const drawer=findDrawer();
-    if(!drawer || q('v114-drawer-section')) return;
-
-    const section=document.createElement('div');
-    section.id='v114-drawer-section';
-    section.className='v114-drawer-section';
-    section.innerHTML=
-      '<div class="v114-drawer-title">Ek Modüller</div>'+
-      '<div class="v114-drawer-grid">'+
-      MODULES.map(m=>'<button type="button" class="v114-drawer-item" data-go="'+m.page+'"><span class="ico">'+m.icon+'</span><span class="txt">'+m.label+'</span></button>').join('')+
-      '</div>';
-
-    // En başlarda görünsün: isim alanından veya ilk liste başından sonra koy
-    const close=q('v69r-close-menu');
-    const nameInput=q('v69r-name-input');
-    if(nameInput && nameInput.parentElement){
-      nameInput.parentElement.insertAdjacentElement('afterend',section);
-    }else if(close && close.parentElement){
-      close.parentElement.insertAdjacentElement('afterend',section);
-    }else{
-      drawer.prepend(section);
-    }
-
-    section.querySelectorAll('[data-go]').forEach(btn=>{
-      btn.onclick=function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        go(btn.getAttribute('data-go'));
-        const backdrop=q('v69r-menu-backdrop');
-        const d=q('v69r-menu-drawer');
-        if(backdrop) backdrop.click();
-        if(d) d.classList.remove('show','open','active');
-      };
-    });
-  }
-
-  function fixCash(){
-    if(!mobile()) return;
-    const el=q('v69q-cash');
-    if(!el) return;
-    const raw=String(el.textContent||'').replace(/[^\d.,-]/g,'');
-    let n=Number(raw.replace(/\./g,'').replace(',','.'));
-    if(!Number.isFinite(n) || !n){
-      const m=String(el.textContent||'').match(/[\d.]+/);
-      n=m?Number(m[0].replace(/\./g,'')):0;
-    }
-    if(Number.isFinite(n) && n>=1000000){
-      el.textContent='USD '+(n/1000000).toLocaleString('tr-TR',{maximumFractionDigits:2})+'M';
-    }
-  }
-
-  function keepDashboardTopClean(){
-    if(!mobile()) return;
-    const active=document.querySelector('.page.active');
-    const isDash=active && active.id==='page-dashboard';
-    if(isDash){
-      document.body.classList.add('v69q-mobile-dashboard-active');
-      ['v69r-mobile-top','v69r-mobile-nav'].forEach(id=>{
-        const e=q(id);
-        if(e) e.style.display='none';
-      });
-    }
-  }
-
-  function init(){
-    injectDrawerModules();
-    fixCash();
-    keepDashboardTopClean();
-  }
-
-  document.addEventListener('DOMContentLoaded',function(){
-    init();
-    setTimeout(init,250);
-    setTimeout(init,900);
-    setTimeout(init,2200);
-  });
-  window.addEventListener('resize',init);
-  setInterval(init,2500);
-
-  const oldP=window.P;
-  if(typeof oldP==='function' && !oldP._v114Wrapped){
-    const wrapped=function(){
-      const r=oldP.apply(this,arguments);
-      setTimeout(init,150);
-      setTimeout(init,600);
-      return r;
-    };
-    wrapped._v114Wrapped=true;
-    window.P=wrapped;
-    window.showPage=wrapped;
-  }
-})();
-</script>
 
 
 <script id="v115-real-cash-zero-js">
@@ -15747,165 +16264,224 @@ window.openTrash = function(type) {
 </script>
 
 
-<script id="v116-mobile-menu-integrated-js">
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="v121-mobile-click-logic-fix-js">
 (function(){
-  const MODULES=[
-    {label:'Faturalar', icon:'▧', page:'invoices', sub:'Finans'},
-    {label:'Stok', icon:'▣', page:'stock', sub:'Operasyon'},
-    {label:'Hatırlatıcılar', icon:'◷', page:'reminders', sub:'Sistem'},
-    {label:'Gümrük Hesap', icon:'▥', page:'customs-calc', sub:'Lojistik'},
-    {label:'Sabah Raporu', icon:'☀', page:'reports', sub:'Rapor'},
-    {label:'Hedging', icon:'⌁', page:'hedge', sub:'Risk'},
-    {label:'Analitik', icon:'◫', page:'analytics', sub:'Rapor'},
-    {label:'Gelir / Gider', icon:'₺', page:'income', sub:'Finans'}
+  const NAV = [
+    ['dashboard','⌂','Ana'],
+    ['lme','⌁','Fiyat'],
+    ['orders','🛒','Sipariş'],
+    ['bank','▥','Finans'],
+    ['reports','☀','Rapor']
   ];
 
   function q(id){return document.getElementById(id)}
-  function mobile(){return window.innerWidth<=820 || /Mobi|Android|iPhone/i.test(navigator.userAgent)}
+  function mobile(){return window.innerWidth<=820 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)}
   function pageExists(id){return !!q('page-'+id)}
-  function resolvePage(p){
-    if(p==='customs-calc') return pageExists('customs-calc') ? 'customs-calc' : 'customs';
-    if(p==='income') return pageExists('income') ? 'income' : (pageExists('bank') ? 'bank' : 'finance');
-    if(p==='analytics') return pageExists('analytics') ? 'analytics' : 'reports';
-    if(p==='reports') return pageExists('reports') ? 'reports' : 'v5-morning';
+  function activePage(){
+    const a=document.querySelector('.page.active');
+    return a ? a.id.replace('page-','') : 'dashboard';
+  }
+  function route(p){
+    if(p==='reports' && !pageExists('reports')) return pageExists('v5-morning') ? 'v5-morning' : 'dashboard';
+    if(p==='lme' && !pageExists('lme')) return pageExists('v5-live') ? 'v5-live' : 'dashboard';
+    if(p==='bank' && !pageExists('bank')) return pageExists('finance') ? 'finance' : 'dashboard';
+    if(!pageExists(p)) return 'dashboard';
     return p;
   }
   function go(p){
-    const target=resolvePage(p);
+    const target=route(p);
     try{
-      if(typeof window.P==='function'){ window.P(target); return; }
-      if(typeof window.showPage==='function'){ window.showPage(target); return; }
-    }catch(e){}
-    const el=q('page-'+target);
-    if(el){
-      document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-      el.classList.add('active');
-    }else{
-      if(typeof notif==='function') notif(target+' sayfası bulunamadı','w');
-      else alert(target+' sayfası bulunamadı');
-    }
-  }
-
-  function findMenuDrawer(){
-    return q('v69r-menu-drawer') || document.querySelector('.mobile-drawer,.drawer');
-  }
-
-  function existingMenuButtons(drawer){
-    return drawer ? [...drawer.querySelectorAll('button,[data-go],a')] : [];
-  }
-
-  function clickCloseDrawer(){
-    const backdrop=q('v69r-menu-backdrop');
-    const drawer=q('v69r-menu-drawer');
-    if(backdrop) backdrop.click();
-    if(drawer){
-      drawer.classList.remove('show','open','active');
-      drawer.style.transform='';
-    }
-  }
-
-  function insertIntegratedMenu(){
-    if(!mobile()) return;
-    const drawer=findMenuDrawer();
-    if(!drawer || q('v116-menu-modules')) return;
-
-    // Remove old separate V11.4 module box if present
-    const old=q('v114-drawer-section');
-    if(old) old.remove();
-
-    const block=document.createElement('div');
-    block.id='v116-menu-modules';
-    block.innerHTML=
-      '<div class="v116-menu-separator">Ek Modüller</div>'+
-      MODULES.map(m =>
-        '<button type="button" class="v116-menu-item" data-v116-go="'+m.page+'">'+
-          '<span class="ico">'+m.icon+'</span>'+
-          '<span class="txt">'+m.label+'</span>'+
-          '<span class="sub">'+m.sub+'</span>'+
-        '</button>'
-      ).join('');
-
-    // Nizami yerleşim: mevcut ana liste başladıktan sonra, ilk Finans/Lojistik bloğundan önce değil;
-    // en baştaki profil/isim kısmından hemen sonra koy.
-    const nameInput=q('v69r-name-input');
-    const close=q('v69r-close-menu');
-    let anchor=null;
-
-    if(nameInput){
-      anchor = nameInput.closest('div') || nameInput;
-    }
-    if(!anchor && close){
-      anchor = close.closest('div') || close;
-    }
-
-    if(anchor && anchor.parentElement===drawer){
-      anchor.insertAdjacentElement('afterend', block);
-    }else{
-      // Menüde ilk başlık/listenin üstüne, ama kapatma butonundan sonra
-      const buttons=existingMenuButtons(drawer).filter(b=>!b.id || b.id!=='v69r-close-menu');
-      if(buttons.length){
-        buttons[0].insertAdjacentElement('beforebegin', block);
+      if(typeof window.P==='function' && window.P !== go){
+        window.P(target);
+      }else if(typeof window.showPage==='function' && window.showPage !== go){
+        window.showPage(target);
       }else{
-        drawer.prepend(block);
+        const el=q('page-'+target);
+        if(el){
+          document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+          el.classList.add('active');
+        }
+      }
+    }catch(e){
+      const el=q('page-'+target);
+      if(el){
+        document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+        el.classList.add('active');
       }
     }
-
-    block.querySelectorAll('[data-v116-go]').forEach(btn=>{
-      btn.onclick=function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        go(btn.getAttribute('data-v116-go'));
-        setTimeout(clickCloseDrawer,80);
-      };
-    });
+    setTimeout(sync,80);
   }
 
-  function enhanceExistingMenuClicks(){
-    const drawer=findMenuDrawer();
-    if(!drawer) return;
-    drawer.querySelectorAll('[data-go]').forEach(btn=>{
-      if(btn._v116Enhanced) return;
-      btn._v116Enhanced=true;
-      btn.addEventListener('click',function(){
-        setTimeout(clickCloseDrawer,100);
-      });
-    });
+  function rebuildBottomNav(){
+    let nav=q('v69r-mobile-nav');
+    if(!nav) return;
+    nav.innerHTML = NAV.map(n =>
+      '<button class="v69r-nav-item" type="button" data-go="'+n[0]+'"><b>'+n[1]+'</b><span>'+n[2]+'</span></button>'
+    ).join('');
   }
 
-  function realCashZeroAgain(){
-    const el=q('v69q-cash');
-    if(!el) return;
-    // If old hardcoded demo sneaks in, force to 0 unless bank transactions exist
-    const bank = JSON.parse(localStorage.getItem('v111_bank_transactions') || '[]');
-    const oldBank = JSON.parse(localStorage.getItem('bank') || '[]');
-    if((!Array.isArray(bank) || bank.length===0) && (!Array.isArray(oldBank) || oldBank.length===0)){
-      el.textContent='USD 0';
+  function openDrawer(){
+    const drawer=q('v69r-menu-drawer');
+    const backdrop=q('v69r-menu-backdrop');
+    if(drawer){
+      drawer.classList.add('show');
+      drawer.style.display='block';
+      drawer.style.pointerEvents='auto';
+    }
+    if(backdrop){
+      backdrop.classList.add('show');
+      backdrop.style.display='block';
+      backdrop.style.pointerEvents='auto';
+    }
+  }
+  function closeDrawer(){
+    const drawer=q('v69r-menu-drawer');
+    const backdrop=q('v69r-menu-backdrop');
+    if(drawer){
+      drawer.classList.remove('show');
+      drawer.style.pointerEvents='none';
+    }
+    if(backdrop){
+      backdrop.classList.remove('show');
+      backdrop.style.display='none';
+      backdrop.style.pointerEvents='none';
     }
   }
 
-  function init(){
-    insertIntegratedMenu();
-    enhanceExistingMenuClicks();
-    realCashZeroAgain();
+  function bindTopMenu(){
+    const btn=q('v69r-menu-btn');
+    if(!btn) return;
+    btn.onclick=null;
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+      openDrawer();
+    },true);
+  }
+
+  function bindBottomNav(){
+    const nav=q('v69r-mobile-nav');
+    if(!nav || nav._v121Bound) return;
+    nav._v121Bound=true;
+    nav.addEventListener('click',function(e){
+      const btn=e.target.closest && e.target.closest('.v69r-nav-item');
+      if(!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+      closeDrawer();
+      go(btn.getAttribute('data-go'));
+    },true);
+  }
+
+  function bindDrawer(){
+    const backdrop=q('v69r-menu-backdrop');
+    const close=q('v69r-close-menu');
+    const drawer=q('v69r-menu-drawer');
+
+    if(backdrop && !backdrop._v121){
+      backdrop._v121=true;
+      backdrop.addEventListener('click',function(e){
+        e.preventDefault();
+        closeDrawer();
+      },true);
+    }
+    if(close && !close._v121){
+      close._v121=true;
+      close.addEventListener('click',function(e){
+        e.preventDefault();
+        closeDrawer();
+      },true);
+    }
+    if(drawer && !drawer._v121){
+      drawer._v121=true;
+      drawer.addEventListener('click',function(e){
+        const item=e.target.closest && e.target.closest('.v69r-menu-item');
+        if(!item) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const p=item.getAttribute('data-go');
+        closeDrawer();
+        go(p);
+      },true);
+    }
+  }
+
+  function hideQuick(){
+    if(activePage()!=='dashboard') return;
+    document.querySelectorAll('.v69q-section-head,.v69q-actions,#v112-mobile-actions,.v112-mobile-actions').forEach(el=>{
+      el.style.display='none';
+    });
+  }
+
+  function sync(){
+    if(!mobile()) return;
+
+    document.body.classList.add('v69r-mobile');
+    document.body.classList.toggle('v69q-mobile-dashboard-active', activePage()==='dashboard');
+
+    const top=q('v69r-mobile-top');
+    const nav=q('v69r-mobile-nav');
+    if(top) top.style.display='flex';
+    if(nav) nav.style.display='flex';
+
+    rebuildBottomNav();
+    bindTopMenu();
+    bindBottomNav();
+    bindDrawer();
+
+    const page=activePage();
+    document.querySelectorAll('#v69r-mobile-nav .v69r-nav-item').forEach(btn=>{
+      const k=btn.getAttribute('data-go');
+      btn.classList.toggle('active', k===page || (page==='v5-live' && k==='lme') || (page==='v5-morning' && k==='reports'));
+    });
+
+    // Kapalı backdrop kesin kapalı kalsın
+    const b=q('v69r-menu-backdrop');
+    const d=q('v69r-menu-drawer');
+    if(b && !b.classList.contains('show')){
+      b.style.display='none';
+      b.style.pointerEvents='none';
+    }
+    if(d && !d.classList.contains('show')){
+      d.style.pointerEvents='none';
+    }
+
+    hideQuick();
   }
 
   document.addEventListener('DOMContentLoaded',function(){
-    init();
-    setTimeout(init,250);
-    setTimeout(init,900);
-    setTimeout(init,2200);
+    sync();
+    setTimeout(sync,200);
+    setTimeout(sync,800);
+    setTimeout(sync,1800);
   });
-  setInterval(init,2500);
-  window.addEventListener('resize',init);
+
+  window.addEventListener('resize',sync);
+  setInterval(sync,1500);
 
   const oldP=window.P;
-  if(typeof oldP==='function' && !oldP._v116Wrapped){
+  if(typeof oldP==='function' && !oldP._v121Wrapped){
     const wrapped=function(){
       const r=oldP.apply(this,arguments);
-      setTimeout(init,180);
+      setTimeout(sync,80);
+      setTimeout(sync,250);
       return r;
     };
-    wrapped._v116Wrapped=true;
+    wrapped._v121Wrapped=true;
     window.P=wrapped;
     window.showPage=wrapped;
   }
@@ -15913,67 +16489,418 @@ window.openTrash = function(type) {
 </script>
 
 
-<script id="v117-real-drawer-pages-js">
+<script id="v122-clean-mobile-shell-js">
 (function(){
-  const forced=[
+  const NAV = [
+    ['dashboard','⌂','Ana'],
+    ['lme','⌁','Fiyat'],
+    ['orders','🛒','Sipariş'],
+    ['bank','▥','Finans'],
+    ['reports','☀','Rapor']
+  ];
+
+  const PAGES = [
+    ['dashboard','⌂','Ana Sayfa','Dashboard'],
+    ['lme','⌁','Canlı Fiyatlar','LME ve metaller'],
+    ['orders','🛒','Siparişler','Ticaret'],
+    ['quotes','□','Teklif Oluştur','Ticaret'],
+    ['suppliers','▦','Tedarikçiler','Ticaret'],
+    ['customers','👥','Müşteriler','Ticaret'],
+    ['freight','▱','Navlun Talebi','Lojistik'],
+    ['customs','▧','Gümrük','Lojistik'],
     ['customs-calc','▥','Gümrük Hesap','Lojistik'],
-    ['invoices','□','Faturalar','Finans'],
+    ['bank','▥','Banka','Finans'],
+    ['income','₺','Gelir / Gider','Finans'],
+    ['invoices','□','Fatura Oluştur','Finans'],
     ['stock','▣','Stok','Operasyon'],
     ['reminders','◷','Hatırlatıcılar','Sistem'],
-    ['reports','☀','Sabah Raporu','Rapor'],
     ['hedge','⌁','Hedging','Risk'],
     ['analytics','◫','Analitik','Rapor'],
-    ['income','₺','Gelir / Gider','Finans']
+    ['reports','☀','Sabah Raporu','Rapor'],
+    ['documents','▤','Belgeler','Sistem'],
+    ['notify','♧','Bildirimler','Sistem'],
+    ['setup','⚙','Ayarlar','Sistem']
   ];
+
   function q(id){return document.getElementById(id)}
+  function mobile(){return window.innerWidth<=820 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)}
+  function esc(s){return String(s ?? '').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+  function activePage(){
+    const a=document.querySelector('.page.active');
+    return a ? a.id.replace('page-','') : 'dashboard';
+  }
+  function pageExists(id){return !!q('page-'+id)}
   function route(p){
-    if(p==='customs-calc' && !q('page-customs-calc')) return 'customs';
-    if(p==='income' && !q('page-income')) return q('page-bank')?'bank':'dashboard';
-    if(p==='analytics' && !q('page-analytics')) return q('page-reports')?'reports':'dashboard';
+    if(p==='customs-calc' && !pageExists('customs-calc')) return pageExists('customs')?'customs':'dashboard';
+    if(p==='income' && !pageExists('income')) return pageExists('bank')?'bank':'dashboard';
+    if(p==='analytics' && !pageExists('analytics')) return pageExists('reports')?'reports':'dashboard';
+    if(p==='quotes' && !pageExists('quotes')) return pageExists('customers')?'customers':'dashboard';
+    if(p==='reports' && !pageExists('reports')) return pageExists('v5-morning')?'v5-morning':'dashboard';
+    if(!pageExists(p)) return 'dashboard';
     return p;
   }
   function go(p){
-    p=route(p);
+    const target=route(p);
     try{
-      if(typeof window.P==='function') return window.P(p);
-      if(typeof window.showPage==='function') return window.showPage(p);
-    }catch(e){}
-    const el=q('page-'+p);
-    if(el){
-      document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-      el.classList.add('active');
+      if(typeof window.P==='function' && window.P !== go){
+        window.P(target);
+      }else if(typeof window.showPage==='function' && window.showPage !== go){
+        window.showPage(target);
+      }else{
+        const el=q('page-'+target);
+        if(el){
+          document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+          el.classList.add('active');
+        }
+      }
+    }catch(e){
+      const el=q('page-'+target);
+      if(el){
+        document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+        el.classList.add('active');
+      }
+    }
+    closeMenu();
+    setTimeout(sync,80);
+  }
+
+  function getName(){return localStorage.getItem('alpro_mobile_name') || 'Mehmet'}
+  function setName(v){
+    const name=String(v||'').trim() || 'Mehmet';
+    localStorage.setItem('alpro_mobile_name',name);
+    const hello=document.querySelector('.v69q-hello');
+    if(hello) hello.textContent='Merhaba, '+name+' 👋';
+  }
+
+  function meta(id){
+    return PAGES.find(p=>p[0]===id) || ['dashboard','⌂','Ana Sayfa','Dashboard'];
+  }
+
+  function build(){
+    if(!mobile()) return;
+
+    if(!q('alpro-clean-top')){
+      const top=document.createElement('div');
+      top.id='alpro-clean-top';
+      top.innerHTML=
+        '<div class="left">'+
+          '<button type="button" class="alpro-clean-iconbtn" id="alpro-clean-menu">☰</button>'+
+          '<div><strong id="alpro-clean-title">Ana Sayfa</strong><span id="alpro-clean-sub">Dashboard</span></div>'+
+        '</div>'+
+        '<div class="right">'+
+          '<button type="button" class="alpro-clean-iconbtn" id="alpro-clean-fx">FX</button>'+
+          '<button type="button" class="alpro-clean-iconbtn" id="alpro-clean-search">⌕</button>'+
+        '</div>';
+      document.body.appendChild(top);
+    }
+
+    if(!q('alpro-clean-bottom')){
+      const bottom=document.createElement('div');
+      bottom.id='alpro-clean-bottom';
+      bottom.innerHTML=NAV.map(n=>'<button type="button" class="alpro-clean-navitem" data-go="'+n[0]+'"><b>'+n[1]+'</b><span>'+n[2]+'</span></button>').join('');
+      document.body.appendChild(bottom);
+    }
+
+    if(!q('alpro-clean-backdrop')){
+      const b=document.createElement('div');
+      b.id='alpro-clean-backdrop';
+      document.body.appendChild(b);
+    }
+
+    if(!q('alpro-clean-drawer')){
+      const d=document.createElement('div');
+      d.id='alpro-clean-drawer';
+      d.innerHTML=
+        '<div class="alpro-clean-drawer-head">'+
+          '<div class="alpro-clean-brand"><span class="alpro-clean-logo">A</span><span>AlPro</span></div>'+
+          '<button type="button" class="alpro-clean-close" id="alpro-clean-close">×</button>'+
+        '</div>'+
+        '<div class="alpro-clean-namebox">'+
+          '<label>Merhaba isminde görünecek ad</label>'+
+          '<input id="alpro-clean-name" value="'+esc(getName())+'" placeholder="İsim yaz">'+
+        '</div>'+
+        '<div class="alpro-clean-section">Genel Menü</div>'+
+        '<div class="alpro-clean-grid">'+
+          PAGES.map(p=>'<button type="button" class="alpro-clean-menuitem" data-go="'+p[0]+'"><b>'+p[1]+'</b><span>'+p[2]+'</span></button>').join('')+
+        '</div>';
+      document.body.appendChild(d);
+    }
+
+    bind();
+  }
+
+  function bind(){
+    const menu=q('alpro-clean-menu');
+    if(menu && !menu._clean){
+      menu._clean=true;
+      menu.onclick=function(e){e.preventDefault();e.stopPropagation();openMenu();};
+    }
+
+    const close=q('alpro-clean-close');
+    if(close && !close._clean){
+      close._clean=true;
+      close.onclick=function(e){e.preventDefault();closeMenu();};
+    }
+
+    const backdrop=q('alpro-clean-backdrop');
+    if(backdrop && !backdrop._clean){
+      backdrop._clean=true;
+      backdrop.onclick=function(e){e.preventDefault();closeMenu();};
+    }
+
+    document.querySelectorAll('.alpro-clean-navitem').forEach(btn=>{
+      if(btn._clean) return;
+      btn._clean=true;
+      btn.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        go(btn.getAttribute('data-go'));
+      };
+    });
+
+    document.querySelectorAll('.alpro-clean-menuitem').forEach(btn=>{
+      if(btn._clean) return;
+      btn._clean=true;
+      btn.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        go(btn.getAttribute('data-go'));
+      };
+    });
+
+    const name=q('alpro-clean-name');
+    if(name && !name._clean){
+      name._clean=true;
+      name.oninput=function(){setName(name.value);};
+      name.onchange=function(){setName(name.value);};
+    }
+
+    const fx=q('alpro-clean-fx');
+    if(fx && !fx._clean){
+      fx._clean=true;
+      fx.onclick=function(){
+        const old=q('v69r-fx-sheet');
+        const back=q('v69r-fx-backdrop');
+        if(old){old.classList.add('show');old.style.display='block';}
+        if(back){back.classList.add('show');back.style.display='block';back.style.pointerEvents='auto';}
+      };
+    }
+
+    const search=q('alpro-clean-search');
+    if(search && !search._clean){
+      search._clean=true;
+      search.onclick=function(){
+        const panel=q('v69k-mobile-search-panel');
+        if(panel){
+          panel.classList.toggle('show');
+          setTimeout(()=>{const input=q('v69k-mobile-search');if(input)input.focus();},80);
+        }
+      };
     }
   }
-  function ensure(){
-    const drawer=q('v69r-menu-drawer');
-    if(!drawer) return;
-    const existing=[].slice.call(drawer.querySelectorAll('[data-go]')).map(x=>x.getAttribute('data-go'));
-    forced.forEach(function(p){
-      if(existing.includes(p[0])) return;
-      const btn=document.createElement('button');
-      btn.className='v117-forced-menu-item';
-      btn.type='button';
-      btn.setAttribute('data-go',p[0]);
-      btn.innerHTML='<b>'+p[1]+'</b><span><strong>'+p[2]+'</strong><em>'+p[3]+'</em></span>';
-      btn.onclick=function(e){e.preventDefault(); e.stopPropagation(); go(p[0]);};
-      // Put before documents/settings if possible, otherwise append
-      const doc=[].slice.call(drawer.querySelectorAll('[data-go]')).find(x=>['documents','notify','setup'].includes(x.getAttribute('data-go')));
-      if(doc) doc.insertAdjacentElement('beforebegin',btn);
-      else drawer.appendChild(btn);
+
+  function openMenu(){
+    const b=q('alpro-clean-backdrop');
+    const d=q('alpro-clean-drawer');
+    if(b) b.classList.add('show');
+    if(d) d.classList.add('show');
+  }
+
+  function closeMenu(){
+    const b=q('alpro-clean-backdrop');
+    const d=q('alpro-clean-drawer');
+    if(b) b.classList.remove('show');
+    if(d) d.classList.remove('show');
+  }
+
+  function hideOld(){
+    ['v69r-mobile-top','v69r-mobile-nav','v69r-menu-backdrop','v69r-menu-drawer'].forEach(id=>{
+      const el=q(id);
+      if(el){
+        el.style.display='none';
+        el.style.pointerEvents='none';
+      }
+    });
+    document.querySelectorAll('.v69q-bottom-nav,.v69q-nav-item,.v69q-actions,.v69q-section-head,#v112-mobile-actions,.v112-mobile-actions').forEach(el=>{
+      el.style.display='none';
+      el.style.pointerEvents='none';
     });
   }
+
+  function sync(){
+    if(!mobile()) return;
+    document.body.classList.add('v69r-mobile');
+    build();
+    hideOld();
+
+    const id=activePage();
+    const m=meta(id);
+    const title=q('alpro-clean-title');
+    const sub=q('alpro-clean-sub');
+    if(title) title.textContent=m[2];
+    if(sub) sub.textContent=m[3];
+
+    document.querySelectorAll('.alpro-clean-navitem').forEach(btn=>{
+      const g=btn.getAttribute('data-go');
+      btn.classList.toggle('active', g===id || (id==='v5-morning' && g==='reports') || (id==='v5-live' && g==='lme'));
+    });
+
+    document.querySelectorAll('.alpro-clean-menuitem').forEach(btn=>{
+      const g=btn.getAttribute('data-go');
+      btn.classList.toggle('active', g===id || (id==='v5-morning' && g==='reports') || (id==='v5-live' && g==='lme'));
+    });
+  }
+
   document.addEventListener('DOMContentLoaded',function(){
-    ensure();
-    setTimeout(ensure,300);
-    setTimeout(ensure,1000);
-    setTimeout(ensure,2500);
+    sync();
+    setTimeout(sync,200);
+    setTimeout(sync,800);
+    setTimeout(sync,1800);
   });
-  setInterval(ensure,2000);
-  document.addEventListener('click',function(e){
-    if(e.target && (e.target.id==='v69r-menu-btn' || e.target.closest && e.target.closest('#v69r-menu-btn'))){
-      setTimeout(ensure,120);
+  if(document.readyState!=='loading') sync();
+
+  window.addEventListener('resize',sync);
+  setInterval(sync,1500);
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._cleanMobileWrapped){
+    const wrapped=function(){
+      const r=oldP.apply(this,arguments);
+      setTimeout(sync,80);
+      setTimeout(sync,250);
+      return r;
+    };
+    wrapped._cleanMobileWrapped=true;
+    window.P=wrapped;
+    window.showPage=wrapped;
+  }
+})();
+</script>
+
+
+<script id="v123-cash-percent-blur-js">
+(function(){
+  function q(id){return document.getElementById(id)}
+  function safeJSON(v,d){try{return JSON.parse(v)}catch(e){return d}}
+  function arr(k){const v=safeJSON(localStorage.getItem(k)||'[]',[]);return Array.isArray(v)?v:[]}
+  function parseAmount(v){
+    let s=String(v??'').replace(/[^\d,.-]/g,'').trim();
+    if(!s) return 0;
+    if(s.includes('.') && s.includes(',')) s=s.replace(/\./g,'').replace(',','.');
+    else if(s.includes(',')) s=s.replace(',','.');
+    const n=Number(s);
+    return Number.isFinite(n)?n:0;
+  }
+  function realCashTotal(){
+    const tx=arr('v111_bank_transactions');
+    if(tx.length){
+      return tx.reduce((a,b)=>{
+        const type=String(b.type||'').toLowerCase();
+        const out=type.includes('çık')||type.includes('cik')||type.includes('out')||type.includes('debit');
+        return a + (out?-1:1)*parseAmount(b.amount);
+      },0);
     }
-  },true);
+    const bank=arr('bank').filter(x=>!x._deleted);
+    if(bank.length){
+      return bank.reduce((a,b)=>{
+        const type=String(b.type||b.kind||'').toLowerCase();
+        const out=type.includes('çık')||type.includes('cik')||type.includes('out')||type.includes('debit');
+        return a + (out?-1:1)*parseAmount(b.amount||b.total||b.value);
+      },0);
+    }
+    return 0;
+  }
+  function formatCash(n){
+    n=Number(n||0);
+    if(!Number.isFinite(n)) n=0;
+    const sign=n<0?'-':'';
+    n=Math.abs(n);
+    if(n>=1000000) return sign+'USD '+(n/1000000).toLocaleString('tr-TR',{maximumFractionDigits:2})+'M';
+    if(n>=1000) return sign+'USD '+(n/1000).toLocaleString('tr-TR',{maximumFractionDigits:1})+'K';
+    return sign+'USD '+n.toLocaleString('tr-TR',{maximumFractionDigits:0});
+  }
+  function fixCashPercent(){
+    const total=realCashTotal();
+    const cash=q('v69q-cash');
+    if(cash){
+      cash.textContent=formatCash(total);
+      cash.title='Gerçek banka kayıtlarından hesaplandı';
+    }
+
+    // Eğer cash 0 ise demo halka %74/%75 de 0 olsun.
+    const percent = total===0 ? 0 : null;
+
+    if(percent===0){
+      document.querySelectorAll('.v69q-ring-wrap span,.cash-ring span,#v69q-cash-percent,[data-cash-percent]').forEach(el=>{
+        el.textContent='0%';
+      });
+
+      document.querySelectorAll('.v69q-ring-wrap,.cash-ring,[data-cash-ring]').forEach(el=>{
+        el.style.setProperty('--p','0');
+        el.style.background='conic-gradient(#f4ca75 0deg, rgba(255,255,255,.14) 0deg 360deg)';
+        el.setAttribute('data-cash-percent','0');
+      });
+
+      // Cash card içinde 74 / 75 gibi tek başına kalan span/text varsa düzelt
+      [...document.querySelectorAll('.v69q-kpi-card,.stage1-card,.card,.v5-card')].forEach(card=>{
+        if(!/cash position|nakit/i.test(card.textContent||'')) return;
+        card.querySelectorAll('*').forEach(el=>{
+          const t=(el.textContent||'').trim();
+          if(/^7[45]%$/.test(t)) el.textContent='0%';
+        });
+      });
+    }
+  }
+
+  function fixBlur(){
+    // Menü/FX kapalı ise backdrop ve blur etkisini sıfırla
+    ['alpro-clean-backdrop','v69r-menu-backdrop','v69r-fx-backdrop'].forEach(id=>{
+      const el=q(id);
+      if(el && !el.classList.contains('show')){
+        el.style.display='none';
+        el.style.opacity='0';
+        el.style.pointerEvents='none';
+        el.style.backdropFilter='none';
+        el.style.webkitBackdropFilter='none';
+      }
+    });
+
+    document.querySelectorAll('.page,.content,.main,section').forEach(el=>{
+      el.style.filter='none';
+      el.style.backdropFilter='none';
+      el.style.webkitBackdropFilter='none';
+    });
+
+    document.body.classList.remove('blur','blurred','modal-open-blur');
+  }
+
+  function init(){
+    fixCashPercent();
+    fixBlur();
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    init();
+    setTimeout(init,250);
+    setTimeout(init,900);
+    setTimeout(init,1800);
+  });
+  window.addEventListener('resize',init);
+  window.addEventListener('v111-finance-updated',init);
+  setInterval(init,1500);
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v123Wrapped){
+    const wrapped=function(){
+      const r=oldP.apply(this,arguments);
+      setTimeout(init,80);
+      setTimeout(init,250);
+      return r;
+    };
+    wrapped._v123Wrapped=true;
+    window.P=wrapped;
+    window.showPage=wrapped;
+  }
 })();
 </script>
 

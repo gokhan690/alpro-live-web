@@ -1,0 +1,20 @@
+AluminyumPro Son6 V11.4 Mobile Drawer + Cash Fix
+
+Bu sürümde:
+1) Yeni ek modüller dashboard hızlı işlemlere değil, yandan açılan mobil menüye eklendi.
+2) Mobil dashboard hızlı işlemler tekrar 4 adet ana işlem olarak bırakıldı.
+3) Yandan menüde "Ek Modüller" bölümü eklendi:
+   - Hatırlatıcılar
+   - Gümrük Hesap
+   - Faturalar
+   - Stok
+   - Sabah Raporu
+   - Hedging
+   - Analitik
+   - Gelir / Gider
+4) Cash Position mobilde kısaltıldı:
+   - USD 5.842.310 yerine USD 5,84M gibi görünür.
+5) Cash Position kartında halka ve yazı taşması azaltıldı.
+
+Commit:
+Update Son6 V11.4 Mobile Drawer Cash Fix

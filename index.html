@@ -5295,6 +5295,272 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
   .v69q-nav-item span{font-size:11px!important;}
 }
 </style>
+
+<style id="v114-mobile-drawer-cash-css">
+/* ===== V11.4 MOBILE DRAWER + CASH FIX ===== */
+
+@media(max-width:820px){
+  /* Cash Position kesin sığsın */
+  #v69q-cash{
+    font-size:clamp(18px,6.2vw,26px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.04em!important;
+    white-space:nowrap!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    max-width:calc(100% - 76px)!important;
+    display:block!important;
+  }
+  .v69q-kpi-card:has(#v69q-cash){
+    min-height:172px!important;
+  }
+  .v69q-kpi-card:has(#v69q-cash) .v69q-ring-wrap{
+    width:56px!important;
+    height:56px!important;
+    right:12px!important;
+    bottom:12px!important;
+  }
+  .v69q-kpi-card:has(#v69q-cash) .v69q-ring-wrap span{
+    font-size:13px!important;
+  }
+
+  /* Ana dashboard hızlı işlemleri yine 4 adet ve düzgün kalsın */
+  .v69q-actions{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+  .v69q-action{
+    min-height:72px!important;
+  }
+
+  /* Sol/yandan açılan menüye yeni modül grubu */
+  .v114-drawer-section{
+    margin:12px 12px 10px!important;
+    padding:10px!important;
+    border-radius:18px!important;
+    background:linear-gradient(180deg,rgba(244,202,117,.085),rgba(255,255,255,.025))!important;
+    border:1px solid rgba(244,202,117,.22)!important;
+  }
+  .v114-drawer-title{
+    color:#f4ca75!important;
+    font-size:11px!important;
+    font-weight:1000!important;
+    letter-spacing:.08em!important;
+    text-transform:uppercase!important;
+    margin:0 0 8px!important;
+  }
+  .v114-drawer-grid{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:7px!important;
+  }
+  .v114-drawer-item{
+    min-height:48px!important;
+    border-radius:13px!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+    background:rgba(255,255,255,.045)!important;
+    color:#fff!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:7px!important;
+    padding:8px!important;
+    font-size:10px!important;
+    font-weight:900!important;
+    text-align:left!important;
+  }
+  .v114-drawer-item .ico{
+    color:#f4ca75!important;
+    font-size:16px!important;
+    width:18px!important;
+    text-align:center!important;
+    flex:0 0 18px!important;
+  }
+  .v114-drawer-item .txt{
+    min-width:0!important;
+    white-space:normal!important;
+    line-height:1.1!important;
+  }
+
+  /* v69r drawer içindeki liste taşmasın */
+  #v69r-menu-drawer{
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+    padding-bottom:24px!important;
+  }
+}
+</style>
+
+
+<style id="v115-real-cash-zero-css">
+/* ===== V11.5 REAL CASH ZERO FIX ===== */
+@media(max-width:820px){
+  #v69q-cash{
+    font-size:clamp(18px,6.2vw,26px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.04em!important;
+    white-space:nowrap!important;
+    max-width:calc(100% - 76px)!important;
+  }
+}
+</style>
+
+
+<style id="v116-mobile-menu-integrated-css">
+/* ===== V11.6 MOBILE MENU INTEGRATED MODULES ===== */
+@media(max-width:820px){
+  /* Eski ayrı Ek Modüller kutusu varsa gizle; yeni modüller ana menü listesine entegre edilir */
+  #v114-drawer-section{
+    display:none!important;
+  }
+
+  .v116-menu-separator{
+    margin:12px 14px 8px!important;
+    padding-top:10px!important;
+    border-top:1px solid rgba(255,255,255,.10)!important;
+    color:#f4ca75!important;
+    font-size:10px!important;
+    font-weight:1000!important;
+    letter-spacing:.10em!important;
+    text-transform:uppercase!important;
+  }
+
+  .v116-menu-item{
+    width:calc(100% - 24px)!important;
+    margin:0 12px 7px!important;
+    min-height:46px!important;
+    border-radius:14px!important;
+    border:1px solid rgba(255,255,255,.11)!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.022))!important;
+    color:#f7f7f7!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:11px!important;
+    padding:0 12px!important;
+    text-align:left!important;
+    font-size:13px!important;
+    font-weight:850!important;
+    cursor:pointer!important;
+    box-sizing:border-box!important;
+  }
+  .v116-menu-item:hover,
+  .v116-menu-item:active{
+    border-color:rgba(244,202,117,.34)!important;
+    background:rgba(244,202,117,.10)!important;
+  }
+  .v116-menu-item .ico{
+    width:24px!important;
+    height:24px!important;
+    border-radius:9px!important;
+    background:rgba(244,202,117,.12)!important;
+    border:1px solid rgba(244,202,117,.20)!important;
+    color:#f4ca75!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    font-size:14px!important;
+    flex:0 0 24px!important;
+  }
+  .v116-menu-item .txt{
+    min-width:0!important;
+    flex:1!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+  }
+  .v116-menu-item .sub{
+    color:rgba(255,255,255,.42)!important;
+    font-size:11px!important;
+    font-weight:900!important;
+  }
+
+  /* Drawer scrollbar ve düzen */
+  #v69r-menu-drawer{
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+    padding-bottom:28px!important;
+  }
+
+  /* Cash real zero fix korunur */
+  #v69q-cash{
+    max-width:calc(100% - 76px)!important;
+    white-space:nowrap!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+  }
+}
+</style>
+
+
+<style id="v117-real-drawer-pages-css">
+/* ===== V11.7 REAL DRAWER PAGES FIX ===== */
+@media(max-width:820px){
+  /* Eski ayrı Ek Modüller kutusunu tamamen gizle */
+  #v114-drawer-section,
+  #v116-menu-modules{
+    display:none!important;
+  }
+
+  /* Soldaki ana menüdeki tüm satırlar aynı nizami görünümde olsun */
+  #v69r-menu-drawer .v69r-menu-item,
+  #v69r-menu-drawer [data-go],
+  #v69r-menu-drawer .v117-forced-menu-item{
+    width:calc(100% - 24px)!important;
+    margin:0 12px 7px!important;
+    min-height:48px!important;
+    border-radius:14px!important;
+    box-sizing:border-box!important;
+  }
+
+  #v69r-menu-drawer .v117-forced-menu-item{
+    border:1px solid rgba(255,255,255,.11)!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.022))!important;
+    color:#fff!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:12px!important;
+    padding:0 12px!important;
+    text-align:left!important;
+    font-size:13px!important;
+    font-weight:850!important;
+  }
+  #v69r-menu-drawer .v117-forced-menu-item b{
+    width:26px!important;
+    height:26px!important;
+    border-radius:9px!important;
+    background:rgba(244,202,117,.12)!important;
+    border:1px solid rgba(244,202,117,.20)!important;
+    color:#f4ca75!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex:0 0 26px!important;
+    font-size:14px!important;
+  }
+  #v69r-menu-drawer .v117-forced-menu-item span{
+    display:flex!important;
+    flex-direction:column!important;
+    min-width:0!important;
+  }
+  #v69r-menu-drawer .v117-forced-menu-item strong{
+    color:#fff!important;
+    font-size:13px!important;
+    line-height:1.05!important;
+  }
+  #v69r-menu-drawer .v117-forced-menu-item em{
+    color:rgba(255,255,255,.46)!important;
+    font-style:normal!important;
+    font-size:11px!important;
+    line-height:1.1!important;
+    margin-top:3px!important;
+  }
+
+  #v69r-menu-drawer{
+    overflow-y:auto!important;
+    padding-bottom:32px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -11558,6 +11824,18 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
     return txt('v69k-usdtop','32,4287');
   }
 
+  function formatCashMobile(total){
+    const n=Number(total||0);
+    if(!Number.isFinite(n) || !n) return 'USD 0';
+    if(Math.abs(n)>=1000000){
+      return 'USD '+(n/1000000).toLocaleString('tr-TR',{maximumFractionDigits:2})+'M';
+    }
+    if(Math.abs(n)>=1000){
+      return 'USD '+(n/1000).toLocaleString('tr-TR',{maximumFractionDigits:1})+'K';
+    }
+    return 'USD '+n.toLocaleString('tr-TR');
+  }
+
   function buildMobileDashboard(){
     const page=q('page-dashboard');
     if(!page || q('v69q-mobile-dashboard')) return;
@@ -11591,7 +11869,7 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
           '</div>'+
           '<div class="v69q-kpi-card">'+
             '<div class="v69q-kpi-top"><div class="v69q-kpi-title">Cash Position</div><div class="v69q-kpi-icon">▣</div></div>'+
-            '<div class="v69q-kpi-value" id="v69q-cash">USD 5.842.310</div>'+
+            '<div class="v69q-kpi-value" id="v69q-cash">USD 0</div>'+
             '<div class="v69q-ring-wrap"><span>74%</span></div>'+
           '</div>'+
         '</div>'+
@@ -11600,15 +11878,7 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
           '<button class="v69q-action" type="button" data-go="orders"><div class="v69q-action-ico">▤</div><div class="v69q-action-txt">Yeni Sipariş</div></button>'+
           '<button class="v69q-action" type="button" data-go="customers"><div class="v69q-action-ico">□</div><div class="v69q-action-txt">Teklif Oluştur</div></button>'+
           '<button class="v69q-action" type="button" data-go="freight"><div class="v69q-action-ico">▱</div><div class="v69q-action-txt">Navlun Talebi</div></button>'+
-          '<button class="v69q-action" type="button" data-go="invoices"><div class="v69q-action-ico">▧</div><div class="v69q-action-txt">Faturalar</div></button>'+
-          '<button class="v69q-action" type="button" data-go="stock"><div class="v69q-action-ico">▣</div><div class="v69q-action-txt">Stok</div></button>'+
-          '<button class="v69q-action" type="button" data-go="reminders"><div class="v69q-action-ico">◷</div><div class="v69q-action-txt">Hatırlatıcılar</div></button>'+
-          '<button class="v69q-action" type="button" data-go="customs-calc"><div class="v69q-action-ico">▥</div><div class="v69q-action-txt">Gümrük Hesap</div></button>'+
-          '<button class="v69q-action" type="button" data-go="reports"><div class="v69q-action-ico">☀</div><div class="v69q-action-txt">Sabah Raporu</div></button>'+
-          '<button class="v69q-action" type="button" data-go="hedge"><div class="v69q-action-ico">⌁</div><div class="v69q-action-txt">Hedging</div></button>'+
-          '<button class="v69q-action" type="button" data-go="analytics"><div class="v69q-action-ico">◫</div><div class="v69q-action-txt">Analitik</div></button>'+
-          '<button class="v69q-action" type="button" data-go="income"><div class="v69q-action-ico">₺</div><div class="v69q-action-txt">Gelir Gider</div></button>'+
-          '<button class="v69q-action" type="button" data-go="bank"><div class="v69q-action-ico">▤</div><div class="v69q-action-txt">Banka</div></button>'+
+          '<button class="v69q-action" type="button" data-go="invoices"><div class="v69q-action-ico">▧</div><div class="v69q-action-txt">Fatura Oluştur</div></button>'+
         '</div>'+
         '<div class="v69q-task-panel">'+
           '<div class="v69q-task-head"><div class="v69q-task-title">Bugün Ne Yapmalıyım?</div><div class="v69q-task-count">5</div></div>'+
@@ -11664,8 +11934,8 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
       const n=Number(String(b.amount||b.total||b.value||'').replace(/[^0-9.-]/g,''));
       return a+(Number.isFinite(n)?n:0);
     },0);
-    if(!total) total=5842310;
-    setText('v69q-cash','USD '+Number(total).toLocaleString('tr-TR'));
+    if(!Number.isFinite(total)) total=0;
+    setText('v69q-cash',formatCashMobile(total));
   }
 
   function init(){
@@ -11697,12 +11967,39 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
 <script id="v69r-full-mobile-app-shell-js">
 (function(){
   function q(id){return document.getElementById(id);}
-  function go(p){if(window.P)window.P(p);else if(window.showPage)window.showPage(p);}
+  function resolveMobileRoute(p){
+    if(p==='customs-calc' && !document.getElementById('page-customs-calc')) return 'customs';
+    if(p==='income' && !document.getElementById('page-income')) return document.getElementById('page-bank') ? 'bank' : 'dashboard';
+    if(p==='analytics' && !document.getElementById('page-analytics')) return document.getElementById('page-reports') ? 'reports' : 'dashboard';
+    if(p==='reports' && !document.getElementById('page-reports')) return document.getElementById('page-v5-morning') ? 'v5-morning' : 'dashboard';
+    return p;
+  }
+  function go(p){p=resolveMobileRoute(p);if(window.P)window.P(p);else if(window.showPage)window.showPage(p);}
   function activePage(){const a=document.querySelector('.page.active');return a?a.id.replace('page-',''):'dashboard';}
   function esc(s){return String(s ?? '').replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m];});}
   function getName(){return localStorage.getItem('alpro_mobile_name') || 'Mehmet';}
   function setName(v){const name=String(v||'').trim() || 'Mehmet';localStorage.setItem('alpro_mobile_name',name);updateName();}
-  const pages=[['dashboard','⌂','Ana Sayfa','Dashboard'],['lme','⌁','Canlı Fiyatlar','LME ve metaller'],['orders','🛒','Siparişler','Ticaret'],['suppliers','▦','Tedarikçiler','Ticaret'],['customers','👥','Müşteriler','Ticaret'],['freight','▱','Navlun','Lojistik'],['customs','▧','Gümrük','Lojistik'],['bank','▥','Banka','Finans'],['invoices','□','Faturalar','Finans'],['reports','▥','Raporlar','Analitik'],['stock','▣','Stok','Operasyon'],['documents','▤','Belgeler','Sistem'],['notify','♧','Bildirimler','Sistem'],['setup','⚙','Ayarlar','Sistem']];
+  const pages=[
+    ['dashboard','⌂','Ana Sayfa','Dashboard'],
+    ['lme','⌁','Canlı Fiyatlar','LME ve metaller'],
+    ['orders','🛒','Siparişler','Ticaret'],
+    ['suppliers','▦','Tedarikçiler','Ticaret'],
+    ['customers','👥','Müşteriler','Ticaret'],
+    ['freight','▱','Navlun','Lojistik'],
+    ['customs','▧','Gümrük','Lojistik'],
+    ['customs-calc','▥','Gümrük Hesap','Lojistik'],
+    ['bank','▥','Banka','Finans'],
+    ['income','₺','Gelir / Gider','Finans'],
+    ['invoices','□','Faturalar','Finans'],
+    ['stock','▣','Stok','Operasyon'],
+    ['reminders','◷','Hatırlatıcılar','Sistem'],
+    ['hedge','⌁','Hedging','Risk'],
+    ['analytics','◫','Analitik','Rapor'],
+    ['reports','☀','Sabah Raporu','Rapor'],
+    ['documents','▤','Belgeler','Sistem'],
+    ['notify','♧','Bildirimler','Sistem'],
+    ['setup','⚙','Ayarlar','Sistem']
+  ];
   function pageTitle(id){const f=pages.find(p=>p[0]===id);return f?f[2]:'AlPro';}
   function pageSub(id){const f=pages.find(p=>p[0]===id);return f?f[3]:'Metal Trading';}
   function buildShell(){
@@ -11757,11 +12054,28 @@ document.addEventListener('DOMContentLoaded',()=>setTimeout(addNav,1200));
     list.innerHTML=opts.map(o=>'<button class="v69r-fx-option '+(o.active?'active':'')+' '+(o.disabled?'disabled':'')+'" type="button" data-code="'+esc(o.code)+'" data-disabled="'+(o.disabled?'1':'0')+'"><div class="v69r-fx-left"><strong>'+esc(o.label)+'</strong><span>'+esc(o.name)+'</span></div><div class="v69r-fx-rate">'+esc(o.rate)+'<small>'+esc(o.small)+'</small></div></button>').join('');
     list.querySelectorAll('.v69r-fx-option').forEach(btn=>{btn.addEventListener('click',function(){if(this.getAttribute('data-disabled')==='1')return;const code=this.getAttribute('data-code');const desktopOpt=document.querySelector('#v69o-currency-menu .v69o-currency-option[data-code="'+code+'"]');if(desktopOpt)desktopOpt.click();closeFxSheet();setTimeout(updateChrome,120);});});
   }
-  function updateName(){const name=getName();document.querySelectorAll('.v69q-hello').forEach(el=>{el.textContent='Merhaba, '+name+' 👋';});}
-  function updateChrome(){
-    const mobile=window.innerWidth<=820;document.body.classList.toggle('v69r-mobile',mobile);if(!mobile)return;buildShell();const p=activePage();const name=q('v69r-page-name'),sub=q('v69r-page-sub');if(name)name.textContent=pageTitle(p);if(sub)sub.textContent=pageSub(p);document.querySelectorAll('.v69r-nav-item').forEach(btn=>btn.classList.toggle('active',btn.getAttribute('data-go')===p));document.querySelectorAll('.v69r-menu-item').forEach(btn=>btn.classList.toggle('active',btn.getAttribute('data-go')===p));updateName();
+  
+  function v117EnsureDrawerPages(){
+    const drawer=q('v69r-menu-drawer');
+    if(!drawer) return;
+    const existing=[].slice.call(drawer.querySelectorAll('[data-go]')).map(function(x){return x.getAttribute('data-go');});
+    pages.forEach(function(p){
+      if(existing.indexOf(p[0])!==-1) return;
+      const btn=document.createElement('button');
+      btn.className='v69r-menu-item v117-forced-menu-item';
+      btn.type='button';
+      btn.setAttribute('data-go',p[0]);
+      btn.innerHTML='<b>'+p[1]+'</b><span><strong>'+p[2]+'</strong><em>'+p[3]+'</em></span>';
+      btn.addEventListener('click',function(){go(p[0]);});
+      drawer.appendChild(btn);
+    });
   }
-  function init(){buildShell();updateChrome();setInterval(updateChrome,700);}
+
+function updateName(){const name=getName();document.querySelectorAll('.v69q-hello').forEach(el=>{el.textContent='Merhaba, '+name+' 👋';});}
+  function updateChrome(){
+    const mobile=window.innerWidth<=820;document.body.classList.toggle('v69r-mobile',mobile);if(!mobile)return;buildShell(); v117EnsureDrawerPages();const p=activePage();const name=q('v69r-page-name'),sub=q('v69r-page-sub');if(name)name.textContent=pageTitle(p);if(sub)sub.textContent=pageSub(p);document.querySelectorAll('.v69r-nav-item').forEach(btn=>btn.classList.toggle('active',btn.getAttribute('data-go')===p));document.querySelectorAll('.v69r-menu-item').forEach(btn=>btn.classList.toggle('active',btn.getAttribute('data-go')===p));updateName();
+  }
+  function init(){buildShell(); v117EnsureDrawerPages();updateChrome();setInterval(updateChrome,700);}
   document.addEventListener('DOMContentLoaded',init);window.addEventListener('resize',updateChrome);
   const oldP=window.P;if(typeof oldP==='function'&&!oldP._v69rWrapped){const w=function(id){const r=oldP.apply(this,arguments);setTimeout(updateChrome,120);return r;};w._v69rWrapped=true;window.P=w;window.showPage=w;}
 })();
@@ -13172,7 +13486,7 @@ window.openTrash = function(type) {
         window._v100_lastUSD = totUsd;
         window._v100_lastTRY = totTry;
         var fmt = function(n){return Math.round(n).toLocaleString('tr-TR');};
-        var DEMO_USD_FULL = 'USD 5.842.310';
+        var DEMO_USD_FULL = 'USD 0';
         var DEMO_TRY_FULL = 'TRY 189.654.210';
         var DEMO_USD_DOLLAR = '$5.842.310';
         var DEMO_TRY_LIRA = '₺189.654.210';
@@ -15150,7 +15464,7 @@ window.openTrash = function(type) {
       return /^USD\s*\d[\d.,]*$/i.test(t) && /5[.,]842[.,]310/.test(t);
     });
     cashEls.forEach(el=>{
-      el.textContent='USD 5.842.310';
+      el.textContent='USD 0';
       el.style.fontSize='clamp(17px,5vw,24px)';
       el.style.whiteSpace='nowrap';
       el.style.overflow='hidden';
@@ -15229,5 +15543,439 @@ window.openTrash = function(type) {
   window.addEventListener('load', sync);
 })();
 </script>
+
+<script id="v114-mobile-drawer-cash-js">
+(function(){
+  const MODULES=[
+    {label:'Hatırlatıcılar', icon:'◷', page:'reminders'},
+    {label:'Gümrük Hesap', icon:'▥', page:'customs-calc'},
+    {label:'Faturalar', icon:'▧', page:'invoices'},
+    {label:'Stok', icon:'▣', page:'stock'},
+    {label:'Sabah Raporu', icon:'☀', page:'reports'},
+    {label:'Hedging', icon:'⌁', page:'hedge'},
+    {label:'Analitik', icon:'◫', page:'analytics'},
+    {label:'Gelir / Gider', icon:'₺', page:'income'}
+  ];
+
+  function q(id){return document.getElementById(id)}
+  function mobile(){return window.innerWidth<=820 || /Mobi|Android|iPhone/i.test(navigator.userAgent)}
+  function pageExists(p){return !!q('page-'+p)}
+  function resolvePage(p){
+    if(p==='customs-calc' && pageExists('customs-calc')) return 'customs-calc';
+    if(p==='customs-calc') return 'customs';
+    if(p==='income' && pageExists('income')) return 'income';
+    if(p==='income') return 'bank';
+    if(p==='analytics' && pageExists('analytics')) return 'analytics';
+    if(p==='analytics') return 'reports';
+    return p;
+  }
+  function go(p){
+    const target=resolvePage(p);
+    try{
+      if(typeof window.P==='function') return window.P(target);
+      if(typeof window.showPage==='function') return window.showPage(target);
+    }catch(e){}
+    const el=q('page-'+target);
+    if(el){
+      document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+      el.classList.add('active');
+    }
+  }
+
+  function findDrawer(){
+    return q('v69r-menu-drawer') || q('v69r-mobile-nav') || document.querySelector('.mobile-drawer,.drawer,.side');
+  }
+
+  function injectDrawerModules(){
+    if(!mobile()) return;
+    const drawer=findDrawer();
+    if(!drawer || q('v114-drawer-section')) return;
+
+    const section=document.createElement('div');
+    section.id='v114-drawer-section';
+    section.className='v114-drawer-section';
+    section.innerHTML=
+      '<div class="v114-drawer-title">Ek Modüller</div>'+
+      '<div class="v114-drawer-grid">'+
+      MODULES.map(m=>'<button type="button" class="v114-drawer-item" data-go="'+m.page+'"><span class="ico">'+m.icon+'</span><span class="txt">'+m.label+'</span></button>').join('')+
+      '</div>';
+
+    // En başlarda görünsün: isim alanından veya ilk liste başından sonra koy
+    const close=q('v69r-close-menu');
+    const nameInput=q('v69r-name-input');
+    if(nameInput && nameInput.parentElement){
+      nameInput.parentElement.insertAdjacentElement('afterend',section);
+    }else if(close && close.parentElement){
+      close.parentElement.insertAdjacentElement('afterend',section);
+    }else{
+      drawer.prepend(section);
+    }
+
+    section.querySelectorAll('[data-go]').forEach(btn=>{
+      btn.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        go(btn.getAttribute('data-go'));
+        const backdrop=q('v69r-menu-backdrop');
+        const d=q('v69r-menu-drawer');
+        if(backdrop) backdrop.click();
+        if(d) d.classList.remove('show','open','active');
+      };
+    });
+  }
+
+  function fixCash(){
+    if(!mobile()) return;
+    const el=q('v69q-cash');
+    if(!el) return;
+    const raw=String(el.textContent||'').replace(/[^\d.,-]/g,'');
+    let n=Number(raw.replace(/\./g,'').replace(',','.'));
+    if(!Number.isFinite(n) || !n){
+      const m=String(el.textContent||'').match(/[\d.]+/);
+      n=m?Number(m[0].replace(/\./g,'')):0;
+    }
+    if(Number.isFinite(n) && n>=1000000){
+      el.textContent='USD '+(n/1000000).toLocaleString('tr-TR',{maximumFractionDigits:2})+'M';
+    }
+  }
+
+  function keepDashboardTopClean(){
+    if(!mobile()) return;
+    const active=document.querySelector('.page.active');
+    const isDash=active && active.id==='page-dashboard';
+    if(isDash){
+      document.body.classList.add('v69q-mobile-dashboard-active');
+      ['v69r-mobile-top','v69r-mobile-nav'].forEach(id=>{
+        const e=q(id);
+        if(e) e.style.display='none';
+      });
+    }
+  }
+
+  function init(){
+    injectDrawerModules();
+    fixCash();
+    keepDashboardTopClean();
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    init();
+    setTimeout(init,250);
+    setTimeout(init,900);
+    setTimeout(init,2200);
+  });
+  window.addEventListener('resize',init);
+  setInterval(init,2500);
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v114Wrapped){
+    const wrapped=function(){
+      const r=oldP.apply(this,arguments);
+      setTimeout(init,150);
+      setTimeout(init,600);
+      return r;
+    };
+    wrapped._v114Wrapped=true;
+    window.P=wrapped;
+    window.showPage=wrapped;
+  }
+})();
+</script>
+
+
+<script id="v115-real-cash-zero-js">
+(function(){
+  function q(id){return document.getElementById(id)}
+  function safeJSON(v,d){try{return JSON.parse(v)}catch(e){return d}}
+  function arr(k){const v=safeJSON(localStorage.getItem(k)||'[]',[]); return Array.isArray(v)?v:[]}
+  function parseAmount(v){
+    let s=String(v??'').replace(/[^\d,.-]/g,'').trim();
+    if(!s) return 0;
+    if(s.includes('.') && s.includes(',')) s=s.replace(/\./g,'').replace(',','.');
+    else if(s.includes(',')) s=s.replace(',','.');
+    const n=Number(s);
+    return Number.isFinite(n)?n:0;
+  }
+  function formatCash(n){
+    n=Number(n||0);
+    if(!Number.isFinite(n)) n=0;
+    const sign=n<0?'-':'';
+    n=Math.abs(n);
+    if(n>=1000000) return sign+'USD '+(n/1000000).toLocaleString('tr-TR',{maximumFractionDigits:2})+'M';
+    if(n>=1000) return sign+'USD '+(n/1000).toLocaleString('tr-TR',{maximumFractionDigits:1})+'K';
+    return sign+'USD '+n.toLocaleString('tr-TR',{maximumFractionDigits:0});
+  }
+  function realCashTotal(){
+    // New V11.1 bank transactions
+    const tx=arr('v111_bank_transactions');
+    if(tx.length){
+      return tx.reduce(function(a,b){
+        const sign=(b.type==='Çıkış'||b.type==='Cikis'||b.type==='OUT'||b.type==='out')?-1:1;
+        return a + sign*parseAmount(b.amount);
+      },0);
+    }
+
+    // Older bank table fallback
+    const bank=arr('bank').filter(x=>!x._deleted);
+    if(bank.length){
+      return bank.reduce(function(a,b){
+        const type=String(b.type||b.kind||'').toLowerCase();
+        const sign=(type.includes('çık')||type.includes('cik')||type.includes('out')||type.includes('debit'))?-1:1;
+        return a + sign*parseAmount(b.amount||b.total||b.value);
+      },0);
+    }
+
+    // No bank record means real cash is 0, not demo money.
+    return 0;
+  }
+  function apply(){
+    const el=q('v69q-cash');
+    if(!el) return;
+    el.textContent=formatCash(realCashTotal());
+    el.title='Gerçek banka kayıtlarından hesaplandı';
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    apply();
+    setTimeout(apply,300);
+    setTimeout(apply,1000);
+    setTimeout(apply,2500);
+  });
+  setInterval(apply,1500);
+  window.addEventListener('storage',apply);
+  window.addEventListener('v111-finance-updated',apply);
+})();
+</script>
+
+
+<script id="v116-mobile-menu-integrated-js">
+(function(){
+  const MODULES=[
+    {label:'Faturalar', icon:'▧', page:'invoices', sub:'Finans'},
+    {label:'Stok', icon:'▣', page:'stock', sub:'Operasyon'},
+    {label:'Hatırlatıcılar', icon:'◷', page:'reminders', sub:'Sistem'},
+    {label:'Gümrük Hesap', icon:'▥', page:'customs-calc', sub:'Lojistik'},
+    {label:'Sabah Raporu', icon:'☀', page:'reports', sub:'Rapor'},
+    {label:'Hedging', icon:'⌁', page:'hedge', sub:'Risk'},
+    {label:'Analitik', icon:'◫', page:'analytics', sub:'Rapor'},
+    {label:'Gelir / Gider', icon:'₺', page:'income', sub:'Finans'}
+  ];
+
+  function q(id){return document.getElementById(id)}
+  function mobile(){return window.innerWidth<=820 || /Mobi|Android|iPhone/i.test(navigator.userAgent)}
+  function pageExists(id){return !!q('page-'+id)}
+  function resolvePage(p){
+    if(p==='customs-calc') return pageExists('customs-calc') ? 'customs-calc' : 'customs';
+    if(p==='income') return pageExists('income') ? 'income' : (pageExists('bank') ? 'bank' : 'finance');
+    if(p==='analytics') return pageExists('analytics') ? 'analytics' : 'reports';
+    if(p==='reports') return pageExists('reports') ? 'reports' : 'v5-morning';
+    return p;
+  }
+  function go(p){
+    const target=resolvePage(p);
+    try{
+      if(typeof window.P==='function'){ window.P(target); return; }
+      if(typeof window.showPage==='function'){ window.showPage(target); return; }
+    }catch(e){}
+    const el=q('page-'+target);
+    if(el){
+      document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+      el.classList.add('active');
+    }else{
+      if(typeof notif==='function') notif(target+' sayfası bulunamadı','w');
+      else alert(target+' sayfası bulunamadı');
+    }
+  }
+
+  function findMenuDrawer(){
+    return q('v69r-menu-drawer') || document.querySelector('.mobile-drawer,.drawer');
+  }
+
+  function existingMenuButtons(drawer){
+    return drawer ? [...drawer.querySelectorAll('button,[data-go],a')] : [];
+  }
+
+  function clickCloseDrawer(){
+    const backdrop=q('v69r-menu-backdrop');
+    const drawer=q('v69r-menu-drawer');
+    if(backdrop) backdrop.click();
+    if(drawer){
+      drawer.classList.remove('show','open','active');
+      drawer.style.transform='';
+    }
+  }
+
+  function insertIntegratedMenu(){
+    if(!mobile()) return;
+    const drawer=findMenuDrawer();
+    if(!drawer || q('v116-menu-modules')) return;
+
+    // Remove old separate V11.4 module box if present
+    const old=q('v114-drawer-section');
+    if(old) old.remove();
+
+    const block=document.createElement('div');
+    block.id='v116-menu-modules';
+    block.innerHTML=
+      '<div class="v116-menu-separator">Ek Modüller</div>'+
+      MODULES.map(m =>
+        '<button type="button" class="v116-menu-item" data-v116-go="'+m.page+'">'+
+          '<span class="ico">'+m.icon+'</span>'+
+          '<span class="txt">'+m.label+'</span>'+
+          '<span class="sub">'+m.sub+'</span>'+
+        '</button>'
+      ).join('');
+
+    // Nizami yerleşim: mevcut ana liste başladıktan sonra, ilk Finans/Lojistik bloğundan önce değil;
+    // en baştaki profil/isim kısmından hemen sonra koy.
+    const nameInput=q('v69r-name-input');
+    const close=q('v69r-close-menu');
+    let anchor=null;
+
+    if(nameInput){
+      anchor = nameInput.closest('div') || nameInput;
+    }
+    if(!anchor && close){
+      anchor = close.closest('div') || close;
+    }
+
+    if(anchor && anchor.parentElement===drawer){
+      anchor.insertAdjacentElement('afterend', block);
+    }else{
+      // Menüde ilk başlık/listenin üstüne, ama kapatma butonundan sonra
+      const buttons=existingMenuButtons(drawer).filter(b=>!b.id || b.id!=='v69r-close-menu');
+      if(buttons.length){
+        buttons[0].insertAdjacentElement('beforebegin', block);
+      }else{
+        drawer.prepend(block);
+      }
+    }
+
+    block.querySelectorAll('[data-v116-go]').forEach(btn=>{
+      btn.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        go(btn.getAttribute('data-v116-go'));
+        setTimeout(clickCloseDrawer,80);
+      };
+    });
+  }
+
+  function enhanceExistingMenuClicks(){
+    const drawer=findMenuDrawer();
+    if(!drawer) return;
+    drawer.querySelectorAll('[data-go]').forEach(btn=>{
+      if(btn._v116Enhanced) return;
+      btn._v116Enhanced=true;
+      btn.addEventListener('click',function(){
+        setTimeout(clickCloseDrawer,100);
+      });
+    });
+  }
+
+  function realCashZeroAgain(){
+    const el=q('v69q-cash');
+    if(!el) return;
+    // If old hardcoded demo sneaks in, force to 0 unless bank transactions exist
+    const bank = JSON.parse(localStorage.getItem('v111_bank_transactions') || '[]');
+    const oldBank = JSON.parse(localStorage.getItem('bank') || '[]');
+    if((!Array.isArray(bank) || bank.length===0) && (!Array.isArray(oldBank) || oldBank.length===0)){
+      el.textContent='USD 0';
+    }
+  }
+
+  function init(){
+    insertIntegratedMenu();
+    enhanceExistingMenuClicks();
+    realCashZeroAgain();
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    init();
+    setTimeout(init,250);
+    setTimeout(init,900);
+    setTimeout(init,2200);
+  });
+  setInterval(init,2500);
+  window.addEventListener('resize',init);
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v116Wrapped){
+    const wrapped=function(){
+      const r=oldP.apply(this,arguments);
+      setTimeout(init,180);
+      return r;
+    };
+    wrapped._v116Wrapped=true;
+    window.P=wrapped;
+    window.showPage=wrapped;
+  }
+})();
+</script>
+
+
+<script id="v117-real-drawer-pages-js">
+(function(){
+  const forced=[
+    ['customs-calc','▥','Gümrük Hesap','Lojistik'],
+    ['invoices','□','Faturalar','Finans'],
+    ['stock','▣','Stok','Operasyon'],
+    ['reminders','◷','Hatırlatıcılar','Sistem'],
+    ['reports','☀','Sabah Raporu','Rapor'],
+    ['hedge','⌁','Hedging','Risk'],
+    ['analytics','◫','Analitik','Rapor'],
+    ['income','₺','Gelir / Gider','Finans']
+  ];
+  function q(id){return document.getElementById(id)}
+  function route(p){
+    if(p==='customs-calc' && !q('page-customs-calc')) return 'customs';
+    if(p==='income' && !q('page-income')) return q('page-bank')?'bank':'dashboard';
+    if(p==='analytics' && !q('page-analytics')) return q('page-reports')?'reports':'dashboard';
+    return p;
+  }
+  function go(p){
+    p=route(p);
+    try{
+      if(typeof window.P==='function') return window.P(p);
+      if(typeof window.showPage==='function') return window.showPage(p);
+    }catch(e){}
+    const el=q('page-'+p);
+    if(el){
+      document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+      el.classList.add('active');
+    }
+  }
+  function ensure(){
+    const drawer=q('v69r-menu-drawer');
+    if(!drawer) return;
+    const existing=[].slice.call(drawer.querySelectorAll('[data-go]')).map(x=>x.getAttribute('data-go'));
+    forced.forEach(function(p){
+      if(existing.includes(p[0])) return;
+      const btn=document.createElement('button');
+      btn.className='v117-forced-menu-item';
+      btn.type='button';
+      btn.setAttribute('data-go',p[0]);
+      btn.innerHTML='<b>'+p[1]+'</b><span><strong>'+p[2]+'</strong><em>'+p[3]+'</em></span>';
+      btn.onclick=function(e){e.preventDefault(); e.stopPropagation(); go(p[0]);};
+      // Put before documents/settings if possible, otherwise append
+      const doc=[].slice.call(drawer.querySelectorAll('[data-go]')).find(x=>['documents','notify','setup'].includes(x.getAttribute('data-go')));
+      if(doc) doc.insertAdjacentElement('beforebegin',btn);
+      else drawer.appendChild(btn);
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    ensure();
+    setTimeout(ensure,300);
+    setTimeout(ensure,1000);
+    setTimeout(ensure,2500);
+  });
+  setInterval(ensure,2000);
+  document.addEventListener('click',function(e){
+    if(e.target && (e.target.id==='v69r-menu-btn' || e.target.closest && e.target.closest('#v69r-menu-btn'))){
+      setTimeout(ensure,120);
+    }
+  },true);
+})();
+</script>
+
 </body>
 </html>

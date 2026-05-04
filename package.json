@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-son6-v113-mobile-real-fix",
-  "version": "11.3.0",
+  "name": "aluminyumpro-son6-v117-real-drawer-pages",
+  "version": "11.7.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

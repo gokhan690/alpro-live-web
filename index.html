@@ -6150,6 +6150,64 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 }
 </style>
 
+
+<style id="v125-remove-upper-mobile-menu-css">
+/* ===== V12.5 REMOVE UPPER DUPLICATE MOBILE MENU ===== */
+@media(max-width:820px){
+  /* Eski/üstte kalan mobil menüler tamamen kapalı */
+  #v69r-mobile-top,
+  #v69r-mobile-nav,
+  #v69r-menu-backdrop,
+  #v69r-menu-drawer,
+  .v69q-status,
+  .v69q-header,
+  .v69q-bottom-nav,
+  .v69q-nav-item,
+  .mobile-topbar,
+  .mobile-header,
+  .app-mobile-header,
+  .top-mobile,
+  [id*="mobile-top"]:not(#alpro-clean-top),
+  [class*="mobile-top"]:not(#alpro-clean-top){
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+
+  /* Sadece bizim temiz üst bar kalsın */
+  #alpro-clean-top{
+    display:flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    position:fixed!important;
+    top:calc(env(safe-area-inset-top, 0px) + 6px)!important;
+    left:10px!important;
+    right:10px!important;
+    z-index:95000!important;
+  }
+
+  #alpro-clean-bottom{
+    display:flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    z-index:95000!important;
+  }
+
+  /* Eski header gizlenince içerik tek üst bara göre başlasın */
+  body.v69r-mobile .content,
+  body.v69r-mobile .main,
+  body.v69r-mobile .page,
+  body.v69q-mobile-dashboard-active .content,
+  body.v69q-mobile-dashboard-active .main,
+  body.v69q-mobile-dashboard-active .page#page-dashboard{
+    padding-top:calc(env(safe-area-inset-top, 0px) + 72px)!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -17094,6 +17152,89 @@ window.openTrash = function(type) {
   });
 
   setInterval(init,2000);
+})();
+</script>
+
+
+<script id="v125-remove-upper-mobile-menu-js">
+(function(){
+  function mobile(){return window.innerWidth<=820 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)}
+  function q(id){return document.getElementById(id)}
+
+  function hideUpperOldMenus(){
+    if(!mobile()) return;
+
+    const oldIds=[
+      'v69r-mobile-top',
+      'v69r-mobile-nav',
+      'v69r-menu-backdrop',
+      'v69r-menu-drawer'
+    ];
+
+    oldIds.forEach(id=>{
+      const el=q(id);
+      if(el){
+        el.style.display='none';
+        el.style.visibility='hidden';
+        el.style.opacity='0';
+        el.style.pointerEvents='none';
+      }
+    });
+
+    document.querySelectorAll('.v69q-status,.v69q-header,.v69q-bottom-nav,.v69q-nav-item,.mobile-topbar,.mobile-header,.app-mobile-header,.top-mobile').forEach(el=>{
+      if(el.id==='alpro-clean-top' || el.id==='alpro-clean-bottom') return;
+      el.style.display='none';
+      el.style.visibility='hidden';
+      el.style.opacity='0';
+      el.style.pointerEvents='none';
+    });
+
+    const cleanTop=q('alpro-clean-top');
+    const cleanBottom=q('alpro-clean-bottom');
+
+    if(cleanTop){
+      cleanTop.style.display='flex';
+      cleanTop.style.visibility='visible';
+      cleanTop.style.opacity='1';
+      cleanTop.style.pointerEvents='auto';
+      cleanTop.style.zIndex='95000';
+    }
+
+    if(cleanBottom){
+      cleanBottom.style.display='flex';
+      cleanBottom.style.visibility='visible';
+      cleanBottom.style.opacity='1';
+      cleanBottom.style.pointerEvents='auto';
+      cleanBottom.style.zIndex='95000';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    hideUpperOldMenus();
+    setTimeout(hideUpperOldMenus,200);
+    setTimeout(hideUpperOldMenus,800);
+    setTimeout(hideUpperOldMenus,1800);
+  });
+
+  window.addEventListener('resize',hideUpperOldMenus);
+  window.addEventListener('orientationchange',function(){
+    setTimeout(hideUpperOldMenus,250);
+  });
+
+  setInterval(hideUpperOldMenus,1500);
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v125Wrapped){
+    const wrapped=function(){
+      const r=oldP.apply(this,arguments);
+      setTimeout(hideUpperOldMenus,100);
+      setTimeout(hideUpperOldMenus,350);
+      return r;
+    };
+    wrapped._v125Wrapped=true;
+    window.P=wrapped;
+    window.showPage=wrapped;
+  }
 })();
 </script>
 

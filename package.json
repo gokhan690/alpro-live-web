@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-v12-4-clean",
-  "version": "12.4.0",
+  "name": "aluminyumpro-v12-5-remove-upper-mobile-menu",
+  "version": "12.5.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

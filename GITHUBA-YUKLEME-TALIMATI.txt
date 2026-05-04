@@ -1,14 +1,11 @@
-AluminyumPro Son6 V10.8 Chart Polish
+AluminyumPro Son6 V10.8B Chart Click Fix
 
 Bu klasördeki dosyaları GitHub repo ana dizinine koy.
 
 Özet:
-- Mini grafikler düzeltildi
-- Tüm grafikler daha detaylı oldu
-- Tıklayınca büyük detay grafik açılır
-- Hover ile fiyat / tarih görünür
-- 1G / 7G / 30G / 90G / Tümü seçimleri var
-- Mümkün olmayan durumda çekilen fiyat geçmişi kullanılır
+- Grafik tıklama davranışı düzeltildi
+- Tek stabil modal açılır
+- Eski click handler çakışmaları bastırıldı
 
 Commit mesajı:
-Update Son6 V10.8 Chart Polish
+Update Son6 V10.8B Chart Click Fix

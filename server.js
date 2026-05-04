@@ -70,6 +70,71 @@ const INVESTING_URLS = [
   'https://www.investing.com/commodities/metals',
   'https://www.investing.com/commodities/real-time-futures'
 ];
+// V10.5 - Bakir icin OZEL sayfa (LME 3M Copper / MCU3)
+const MCU3_COPPER_URL = "https://tr.investing.com/commodities/copper?cid=959211";
+let mcu3Cache = { data: null, at: 0 };
+
+function parseTRNumber(raw) {
+  if (!raw) return null;
+  let s = String(raw).trim();
+  if (s.includes(".") && s.includes(",")) {
+    s = s.replace(/\./g, "").replace(",", ".");
+  } else if (s.includes(",") && !s.includes(".")) {
+    s = s.replace(",", ".");
+  }
+  const n = Number(s.replace(/[^0-9.-]/g, ""));
+  return Number.isFinite(n) ? n : null;
+}
+
+async function getMCU3CopperPrice() {
+  if (mcu3Cache.data && Date.now() - mcu3Cache.at < 60_000) {
+    console.log('[MCU3] cache donduruldu:', mcu3Cache.data.price);
+    return { ...mcu3Cache.data, cached: true };
+  }
+  const html = await requestText(MCU3_COPPER_URL);
+  const text = clean(html);
+  const patterns = [
+    /Bakır Vadeli İşlemleri[\s\S]{0,300}?([0-9]{1,3}(?:\.[0-9]{3})*,[0-9]+)/i,
+    /Bu sayfadan\s+([0-9]{1,3}(?:\.[0-9]{3})*,[0-9]+)/i,
+    /Portföye Ekle\s+([0-9]{1,3}(?:\.[0-9]{3})*,[0-9]+)/i,
+    /\b([0-9]{1,3}(?:\.[0-9]{3})*,[0-9]{2})\b/
+  ];
+  let price = null;
+  let matchedPattern = -1;
+  for (let i = 0; i < patterns.length; i++) {
+    const m = text.match(patterns[i]);
+    if (m && m[1]) {
+      const n = parseTRNumber(m[1]);
+      if (n !== null && n >= 5000 && n <= 20000) {
+        price = n;
+        matchedPattern = i;
+        console.log('[MCU3] Pattern', i, 'eslesti:', m[1], '->', n);
+        break;
+      }
+    }
+  }
+  if (!price) {
+    console.log('[MCU3] FAIL - hicbir pattern uymadi, HTML uzunlugu:', text.length);
+    throw new Error("MCU3 Copper fiyati Investing sayfasindan ayristirilamadi.");
+  }
+  const data = {
+    symbol: "MCU3",
+    name: "Bakir Vadeli Islemleri",
+    exchange: "London / Investing",
+    currency: "USD",
+    unit: "USD/t",
+    price,
+    rawPrice: price,
+    rawUnit: "USD/t",
+    note: "MCU3 LME 3M Copper - investing.com/copper?cid=959211 (pattern " + matchedPattern + ")",
+    source: "Investing.com",
+    url: MCU3_COPPER_URL,
+    cells: ["MCU3 Copper", price.toFixed(2)],
+    fetchedAt: new Date().toISOString()
+  };
+  mcu3Cache = { data, at: Date.now() };
+  return data;
+}
 let cache = { data:null, at:0 };
 function requestText(url){
   return new Promise((resolve,reject)=>{
@@ -105,9 +170,17 @@ async function getMetals(){
   if(cache.data && Date.now()-cache.at<60_000) return {...cache.data, cached:true};
   const {html,url}=await getHtml();
   const aluminium=parseCommodity(html,['Aluminum','Aluminium','Aluminum c3'],'aluminium');
-  const copper=parseCommodity(html,['Copper','Copper c3'],'copper');
+  // V10.5 - Bakir oncelikle MCU3 sayfasindan (cid=959211)
+  let copper;
+  try {
+    copper = await getMCU3CopperPrice();
+    console.log('[V10.5] Bakir MCU3 sayfasindan alindi:', copper.price);
+  } catch(e) {
+    console.log('[V10.5] MCU3 fail:', e.message, '- metals tablosuna duser');
+    copper = parseCommodity(html,['Copper','Copper c3'],'copper');
+  }
   const zinc=parseCommodity(html,['Zinc','Zinc c3'],'zinc');
-  const data={source:'Investing.com proxy - AlPro V5',url,fetchedAt:new Date().toISOString(),conversion:'Copper USD/lb -> USD/t if needed.',metals:{
+  const data={source:'Investing.com proxy - AlPro V10.5',url,fetchedAt:new Date().toISOString(),conversion:'Copper from MCU3 dedicated page.',metals:{
     aluminium:{symbol:'ALUMINIUM',name:'Aluminium',unit:'USD/t',...aluminium},
     copper:{symbol:'COPPER',name:'Copper',unit:'USD/t',...copper},
     zinc:{symbol:'ZINC',name:'Zinc',unit:'USD/t',...zinc}

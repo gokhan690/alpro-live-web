@@ -5589,6 +5589,59 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 }
 </style>
 
+
+<style id="v130-mobile-scroll-stabilizer-css">
+/* ===== V13.0 MOBILE SCROLL / PAGE SHIFT STABILIZER ===== */
+@media(max-width:820px){
+  html, body{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+    overscroll-behavior-x:none!important;
+  }
+
+  body{
+    position:relative!important;
+    touch-action:pan-y!important;
+  }
+
+  .content,
+  .main,
+  .page,
+  .page.active{
+    max-width:100%!important;
+    overflow-x:hidden!important;
+    box-sizing:border-box!important;
+    transform:none!important;
+  }
+
+  /* Sayfa değişiminde yanlış kalan translate/left/margin kaymasını engelle */
+  .page.active{
+    left:0!important;
+    right:auto!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+
+  /* Drawer/search kapalıyken sayfayı itmesin */
+  #alpro-mobile-drawer:not(.show),
+  #alpro-mobile-backdrop:not(.show),
+  #v69k-mobile-search-panel:not(.show){
+    pointer-events:none!important;
+  }
+
+  /* Input focus yüzünden ekran zıplamasını azalt */
+  input, select, textarea, button{
+    touch-action:manipulation!important;
+  }
+
+  /* iOS zoom/kayma azaltma: input font 16px altına düşmesin */
+  input, select, textarea{
+    font-size:16px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -16180,6 +16233,150 @@ window.openTrash = function(type) {
       return r;
     };
     wrapped._v129Wrapped=true;
+    window.P=wrapped;
+    window.showPage=wrapped;
+  }
+})();
+</script>
+
+
+<script id="v130-mobile-scroll-stabilizer-js">
+(function(){
+  function mobile(){return window.innerWidth<=820 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)}
+  function q(id){return document.getElementById(id)}
+  let lastPage='';
+
+  function activePage(){
+    const a=document.querySelector('.page.active');
+    return a ? a.id.replace('page-','') : '';
+  }
+
+  function closeFloatingPanels(){
+    const drawer=q('alpro-mobile-drawer');
+    const back=q('alpro-mobile-backdrop');
+    const search=q('v69k-mobile-search-panel');
+
+    if(drawer) drawer.classList.remove('show');
+    if(back) back.classList.remove('show');
+    if(search) search.classList.remove('show');
+  }
+
+  function clearHorizontalShift(){
+    if(!mobile()) return;
+
+    document.documentElement.style.overflowX='hidden';
+    document.body.style.overflowX='hidden';
+    document.body.style.transform='none';
+    document.body.style.left='0';
+    document.body.style.marginLeft='0';
+
+    document.querySelectorAll('.content,.main,.page,.page.active').forEach(el=>{
+      el.style.maxWidth='100%';
+      el.style.overflowX='hidden';
+      el.style.transform='none';
+      el.style.left='0';
+      el.style.marginLeft='0';
+      el.style.marginRight='0';
+      el.style.boxSizing='border-box';
+    });
+
+    // Çok küçük yatay kaçmayı sıfırla
+    if(window.scrollX && Math.abs(window.scrollX)>0){
+      window.scrollTo(0, window.scrollY || 0);
+    }
+  }
+
+  function stabilizeScrollOnPageChange(){
+    if(!mobile()) return;
+    const page=activePage();
+
+    if(page && page!==lastPage){
+      lastPage=page;
+
+      // Klavye/focus kaynaklı kaymayı azalt
+      try{
+        if(document.activeElement && ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){
+          document.activeElement.blur();
+        }
+      }catch(e){}
+
+      closeFloatingPanels();
+
+      // Sayfa değişince yukarı al, ama topbar altında başlat
+      requestAnimationFrame(()=>{
+        clearHorizontalShift();
+        window.scrollTo({left:0, top:0, behavior:'auto'});
+      });
+
+      setTimeout(()=>{clearHorizontalShift(); window.scrollTo(0,0);},80);
+      setTimeout(()=>{clearHorizontalShift();},250);
+    }else{
+      clearHorizontalShift();
+    }
+  }
+
+  function stabilizeAfterTap(){
+    if(!mobile()) return;
+    setTimeout(clearHorizontalShift,60);
+    setTimeout(clearHorizontalShift,180);
+  }
+
+  function bindTapGuard(){
+    if(document.body._v130TapGuard) return;
+    document.body._v130TapGuard=true;
+
+    document.addEventListener('click',function(e){
+      const go=e.target.closest && e.target.closest('[data-go],.alpro-mobile-navitem,.alpro-mobile-menuitem');
+      if(go){
+        stabilizeAfterTap();
+      }
+    },true);
+
+    document.addEventListener('touchend',function(){
+      stabilizeAfterTap();
+    },{passive:true});
+  }
+
+  function init(){
+    if(!mobile()) return;
+    bindTapGuard();
+    stabilizeScrollOnPageChange();
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    init();
+    setTimeout(init,200);
+    setTimeout(init,800);
+  });
+
+  window.addEventListener('resize',function(){
+    setTimeout(init,100);
+    setTimeout(init,350);
+  });
+
+  window.addEventListener('orientationchange',function(){
+    setTimeout(init,250);
+    setTimeout(init,800);
+  });
+
+  window.addEventListener('scroll',function(){
+    if(mobile() && window.scrollX){
+      window.scrollTo(0, window.scrollY || 0);
+    }
+  },{passive:true});
+
+  setInterval(init,1200);
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v130Wrapped){
+    const wrapped=function(){
+      const r=oldP.apply(this,arguments);
+      setTimeout(init,50);
+      setTimeout(init,180);
+      setTimeout(init,400);
+      return r;
+    };
+    wrapped._v130Wrapped=true;
     window.P=wrapped;
     window.showPage=wrapped;
   }

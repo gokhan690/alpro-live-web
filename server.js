@@ -326,7 +326,35 @@ function dbSummary(){
 
 
 // ===== V11.0 SERVER-SIDE PRICE HISTORY START =====
-const PRICE_HISTORY_FILE = path.join(DATA_DIR || __dirname, 'metal_price_history.json');
+const V110_DATA_DIR = (typeof DATA_DIR !== 'undefined' && DATA_DIR) ? DATA_DIR : __dirname;
+const PRICE_HISTORY_FILE = path.join(V110_DATA_DIR, 'metal_price_history.json');
+
+
+function v110ServiceKey(){
+  return (typeof SUPABASE_SERVICE_ROLE_KEY !== 'undefined' && SUPABASE_SERVICE_ROLE_KEY) ||
+         (typeof SUPABASE_SERVICE_KEY !== 'undefined' && SUPABASE_SERVICE_KEY) ||
+         (typeof SUPABASE_ANON_KEY !== 'undefined' && SUPABASE_ANON_KEY) ||
+         process.env.SUPABASE_SERVICE_ROLE_KEY ||
+         process.env.SUPABASE_SERVICE_KEY ||
+         process.env.SUPABASE_ANON_KEY ||
+         '';
+}
+
+async function v110SbRest(pathname, opts){
+  if(!(typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL)) throw new Error('SUPABASE_URL missing');
+  const key = v110ServiceKey();
+  if(!key) throw new Error('Supabase key missing');
+  const url = SUPABASE_URL.replace(/\/$/,'') + pathname;
+  const headers = Object.assign({
+    'apikey': key,
+    'Authorization': 'Bearer ' + key,
+    'Content-Type': 'application/json'
+  }, (opts && opts.headers) || {});
+  const r = await fetch(url, Object.assign({}, opts || {}, {headers}));
+  const txt = await r.text();
+  if(!r.ok) throw new Error('Supabase history HTTP ' + r.status + ': ' + txt.slice(0,200));
+  try{return txt ? JSON.parse(txt) : null}catch(e){return txt}
+}
 
 function v110ReadHistoryFile(){
   try{
@@ -381,14 +409,14 @@ async function v110SnapshotPriceHistory(metalsPayload, fxPayload){
     if(!rows.length) return { saved: 0 };
 
     // Avoid saving near-duplicate snapshots too often: same symbol under 25s skipped.
-    if(SUPABASE_ENABLED && SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY){
+    if((typeof SUPABASE_ENABLED !== 'undefined' && SUPABASE_ENABLED) && (typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL) && v110ServiceKey()){
       let saved = 0;
       for(const row of rows){
         try{
-          const recent = await sbRequest('/rest/v1/metal_price_history?symbol=eq.' + encodeURIComponent(row.symbol) + '&select=created_at,price&order=created_at.desc&limit=1');
+          const recent = await v110SbRest('/rest/v1/metal_price_history?symbol=eq.' + encodeURIComponent(row.symbol) + '&select=created_at,price&order=created_at.desc&limit=1');
           const last = Array.isArray(recent) && recent[0] ? recent[0] : null;
           if(last && Math.abs(Date.now() - new Date(last.created_at).getTime()) < 25000) continue;
-          await sbRequest('/rest/v1/metal_price_history', {
+          await v110SbRest('/rest/v1/metal_price_history', {
             method:'POST',
             headers:{'Prefer':'return=minimal'},
             body: JSON.stringify(row)
@@ -418,12 +446,12 @@ async function v110GetPriceHistory(params){
   const days = Number(params.get('days') || 0);
   const since = days > 0 ? new Date(Date.now() - days*24*3600*1000).toISOString() : null;
 
-  if(SUPABASE_ENABLED && SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY){
+  if((typeof SUPABASE_ENABLED !== 'undefined' && SUPABASE_ENABLED) && (typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL) && v110ServiceKey()){
     let query = '/rest/v1/metal_price_history?select=created_at,symbol,price,unit,source&order=created_at.asc&limit=' + limit;
     if(symbol) query += '&symbol=eq.' + encodeURIComponent(symbol);
     if(since) query += '&created_at=gte.' + encodeURIComponent(since);
     try{
-      const rows = await sbRequest(query);
+      const rows = await v110SbRest(query);
       return { mode:'supabase', source:'metal_price_history', items: Array.isArray(rows) ? rows : [] };
     }catch(e){
       // fallback below

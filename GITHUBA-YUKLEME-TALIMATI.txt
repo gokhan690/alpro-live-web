@@ -1,18 +1,11 @@
-AluminyumPro Son6 V11.0 Server-Side Price History
+AluminyumPro Son6 V11.0.1 Deploy Fix
 
 GitHub repo ana dizinine bu klasördeki dosyaları koy.
 
-Yapılacak:
-1) Dosyaları GitHub'a yükle.
-2) Supabase SQL Editor'da SUPABASE-SETUP.sql içindeki metal_price_history kısmını çalıştır.
-3) Render env'de şunlar doğru olsun:
-   SUPABASE_URL
-   SUPABASE_SERVICE_ROLE_KEY
-4) Render'da deploy et.
-5) Test:
-   /api/metals-history/snapshot
-   /api/metals-history
-   /api/metals
-
 Commit mesajı:
-Update Son6 V11.0 Server Side Price History
+Fix V11.0 server history deploy
+
+Deploy sonrası test:
+1) /api/metals
+2) /api/metals-history/snapshot
+3) /api/metals-history

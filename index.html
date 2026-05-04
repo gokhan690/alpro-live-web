@@ -4850,6 +4850,173 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 }
 </style>
 
+
+<style id="v111-finance-bank-css">
+/* ===== V11.1 FINANCE BANK CLEANUP ===== */
+
+/* Server fiyat geçmişi UI'da görünmesin; sadece API/Supabase tarafında kalsın */
+#v110-history-badge{
+  display:none!important;
+}
+
+/* Finance panel ortak */
+.v111-panel{
+  margin:16px 0;
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(215,162,58,.08),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.020));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 18px 42px rgba(0,0,0,.22);
+  color:#f4f7fb;
+  overflow:hidden;
+}
+.v111-head{
+  padding:15px 16px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+}
+.v111-title{
+  font-size:16px;
+  font-weight:1000;
+  color:#fff;
+}
+.v111-sub{
+  margin-top:3px;
+  font-size:11px;
+  color:#8ea2b6;
+}
+.v111-body{
+  padding:14px 16px 16px;
+}
+.v111-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+.v111-card{
+  padding:12px;
+  border-radius:16px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+}
+.v111-card .l{
+  font-size:10px;
+  color:#8ea2b6;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.v111-card .v{
+  margin-top:6px;
+  font-size:18px;
+  color:#fff;
+  font-weight:1000;
+}
+.v111-row{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+  margin:10px 0;
+}
+.v111-row input,.v111-row select{
+  min-height:38px!important;
+  border-radius:13px!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:rgba(0,0,0,.24)!important;
+  color:#fff!important;
+  padding:0 10px!important;
+  font-size:12px!important;
+}
+.v111-row button,.v111-btn{
+  min-height:38px!important;
+  border-radius:13px!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:linear-gradient(135deg,rgba(215,162,58,.95),rgba(236,189,79,.88))!important;
+  color:#07101a!important;
+  font-size:12px!important;
+  font-weight:1000!important;
+  cursor:pointer!important;
+  padding:0 12px!important;
+}
+.v111-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+  overflow:hidden;
+  border-radius:14px;
+}
+.v111-table th,.v111-table td{
+  padding:10px 9px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-size:12px;
+  text-align:left;
+  color:#eaf0f7;
+}
+.v111-table th{
+  color:#8ea2b6;
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:900;
+}
+.v111-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:24px;
+  padding:0 8px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:900;
+  border:1px solid rgba(255,255,255,.12);
+}
+.v111-pill.ok{color:#77f0a1;background:rgba(46,204,113,.12);border-color:rgba(46,204,113,.22)}
+.v111-pill.warn{color:#ffd166;background:rgba(255,209,102,.12);border-color:rgba(255,209,102,.22)}
+.v111-pill.bad{color:#ff8585;background:rgba(255,118,117,.12);border-color:rgba(255,118,117,.22)}
+.v111-mini-note{
+  margin-top:8px;
+  font-size:11px;
+  color:#8ea2b6;
+  line-height:1.45;
+}
+
+/* Banka sayfasını toparlama */
+#v111-bank-clean-panel .v111-row{
+  grid-template-columns:1.2fr 1fr 1fr 1fr auto;
+}
+#v111-pay-plan-panel .v111-row{
+  grid-template-columns:1.2fr .7fr .8fr .9fr auto;
+}
+#v111-tax-panel .v111-row{
+  grid-template-columns:1fr .7fr .7fr .8fr auto;
+}
+#v111-recon-panel .v111-row{
+  grid-template-columns:1.2fr 1fr 1fr auto;
+}
+
+@media(max-width:980px){
+  .v111-grid{grid-template-columns:1fr 1fr}
+  .v111-row,
+  #v111-bank-clean-panel .v111-row,
+  #v111-pay-plan-panel .v111-row,
+  #v111-tax-panel .v111-row,
+  #v111-recon-panel .v111-row{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .v111-grid{grid-template-columns:1fr}
+  .v111-row,
+  #v111-bank-clean-panel .v111-row,
+  #v111-pay-plan-panel .v111-row,
+  #v111-tax-panel .v111-row,
+  #v111-recon-panel .v111-row{grid-template-columns:1fr}
+  .v111-table{display:block;overflow-x:auto}
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -14133,16 +14300,7 @@ window.openTrash = function(type) {
       console.log('V11 history load failed:', e.message);
     }
   }
-  function addBadge(){
-    const cards=document.querySelector('.v5-chart-grid') || document.querySelector('.weekly-report-panel') || document.body;
-    if(!cards || document.getElementById('v110-history-badge')) return;
-    const b=document.createElement('div');
-    b.id='v110-history-badge';
-    b.style.cssText='display:inline-flex;align-items:center;gap:6px;margin:8px 0;padding:6px 10px;border-radius:999px;background:rgba(84,160,255,.10);border:1px solid rgba(84,160,255,.25);color:#8fc5ff;font-size:10px;font-weight:900;';
-    const count=localStorage.getItem('v110_server_history_count')||'0';
-    b.textContent='Server fiyat geçmişi aktif • '+count+' kayıt';
-    cards.parentElement ? cards.parentElement.insertBefore(b,cards) : document.body.appendChild(b);
-  }
+  function addBadge(){ return; }
   function patchRefreshAfterMetals(){
     const old=window.v5FetchMetals;
     if(typeof old==='function' && !old._v110Wrapped){
@@ -14162,6 +14320,411 @@ window.openTrash = function(type) {
     setTimeout(loadServerHistory,5000);
     setInterval(function(){patchRefreshAfterMetals(); addBadge();},4000);
     setInterval(loadServerHistory,120000);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
+</script>
+
+
+<script id="v111-finance-bank-js">
+(function(){
+  const BANKS=[
+    'Ziraat Bankası',
+    'VakıfBank',
+    'Halkbank',
+    'İş Bankası',
+    'Garanti BBVA',
+    'Yapı Kredi',
+    'Akbank',
+    'QNB Finansbank',
+    'DenizBank',
+    'Kuveyt Türk',
+    'Albaraka Türk',
+    'Türkiye Finans',
+    'Diğer'
+  ];
+  const CURRENCIES=['USD','EUR','GBP','TRY'];
+  const PAY_STATUS=['Bekliyor','Kısmi Ödendi','Ödendi','Gecikti'];
+  const TAX_TYPES=[
+    {name:'Standart KDV',vat:20,wht:0},
+    {name:'KDV %10',vat:10,wht:0},
+    {name:'KDV %1',vat:1,wht:0},
+    {name:'Stopaj %20',vat:20,wht:20},
+    {name:'Stopaj %10',vat:20,wht:10},
+    {name:'KDV Yok',vat:0,wht:0}
+  ];
+
+  function q(id){return document.getElementById(id)}
+  function safeJSON(v,d){try{return JSON.parse(v)}catch(e){return d}}
+  function arr(k){const v=safeJSON(localStorage.getItem(k)||'[]',[]);return Array.isArray(v)?v:[]}
+  function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+  function uid(){try{return crypto.randomUUID()}catch(e){return 'id_'+Date.now()+'_'+Math.random().toString(16).slice(2)}}
+  function money(n,c){try{return Number(n||0).toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2})+' '+(c||'USD')}catch(e){return String(n)+' '+(c||'USD')}}
+  function num(v){let s=String(v||'').replace(/[^\d,.-]/g,''); if(s.includes('.')&&s.includes(','))s=s.replace(/\./g,'').replace(',','.'); else if(s.includes(','))s=s.replace(',','.'); const n=Number(s); return Number.isFinite(n)?n:0}
+  function today(){return new Date().toISOString().slice(0,10)}
+  function daysLate(date){
+    if(!date) return 0;
+    const d=new Date(date+'T00:00:00');
+    const now=new Date(today()+'T00:00:00');
+    return Math.floor((now-d)/(24*3600e3));
+  }
+  function statusPill(st,due){
+    const late=daysLate(due);
+    if(st==='Ödendi') return '<span class="v111-pill ok">Ödendi</span>';
+    if(late>0) return '<span class="v111-pill bad">Gecikti '+late+'g</span>';
+    if(st==='Kısmi Ödendi') return '<span class="v111-pill warn">Kısmi</span>';
+    return '<span class="v111-pill warn">Bekliyor</span>';
+  }
+  function options(list,sel){
+    return list.map(x=>'<option value="'+x+'" '+(x===sel?'selected':'')+'>'+x+'</option>').join('');
+  }
+  function persist(){
+    try{
+      if(typeof window.AlProV10?.addActivity==='function') window.AlProV10.addActivity('finance','Finans modülü güncellendi','V11.1');
+    }catch(e){}
+    try{
+      localStorage.setItem('v111_finance_last_update',new Date().toISOString());
+      if(typeof window.dispatchEvent==='function') window.dispatchEvent(new Event('v111-finance-updated'));
+    }catch(e){}
+  }
+
+  function getOrders(){
+    let o=arr('orders');
+    return o.filter(x=>!x._deleted);
+  }
+  function getBankTx(){
+    return arr('v111_bank_transactions');
+  }
+  function setBankTx(v){save('v111_bank_transactions',v); persist();}
+  function getPlans(){return arr('v111_payment_plans')}
+  function setPlans(v){save('v111_payment_plans',v); persist();}
+  function getTaxRows(){return arr('v111_tax_calcs')}
+  function setTaxRows(v){save('v111_tax_calcs',v); persist();}
+  function getRecon(){return arr('v111_reconciliation')}
+  function setRecon(v){save('v111_reconciliation',v); persist();}
+
+  function ensurePanels(){
+    ensureBankPanel();
+    ensurePaymentPlanPanel();
+    ensureReconPanel();
+    ensureTaxPanel();
+    renderAll();
+  }
+
+  function targetBankPage(){
+    return q('page-bank') || q('page-finance') || q('page-dashboard');
+  }
+
+  function ensureBankPanel(){
+    const page=targetBankPage();
+    if(!page || q('v111-bank-clean-panel')) return;
+    const panel=document.createElement('div');
+    panel.id='v111-bank-clean-panel';
+    panel.className='v111-panel';
+    panel.innerHTML=
+      '<div class="v111-head"><div><div class="v111-title">🏦 Banka Kontrol Paneli</div><div class="v111-sub">Banka seçimi, para birimi ve giriş/çıkış takibi</div></div><button class="v111-btn" id="v111-bank-refresh">Yenile</button></div>'+
+      '<div class="v111-body">'+
+        '<div class="v111-grid" id="v111-bank-kpis"></div>'+
+        '<div class="v111-row">'+
+          '<select id="v111-bank-name">'+options(BANKS)+'</select>'+
+          '<select id="v111-bank-type"><option>Giriş</option><option>Çıkış</option></select>'+
+          '<input id="v111-bank-amount" placeholder="Tutar">'+
+          '<select id="v111-bank-currency">'+options(CURRENCIES,'USD')+'</select>'+
+          '<button id="v111-bank-add">Ekle</button>'+
+        '</div>'+
+        '<div class="v111-row" style="grid-template-columns:1fr 1fr 1fr auto">'+
+          '<input id="v111-bank-party" placeholder="Müşteri / Tedarikçi">'+
+          '<input id="v111-bank-desc" placeholder="Açıklama">'+
+          '<input id="v111-bank-date" type="date">'+
+          '<button id="v111-bank-clear">Temizle</button>'+
+        '</div>'+
+        '<table class="v111-table"><thead><tr><th>Banka</th><th>Tip</th><th>Taraf</th><th>Tutar</th><th>Tarih</th><th>Açıklama</th></tr></thead><tbody id="v111-bank-body"></tbody></table>'+
+      '</div>';
+    page.prepend(panel);
+    q('v111-bank-date').value=today();
+    q('v111-bank-add').onclick=addBankTx;
+    q('v111-bank-clear').onclick=()=>{['v111-bank-party','v111-bank-desc','v111-bank-amount'].forEach(id=>q(id).value='')};
+    q('v111-bank-refresh').onclick=renderAll;
+  }
+
+  function addBankTx(){
+    const tx={
+      id:uid(),
+      bank:q('v111-bank-name').value,
+      type:q('v111-bank-type').value,
+      amount:num(q('v111-bank-amount').value),
+      currency:q('v111-bank-currency').value,
+      party:q('v111-bank-party').value.trim(),
+      desc:q('v111-bank-desc').value.trim(),
+      date:q('v111-bank-date').value||today(),
+      at:new Date().toISOString()
+    };
+    if(!tx.amount){alert('Tutar gir.');return}
+    const rows=getBankTx();
+    rows.unshift(tx);
+    setBankTx(rows.slice(0,500));
+    ['v111-bank-party','v111-bank-desc','v111-bank-amount'].forEach(id=>q(id).value='');
+    renderBank();
+  }
+
+  function renderBank(){
+    const rows=getBankTx();
+    const grouped={};
+    rows.forEach(r=>{
+      const k=(r.currency||'USD');
+      const sign=r.type==='Çıkış'?-1:1;
+      grouped[k]=(grouped[k]||0)+sign*Number(r.amount||0);
+    });
+    const kpis=q('v111-bank-kpis');
+    if(kpis){
+      kpis.innerHTML=CURRENCIES.map(c=>'<div class="v111-card"><div class="l">'+c+' Net Pozisyon</div><div class="v">'+money(grouped[c]||0,c)+'</div></div>').join('');
+    }
+    const body=q('v111-bank-body');
+    if(body){
+      body.innerHTML=rows.length?rows.slice(0,50).map(r=>
+        '<tr><td>'+r.bank+'</td><td>'+r.type+'</td><td>'+escapeHtml(r.party||'-')+'</td><td>'+money(r.amount,r.currency)+'</td><td>'+r.date+'</td><td>'+escapeHtml(r.desc||'')+'</td></tr>'
+      ).join(''):'<tr><td colspan="6">Henüz banka hareketi yok.</td></tr>';
+    }
+  }
+
+  function ensurePaymentPlanPanel(){
+    const page=q('page-orders') || q('page-bank') || q('page-dashboard');
+    if(!page || q('v111-pay-plan-panel')) return;
+    const panel=document.createElement('div');
+    panel.id='v111-pay-plan-panel';
+    panel.className='v111-panel';
+    panel.innerHTML=
+      '<div class="v111-head"><div><div class="v111-title">📆 Ödeme Planı / Taksit Takibi</div><div class="v111-sub">Ön ödeme %30, yükleme %40, varış %30 gibi kademeli ödeme takibi</div></div></div>'+
+      '<div class="v111-body">'+
+        '<div class="v111-grid" id="v111-pay-kpis"></div>'+
+        '<div class="v111-row">'+
+          '<select id="v111-pay-order"></select>'+
+          '<input id="v111-pay-stage" placeholder="Kademe: Ön ödeme / Yükleme">'+
+          '<input id="v111-pay-percent" placeholder="%">'+
+          '<input id="v111-pay-due" type="date">'+
+          '<button id="v111-pay-add">Taksit Ekle</button>'+
+        '</div>'+
+        '<div class="v111-row" style="grid-template-columns:1fr 1fr 1fr auto">'+
+          '<input id="v111-pay-amount" placeholder="Tutar">'+
+          '<select id="v111-pay-currency">'+options(CURRENCIES,'USD')+'</select>'+
+          '<select id="v111-pay-status">'+options(PAY_STATUS,'Bekliyor')+'</select>'+
+          '<button id="v111-pay-demo">30/40/30 Oluştur</button>'+
+        '</div>'+
+        '<table class="v111-table"><thead><tr><th>Sipariş</th><th>Kademe</th><th>%</th><th>Tutar</th><th>Vade</th><th>Durum</th></tr></thead><tbody id="v111-pay-body"></tbody></table>'+
+      '</div>';
+    page.prepend(panel);
+    q('v111-pay-due').value=today();
+    q('v111-pay-add').onclick=addPayStage;
+    q('v111-pay-demo').onclick=createDefaultPlan;
+  }
+
+  function renderOrderOptions(){
+    const el=q('v111-pay-order');
+    if(!el) return;
+    const orders=getOrders();
+    const cur=el.value;
+    el.innerHTML=orders.length?orders.map(o=>{
+      const label=o.no||o.id||o.customer||o.supplier||'Sipariş';
+      return '<option value="'+(o.id||label)+'">'+escapeHtml(label)+'</option>'
+    }).join(''):'<option value="GENEL">Genel / Sipariş Yok</option>';
+    if(cur) el.value=cur;
+  }
+  function orderTotal(orderId){
+    const o=getOrders().find(x=>(x.id||x.no)===orderId);
+    if(!o) return 0;
+    return num(o.amount||o.total||o.value||o.price||o.totalAmount);
+  }
+  function addPayStage(){
+    const orderId=q('v111-pay-order').value||'GENEL';
+    const percent=num(q('v111-pay-percent').value);
+    const explicitAmount=num(q('v111-pay-amount').value);
+    const total=orderTotal(orderId);
+    const amount=explicitAmount || (total&&percent?total*percent/100:0);
+    const row={
+      id:uid(),
+      orderId,
+      stage:q('v111-pay-stage').value.trim()||'Kademe',
+      percent,
+      amount,
+      currency:q('v111-pay-currency').value,
+      due:q('v111-pay-due').value||today(),
+      status:q('v111-pay-status').value,
+      at:new Date().toISOString()
+    };
+    if(!row.amount){alert('Tutar veya sipariş toplamı/% gir.');return}
+    const rows=getPlans(); rows.unshift(row); setPlans(rows);
+    renderPayments();
+  }
+  function createDefaultPlan(){
+    const orderId=q('v111-pay-order').value||'GENEL';
+    const total=orderTotal(orderId) || num(prompt('Sipariş toplam tutarı?','100000'));
+    if(!total) return;
+    const currency=q('v111-pay-currency').value||'USD';
+    const base=new Date();
+    const defs=[
+      ['Ön ödeme',30,0],
+      ['Yükleme',40,30],
+      ['Varış',30,60]
+    ];
+    const rows=getPlans();
+    defs.forEach(d=>{
+      const dt=new Date(base); dt.setDate(dt.getDate()+d[2]);
+      rows.unshift({id:uid(),orderId,stage:d[0],percent:d[1],amount:total*d[1]/100,currency,due:dt.toISOString().slice(0,10),status:'Bekliyor',at:new Date().toISOString()});
+    });
+    setPlans(rows);
+    renderPayments();
+  }
+  function renderPayments(){
+    renderOrderOptions();
+    const rows=getPlans();
+    const overdue=rows.filter(r=>r.status!=='Ödendi' && daysLate(r.due)>0);
+    const waiting=rows.filter(r=>r.status!=='Ödendi');
+    const totalWaiting=waiting.reduce((a,b)=>a+Number(b.amount||0),0);
+    const k=q('v111-pay-kpis');
+    if(k){
+      k.innerHTML=
+        '<div class="v111-card"><div class="l">Bekleyen Taksit</div><div class="v">'+waiting.length+'</div></div>'+
+        '<div class="v111-card"><div class="l">Geciken</div><div class="v">'+overdue.length+'</div></div>'+
+        '<div class="v111-card"><div class="l">Bekleyen Tutar</div><div class="v">'+money(totalWaiting,'USD')+'</div></div>'+
+        '<div class="v111-card"><div class="l">Bugün</div><div class="v">'+today()+'</div></div>';
+    }
+    const body=q('v111-pay-body');
+    if(body){
+      body.innerHTML=rows.length?rows.slice(0,80).map(r=>
+        '<tr><td>'+escapeHtml(r.orderId)+'</td><td>'+escapeHtml(r.stage)+'</td><td>'+trPercent(r.percent)+'</td><td>'+money(r.amount,r.currency)+'</td><td>'+r.due+'</td><td>'+statusPill(r.status,r.due)+'</td></tr>'
+      ).join(''):'<tr><td colspan="6">Henüz ödeme planı yok.</td></tr>';
+    }
+  }
+
+  function ensureReconPanel(){
+    const page=q('page-bank') || q('page-customers') || q('page-dashboard');
+    if(!page || q('v111-recon-panel')) return;
+    const panel=document.createElement('div');
+    panel.id='v111-recon-panel';
+    panel.className='v111-panel';
+    panel.innerHTML=
+      '<div class="v111-head"><div><div class="v111-title">🤝 Mutabakat / Reconciliation</div><div class="v111-sub">Sistem alacak/borç ile karşı taraf ödemesi fark raporu</div></div></div>'+
+      '<div class="v111-body">'+
+        '<div class="v111-grid" id="v111-recon-kpis"></div>'+
+        '<div class="v111-row">'+
+          '<input id="v111-recon-party" placeholder="Müşteri / Tedarikçi">'+
+          '<input id="v111-recon-system" placeholder="Sistemde görünen tutar">'+
+          '<input id="v111-recon-paid" placeholder="Karşı taraf ödedi/bildirdi">'+
+          '<button id="v111-recon-add">Mutabakat Ekle</button>'+
+        '</div>'+
+        '<table class="v111-table"><thead><tr><th>Taraf</th><th>Sistem</th><th>Bildirilen/Ödenen</th><th>Fark</th><th>Durum</th></tr></thead><tbody id="v111-recon-body"></tbody></table>'+
+      '</div>';
+    page.prepend(panel);
+    q('v111-recon-add').onclick=addRecon;
+  }
+  function addRecon(){
+    const row={
+      id:uid(),
+      party:q('v111-recon-party').value.trim(),
+      system:num(q('v111-recon-system').value),
+      paid:num(q('v111-recon-paid').value),
+      currency:'USD',
+      at:new Date().toISOString()
+    };
+    if(!row.party){alert('Taraf gir.');return}
+    const rows=getRecon(); rows.unshift(row); setRecon(rows);
+    ['v111-recon-party','v111-recon-system','v111-recon-paid'].forEach(id=>q(id).value='');
+    renderRecon();
+  }
+  function renderRecon(){
+    const rows=getRecon();
+    const diffs=rows.map(r=>({...r,diff:Number(r.system||0)-Number(r.paid||0)}));
+    const open=diffs.filter(r=>Math.abs(r.diff)>1);
+    const total=open.reduce((a,b)=>a+Math.abs(b.diff),0);
+    const k=q('v111-recon-kpis');
+    if(k){
+      k.innerHTML=
+        '<div class="v111-card"><div class="l">Açık Fark</div><div class="v">'+open.length+'</div></div>'+
+        '<div class="v111-card"><div class="l">Toplam Fark</div><div class="v">'+money(total,'USD')+'</div></div>'+
+        '<div class="v111-card"><div class="l">Mutabık</div><div class="v">'+(rows.length-open.length)+'</div></div>'+
+        '<div class="v111-card"><div class="l">Kayıt</div><div class="v">'+rows.length+'</div></div>';
+    }
+    const body=q('v111-recon-body');
+    if(body){
+      body.innerHTML=rows.length?diffs.slice(0,80).map(r=>{
+        const ok=Math.abs(r.diff)<=1;
+        return '<tr><td>'+escapeHtml(r.party)+'</td><td>'+money(r.system,r.currency)+'</td><td>'+money(r.paid,r.currency)+'</td><td>'+money(r.diff,r.currency)+'</td><td>'+(ok?'<span class="v111-pill ok">Mutabık</span>':'<span class="v111-pill bad">Fark Var</span>')+'</td></tr>';
+      }).join(''):'<tr><td colspan="5">Henüz mutabakat kaydı yok.</td></tr>';
+    }
+  }
+
+  function ensureTaxPanel(){
+    const page=q('page-invoices') || q('page-bank') || q('page-dashboard');
+    if(!page || q('v111-tax-panel')) return;
+    const panel=document.createElement('div');
+    panel.id='v111-tax-panel';
+    panel.className='v111-panel';
+    panel.innerHTML=
+      '<div class="v111-head"><div><div class="v111-title">🧾 KDV ve Stopaj Otomasyon</div><div class="v111-sub">Fatura tutarına göre KDV, stopaj ve net ödenecek hesaplama</div></div></div>'+
+      '<div class="v111-body">'+
+        '<div class="v111-grid" id="v111-tax-kpis"></div>'+
+        '<div class="v111-row">'+
+          '<input id="v111-tax-base" placeholder="Matrah / fatura tutarı">'+
+          '<select id="v111-tax-type">'+TAX_TYPES.map(x=>'<option value="'+x.name+'">'+x.name+'</option>').join('')+'</select>'+
+          '<select id="v111-tax-currency">'+options(CURRENCIES,'TRY')+'</select>'+
+          '<input id="v111-tax-party" placeholder="Firma / açıklama">'+
+          '<button id="v111-tax-add">Hesapla</button>'+
+        '</div>'+
+        '<table class="v111-table"><thead><tr><th>Firma</th><th>Matrah</th><th>KDV</th><th>Stopaj</th><th>Net Ödenecek</th><th>Tip</th></tr></thead><tbody id="v111-tax-body"></tbody></table>'+
+        '<div class="v111-mini-note">Not: Oranlar işlem tipi seçimine göre hesaplanır. Gerçek beyan öncesi muhasebeci kontrolü gerekir.</div>'+
+      '</div>';
+    page.prepend(panel);
+    q('v111-tax-add').onclick=addTax;
+  }
+  function addTax(){
+    const base=num(q('v111-tax-base').value);
+    const type=TAX_TYPES.find(x=>x.name===q('v111-tax-type').value)||TAX_TYPES[0];
+    const currency=q('v111-tax-currency').value;
+    const vat=base*type.vat/100;
+    const wht=base*type.wht/100;
+    const net=base+vat-wht;
+    if(!base){alert('Matrah gir.');return}
+    const row={id:uid(),party:q('v111-tax-party').value.trim(),base,vat,wht,net,currency,type:type.name,vatRate:type.vat,whtRate:type.wht,at:new Date().toISOString()};
+    const rows=getTaxRows(); rows.unshift(row); setTaxRows(rows);
+    q('v111-tax-base').value=''; q('v111-tax-party').value='';
+    renderTax();
+  }
+  function renderTax(){
+    const rows=getTaxRows();
+    const totalVat=rows.reduce((a,b)=>a+Number(b.vat||0),0);
+    const totalWht=rows.reduce((a,b)=>a+Number(b.wht||0),0);
+    const totalNet=rows.reduce((a,b)=>a+Number(b.net||0),0);
+    const k=q('v111-tax-kpis');
+    if(k){
+      k.innerHTML=
+        '<div class="v111-card"><div class="l">Toplam KDV</div><div class="v">'+money(totalVat,'TRY')+'</div></div>'+
+        '<div class="v111-card"><div class="l">Toplam Stopaj</div><div class="v">'+money(totalWht,'TRY')+'</div></div>'+
+        '<div class="v111-card"><div class="l">Net Ödenecek</div><div class="v">'+money(totalNet,'TRY')+'</div></div>'+
+        '<div class="v111-card"><div class="l">Kayıt</div><div class="v">'+rows.length+'</div></div>';
+    }
+    const body=q('v111-tax-body');
+    if(body){
+      body.innerHTML=rows.length?rows.slice(0,80).map(r=>
+        '<tr><td>'+escapeHtml(r.party||'-')+'</td><td>'+money(r.base,r.currency)+'</td><td>'+money(r.vat,r.currency)+' <small>%'+r.vatRate+'</small></td><td>'+money(r.wht,r.currency)+' <small>%'+r.whtRate+'</small></td><td><b>'+money(r.net,r.currency)+'</b></td><td>'+escapeHtml(r.type)+'</td></tr>'
+      ).join(''):'<tr><td colspan="6">Henüz vergi hesabı yok.</td></tr>';
+    }
+  }
+
+  function escapeHtml(s){
+    return String(s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  }
+  function trPercent(v){return v?('%'+Number(v).toLocaleString('tr-TR',{maximumFractionDigits:2})):'-'}
+  function renderAll(){
+    renderBank();
+    renderPayments();
+    renderRecon();
+    renderTax();
+  }
+  function init(){
+    ensurePanels();
+    setInterval(function(){ensurePanels(); renderOrderOptions();},3000);
+    window.addEventListener('v111-finance-updated',renderAll);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
   else init();

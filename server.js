@@ -468,6 +468,74 @@ async function v110GetPriceHistory(params){
 
 function json(res,code,obj){res.writeHead(code,{'Content-Type':'application/json; charset=utf-8','Access-Control-Allow-Origin':'*','Cache-Control':'no-store'});res.end(JSON.stringify(obj,null,2));}
 function serve(res,file){const full=path.join(__dirname,file); if(!fs.existsSync(full)){res.writeHead(404);res.end('Not found');return} const ext=path.extname(full).toLowerCase(); const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.css':'text/css; charset=utf-8','.txt':'text/plain; charset=utf-8'}; res.writeHead(200,{'Content-Type':types[ext]||'application/octet-stream','Cache-Control':'no-store, no-cache, must-revalidate','Pragma':'no-cache','Expires':'0'});fs.createReadStream(full).pipe(res)}
+
+// ===== V11.0.2 INVESTING 403 SAFE FALLBACK START =====
+async function v1102GetLastHistoryBySymbol(symbol){
+  try{
+    const res = await v110GetPriceHistory(new URLSearchParams({symbol:String(symbol||'').toUpperCase(),limit:'1'}));
+    const items = res && res.items ? res.items : [];
+    return items && items.length ? items[items.length-1] : null;
+  }catch(e){ return null; }
+}
+
+async function v1102BuildSafeMetalsPayload(errorMessage){
+  const out = {
+    source: 'safe-fallback',
+    fetchedAt: new Date().toISOString(),
+    warning: errorMessage || 'Primary Investing metals source failed',
+    metals: {
+      aluminium: { symbol:'ALU', name:'Aluminium', unit:'USD/t', price:null, source:'unavailable' },
+      copper: { symbol:'MCU3', name:'London Copper / Bakır Vadeli İşlemleri', unit:'USD/t', price:null, source:'MCU3 unavailable' },
+      zinc: { symbol:'ZIN', name:'Zinc', unit:'USD/t', price:null, source:'unavailable' }
+    }
+  };
+
+  // Copper must try direct MCU3 first.
+  try{
+    if(typeof getMCU3CopperPrice === 'function'){
+      const c = await getMCU3CopperPrice();
+      if(c && c.price){
+        out.metals.copper = {
+          symbol:'MCU3',
+          name:'London Copper / Bakır Vadeli İşlemleri',
+          unit:'USD/t',
+          price:Number(c.price),
+          rawPrice:Number(c.price),
+          rawUnit:'USD/t',
+          source:c.source || 'Investing.com MCU3 direct',
+          url:c.url || (typeof MCU3_COPPER_URL !== 'undefined' ? MCU3_COPPER_URL : ''),
+          fetchedAt:c.fetchedAt || new Date().toISOString(),
+          note:'Primary copper source: MCU3 direct'
+        };
+      }
+    }
+  }catch(e){
+    out.copperError = e.message;
+  }
+
+  // If any metal unavailable, use last server history as fallback, not fake generated data.
+  for(const [symbol,key] of [['ALU','aluminium'],['MCU3','copper'],['ZIN','zinc']]){
+    if(out.metals[key] && out.metals[key].price) continue;
+    const last = await v1102GetLastHistoryBySymbol(symbol);
+    if(last && Number(last.price)>0){
+      out.metals[key] = {
+        symbol,
+        name:key === 'copper' ? 'London Copper / Bakır Vadeli İşlemleri' : key,
+        unit:last.unit || 'USD/t',
+        price:Number(last.price),
+        rawPrice:Number(last.price),
+        rawUnit:last.unit || 'USD/t',
+        source:'last server history',
+        fetchedAt:last.created_at,
+        note:'Live source failed, last successful server-side price used'
+      };
+    }
+  }
+
+  return out;
+}
+// ===== V11.0.2 INVESTING 403 SAFE FALLBACK END =====
+
 http.createServer(async(req,res)=>{try{
   const u=new URL(req.url,'http://localhost:'+PORT);
   if(u.pathname==='/'||u.pathname==='/index.html'){serve(res,'index.html');return}
@@ -484,11 +552,16 @@ http.createServer(async(req,res)=>{try{
 
   
   if(u.pathname==='/api/metals-history/snapshot'){
-    const metalsData=await getMetals();
+    let metalsData;
+    try{
+      metalsData=await getMetals();
+    }catch(e){
+      metalsData=await v1102BuildSafeMetalsPayload(e.message);
+    }
     let fxData=null;
     try{ if(typeof getFx==='function') fxData=await getFx(); }catch(e){}
     const saved=await v110SnapshotPriceHistory(metalsData,fxData);
-    json(res,200,{ok:true,snapshot:saved,metals:metalsData && metalsData.metals ? Object.keys(metalsData.metals) : []});
+    json(res,200,{ok:true,snapshot:saved,source:metalsData.source,warning:metalsData.warning||null,metals:metalsData && metalsData.metals ? Object.keys(metalsData.metals) : []});
     return;
   }
 
@@ -497,7 +570,17 @@ if(u.pathname==='/api/metals-history'){
     return;
   }
 
-if(u.pathname==='/api/metals'){const metalsData=await getMetals(); try{await v110SnapshotPriceHistory(metalsData,null);}catch(e){} json(res,200,metalsData);return}
+if(u.pathname==='/api/metals'){
+    let metalsData;
+    try{
+      metalsData=await getMetals();
+    }catch(e){
+      metalsData=await v1102BuildSafeMetalsPayload(e.message);
+    }
+    try{await v110SnapshotPriceHistory(metalsData,null);}catch(e){}
+    json(res,200,metalsData);
+    return;
+  }
 
   if(u.pathname==='/api/db-summary'){if(SUPABASE_ENABLED){json(res,200,await sbSummary());return} json(res,200,dbSummary());return}
   if(u.pathname==='/api/audit'){const limit=Number(u.searchParams.get('limit')||20); if(SUPABASE_ENABLED){const rows=await sbAuditList(limit); json(res,200,{mode:'supabase',items:(rows||[]).map(r=>({at:r.created_at,actor:r.actor,action:r.action,table:r.table_name,record_id:r.record_id,meta:r.meta}))});return} const a=readJsonFile(AUDIT_FILE,[]); json(res,200,{mode:'local-json',items:a.slice(0,limit)});return}

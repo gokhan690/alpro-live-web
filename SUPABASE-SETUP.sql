@@ -44,3 +44,53 @@ using (true);
 
 -- Insert işlemi server service role ile yapılacağı için public insert policy açılmadı.
 -- Eğer anon ile insert yapılacaksa ayrıca policy gerekir; önerilen server/service role kullanımıdır.
+
+
+-- ===== V11.1 FINANCE MODULE OPTIONAL TABLES =====
+create table if not exists public.finance_bank_transactions (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  bank text,
+  type text,
+  party text,
+  amount numeric,
+  currency text,
+  description text,
+  tx_date date
+);
+
+create table if not exists public.payment_installments (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  order_id text,
+  stage text,
+  percent numeric,
+  amount numeric,
+  currency text,
+  due_date date,
+  status text
+);
+
+create table if not exists public.reconciliation_records (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  party text,
+  system_amount numeric,
+  paid_amount numeric,
+  currency text,
+  difference numeric
+);
+
+create table if not exists public.tax_calculations (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  party text,
+  base_amount numeric,
+  vat_amount numeric,
+  withholding_amount numeric,
+  net_payable numeric,
+  currency text,
+  tax_type text,
+  vat_rate numeric,
+  withholding_rate numeric
+);

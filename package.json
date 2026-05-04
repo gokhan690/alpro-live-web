@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-son6-v1101-server-history-deploy-fix",
-  "version": "11.0.1",
+  "name": "aluminyumpro-son6-v111-finance-bank",
+  "version": "11.1.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

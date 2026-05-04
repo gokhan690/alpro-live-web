@@ -1,11 +1,11 @@
-AluminyumPro Son6 V11.0.1 Deploy Fix
+AluminyumPro Son6 V11.1 Finance Bank
 
 GitHub repo ana dizinine bu klasördeki dosyaları koy.
 
 Commit mesajı:
-Fix V11.0 server history deploy
+Update Son6 V11.1 Finance Bank Modules
 
-Deploy sonrası test:
-1) /api/metals
-2) /api/metals-history/snapshot
-3) /api/metals-history
+Not:
+- Ana ekranda server history badge görünmez.
+- Banka/ödeme planı/mutabakat/KDV-stopaj modülleri eklendi.
+- SUPABASE-SETUP.sql içine opsiyonel finans tabloları eklendi.

@@ -1,0 +1,27 @@
+AluminyumPro Son6 V10.9 Hedge Line + Persistence
+
+Bu sürümde:
+1) Grafik detay ekranına hedge/hedef fiyat çizgisi eklendi.
+2) Her ürün için ayrı hedge çizgisi kaydedilir:
+   - Alüminyum
+   - Bakır (MCU3)
+   - Çinko
+   - USD/TRY
+3) Hedge çizgileri localStorage'da v109_hedge_lines içinde kalıcı tutulur.
+4) Fiyat geçmişi ve grafik geçmişi kapanınca gitmesin diye otomatik yedek eklendi.
+5) Otomatik korunan kayıtlar:
+   - v5_metal_history
+   - v5_last_metals
+   - v108_fx_history
+   - v109_hedge_lines
+   - hedges
+   - orders/customers/suppliers/stock/invoices/bank/freight vb.
+6) Yedek alma zamanları:
+   - 30 saniyede bir
+   - DB.set sonrası
+   - sekme gizlenince
+   - sayfa kapanırken
+7) Sayfa açılınca boşalan localStorage kayıtları varsa son yedekten geri yüklemeye çalışır.
+
+Commit:
+Update Son6 V10.9 Hedge Persistence

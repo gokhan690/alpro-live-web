@@ -324,6 +324,120 @@ function dbSummary(){
   return {total:tables.reduce((a,x)=>a+x.count,0),tables};
 }
 
+
+// ===== V11.0 SERVER-SIDE PRICE HISTORY START =====
+const PRICE_HISTORY_FILE = path.join(DATA_DIR || __dirname, 'metal_price_history.json');
+
+function v110ReadHistoryFile(){
+  try{
+    if(!fs.existsSync(PRICE_HISTORY_FILE)) return [];
+    const raw = fs.readFileSync(PRICE_HISTORY_FILE,'utf8');
+    const arr = JSON.parse(raw || '[]');
+    return Array.isArray(arr) ? arr : [];
+  }catch(e){ return []; }
+}
+
+function v110WriteHistoryFile(arr){
+  try{
+    fs.writeFileSync(PRICE_HISTORY_FILE, JSON.stringify((arr||[]).slice(0, 10000), null, 2));
+  }catch(e){}
+}
+
+function v110ExtractPrice(metals, key){
+  try{
+    const m = metals && metals[key];
+    const p = m && (m.price ?? m.value ?? m.last ?? m.rawPrice);
+    const n = Number(p);
+    return Number.isFinite(n) && n > 0 ? n : null;
+  }catch(e){ return null; }
+}
+
+async function v110SnapshotPriceHistory(metalsPayload, fxPayload){
+  try{
+    const metals = metalsPayload && metalsPayload.metals ? metalsPayload.metals : (metalsPayload || {});
+    const rows = [];
+    const at = new Date().toISOString();
+
+    const alu = v110ExtractPrice(metals, 'aluminium');
+    const cop = v110ExtractPrice(metals, 'copper');
+    const zin = v110ExtractPrice(metals, 'zinc');
+
+    if(alu) rows.push({ created_at: at, symbol: 'ALU', price: alu, unit: 'USD/t', source: (metals.aluminium && (metals.aluminium.source || metals.aluminium.note)) || metalsPayload.source || 'api/metals' });
+    if(cop) rows.push({ created_at: at, symbol: 'MCU3', price: cop, unit: 'USD/t', source: (metals.copper && (metals.copper.source || metals.copper.note)) || metalsPayload.source || 'api/metals' });
+    if(zin) rows.push({ created_at: at, symbol: 'ZIN', price: zin, unit: 'USD/t', source: (metals.zinc && (metals.zinc.source || metals.zinc.note)) || metalsPayload.source || 'api/metals' });
+
+    if(fxPayload){
+      const fxItems = [
+        ['USDTRY', fxPayload.usdtry || fxPayload.USDTRY],
+        ['EURTRY', fxPayload.eurtry || fxPayload.EURTRY],
+        ['GBPTRY', fxPayload.gbptry || fxPayload.GBPTRY]
+      ];
+      fxItems.forEach(([symbol, val])=>{
+        const n = Number(val);
+        if(Number.isFinite(n) && n > 0) rows.push({ created_at: at, symbol, price: n, unit: 'TRY', source: fxPayload.source || 'api/fx' });
+      });
+    }
+
+    if(!rows.length) return { saved: 0 };
+
+    // Avoid saving near-duplicate snapshots too often: same symbol under 25s skipped.
+    if(SUPABASE_ENABLED && SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY){
+      let saved = 0;
+      for(const row of rows){
+        try{
+          const recent = await sbRequest('/rest/v1/metal_price_history?symbol=eq.' + encodeURIComponent(row.symbol) + '&select=created_at,price&order=created_at.desc&limit=1');
+          const last = Array.isArray(recent) && recent[0] ? recent[0] : null;
+          if(last && Math.abs(Date.now() - new Date(last.created_at).getTime()) < 25000) continue;
+          await sbRequest('/rest/v1/metal_price_history', {
+            method:'POST',
+            headers:{'Prefer':'return=minimal'},
+            body: JSON.stringify(row)
+          });
+          saved++;
+        }catch(e){}
+      }
+      return { saved, mode:'supabase' };
+    }
+
+    const arr = v110ReadHistoryFile();
+    for(const row of rows){
+      const last = arr.find(x => x.symbol === row.symbol);
+      if(last && Math.abs(Date.now() - new Date(last.created_at).getTime()) < 25000) continue;
+      arr.unshift(row);
+    }
+    v110WriteHistoryFile(arr);
+    return { saved: rows.length, mode:'local-file' };
+  }catch(e){
+    return { saved:0, error:e.message };
+  }
+}
+
+async function v110GetPriceHistory(params){
+  const symbol = (params.get('symbol') || '').toUpperCase();
+  const limit = Math.min(Number(params.get('limit') || 1000), 5000);
+  const days = Number(params.get('days') || 0);
+  const since = days > 0 ? new Date(Date.now() - days*24*3600*1000).toISOString() : null;
+
+  if(SUPABASE_ENABLED && SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY){
+    let query = '/rest/v1/metal_price_history?select=created_at,symbol,price,unit,source&order=created_at.asc&limit=' + limit;
+    if(symbol) query += '&symbol=eq.' + encodeURIComponent(symbol);
+    if(since) query += '&created_at=gte.' + encodeURIComponent(since);
+    try{
+      const rows = await sbRequest(query);
+      return { mode:'supabase', source:'metal_price_history', items: Array.isArray(rows) ? rows : [] };
+    }catch(e){
+      // fallback below
+    }
+  }
+
+  let rows = v110ReadHistoryFile();
+  if(symbol) rows = rows.filter(x => String(x.symbol||'').toUpperCase() === symbol);
+  if(since) rows = rows.filter(x => String(x.created_at||'') >= since);
+  rows = rows.slice(0, limit).reverse();
+  return { mode:'local-file', source:'metal_price_history.json', items: rows };
+}
+// ===== V11.0 SERVER-SIDE PRICE HISTORY END =====
+
 function json(res,code,obj){res.writeHead(code,{'Content-Type':'application/json; charset=utf-8','Access-Control-Allow-Origin':'*','Cache-Control':'no-store'});res.end(JSON.stringify(obj,null,2));}
 function serve(res,file){const full=path.join(__dirname,file); if(!fs.existsSync(full)){res.writeHead(404);res.end('Not found');return} const ext=path.extname(full).toLowerCase(); const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.css':'text/css; charset=utf-8','.txt':'text/plain; charset=utf-8'}; res.writeHead(200,{'Content-Type':types[ext]||'application/octet-stream','Cache-Control':'no-store, no-cache, must-revalidate','Pragma':'no-cache','Expires':'0'});fs.createReadStream(full).pipe(res)}
 http.createServer(async(req,res)=>{try{
@@ -339,7 +453,23 @@ http.createServer(async(req,res)=>{try{
     return;
   }
 
-if(u.pathname==='/api/metals'){json(res,200,await getMetals());return}
+
+  
+  if(u.pathname==='/api/metals-history/snapshot'){
+    const metalsData=await getMetals();
+    let fxData=null;
+    try{ if(typeof getFx==='function') fxData=await getFx(); }catch(e){}
+    const saved=await v110SnapshotPriceHistory(metalsData,fxData);
+    json(res,200,{ok:true,snapshot:saved,metals:metalsData && metalsData.metals ? Object.keys(metalsData.metals) : []});
+    return;
+  }
+
+if(u.pathname==='/api/metals-history'){
+    json(res,200,await v110GetPriceHistory(u.searchParams));
+    return;
+  }
+
+if(u.pathname==='/api/metals'){const metalsData=await getMetals(); try{await v110SnapshotPriceHistory(metalsData,null);}catch(e){} json(res,200,metalsData);return}
 
   if(u.pathname==='/api/db-summary'){if(SUPABASE_ENABLED){json(res,200,await sbSummary());return} json(res,200,dbSummary());return}
   if(u.pathname==='/api/audit'){const limit=Number(u.searchParams.get('limit')||20); if(SUPABASE_ENABLED){const rows=await sbAuditList(limit); json(res,200,{mode:'supabase',items:(rows||[]).map(r=>({at:r.created_at,actor:r.actor,action:r.action,table:r.table_name,record_id:r.record_id,meta:r.meta}))});return} const a=readJsonFile(AUDIT_FILE,[]); json(res,200,{mode:'local-json',items:a.slice(0,limit)});return}
@@ -374,7 +504,7 @@ if(u.pathname==='/api/metals'){json(res,200,await getMetals());return}
     }
   }
 
-  if(u.pathname==='/api/fx'){json(res,200,await getFx());return}
+  if(u.pathname==='/api/fx'){const fxData=await getFx(); try{await v110SnapshotPriceHistory(null,fxData);}catch(e){} json(res,200,fxData);return}
   if(u.pathname==='/api/health'){json(res,200,{ok:true,port:PORT,version:'V10.6 Today Advanced Charts Auto Backup',dbMode:SUPABASE_ENABLED?'supabase':'local-json',supabaseConfigured:SUPABASE_ENABLED,lanUrl:lanUrl(),publicUrl:process.env.PUBLIC_URL||null,time:new Date().toISOString()});return}
   if(req.method==='OPTIONS'){res.writeHead(204,{'Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET,OPTIONS','Access-Control-Allow-Headers':'Content-Type'});res.end();return}
   const safePath=decodeURIComponent(u.pathname.replace(/^\//,'')); if(!safePath.includes('..')&&fs.existsSync(path.join(__dirname,safePath))){serve(res,safePath);return}

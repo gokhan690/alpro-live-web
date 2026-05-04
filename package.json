@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-son6-v108b-chart-click-fix",
-  "version": "10.8.1",
+  "name": "aluminyumpro-son6-v110-server-history",
+  "version": "11.0.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

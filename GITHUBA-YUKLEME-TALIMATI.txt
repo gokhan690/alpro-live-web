@@ -1,11 +1,18 @@
-AluminyumPro Son6 V10.8B Chart Click Fix
+AluminyumPro Son6 V11.0 Server-Side Price History
 
-Bu klasördeki dosyaları GitHub repo ana dizinine koy.
+GitHub repo ana dizinine bu klasördeki dosyaları koy.
 
-Özet:
-- Grafik tıklama davranışı düzeltildi
-- Tek stabil modal açılır
-- Eski click handler çakışmaları bastırıldı
+Yapılacak:
+1) Dosyaları GitHub'a yükle.
+2) Supabase SQL Editor'da SUPABASE-SETUP.sql içindeki metal_price_history kısmını çalıştır.
+3) Render env'de şunlar doğru olsun:
+   SUPABASE_URL
+   SUPABASE_SERVICE_ROLE_KEY
+4) Render'da deploy et.
+5) Test:
+   /api/metals-history/snapshot
+   /api/metals-history
+   /api/metals
 
 Commit mesajı:
-Update Son6 V10.8B Chart Click Fix
+Update Son6 V11.0 Server Side Price History

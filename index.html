@@ -4768,6 +4768,88 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 }
 </style>
 
+
+<style id="v109-hedge-persistence-css">
+/* ===== V10.9 HEDGE LINE + PERSISTENCE ===== */
+.v109-hedge-box{
+  display:grid;
+  grid-template-columns:minmax(160px,1fr) auto auto;
+  gap:8px;
+  align-items:center;
+  width:100%;
+  margin:0 0 12px;
+  padding:10px;
+  border-radius:16px;
+  background:rgba(215,162,58,.055);
+  border:1px solid rgba(215,162,58,.16);
+}
+.v109-hedge-box input{
+  min-height:36px!important;
+  border-radius:12px!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:rgba(0,0,0,.22)!important;
+  color:#fff!important;
+  padding:0 10px!important;
+  font-size:12px!important;
+}
+.v109-hedge-box button{
+  min-height:36px!important;
+  border-radius:12px!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:rgba(255,255,255,.055)!important;
+  color:#fff!important;
+  padding:0 10px!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  cursor:pointer!important;
+}
+.v109-hedge-box button.v109-gold{
+  background:linear-gradient(135deg,rgba(215,162,58,.96),rgba(236,189,79,.90))!important;
+  color:#07101a!important;
+  border-color:rgba(215,162,58,.38)!important;
+}
+.v109-hedge-label{
+  grid-column:1/-1;
+  color:#d7a23a;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.v109-persist-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:rgba(46,204,113,.12);
+  border:1px solid rgba(46,204,113,.24);
+  color:#78f3a1;
+  font-size:9px;
+  font-weight:900;
+}
+.v109-persist-badge:before{
+  content:'';
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#2ecc71;
+  box-shadow:0 0 9px rgba(46,204,113,.55);
+}
+.v109-hedge-mini{
+  color:#d7a23a!important;
+  font-weight:900!important;
+}
+@media(max-width:620px){
+  .v109-hedge-box{
+    grid-template-columns:1fr 1fr;
+  }
+  .v109-hedge-box input{
+    grid-column:1/-1;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -13658,6 +13740,430 @@ window.openTrash = function(type) {
   }
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+
+<script id="v109-hedge-persistence-js">
+(function(){
+  const STORAGE_KEYS=[
+    'v5_metal_history',
+    'v5_last_metals',
+    'v5_usdtry_last',
+    'v108_fx_history',
+    'v109_hedge_lines',
+    'hedges',
+    'orders',
+    'customers',
+    'suppliers',
+    'stock',
+    'invoices',
+    'sales',
+    'customs',
+    'freight',
+    'bank',
+    'payments'
+  ];
+  const META={
+    alu:{name:'Alüminyum',unit:'USD/t',color:'#d7a23a'},
+    cop:{name:'Bakır (MCU3)',unit:'USD/t',color:'#ff9f43'},
+    zin:{name:'Çinko',unit:'USD/t',color:'#4fd1a5'},
+    fx:{name:'USD/TRY',unit:'TRY',color:'#54a0ff'}
+  };
+  const TARGETS={
+    'v5-chart-alu':'alu',
+    'v5-chart-cop':'cop',
+    'v5-chart-zin':'zin',
+    'v5-live-chart-alu':'alu',
+    'v5-live-chart-cop':'cop',
+    'v5-live-chart-zin':'zin',
+    'v71-chart-0':'alu',
+    'v71-chart-1':'cop',
+    'v71-chart-2':'zin',
+    'v71-chart-3':'fx'
+  };
+
+  function safeJSON(v,d){try{return JSON.parse(v)}catch(e){return d}}
+  function saveJSON(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
+  function trNum(n,d){
+    if(!isFinite(n)) return '--';
+    try{return Number(n).toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d})}
+    catch(e){return String(n)}
+  }
+  function parseNum(v){
+    if(v==null) return NaN;
+    let s=String(v).replace(/[^\d,.-]/g,'').trim();
+    if(!s) return NaN;
+    if(s.includes('.') && s.includes(',')) s=s.replace(/\./g,'').replace(',', '.');
+    else if(s.includes(',') && !s.includes('.')) s=s.replace(',', '.');
+    return Number(s);
+  }
+  function hedgeLines(){return safeJSON(localStorage.getItem('v109_hedge_lines')||'{}',{}) || {}}
+  function setHedgeLine(key,value){
+    const h=hedgeLines();
+    if(isFinite(value) && value>0) h[key]=Number(value);
+    else delete h[key];
+    saveJSON('v109_hedge_lines',h);
+    persistNow('hedge');
+  }
+  function getHedgeLine(key){
+    const h=hedgeLines();
+    const v=Number(h[key]);
+    return isFinite(v)&&v>0?v:null;
+  }
+
+  function persistNow(reason){
+    const payload={at:new Date().toISOString(),reason:reason||'auto',data:{}};
+    STORAGE_KEYS.forEach(k=>{
+      try{
+        const v=localStorage.getItem(k);
+        if(v!=null) payload.data[k]=v;
+      }catch(e){}
+    });
+    saveJSON('alpro_v109_persistent_backup',payload);
+    saveJSON('alpro_last_backup',payload);
+    try{localStorage.setItem('alpro_v109_last_persist_at',payload.at)}catch(e){}
+    updatePersistBadge();
+  }
+
+  function restoreIfNeeded(){
+    const backup=safeJSON(localStorage.getItem('alpro_v109_persistent_backup')||'null',null);
+    if(!backup || !backup.data) return;
+    STORAGE_KEYS.forEach(k=>{
+      try{
+        const cur=localStorage.getItem(k);
+        const bak=backup.data[k];
+        if((cur==null || cur==='' || cur==='[]' || cur==='{}') && bak!=null){
+          localStorage.setItem(k,bak);
+        }
+      }catch(e){}
+    });
+  }
+
+  function updatePersistBadge(){
+    let at=localStorage.getItem('alpro_v109_last_persist_at');
+    const chip=document.getElementById('v109-persist-badge');
+    if(chip){
+      let txt='Otomatik kayıt aktif';
+      if(at){
+        try{txt='Otomatik kayıt: '+new Date(at).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});}catch(e){}
+      }
+      chip.textContent=txt;
+    }
+  }
+
+  function getModalKey(){
+    // v108b/v108 script state inaccessible, derive from title text.
+    const t=(document.getElementById('v108-chart-title')?.textContent||'').toLowerCase();
+    if(t.includes('bakır') || t.includes('copper')) return 'cop';
+    if(t.includes('çinko') || t.includes('zinc')) return 'zin';
+    if(t.includes('usd') || t.includes('try')) return 'fx';
+    return 'alu';
+  }
+
+  function ensureHedgeBox(){
+    const modal=document.getElementById('v108-chart-modal');
+    const body=modal?.querySelector('.v108-chart-body');
+    if(!modal || !body) return;
+    if(document.getElementById('v109-hedge-box')) return;
+
+    const box=document.createElement('div');
+    box.id='v109-hedge-box';
+    box.className='v109-hedge-box';
+    box.innerHTML=
+      '<div class="v109-hedge-label">Hedge / Hedef Fiyat Çizgisi</div>'+
+      '<input id="v109-hedge-input" placeholder="Örn: 12900" inputmode="decimal">'+
+      '<button class="v109-gold" id="v109-save-hedge">Çizgiyi Kaydet</button>'+
+      '<button id="v109-clear-hedge">Sil</button>';
+    const stage=body.querySelector('.v108-chart-stage');
+    if(stage) body.insertBefore(box, stage);
+    else body.prepend(box);
+
+    document.getElementById('v109-save-hedge').onclick=function(e){
+      e.preventDefault(); e.stopPropagation();
+      const key=getModalKey();
+      const val=parseNum(document.getElementById('v109-hedge-input').value);
+      if(!isFinite(val) || val<=0){
+        alert('Geçerli hedge/hedef fiyat gir.');
+        return;
+      }
+      setHedgeLine(key,val);
+      drawHedgeOnOpenChart();
+      markMiniHedge();
+      if(typeof notif==='function') notif('Hedge çizgisi kaydedildi: '+trNum(val,2),'s');
+    };
+    document.getElementById('v109-clear-hedge').onclick=function(e){
+      e.preventDefault(); e.stopPropagation();
+      const key=getModalKey();
+      setHedgeLine(key,null);
+      document.getElementById('v109-hedge-input').value='';
+      drawHedgeOnOpenChart();
+      markMiniHedge();
+      if(typeof notif==='function') notif('Hedge çizgisi silindi','s');
+    };
+  }
+
+  function syncHedgeInput(){
+    ensureHedgeBox();
+    const key=getModalKey();
+    const v=getHedgeLine(key);
+    const input=document.getElementById('v109-hedge-input');
+    if(input) input.value=v?String(v):'';
+  }
+
+  function drawHedgeOnOpenChart(){
+    const svg=document.getElementById('v108-chart-svg');
+    if(!svg) return;
+    const key=getModalKey();
+    const hedge=getHedgeLine(key);
+    const old=svg.querySelector('#v109-hedge-group');
+    if(old) old.remove();
+    if(!hedge) return;
+
+    const texts=[...svg.querySelectorAll('text')].map(t=>parseNum(t.textContent)).filter(n=>isFinite(n));
+    // Better derive range from chart path points: use current visible series from local history if possible.
+    let vals=getVisibleValuesForKey(key);
+    if(vals.length<2){
+      vals=texts;
+    }
+    vals=vals.filter(v=>isFinite(v)&&v>0);
+    if(!vals.length) return;
+    const min=Math.min(...vals), max=Math.max(...vals);
+    const low=Math.min(min,hedge), high=Math.max(max,hedge);
+    const range=(high-low)||1;
+    const h=420, padT=24, padB=38, padL=56, padR=18, w=920;
+    const y=h-padB-((hedge-low)/range)*(h-padT-padB);
+    if(!isFinite(y)) return;
+
+    const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('id','v109-hedge-group');
+    g.innerHTML=
+      '<line x1="'+padL+'" y1="'+y.toFixed(1)+'" x2="'+(w-padR)+'" y2="'+y.toFixed(1)+'" stroke="#f7d774" stroke-width="2.2" stroke-dasharray="8 6"/>'+
+      '<rect x="'+(w-180)+'" y="'+(y-17).toFixed(1)+'" width="162" height="28" rx="9" fill="rgba(5,8,13,.88)" stroke="rgba(247,215,116,.5)"/>'+
+      '<text x="'+(w-168)+'" y="'+(y+1).toFixed(1)+'" fill="#f7d774" font-size="12" font-weight="900">Hedge: '+trNum(hedge,2)+'</text>';
+    svg.appendChild(g);
+  }
+
+  function getVisibleValuesForKey(key){
+    const raw=safeJSON(localStorage.getItem('v5_metal_history')||'[]',[]);
+    const arr=Array.isArray(raw)?raw.slice().reverse():[];
+    const vals=[];
+    arr.forEach(item=>{
+      const metals=item&&item.metals?item.metals:{};
+      let v=null;
+      if(key==='alu') v=metals.aluminium && metals.aluminium.price;
+      if(key==='cop') v=metals.copper && metals.copper.price;
+      if(key==='zin') v=metals.zinc && metals.zinc.price;
+      if(v!=null && isFinite(Number(v))) vals.push(Number(v));
+    });
+    if(key==='fx'){
+      const fx=safeJSON(localStorage.getItem('v108_fx_history')||'[]',[]);
+      return Array.isArray(fx)?fx.map(x=>Number(x.value)).filter(v=>isFinite(v)&&v>0):[];
+    }
+    const current=getCurrentVisiblePrice(key);
+    if(isFinite(current)&&current>0) vals.push(current);
+    return vals.slice(-90);
+  }
+
+  function getCurrentVisiblePrice(key){
+    const ids={alu:['stage1-alu','v5-top-alu'],cop:['stage1-cop','v5-top-cop'],zin:['stage1-zin','v5-top-zin'],fx:['stage1-usdtry','v5-top-usdtry']}[key]||[];
+    for(const id of ids){
+      const el=document.getElementById(id);
+      if(el){
+        const n=parseNum(el.textContent);
+        if(isFinite(n)&&n>0) return n;
+      }
+    }
+    return null;
+  }
+
+  function markMiniHedge(){
+    Object.entries(TARGETS).forEach(([id,key])=>{
+      const svg=document.getElementById(id);
+      if(!svg) return;
+      const card=svg.closest('.v5-chart-card') || svg.parentElement;
+      if(!card) return;
+      let line=card.querySelector('.v109-hedge-mini');
+      const v=getHedgeLine(key);
+      if(!v){
+        if(line) line.remove();
+        return;
+      }
+      if(!line){
+        line=document.createElement('div');
+        line.className='v109-hedge-mini';
+        line.style.cssText='font-size:10px;margin-top:6px;';
+        card.appendChild(line);
+      }
+      line.textContent='Hedge/Hedef: '+trNum(v,2)+' '+(META[key]?.unit||'');
+    });
+  }
+
+  function enhanceModalWhenOpen(){
+    const modal=document.getElementById('v108-chart-modal');
+    if(!modal || !modal.classList.contains('show')) return;
+    ensureHedgeBox();
+    syncHedgeInput();
+    setTimeout(drawHedgeOnOpenChart,60);
+
+    const chip=document.getElementById('v108-source-chip');
+    if(chip && !document.getElementById('v109-persist-badge')){
+      const b=document.createElement('span');
+      b.id='v109-persist-badge';
+      b.className='v109-persist-badge';
+      chip.insertAdjacentElement('afterend',b);
+      updatePersistBadge();
+    }
+  }
+
+  function installOpenWatcher(){
+    const modal=document.getElementById('v108-chart-modal');
+    if(!modal || modal._v109Watch) return;
+    modal._v109Watch=true;
+    const obs=new MutationObserver(function(){
+      if(modal.classList.contains('show')){
+        setTimeout(enhanceModalWhenOpen,80);
+        setTimeout(enhanceModalWhenOpen,250);
+      }
+    });
+    obs.observe(modal,{attributes:true,attributeFilter:['class']});
+  }
+
+  function protectDataOnDBSet(){
+    if(window.DB && window.DB.set && !window.DB.set._v109Wrapped){
+      const old=window.DB.set;
+      window.DB.set=async function(){
+        const r=await old.apply(this,arguments);
+        persistNow('db-set');
+        return r;
+      };
+      window.DB.set._v109Wrapped=true;
+    }
+  }
+
+  function init(){
+    restoreIfNeeded();
+    protectDataOnDBSet();
+    installOpenWatcher();
+    markMiniHedge();
+    updatePersistBadge();
+    setInterval(function(){
+      protectDataOnDBSet();
+      installOpenWatcher();
+      markMiniHedge();
+      updatePersistBadge();
+    },2000);
+    setInterval(function(){persistNow('interval')},30000);
+  }
+
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='hidden') persistNow('visibility-hidden');
+  });
+  window.addEventListener('beforeunload',function(){persistNow('beforeunload')});
+  window.addEventListener('pagehide',function(){persistNow('pagehide')});
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
+</script>
+
+
+<script id="v110-server-history-js">
+(function(){
+  function safeJSON(v,d){try{return JSON.parse(v)}catch(e){return d}}
+  function saveJSON(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
+  function groupRows(items){
+    const map={};
+    (items||[]).forEach(r=>{
+      const at=r.created_at || r.at || new Date().toISOString();
+      const key=new Date(at).toISOString();
+      if(!map[key]) map[key]={at:key, metals:{}};
+      const sym=String(r.symbol||'').toUpperCase();
+      const price=Number(r.price);
+      if(!isFinite(price)||price<=0) return;
+      if(sym==='ALU'||sym==='ALUMINIUM'||sym==='ALUMINUM') map[key].metals.aluminium={price, source:r.source||'server-history'};
+      if(sym==='MCU3'||sym==='COP'||sym==='COPPER') map[key].metals.copper={price, source:r.source||'server-history', symbol:'MCU3'};
+      if(sym==='ZIN'||sym==='ZINC') map[key].metals.zinc={price, source:r.source||'server-history'};
+      if(sym==='USDTRY') map[key].usdtry=price;
+      if(sym==='EURTRY') map[key].eurtry=price;
+      if(sym==='GBPTRY') map[key].gbptry=price;
+    });
+    return Object.values(map)
+      .filter(x=>x.metals && (x.metals.aluminium||x.metals.copper||x.metals.zinc))
+      .sort((a,b)=>new Date(b.at)-new Date(a.at));
+  }
+  async function fetchHistory(days){
+    const url='/api/metals-history?limit=3000' + (days?('&days='+days):'');
+    const r=await fetch(url,{cache:'no-store'});
+    const d=await r.json();
+    if(!r.ok) throw new Error(d.error||'history alınamadı');
+    return d;
+  }
+  async function loadServerHistory(){
+    try{
+      const d=await fetchHistory(120);
+      const items=d.items||[];
+      const grouped=groupRows(items);
+      if(grouped.length){
+        const local=safeJSON(localStorage.getItem('v5_metal_history')||'[]',[]);
+        const byAt={};
+        grouped.concat(Array.isArray(local)?local:[]).forEach(x=>{
+          if(x && x.at) byAt[x.at]=x;
+        });
+        const merged=Object.values(byAt).sort((a,b)=>new Date(b.at)-new Date(a.at)).slice(0,3000);
+        saveJSON('v5_metal_history', merged);
+        localStorage.setItem('v110_server_history_loaded_at', new Date().toISOString());
+        localStorage.setItem('v110_server_history_count', String(grouped.length));
+
+        // last metals seed
+        const latest=merged.find(x=>x.metals && (x.metals.aluminium||x.metals.copper||x.metals.zinc));
+        if(latest){
+          saveJSON('v5_last_metals',{source:'server-history',fetchedAt:latest.at,metals:latest.metals});
+        }
+
+        if(typeof window.v5RenderInvestingCharts==='function'){
+          setTimeout(()=>window.v5RenderInvestingCharts(),120);
+        }
+        if(typeof window.notif==='function'){
+          window.notif('Server fiyat geçmişi yüklendi: '+grouped.length+' kayıt','s');
+        }
+      }
+    }catch(e){
+      console.log('V11 history load failed:', e.message);
+    }
+  }
+  function addBadge(){
+    const cards=document.querySelector('.v5-chart-grid') || document.querySelector('.weekly-report-panel') || document.body;
+    if(!cards || document.getElementById('v110-history-badge')) return;
+    const b=document.createElement('div');
+    b.id='v110-history-badge';
+    b.style.cssText='display:inline-flex;align-items:center;gap:6px;margin:8px 0;padding:6px 10px;border-radius:999px;background:rgba(84,160,255,.10);border:1px solid rgba(84,160,255,.25);color:#8fc5ff;font-size:10px;font-weight:900;';
+    const count=localStorage.getItem('v110_server_history_count')||'0';
+    b.textContent='Server fiyat geçmişi aktif • '+count+' kayıt';
+    cards.parentElement ? cards.parentElement.insertBefore(b,cards) : document.body.appendChild(b);
+  }
+  function patchRefreshAfterMetals(){
+    const old=window.v5FetchMetals;
+    if(typeof old==='function' && !old._v110Wrapped){
+      const wrapped=async function(){
+        const r=await old.apply(this,arguments);
+        setTimeout(loadServerHistory,500);
+        return r;
+      };
+      wrapped._v110Wrapped=true;
+      window.v5FetchMetals=wrapped;
+    }
+  }
+  function init(){
+    patchRefreshAfterMetals();
+    loadServerHistory();
+    setTimeout(addBadge,1600);
+    setTimeout(loadServerHistory,5000);
+    setInterval(function(){patchRefreshAfterMetals(); addBadge();},4000);
+    setInterval(loadServerHistory,120000);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
   else init();
 })();
 </script>

@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-son6-v112-mobile-full-fix",
-  "version": "11.2.0",
+  "name": "aluminyumpro-son6-v111-finance-bank",
+  "version": "11.1.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

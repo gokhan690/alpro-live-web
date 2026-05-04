@@ -1,0 +1,66 @@
+AluminyumPro V11.2 - Mobile Fix (Cash Position + Eksik Sayfalar + Kart Tasma)
+
+BAZ: V11.1 Finance Bank Cleanup - server.js DEGISMEDI, sadece index.html'e patch eklendi.
+
+DUZELTILEN 3 SORUN:
+
+1) CASH POSITION HATALI HESAPLANIYORDU
+   ESKI: bank kayitlarinda sadece "TRY mi degil mi" diye bakiyordu.
+         EUR/GBP da USD'ye toplaniyordu (1 EUR = 1 USD gibi yanlis).
+   YENI: Para birimine gore ayri toplar (USD, EUR, GBP, TRY, OTHER).
+         Ekrandaki canli kurlardan (USDTRY, EURTRY, GBPTRY) FX rate alir.
+         Hepsini USD'ye cevirip net Cash Position bulur.
+         USDTRY * USD = TRY tutari hesaplanir.
+   BONUS: V11.1'de eklenen finance_bank tablosundan da okur.
+   BONUS: Kart hover tooltip - hangi para biriminde ne kadar var gosterir.
+
+2) MOBIL MENUDE EKSIK SAYFALAR (8 + ekstra)
+   Eklenen sayfalar:
+   - Hatirlaticilar (reminders)
+   - Gumruk Hesap (customs-calc)
+   - Faturalar (invoices)
+   - Stok (stock)
+   - Sabah Raporu (v5-morning)
+   - LME Hedging (hedge)
+   - Analitik (analytics)
+   - Gelir/Gider (income)
+   Ek olarak da menuye eklendi:
+   - Hesaplayici (calculator)
+   - Doviz (forex)
+   - AI Asistan (ai)
+   - Canli Metaller (v5-live)
+   - AI Ticari (v5-ai)
+   - Gecmis (history)
+   - Bildirimler (notify)
+   - Lojistik (v61-logistics)
+   - Rakipler (competitors)
+   Toplam mobil drawer'da artik 30+ sayfaya tek tikla erisim.
+
+3) STAGE1 KART TASMA (resme sigmiyordu)
+   - Mobilde 4 KPI karti tek satira sigmiyor, 2x2 grid yapildi
+   - 400px alti ekranlarda tek sutun
+   - Cash Position SVG cember kuculdu (46->36px), pozisyonu duzeltildi
+   - "Toplam Likidite" yazisi kucultuldu, cember ile ust uste binmiyor
+   - Drawer butonlarinda kelime kirma + ellipsis (uzun isimler tasmasin)
+
+DOKUNMAYAN YERLER:
+- server.js (V11.1 ile ayni)
+- Mevcut tum ozellikler korunur (cop kutusu, popSel, V10.8 sparkline, V11.0 server history vs.)
+- Desktop gorunum aynen calisir, sadece mobil etkilenir
+- Cash Position oscillation onleme (V10.2 cache) korunur
+
+DEPLOY:
+1) ZIP'i ac, dosyalari GitHub'a yukle (sadece index.html degisti)
+2) Commit: V11.2 - Mobil cash position + eksik sayfalar + kart tasma fix
+3) Push -> Render auto deploy
+4) Hard refresh (mobilde de cache temizle)
+
+DOGRULAMA:
+- Mobilde sol ust ☰ menu -> drawer'da Hatirlaticilar, Gumruk Hesap,
+  Faturalar, Stok, Sabah Raporu, Hedge, Analitik, Gelir/Gider gozukmeli.
+- Cash Position kartinda hover -> "USD: X • EUR: Y • GBP: Z • TRY: W"
+- Stage1 4 kart artik resme sigiyor, ust uste binmiyor.
+
+EGER FX KURLARI YOKSA:
+Patch default fallback kullanir: EUR=1.07, GBP=1.27, USDTRY=35
+Bu degerler /api/fx calistiginda otomatik canli degerle degisir.

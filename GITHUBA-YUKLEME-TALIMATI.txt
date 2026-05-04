@@ -1,11 +1,11 @@
-AluminyumPro Son6 V11.2 Mobile Full Fix
+AluminyumPro Son6 V11.1 Finance Bank
 
 GitHub repo ana dizinine bu klasördeki dosyaları koy.
 
 Commit mesajı:
-Update Son6 V11.2 Mobile Full Fix
+Update Son6 V11.1 Finance Bank Modules
 
-Deploy sonrası mobilde kontrol:
-- Cash Position kartı sığıyor mu?
-- Hızlı İşlemler 12 buton görünüyor mu?
-- Fatura/Stok/Hatırlatıcı/Gümrük/Hedge/Analitik/Gelir Gider açılıyor mu?
+Not:
+- Ana ekranda server history badge görünmez.
+- Banka/ödeme planı/mutabakat/KDV-stopaj modülleri eklendi.
+- SUPABASE-SETUP.sql içine opsiyonel finans tabloları eklendi.

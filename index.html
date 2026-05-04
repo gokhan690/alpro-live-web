@@ -5017,216 +5017,6 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 }
 </style>
 
-
-<style id="v112-mobile-full-fix-css">
-/* ===== V11.2 MOBILE FULL FIX ===== */
-
-@media(max-width:760px){
-  html,body{
-    width:100%!important;
-    max-width:100%!important;
-    overflow-x:hidden!important;
-  }
-  body{
-    background:#030405!important;
-  }
-  .content,.main,.page,.pages,.wrap,.app,.dashboard,.dash,.mobile-home{
-    max-width:100%!important;
-    overflow-x:hidden!important;
-    box-sizing:border-box!important;
-  }
-  body.v69r-mobile .content,
-  body.v69s-premium-app .content{
-    padding-left:10px!important;
-    padding-right:10px!important;
-  }
-
-  body.v69r-mobile .v69q-kpi-grid,
-  body.v69r-mobile .v69q-mobile-grid,
-  body.v69r-mobile .cards,
-  body.v69r-mobile #stage1-dashboard-cards,
-  body.v69s-premium-app .v69q-kpi-grid,
-  body.v69s-premium-app .v69q-mobile-grid,
-  body.v69s-premium-app .cards,
-  body.v69s-premium-app #stage1-dashboard-cards{
-    display:grid!important;
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    gap:10px!important;
-    width:100%!important;
-    max-width:100%!important;
-  }
-
-  body.v69r-mobile .v69q-kpi-card,
-  body.v69r-mobile .card,
-  body.v69r-mobile .stage1-card,
-  body.v69r-mobile .v5-card,
-  body.v69s-premium-app .v69q-kpi-card,
-  body.v69s-premium-app .card,
-  body.v69s-premium-app .stage1-card,
-  body.v69s-premium-app .v5-card{
-    min-width:0!important;
-    width:100%!important;
-    max-width:100%!important;
-    box-sizing:border-box!important;
-    overflow:hidden!important;
-    border-radius:20px!important;
-    padding:14px!important;
-  }
-
-  .v69q-kpi-value,
-  .stage1-value,
-  .cv,.cv2,
-  .v5-kpi,
-  [id*="cash"],
-  [id*="Cash"],
-  [class*="cash"],
-  [class*="Cash"]{
-    max-width:100%!important;
-    overflow:hidden!important;
-    text-overflow:ellipsis!important;
-    white-space:nowrap!important;
-    line-height:1.08!important;
-  }
-  .v69q-kpi-card .v69q-kpi-value,
-  .stage1-card .stage1-value{
-    font-size:clamp(19px,6vw,27px)!important;
-    letter-spacing:-.05em!important;
-  }
-  .cash-ring,.v69q-ring,[class*="ring"]{
-    max-width:68px!important;
-    max-height:68px!important;
-  }
-
-  .v112-mobile-actions{
-    margin:16px 0 86px!important;
-    width:100%!important;
-  }
-  .v112-mobile-actions-head{
-    display:flex!important;
-    justify-content:space-between!important;
-    align-items:center!important;
-    margin-bottom:10px!important;
-  }
-  .v112-mobile-actions-title{
-    font-size:19px!important;
-    font-weight:1000!important;
-    color:#fff!important;
-  }
-  .v112-mobile-actions-more{
-    font-size:12px!important;
-    color:#f4ca75!important;
-    font-weight:1000!important;
-  }
-  .v112-mobile-actions-grid{
-    display:grid!important;
-    grid-template-columns:repeat(4,minmax(0,1fr))!important;
-    gap:9px!important;
-    width:100%!important;
-  }
-  .v112-mobile-action{
-    min-width:0!important;
-    min-height:62px!important;
-    border-radius:14px!important;
-    background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025))!important;
-    border:1px solid rgba(255,255,255,.14)!important;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 12px 24px rgba(0,0,0,.18)!important;
-    color:#fff!important;
-    display:flex!important;
-    flex-direction:column!important;
-    align-items:center!important;
-    justify-content:center!important;
-    gap:5px!important;
-    padding:8px 4px!important;
-    font-size:9px!important;
-    font-weight:900!important;
-    line-height:1.05!important;
-    text-align:center!important;
-    cursor:pointer!important;
-    overflow:hidden!important;
-  }
-  .v112-mobile-action .i{
-    color:#f4ca75!important;
-    font-size:19px!important;
-    line-height:1!important;
-  }
-  .v112-mobile-action .t{
-    display:block!important;
-    max-width:100%!important;
-    overflow:hidden!important;
-    text-overflow:ellipsis!important;
-    white-space:nowrap!important;
-  }
-
-  .page.active{
-    padding-bottom:92px!important;
-  }
-
-  .v111-panel{
-    max-width:100%!important;
-    border-radius:18px!important;
-    margin:12px 0!important;
-  }
-  .v111-body{
-    padding:11px!important;
-  }
-  .v111-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    gap:8px!important;
-  }
-  .v111-card{
-    min-width:0!important;
-    padding:10px!important;
-  }
-  .v111-card .v{
-    font-size:clamp(15px,4.6vw,18px)!important;
-    white-space:nowrap!important;
-    overflow:hidden!important;
-    text-overflow:ellipsis!important;
-  }
-  .v111-row,
-  #v111-bank-clean-panel .v111-row,
-  #v111-pay-plan-panel .v111-row,
-  #v111-tax-panel .v111-row,
-  #v111-recon-panel .v111-row{
-    grid-template-columns:1fr!important;
-  }
-  table,.v111-table{
-    max-width:100%!important;
-    overflow-x:auto!important;
-  }
-}
-
-@media(max-width:420px){
-  body.v69r-mobile .v69q-kpi-grid,
-  body.v69r-mobile .v69q-mobile-grid,
-  body.v69r-mobile .cards,
-  body.v69r-mobile #stage1-dashboard-cards,
-  body.v69s-premium-app .v69q-kpi-grid,
-  body.v69s-premium-app .v69q-mobile-grid,
-  body.v69s-premium-app .cards,
-  body.v69s-premium-app #stage1-dashboard-cards{
-    gap:8px!important;
-  }
-  body.v69r-mobile .v69q-kpi-card,
-  body.v69r-mobile .card,
-  body.v69r-mobile .stage1-card,
-  body.v69s-premium-app .v69q-kpi-card,
-  body.v69s-premium-app .card,
-  body.v69s-premium-app .stage1-card{
-    padding:12px!important;
-    min-height:172px!important;
-  }
-  .v112-mobile-actions-grid{
-    grid-template-columns:repeat(4,minmax(0,1fr))!important;
-    gap:7px!important;
-  }
-  .v112-mobile-action{
-    min-height:58px!important;
-    font-size:8.5px!important;
-  }
-}
-</style>
-
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -14941,194 +14731,295 @@ window.openTrash = function(type) {
 })();
 </script>
 
+<style id="v112-mobile-fix-css">
+/* ========================================================
+   V11.2 - Mobil görünüm + Cash Position + Eksik sayfalar
+   ======================================================== */
 
-<script id="v112-mobile-full-fix-js">
+/* Drawer menüsünü daha ferah yap, kart taşmaları engelle */
+body.v69r-mobile #v69r-menu-drawer{
+  width:min(92vw, 380px) !important;
+  padding:16px 12px 28px !important;
+}
+body.v69r-mobile .v69r-menu-grid{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:8px !important;
+}
+body.v69r-mobile .v69r-menu-item{
+  min-height:62px !important;
+  padding:10px !important;
+  word-break:break-word !important;
+  white-space:normal !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+body.v69r-mobile .v69r-menu-item b{
+  font-size:18px !important;
+  display:block !important;
+  margin-bottom:4px !important;
+}
+body.v69r-mobile .v69r-menu-item span{
+  font-size:11px !important;
+  line-height:1.25 !important;
+  display:block !important;
+  word-break:break-word !important;
+}
+
+/* Stage1 kartlar mobilde ferah, taşmasın */
+@media(max-width:560px){
+  #stage1-dashboard-cards{
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+  }
+  .stage1-card{
+    padding:12px !important;
+    overflow:hidden !important;
+    min-height:130px !important;
+  }
+  /* Cash Position kartında SVG çember küçük ekranda alta gitsin, üst üste binmesin */
+  #stage1-cash-card svg{
+    width:36px !important;
+    height:36px !important;
+    right:8px !important;
+    bottom:32px !important;
+  }
+  #stage1-cash-card > div[style*="position:absolute"]{
+    font-size:8px !important;
+    bottom:6px !important;
+    right:6px !important;
+  }
+}
+
+/* Çok küçük ekranlarda (380px ve altı) cash kartı tek sütun */
+@media(max-width:400px){
+  #stage1-dashboard-cards{
+    grid-template-columns:1fr !important;
+  }
+}
+</style>
+
+<script id="v112-mobile-fix-js">
+/* V11.2 - 3 sorunu çözer:
+   1) Mobile menüye eksik sayfaları ekler (Hatırlatıcılar, Gümrük Hesap,
+      Faturalar, Stok, Sabah Raporu, Hedge, Analitik, Gelir/Gider)
+   2) Cash Position USD/EUR/GBP/TRY ayrı toplar, FX kuruyla birleştirir
+   3) Stage1 kart taşmaları CSS ile düzeltildi (yukarıda)
+*/
 (function(){
-  const ACTIONS=[
-    {label:'Yeni Sipariş', icon:'▤', page:'orders'},
-    {label:'Teklif Oluştur', icon:'□', page:'quotes'},
-    {label:'Navlun Talebi', icon:'▱', page:'freight'},
-    {label:'Faturalar', icon:'▧', page:'invoices'},
-    {label:'Stok', icon:'▦', page:'stock'},
-    {label:'Hatırlatıcılar', icon:'◷', page:'reminders'},
-    {label:'Gümrük Hesap', icon:'▣', page:'customs'},
-    {label:'Sabah Raporu', icon:'☀', page:'reports'},
-    {label:'Hedging', icon:'⌁', page:'hedge'},
-    {label:'Analitik', icon:'▥', page:'analytics'},
-    {label:'Gelir / Gider', icon:'₺', page:'finance'},
-    {label:'Banka', icon:'▤', page:'bank'}
+  'use strict';
+
+  // ===== 1. MOBILE MENU GENİŞLETME =====
+  var EXTRA_PAGES = [
+    ['reminders',   '🔔', 'Hatırlatıcılar', 'Sistem'],
+    ['customs-calc','🧮', 'Gümrük Hesap',   'Lojistik'],
+    ['invoices',    '🧾', 'Faturalar',      'Finans'],
+    ['stock',       '🏗️','Stok',           'Operasyon'],
+    ['v5-morning',  '🌅', 'Sabah Raporu',   'Rapor'],
+    ['hedge',       '🛡️','LME Hedging',    'Risk'],
+    ['analytics',   '📉', 'Analitik',       'Analiz'],
+    ['income',      '💹', 'Gelir/Gider',    'Finans'],
+    ['calculator',  '🔢', 'Hesaplayıcı',    'Araç'],
+    ['forex',       '💱', 'Döviz',          'Finans'],
+    ['ai',          '🤖', 'AI Asistan',     'Araç'],
+    ['v5-live',     '⚡', 'Canlı Metaller', 'Fiyat'],
+    ['v5-ai',       '🤖', 'AI Ticari',      'Araç'],
+    ['history',     '📜', 'Geçmiş',         'Sistem'],
+    ['notify',      '🔔', 'Bildirimler',    'Sistem'],
+    ['v61-logistics','🚛','Lojistik',       'Lojistik'],
+    ['competitors', '🎯', 'Rakipler',       'Analiz']
   ];
 
-  const PAGE_ALIASES={
-    quotes:['quotes','offers','proforma'],
-    freight:['freight','navlun','logistics'],
-    invoices:['invoices','invoice','faturalar'],
-    stock:['stock','stok'],
-    reminders:['reminders','reminder','hatirlaticilar'],
-    customs:['customs','gumruk','customs-calc'],
-    reports:['reports','morning','sabah','weekly'],
-    hedge:['hedge','hedging'],
-    analytics:['analytics','analitik','report-analytics'],
-    finance:['finance','income-expense','gelir-gider'],
-    bank:['bank','payments'],
-    orders:['orders']
-  };
+  function escAttr(s){return String(s||'').replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]||c;});}
 
-  function isMobile(){
-    return window.innerWidth<=760 || document.body.classList.contains('v69r-mobile') || /Mobi|Android|iPhone/i.test(navigator.userAgent);
-  }
-  function q(id){return document.getElementById(id)}
-  function pageExists(id){
-    if(q('page-'+id)) return true;
-    if(q(id) && q(id).classList.contains('page')) return true;
+  function expandMobileMenu(){
+    var drawer = document.getElementById('v69r-menu-drawer');
+    if(!drawer) return false;
+    var grid = drawer.querySelector('.v69r-menu-grid');
+    if(!grid) return false;
+
+    // Mevcut menü item'larındaki sayfa key'lerini topla (data-go="X")
+    var existing = {};
+    grid.querySelectorAll('[data-go]').forEach(function(b){
+      existing[b.getAttribute('data-go')] = true;
+    });
+
+    // Eksikleri ekle
+    var html = '';
+    EXTRA_PAGES.forEach(function(p){
+      if(!existing[p[0]]){
+        html += '<button class="v69r-menu-item" type="button" data-go="'+escAttr(p[0])+'">'+
+                '<b>'+escAttr(p[1])+' '+escAttr(p[2])+'</b>'+
+                '<span>'+escAttr(p[3])+'</span>'+
+                '</button>';
+      }
+    });
+
+    if(html){
+      grid.insertAdjacentHTML('beforeend', html);
+
+      // Yeni eklenen butonlara click handler bağla
+      grid.querySelectorAll('.v69r-menu-item').forEach(function(btn){
+        if(btn._v112Bound) return;
+        btn._v112Bound = true;
+        btn.addEventListener('click', function(){
+          var key = this.getAttribute('data-go');
+          // Drawer'ı kapat
+          var bd = document.getElementById('v69r-menu-backdrop');
+          var dr = document.getElementById('v69r-menu-drawer');
+          if(bd) bd.classList.remove('show');
+          if(dr) dr.classList.remove('show');
+          // Sayfaya git
+          if(typeof P === 'function') P(key);
+          else if(typeof go === 'function') go(key);
+        });
+      });
+      return true;
+    }
     return false;
   }
-  function resolvePage(id){
-    const aliases=PAGE_ALIASES[id]||[id];
-    for(const a of aliases){
-      const clean=String(a).replace(/^page-/,'');
-      if(pageExists(clean)) return clean;
-    }
-    return id;
-  }
-  function goPage(id){
-    const target=resolvePage(id);
+
+  // ===== 2. CASH POSITION DOĞRU HESAPLAMA =====
+  // Banka kayıtlarını para birimine göre ayrı topla, kurla USD'ye çevir
+  function getFxRates(){
+    var rates = { USD:1, EUR:1.07, GBP:1.27, TRY:0.029 }; // default fallback
     try{
-      if(typeof window.P==='function'){window.P(target); return;}
-      if(typeof window.showPage==='function'){window.showPage(target); return;}
-    }catch(e){}
-    const el=q('page-'+target);
-    if(el){
-      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-      el.classList.add('active');
-      return;
-    }
-    if(typeof notif==='function') notif(target+' sayfası bulunamadı / henüz bağlı değil','w');
-    else alert(target+' sayfası bulunamadı / henüz bağlı değil');
-  }
-
-  function ensureMobileActions(){
-    if(!isMobile()) return;
-    const dash=q('page-dashboard') || document.querySelector('.page.active') || document.body;
-    if(q('v112-mobile-actions')) return;
-
-    const box=document.createElement('div');
-    box.id='v112-mobile-actions';
-    box.className='v112-mobile-actions';
-    box.innerHTML=
-      '<div class="v112-mobile-actions-head">'+
-        '<div class="v112-mobile-actions-title">Hızlı İşlemler</div>'+
-        '<div class="v112-mobile-actions-more">Tümünü Gör ›</div>'+
-      '</div>'+
-      '<div class="v112-mobile-actions-grid">'+
-        ACTIONS.map(a=>'<button class="v112-mobile-action" data-page="'+a.page+'"><span class="i">'+a.icon+'</span><span class="t">'+a.label+'</span></button>').join('')+
-      '</div>';
-
-    const cards=q('stage1-dashboard-cards') || document.querySelector('.v69q-kpi-grid,.cards');
-    const oldQuick=[...document.querySelectorAll('h2,h3,.v69q-title,.st,.section-title,div')]
-      .find(el=>/hızlı işlemler|hizli islemler/i.test(el.textContent||''));
-    if(oldQuick){
-      const parent=oldQuick.closest('.sec,.card,.v69q-panel,.v5-card') || oldQuick.parentElement;
-      if(parent) parent.insertAdjacentElement('afterend',box);
-      else dash.appendChild(box);
-    }else if(cards){
-      cards.insertAdjacentElement('afterend',box);
-    }else{
-      dash.appendChild(box);
-    }
-
-    box.querySelectorAll('.v112-mobile-action').forEach(btn=>{
-      btn.onclick=function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        goPage(btn.dataset.page);
+      // Sayfada gözüken canlı kurları yakala
+      var usdtryEl = document.querySelector('#v5-top-usdtry, #stage1-usdtry');
+      var eurtryEl = document.querySelector('#v5-top-eurtry, #stage1-eurtry');
+      var gbptryEl = document.querySelector('#v5-top-gbptry, #stage1-gbptry');
+      var parse = function(el){
+        if(!el) return null;
+        var s = String(el.textContent||'').replace(/[^\d,.-]/g,'').replace(/\./g,'').replace(',','.');
+        var n = Number(s);
+        return (isFinite(n) && n>0) ? n : null;
       };
-    });
+      var usdtry = parse(usdtryEl);
+      var eurtry = parse(eurtryEl);
+      var gbptry = parse(gbptryEl);
+      if(usdtry){
+        rates.USD = 1;
+        rates.TRY = 1/usdtry;
+        if(eurtry) rates.EUR = eurtry/usdtry;
+        if(gbptry) rates.GBP = gbptry/usdtry;
+      }
+    }catch(e){}
+    return rates;
   }
 
-  function fixCashPosition(){
-    if(!isMobile()) return;
-    const possible=[...document.querySelectorAll('.card,.stage1-card,.v69q-kpi-card,.v5-card,div')]
-      .filter(el=>/cash position|nakit|toplam nakit/i.test(el.textContent||''));
-    possible.forEach(card=>{
-      if(card.dataset.v112CashFixed) return;
-      card.dataset.v112CashFixed='1';
-      card.style.overflow='hidden';
-      card.querySelectorAll('*').forEach(ch=>{
-        const t=(ch.textContent||'').trim();
-        if(/^USD\s*[0-9.,]+/i.test(t) || /^[0-9.,]+\s*USD/i.test(t)){
-          ch.style.fontSize='clamp(17px,5vw,24px)';
-          ch.style.letterSpacing='-0.05em';
-          ch.style.whiteSpace='nowrap';
-          ch.style.overflow='hidden';
-          ch.style.textOverflow='ellipsis';
-          ch.title=t;
+  function computeCashTotals(){
+    if(typeof DB === 'undefined') return null;
+    return Promise.resolve(DB.get('bank')).then(function(bankArr){
+      bankArr = (bankArr||[]).filter(function(b){return !b._deleted;});
+
+      // V11.1'de eklenen finance_bank kayıtlarını da dahil et
+      return Promise.resolve(DB.get('finance_bank')).then(function(fb){
+        fb = (fb||[]).filter(function(b){return !b._deleted;});
+        var all = bankArr.concat(fb);
+
+        var byCur = { USD:0, EUR:0, GBP:0, TRY:0, OTHER:0 };
+        all.forEach(function(b){
+          var amt = Number(b.balance || b.amount || b.tutar || 0);
+          if(!isFinite(amt)) return;
+          var cur = String(b.currency || b.cur || 'USD').toUpperCase();
+          if(cur === 'TL') cur = 'TRY';
+          if(byCur.hasOwnProperty(cur)) byCur[cur] += amt;
+          else byCur.OTHER += amt;
+        });
+
+        var rates = getFxRates();
+        var totUsd = byCur.USD
+                   + byCur.EUR * (rates.EUR || 1.07)
+                   + byCur.GBP * (rates.GBP || 1.27)
+                   + byCur.TRY * (rates.TRY || 0.029)
+                   + byCur.OTHER;
+        var usdtry = rates.USD && rates.TRY ? (1/rates.TRY) : 35;
+        var totTry = totUsd * usdtry;
+
+        return { totUsd: totUsd, totTry: totTry, byCur: byCur, rates: rates };
+      }).catch(function(){
+        // finance_bank yoksa sadece bank ile devam
+        var byCur = { USD:0, EUR:0, GBP:0, TRY:0, OTHER:0 };
+        bankArr.forEach(function(b){
+          var amt = Number(b.balance || b.amount || b.tutar || 0);
+          if(!isFinite(amt)) return;
+          var cur = String(b.currency || b.cur || 'USD').toUpperCase();
+          if(cur === 'TL') cur = 'TRY';
+          if(byCur.hasOwnProperty(cur)) byCur[cur] += amt;
+          else byCur.OTHER += amt;
+        });
+        var rates = getFxRates();
+        var totUsd = byCur.USD + byCur.EUR*(rates.EUR||1.07) + byCur.GBP*(rates.GBP||1.27) + byCur.TRY*(rates.TRY||0.029) + byCur.OTHER;
+        var usdtry = rates.USD && rates.TRY ? (1/rates.TRY) : 35;
+        return { totUsd: totUsd, totTry: totUsd*usdtry, byCur: byCur, rates: rates };
+      });
+    }).catch(function(){ return null; });
+  }
+
+  function refreshCashCard(){
+    var card = document.getElementById('stage1-cash-card');
+    if(!card) return;
+    var p = computeCashTotals();
+    if(!p || !p.then) return;
+    p.then(function(t){
+      if(!t) return;
+      var fmt = function(n){return Math.round(n||0).toLocaleString('tr-TR');};
+      // USD ve TRY değerlerini güncelle
+      var divs = card.querySelectorAll('div');
+      divs.forEach(function(d){
+        var txt = (d.textContent||'').trim();
+        // USD pattern: $X.XXX.XXX
+        if(/^\$[\d.,]+$/.test(txt) || /^\$0$/.test(txt)){
+          d.textContent = '$' + fmt(t.totUsd);
+        }
+        // TRY pattern: ₺X.XXX.XXX
+        else if(/^₺[\d.,]+$/.test(txt) || /^₺0$/.test(txt)){
+          d.textContent = '₺' + fmt(t.totTry);
         }
       });
-    });
-
-    const cashEls=[...document.querySelectorAll('*')].filter(el=>{
-      const t=(el.textContent||'').trim();
-      return /^USD\s*\d[\d.,]*$/i.test(t) && /5[.,]842[.,]310/.test(t);
-    });
-    cashEls.forEach(el=>{
-      el.textContent='USD 5.842.310';
-      el.style.fontSize='clamp(17px,5vw,24px)';
-      el.style.whiteSpace='nowrap';
-      el.style.overflow='hidden';
-      el.style.textOverflow='ellipsis';
-    });
+      // Detay tooltip ekle (hangi para biriminde ne var)
+      var detail = 'USD: ' + fmt(t.byCur.USD);
+      if(t.byCur.EUR) detail += ' • EUR: ' + fmt(t.byCur.EUR);
+      if(t.byCur.GBP) detail += ' • GBP: ' + fmt(t.byCur.GBP);
+      if(t.byCur.TRY) detail += ' • TRY: ' + fmt(t.byCur.TRY);
+      card.title = detail;
+    }).catch(function(){});
   }
 
-  function hideDuplicateOldQuickIfNeeded(){
-    if(!isMobile()) return;
-    const mine=q('v112-mobile-actions');
-    if(!mine) return;
-    const candidates=[...document.querySelectorAll('.quick-actions,.v69q-quick-actions,.mobile-quick-actions,.dash-quick,.quick-grid')]
-      .filter(el=>!el.contains(mine) && /yeni sipariş|teklif|navlun|fatura/i.test(el.textContent||''));
-    candidates.forEach(el=>{
-      el.style.display='none';
-    });
-  }
-
-  function fixMobilePageFit(){
-    if(!isMobile()) return;
-    document.documentElement.style.overflowX='hidden';
-    document.body.style.overflowX='hidden';
-    document.querySelectorAll('.page.active,.page,.content,.main').forEach(el=>{
-      el.style.maxWidth='100%';
-      el.style.overflowX='hidden';
-      el.style.boxSizing='border-box';
-    });
-  }
-
+  // ===== 3. INIT + GÖZLEM =====
   function init(){
-    fixMobilePageFit();
-    ensureMobileActions();
-    fixCashPosition();
-    hideDuplicateOldQuickIfNeeded();
+    // Mobile menü drawer hazır olunca eksikleri ekle
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      if(expandMobileMenu() || tries > 30) clearInterval(iv);
+    }, 500);
+
+    // Cash card hazır olunca düzelt + 5 sn'de bir refresh
+    setTimeout(refreshCashCard, 2500);
+    setTimeout(refreshCashCard, 4500);
+    setInterval(refreshCashCard, 5000);
+
+    // DOM mutation - drawer veya cash card sonradan eklenirse yakala
+    if(window.MutationObserver){
+      var pending = false;
+      var obs = new MutationObserver(function(){
+        if(pending) return;
+        pending = true;
+        setTimeout(function(){
+          pending = false;
+          expandMobileMenu();
+          refreshCashCard();
+        }, 800);
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+    }
   }
 
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
-  else init();
-
-  setTimeout(init,700);
-  setTimeout(init,1800);
-  setTimeout(init,3600);
-  setInterval(init,5000);
-  window.addEventListener('resize',init);
-
-  const oldP=window.P;
-  if(typeof oldP==='function' && !oldP._v112Wrapped){
-    const wrapped=function(id){
-      const r=oldP.apply(this,arguments);
-      setTimeout(init,160);
-      setTimeout(init,700);
-      return r;
-    };
-    wrapped._v112Wrapped=true;
-    window.P=wrapped;
-    window.showPage=wrapped;
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();
 </script>

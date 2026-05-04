@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-son6-v106-stable-mcu3",
-  "version": "10.6.0",
+  "name": "aluminyumpro-son6-v107-mcu3-only-no-lb",
+  "version": "10.7.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

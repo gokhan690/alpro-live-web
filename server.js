@@ -156,7 +156,7 @@ function numberCandidates(cells){return cells.map((cell,idx)=>({cell,idx,n:toNum
 function pickPlausible(cells, metal){
   const nums=numberCandidates(cells).filter(x=>{const c=x.cell.toLowerCase(); if(/\d{1,2}\/\d{1,2}/.test(c))return false; if(/%/.test(c))return false; return true;});
   if(metal==='aluminium'||metal==='zinc'){const ton=nums.find(x=>x.n>=1000&&x.n<=8000); if(ton)return {price:ton.n,rawPrice:ton.n,rawUnit:'USD/t',note:'Investing metals table'};}
-  if(metal==='copper'){const ton=nums.find(x=>x.n>=1000&&x.n<=30000); if(ton)return {price:ton.n,rawPrice:ton.n,rawUnit:'USD/t',note:'Investing metals table'}; const lb=nums.find(x=>x.n>=1&&x.n<=20); if(lb)return {price:lb.n*LB_PER_METRIC_TON,rawPrice:lb.n,rawUnit:'USD/lb',note:'Copper converted from USD/lb to USD/t'};}
+  if(metal==='copper'){const ton=nums.find(x=>x.n>=1000&&x.n<=30000); if(ton)return {price:ton.n,rawPrice:ton.n,rawUnit:'USD/t',note:'Investing metals table'}; const lb=nums.find(x=>x.n>=1&&x.n<=20); if(lb)return {price:lb.n*LB_PER_METRIC_TON,rawPrice:lb.n,rawUnit:'USD/lb',note:'Copper MCU3 direct only'};}
   const first=nums[0]; return first?{price:first.n,rawPrice:first.n,rawUnit:'unknown',note:'Fallback parse - kontrol et'}:{price:null,rawPrice:null,rawUnit:'unknown',note:'Not parsed'};
 }
 function parseCommodity(html,names,metal){
@@ -221,6 +221,34 @@ async function getMetals(){
     data.copperPrimarySource='MCU3 failed, fallback used';
     data.copperPrimaryError=e.message;
   }
+
+
+  // son6_v107_copper_no_lb_sanitize: USD/lb conversion tamamen kapalı. Copper sadece MCU3 olsun.
+  try{
+    const c = data.metals && data.metals.copper ? data.metals.copper : data.copper;
+    const isMCU3 = c && String(c.symbol || '').toUpperCase() === 'MCU3';
+    const badLb = c && (
+      String(c.rawUnit || '').toLowerCase().includes('lb') ||
+      String(c.note || '').toLowerCase().includes('converted from usd/lb') ||
+      String(c.note || '').toLowerCase().includes('usd/lb')
+    );
+    if(c && !isMCU3 && badLb){
+      const cleanCopper = {
+        symbol:'MCU3',
+        name:'London Copper / Bakır Vadeli İşlemleri',
+        unit:'USD/t',
+        price:null,
+        rawPrice:null,
+        rawUnit:'MCU3 only',
+        note:'Copper USD/lb dönüşümü kapalı. MCU3 fiyatı alınamadı.',
+        source:'MCU3 failed',
+        url: typeof MCU3_COPPER_URL !== 'undefined' ? MCU3_COPPER_URL : ''
+      };
+      if(data.metals) data.metals.copper = cleanCopper;
+      else data.copper = cleanCopper;
+      data.copperPrimarySource='MCU3 only - no USD/lb conversion';
+    }
+  }catch(e){}
 
 return data;
 }

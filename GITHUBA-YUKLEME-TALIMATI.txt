@@ -1,12 +1,12 @@
-AluminyumPro Son6 V10.6 Stable MCU3
+AluminyumPro Son6 V10.7 MCU3 Only No USD/lb
 
-Bu klasördeki dosyaları GitHub repo ana dizinine koy.
+GitHub repo ana dizinine bu klasördeki dosyaları koy.
 
 Özet:
-- Son 6 ana stabil paket baz alındı.
-- Eski sürüm yazıları temizlendi.
-- /api/mcu3-copper net eklendi.
-- /api/metals copper önce MCU3 dener, olmazsa eski fallback kullanır.
+- Son6 V10.6 baz alındı.
+- Copper USD/lb -> USD/t dönüşümü kapatıldı.
+- Copper sadece MCU3 / London Copper kaynağından gelir.
+- MCU3 çalışmazsa copper için eski USD/lb fallback kullanılmaz.
 
 Commit mesajı:
-Update Son6 V10.6 Stable MCU3
+Update Son6 V10.7 MCU3 Only No USD-lb

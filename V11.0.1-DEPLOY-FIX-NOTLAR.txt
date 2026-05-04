@@ -1,0 +1,17 @@
+AluminyumPro Son6 V11.0.1 Server History Deploy Fix
+
+Bu fix:
+1) DATA_DIR undefined hatasını önler.
+2) SUPABASE_SERVICE_ROLE_KEY farklı isimdeyse güvenli kontrol eder.
+3) metal_price_history için Supabase REST çağrılarını daha güvenli hale getirir.
+4) /api/metals-history/snapshot route sıralamasını düzeltir.
+5) server.js syntax check temiz.
+
+Render test:
+- /api/health
+- /api/metals
+- /api/metals-history/snapshot
+- /api/metals-history
+
+Commit:
+Fix V11.0 server history deploy

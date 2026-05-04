@@ -1,0 +1,12 @@
+AluminyumPro Son6 V11.3 Mobile Real Fix
+
+- v69q gerçek mobil dashboard scripti doğrudan düzeltildi.
+- v69r mobile shell dashboard açıkken gizlenir.
+- Cash Position kartı daha okunur yapıldı.
+- KPI unit satırı alt satıra alındı.
+- Mobil hızlı işlemler 12 modüle çıkarıldı.
+- Hatırlatıcılar, Gümrük Hesap, Faturalar, Stok, Sabah Raporu, Hedging, Analitik, Gelir Gider eklendi.
+- Merhaba alanı localStorage isminden okunur.
+
+Commit:
+Update Son6 V11.3 Real Mobile Dashboard Fix

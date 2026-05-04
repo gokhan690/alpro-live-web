@@ -1,0 +1,11 @@
+AluminyumPro Son6 V10.8B Chart Click Fix
+
+Bu sürümde:
+1) Grafik tıklamasındaki saçma/çakışmalı davranış düzeltildi.
+2) Eski ve yeni chart click handler çakışmaları bastırıldı.
+3) Grafik tıklayınca artık tek ve düzgün detay modal açılır.
+4) Event bubbling / duplicate click / eski modal açma sorunları azaltıldı.
+5) Mini chart ve v71 detay chart tıklamaları sabitlendi.
+
+Commit:
+Update Son6 V10.8B Chart Click Fix

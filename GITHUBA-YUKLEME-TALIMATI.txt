@@ -1,14 +1,12 @@
-AluminyumPro Son6 V10.8 Chart Polish
+AluminyumPro Son6 V10.7 MCU3 Only No USD/lb
 
-Bu klasördeki dosyaları GitHub repo ana dizinine koy.
+GitHub repo ana dizinine bu klasördeki dosyaları koy.
 
 Özet:
-- Mini grafikler düzeltildi
-- Tüm grafikler daha detaylı oldu
-- Tıklayınca büyük detay grafik açılır
-- Hover ile fiyat / tarih görünür
-- 1G / 7G / 30G / 90G / Tümü seçimleri var
-- Mümkün olmayan durumda çekilen fiyat geçmişi kullanılır
+- Son6 V10.6 baz alındı.
+- Copper USD/lb -> USD/t dönüşümü kapatıldı.
+- Copper sadece MCU3 / London Copper kaynağından gelir.
+- MCU3 çalışmazsa copper için eski USD/lb fallback kullanılmaz.
 
 Commit mesajı:
-Update Son6 V10.8 Chart Polish
+Update Son6 V10.7 MCU3 Only No USD-lb

@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-son6-v108-chart-polish",
-  "version": "10.8.0",
+  "name": "aluminyumpro-son6-v107-mcu3-only-no-lb",
+  "version": "10.7.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

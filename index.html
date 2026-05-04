@@ -4574,200 +4574,6 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 .son6-v106-hide-old-label{display:none!important}
 </style>
 
-
-<style id="v108-chart-polish-css">
-/* ===== V10.8 CHART POLISH ===== */
-.v108-chart-ready{
-  cursor:pointer;
-  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.v108-chart-ready:hover{
-  transform:translateY(-1px);
-  box-shadow:0 10px 24px rgba(0,0,0,.18);
-}
-.v5-spark,
-.v71-detail-chart{
-  overflow:visible;
-}
-.v108-chart-subline{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  align-items:center;
-  margin-top:8px;
-  font-size:10px;
-  color:#95a6b8;
-}
-.v108-chart-subline .pos{color:#2ecc71;font-weight:800}
-.v108-chart-subline .neg{color:#ff7675;font-weight:800}
-.v108-chart-subline .mid{color:#d7a23a;font-weight:800}
-.v108-chip-row{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-  margin-top:8px;
-}
-.v108-chip{
-  padding:4px 8px;
-  border-radius:999px;
-  border:1px solid rgba(215,162,58,.22);
-  background:rgba(215,162,58,.08);
-  color:#d7a23a;
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:.04em;
-}
-.v108-chart-modal{
-  position:fixed;
-  inset:0;
-  display:none;
-  z-index:10050;
-  background:rgba(3,6,12,.78);
-  backdrop-filter:blur(8px);
-  align-items:center;
-  justify-content:center;
-  padding:16px;
-}
-.v108-chart-modal.show{display:flex}
-.v108-chart-panel{
-  width:min(980px,100%);
-  max-height:min(92vh,920px);
-  overflow:hidden;
-  border-radius:22px;
-  background:
-    radial-gradient(circle at 8% 0%,rgba(215,162,58,.12),transparent 34%),
-    linear-gradient(180deg,rgba(12,16,24,.98),rgba(7,10,16,.98));
-  border:1px solid rgba(215,162,58,.2);
-  box-shadow:0 32px 90px rgba(0,0,0,.5);
-  color:#f3f6fa;
-}
-.v108-chart-head{
-  padding:18px 20px 14px;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  align-items:flex-start;
-}
-.v108-chart-title{
-  font-size:20px;
-  font-weight:900;
-  color:#fff;
-}
-.v108-chart-note{
-  font-size:11px;
-  color:#8ea2b6;
-  margin-top:4px;
-}
-.v108-chart-close{
-  min-width:36px;
-  height:36px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.1);
-  background:rgba(255,255,255,.04);
-  color:#fff;
-  cursor:pointer;
-}
-.v108-chart-body{padding:16px 20px 20px}
-.v108-chart-toolbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:14px;
-}
-.v108-range-buttons{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-.v108-range-buttons button{
-  padding:7px 12px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.04);
-  color:#e8edf3;
-  cursor:pointer;
-  font-size:11px;
-  font-weight:800;
-}
-.v108-range-buttons button.active{
-  background:linear-gradient(135deg,rgba(215,162,58,.92),rgba(236,189,79,.86));
-  color:#051019;
-  border-color:rgba(215,162,58,.4);
-}
-.v108-kpis{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:10px;
-  margin-bottom:14px;
-}
-.v108-kpi{
-  padding:12px;
-  border-radius:16px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.08);
-}
-.v108-kpi .l{
-  font-size:10px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:#8ea2b6;
-  font-weight:900;
-}
-.v108-kpi .v{
-  margin-top:6px;
-  font-size:18px;
-  color:#fff;
-  font-weight:900;
-}
-.v108-chart-stage{
-  position:relative;
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,.08);
-  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01));
-  overflow:hidden;
-}
-#v108-chart-svg{
-  display:block;
-  width:100%;
-  height:420px;
-}
-#v108-chart-tooltip{
-  position:absolute;
-  pointer-events:none;
-  min-width:120px;
-  padding:8px 10px;
-  border-radius:12px;
-  background:rgba(4,7,12,.95);
-  border:1px solid rgba(255,255,255,.12);
-  color:#f5f8fc;
-  font-size:11px;
-  box-shadow:0 18px 38px rgba(0,0,0,.35);
-  display:none;
-}
-.v108-chart-foot{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:12px;
-  color:#8ea2b6;
-  font-size:11px;
-}
-@media(max-width:860px){
-  .v108-kpis{grid-template-columns:1fr 1fr}
-  #v108-chart-svg{height:320px}
-}
-@media(max-width:560px){
-  .v108-chart-head{padding:14px}
-  .v108-chart-body{padding:12px}
-  .v108-kpis{grid-template-columns:1fr 1fr}
-  #v108-chart-svg{height:260px}
-}
-</style>
-
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -12906,411 +12712,252 @@ window.openTrash = function(type) {
 })();
 </script>
 
-
-<script id="v108-chart-polish-js">
+<script>
+/* ============================================================
+   V10.8 - UNIFIED SPARKLINE (Tek tip, gerçek fiyatlardan)
+   Mevcut tüm sparkline sistemlerini (V69q, V71, V5, hardcoded)
+   tek bir görsel stille override eder.
+   Veri kaynağı: localStorage.v5_metal_history (300 nokta tutar)
+   Simülasyon YOK - gerçek fiyat yoksa "Veri toplanıyor" gösterir.
+   ============================================================ */
 (function(){
-  const COLORS={alu:'#d7a23a',cop:'#ff9f43',zin:'#4fd1a5',fx:'#54a0ff'};
-  const META={
-    alu:{name:'Alüminyum', unit:'USD/t', color:COLORS.alu, source:'Canlı metal fiyat geçmişi'},
-    cop:{name:'Bakır (MCU3)', unit:'USD/t', color:COLORS.cop, source:'MCU3 / canlı fiyat geçmişi'},
-    zin:{name:'Çinko', unit:'USD/t', color:COLORS.zin, source:'Canlı metal fiyat geçmişi'},
-    fx:{name:'USD/TRY', unit:'TRY', color:COLORS.fx, source:'Canlı kur geçmişi'}
+  'use strict';
+
+  // Metal renkleri - tek tip palette
+  var COLORS = {
+    aluminium: '#e8a020',  // altın sarısı
+    copper:    '#d97706',  // bakır turuncusu
+    zinc:      '#88a4b8',  // gümüşi mavi
+    fx:        '#3aa6f4'   // USD/TRY mavisi
   };
-  const TARGETS=[
-    {id:'v5-chart-alu', key:'alu'},
-    {id:'v5-chart-cop', key:'cop'},
-    {id:'v5-chart-zin', key:'zin'},
-    {id:'v5-live-chart-alu', key:'alu'},
-    {id:'v5-live-chart-cop', key:'cop'},
-    {id:'v5-live-chart-zin', key:'zin'},
-    {id:'v71-chart-0', key:'alu'},
-    {id:'v71-chart-1', key:'cop'},
-    {id:'v71-chart-2', key:'zin'},
-    {id:'v71-chart-3', key:'fx'}
-  ];
-  let modalState={key:'alu', range:'7D', series:[]};
 
-  function safeJSON(v,d){try{return JSON.parse(v)}catch(e){return d}}
-  function trNum(n,d){
-    if(!isFinite(n)) return '--';
-    try{return Number(n).toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d})}
-    catch(e){return String(n)}
+  // localStorage'dan metal fiyat geçmişini çek (eskiden yeniye sıralı)
+  function getMetalHistory(metalKey) {
+    try {
+      var raw = localStorage.getItem('v5_metal_history');
+      if(!raw) return [];
+      var hist = JSON.parse(raw);
+      if(!Array.isArray(hist) || !hist.length) return [];
+      // hist en yeniden eskiye sıralı, son 60 noktayı tersine çevir
+      return hist.slice(0, 60).reverse().map(function(h){
+        var m = h && h.metals;
+        if(!m) return null;
+        var obj = m[metalKey];
+        return (obj && obj.price && Number(obj.price) > 0) ? Number(obj.price) : null;
+      }).filter(function(p){ return p !== null; });
+    } catch(e){ return []; }
   }
-  function trDateShort(ts){
-    try{
-      const dt=new Date(ts);
-      return dt.toLocaleDateString('tr-TR',{day:'2-digit',month:'2-digit'})+' '+dt.toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
-    }catch(e){return '--'}
+
+  // FX history için ayrı kayıt - v5FetchFx çağrıldığında push ederiz
+  function getFxHistory() {
+    try {
+      var raw = localStorage.getItem('v5_fx_history');
+      if(!raw) return [];
+      var arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr.filter(function(p){ return Number(p) > 0; }).map(Number) : [];
+    } catch(e){ return []; }
   }
-  function getHist(){
-    const raw=safeJSON(localStorage.getItem('v5_metal_history')||'[]',[]);
-    return Array.isArray(raw)?raw:[];
-  }
-  function getFxHist(){
-    const raw=safeJSON(localStorage.getItem('v108_fx_history')||'[]',[]);
-    return Array.isArray(raw)?raw:[];
-  }
-  function saveFxPoint(v){
-    if(!isFinite(v) || v<=0) return;
-    let arr=getFxHist();
-    const now=new Date().toISOString();
-    const last=arr[0];
-    if(last && Math.abs(new Date(last.at)-new Date(now))<120000){
-      last.value=v;
-    }else{
-      arr.unshift({at:now,value:v});
-    }
-    localStorage.setItem('v108_fx_history',JSON.stringify(arr.slice(0,500)));
-  }
-  function getCurrentFx(){
-    const ids=['v5-top-usdtry','stage1-usdtry'];
-    for(const id of ids){
-      const el=document.getElementById(id);
-      if(el){
-        const n=parseTRFromText(el.textContent||'');
-        if(isFinite(n)&&n>0) return n;
+
+  function pushFxHistory(rate) {
+    if(!rate || !isFinite(rate) || rate <= 0) return;
+    try {
+      var raw = localStorage.getItem('v5_fx_history') || '[]';
+      var arr = JSON.parse(raw);
+      if(!Array.isArray(arr)) arr = [];
+      // Aynı değer üst üste push edilmesin
+      if(arr.length === 0 || arr[arr.length-1] !== rate) {
+        arr.push(rate);
+        if(arr.length > 60) arr = arr.slice(-60);
+        localStorage.setItem('v5_fx_history', JSON.stringify(arr));
       }
+    } catch(e){}
+  }
+
+  // SVG'nin hangi metale ait olduğunu tespit et
+  function detectMetal(svgEl) {
+    var idText = (svgEl.id || '').toLowerCase();
+    if(/alu/.test(idText)) return 'aluminium';
+    if(/cop|bak/.test(idText)) return 'copper';
+    if(/zin|cin/.test(idText)) return 'zinc';
+    if(/fx|usd|try|kur|doviz/.test(idText)) return 'fx';
+
+    // Parent kart üzerinden tespit
+    var card = svgEl.closest('.v5-chart-card, .v69q-kpi-card, .stage1-card, .card, .v5-card, [class*="kpi"]');
+    if(!card) card = svgEl.parentElement;
+    var maxDepth = 5;
+    while(card && maxDepth-- > 0) {
+      var txt = (card.textContent || '').toLowerCase();
+      if(/alüminyum|aluminium|aluminum/.test(txt)) return 'aluminium';
+      if(/bakır|bakir|copper/.test(txt)) return 'copper';
+      if(/çinko|cinko|zinc/.test(txt)) return 'zinc';
+      if(/usd\/?try|usdtry|döviz|doviz|kur/.test(txt)) return 'fx';
+      card = card.parentElement;
     }
-    try{
-      const last=safeJSON(localStorage.getItem('v5_usdtry_last')||'null',null);
-      if(last && isFinite(Number(last.usdtry))) return Number(last.usdtry);
-    }catch(e){}
     return null;
   }
-  function parseTRFromText(t){
-    if(!t) return NaN;
-    let s=String(t).replace(/[^\d,.-]/g,'').trim();
-    if(!s) return NaN;
-    if(s.includes('.') && s.includes(',')) s=s.replace(/\./g,'').replace(',', '.');
-    else if(s.includes(',') && !s.includes('.')) s=s.replace(',', '.');
-    return Number(s);
-  }
-  function normalizeMetalHistory(){
-    const arr=getHist().slice().reverse();
-    return arr.map(item=>{
-      const metals=item&&item.metals?item.metals:{};
-      return {
-        at:item.at || item.fetchedAt || new Date().toISOString(),
-        alu:Number(metals.aluminium && metals.aluminium.price),
-        cop:Number(metals.copper && metals.copper.price),
-        zin:Number(metals.zinc && metals.zinc.price)
-      };
-    }).filter(x=>x.at);
-  }
-  function getSeries(key){
-    if(key==='fx'){
-      return getFxHist().slice().reverse().map(x=>({t:new Date(x.at).getTime(), v:Number(x.value)})).filter(x=>isFinite(x.v));
-    }
-    const hist=normalizeMetalHistory();
-    let series=hist.map(x=>({t:new Date(x.at).getTime(), v:Number(x[key])})).filter(x=>isFinite(x.v) && x.v>0);
-    if(series.length<2){
-      const current=getFallbackCurrent(key);
-      if(isFinite(current)&&current>0){
-        const now=Date.now();
-        series=[
-          {t:now-3600*1000*12,v:current*0.992},
-          {t:now-3600*1000*8,v:current*1.005},
-          {t:now-3600*1000*4,v:current*0.998},
-          {t:now,v:current}
-        ];
-      }
-    }
-    return series;
-  }
-  function getFallbackCurrent(key){
-    const idMap={alu:['stage1-alu','v5-top-alu'],cop:['stage1-cop','v5-top-cop'],zin:['stage1-zin','v5-top-zin']};
-    if(key==='fx'){
-      return getCurrentFx();
-    }
-    for(const id of (idMap[key]||[])){
-      const el=document.getElementById(id);
-      if(el){
-        const n=parseTRFromText(el.textContent||'');
-        if(isFinite(n)&&n>0) return n;
-      }
-    }
-    try{
-      const last=safeJSON(localStorage.getItem('v5_last_metals')||'null',null);
-      if(last && last.metals){
-        if(key==='alu') return Number(last.metals.aluminium && last.metals.aluminium.price);
-        if(key==='cop') return Number(last.metals.copper && last.metals.copper.price);
-        if(key==='zin') return Number(last.metals.zinc && last.metals.zinc.price);
-      }
-    }catch(e){}
-    return null;
-  }
-  function filterSeries(series, range){
-    if(!series.length) return series;
-    const end=series[series.length-1].t || Date.now();
-    const map={ '1D':24*3600e3, '7D':7*24*3600e3, '30D':30*24*3600e3, '90D':90*24*3600e3, 'ALL':Infinity };
-    const dur=map[range] || map['7D'];
-    const out=series.filter(p=>(end-p.t)<=dur);
-    return out.length>=2 ? out : series.slice(-Math.max(2,Math.min(30,series.length)));
-  }
-  function calcStats(series){
-    const vals=series.map(x=>x.v).filter(v=>isFinite(v));
-    if(!vals.length) return {};
-    const first=vals[0], last=vals[vals.length-1], min=Math.min(...vals), max=Math.max(...vals);
-    const change=last-first;
-    const pct=first?change/first*100:0;
-    return {first,last,min,max,change,pct,count:vals.length};
-  }
-  function makePath(series,w,h,pad){
-    const vals=series.map(s=>s.v);
-    const min=Math.min(...vals), max=Math.max(...vals), range=(max-min)||1;
-    const pts=series.map((pt,i)=>{
-      const x=pad + (series.length===1?0:i*(w-2*pad)/(series.length-1));
-      const y=h-pad-((pt.v-min)/range)*(h-2*pad);
-      return {x,y,v:pt.v,t:pt.t};
-    });
-    return pts;
-  }
-  function miniSvgMarkup(key, series, width, height){
-    const meta=META[key], pad=12;
-    if(series.length<2){
-      return '<text x="12" y="'+(height/2)+'" fill="#7f94a8" font-size="11">Grafik için daha fazla canlı veri bekleniyor</text>';
-    }
-    const pts=makePath(series,width,height,pad);
-    const stats=calcStats(series);
-    const points=pts.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' ');
-    const area=pts.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' ');
-    let grid='';
-    for(let i=1;i<=3;i++){
-      const y=(height/4)*i;
-      grid += '<line x1="'+pad+'" y1="'+y+'" x2="'+(width-pad)+'" y2="'+y+'" stroke="rgba(255,255,255,.06)" stroke-width="1"/>';
-    }
-    return ''
-      + '<defs><linearGradient id="v108g-'+key+'" x1="0" x2="0" y1="0" y2="1">'
-      + '<stop offset="0%" stop-color="'+meta.color+'" stop-opacity=".34"/>'
-      + '<stop offset="100%" stop-color="'+meta.color+'" stop-opacity="0"/>'
-      + '</linearGradient></defs>'
-      + grid
-      + '<polygon points="'+pad+','+(height-pad)+' '+area+' '+(width-pad)+','+(height-pad)+'" fill="url(#v108g-'+key+')"></polygon>'
-      + '<polyline points="'+points+'" fill="none" stroke="'+meta.color+'" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></polyline>'
-      + '<circle cx="'+pts[pts.length-1].x.toFixed(1)+'" cy="'+pts[pts.length-1].y.toFixed(1)+'" r="4.2" fill="'+meta.color+'"></circle>'
-      + '<circle cx="'+pts[pts.length-1].x.toFixed(1)+'" cy="'+pts[pts.length-1].y.toFixed(1)+'" r="9" fill="'+meta.color+'" opacity=".16"></circle>'
-      + '<text x="'+pad+'" y="16" fill="#8ea2b6" font-size="10">Min '+trNum(stats.min,2)+' • Max '+trNum(stats.max,2)+'</text>'
-      + '<text x="'+(width-pad)+'" y="16" fill="'+meta.color+'" font-size="10" text-anchor="end">Son '+trNum(stats.last,2)+'</text>';
-  }
-  function updateChartCardMeta(svg,key,series){
-    const host=svg.closest('.v5-chart-card') || svg.parentElement;
-    if(!host) return;
-    let meta=host.querySelector('.v108-chart-subline');
-    if(!meta){
-      meta=document.createElement('div');
-      meta.className='v108-chart-subline';
-      svg.insertAdjacentElement('afterend', meta);
-    }
-    const stats=calcStats(series);
-    const cls=(stats.change||0)>=0?'pos':'neg';
-    meta.innerHTML='<span>Veri: '+(stats.count||0)+' nokta</span>'
-      + '<span class="'+cls+'">'+((stats.change||0)>=0?'+':'')+trNum(stats.change||0,2)+' ('+((stats.change||0)>=0?'+':'')+trNum(stats.pct||0,2)+'%)</span>'
-      + '<span>Son: '+trNum(stats.last||0,2)+'</span>';
 
-    let chips=host.querySelector('.v108-chip-row');
-    if(!chips){
-      chips=document.createElement('div');
-      chips.className='v108-chip-row';
-      meta.insertAdjacentElement('afterend', chips);
-    }
-    chips.innerHTML='<span class="v108-chip">Detay için tıkla</span><span class="v108-chip">'+(META[key].source)+'</span>';
-  }
-  function renderMiniCharts(){
-    const fx=getCurrentFx();
-    if(isFinite(fx)&&fx>0) saveFxPoint(fx);
+  // Tek tip sparkline çiz
+  function drawUnified(svgEl, prices, color) {
+    if(!svgEl) return;
 
-    TARGETS.forEach(target=>{
-      const svg=document.getElementById(target.id);
-      if(!svg) return;
-      const series=filterSeries(getSeries(target.key),'7D');
-      const viewBox=(svg.getAttribute('viewBox')||'0 0 320 110').split(/\s+/).map(Number);
-      const width=viewBox[2]||320, height=viewBox[3]||110;
-      svg.innerHTML=miniSvgMarkup(target.key, series, width, height);
-      svg.classList.add('v108-chart-ready');
-      svg.dataset.chartKey=target.key;
-      svg.onclick=function(){ openModal(target.key); };
-      updateChartCardMeta(svg,target.key,series);
-    });
-  }
+    // viewBox boyutlarını al (yoksa default)
+    var vbAttr = svgEl.getAttribute('viewBox') || '0 0 300 80';
+    var vb = vbAttr.split(/\s+/).map(Number);
+    var W = vb[2] || 300, H = vb[3] || 80;
 
-  function ensureModal(){
-    if(document.getElementById('v108-chart-modal')) return;
-    const div=document.createElement('div');
-    div.id='v108-chart-modal';
-    div.className='v108-chart-modal';
-    div.innerHTML=''
-      + '<div class="v108-chart-panel">'
-      + '  <div class="v108-chart-head">'
-      + '    <div><div class="v108-chart-title" id="v108-chart-title">Grafik</div><div class="v108-chart-note" id="v108-chart-note">Kaynak</div></div>'
-      + '    <button class="v108-chart-close" id="v108-chart-close">✕</button>'
-      + '  </div>'
-      + '  <div class="v108-chart-body">'
-      + '    <div class="v108-chart-toolbar">'
-      + '      <div class="v108-range-buttons" id="v108-range-buttons">'
-      + '        <button data-range="1D">1 Gün</button>'
-      + '        <button data-range="7D" class="active">7 Gün</button>'
-      + '        <button data-range="30D">30 Gün</button>'
-      + '        <button data-range="90D">90 Gün</button>'
-      + '        <button data-range="ALL">Tümü</button>'
-      + '      </div>'
-      + '      <div class="v108-chip-row"><span class="v108-chip" id="v108-source-chip">Kaynak</span><span class="v108-chip">Hover ile fiyat gör</span></div>'
-      + '    </div>'
-      + '    <div class="v108-kpis">'
-      + '      <div class="v108-kpi"><div class="l">Son</div><div class="v" id="v108-kpi-last">--</div></div>'
-      + '      <div class="v108-kpi"><div class="l">Değişim</div><div class="v" id="v108-kpi-change">--</div></div>'
-      + '      <div class="v108-kpi"><div class="l">En Düşük</div><div class="v" id="v108-kpi-min">--</div></div>'
-      + '      <div class="v108-kpi"><div class="l">En Yüksek</div><div class="v" id="v108-kpi-max">--</div></div>'
-      + '    </div>'
-      + '    <div class="v108-chart-stage">'
-      + '      <svg id="v108-chart-svg" viewBox="0 0 920 420" preserveAspectRatio="none"></svg>'
-      + '      <div id="v108-chart-tooltip"></div>'
-      + '    </div>'
-      + '    <div class="v108-chart-foot"><span id="v108-chart-foot-left">Veri geçmişi</span><span id="v108-chart-foot-right">Mini grafiklerden açıldı</span></div>'
-      + '  </div>'
-      + '</div>';
-    document.body.appendChild(div);
-    document.getElementById('v108-chart-close').onclick=closeModal;
-    div.addEventListener('click', function(e){ if(e.target===div) closeModal(); });
-    document.querySelectorAll('#v108-range-buttons button').forEach(btn=>{
-      btn.onclick=function(){
-        modalState.range=this.dataset.range;
-        document.querySelectorAll('#v108-range-buttons button').forEach(b=>b.classList.toggle('active', b===btn));
-        renderModalChart();
-      };
-    });
-  }
-  function openModal(key){
-    ensureModal();
-    modalState.key=key;
-    modalState.range='7D';
-    document.querySelectorAll('#v108-range-buttons button').forEach(b=>b.classList.toggle('active', b.dataset.range==='7D'));
-    document.getElementById('v108-chart-modal').classList.add('show');
-    renderModalChart();
-  }
-  function closeModal(){
-    const modal=document.getElementById('v108-chart-modal');
-    if(modal) modal.classList.remove('show');
-  }
-  function renderModalChart(){
-    const key=modalState.key;
-    const meta=META[key];
-    let series=filterSeries(getSeries(key), modalState.range);
-    modalState.series=series;
-    const svg=document.getElementById('v108-chart-svg');
-    if(!svg) return;
-    document.getElementById('v108-chart-title').textContent=meta.name+' Detaylı Grafik';
-    document.getElementById('v108-chart-note').textContent='Kaynak: '+meta.source+' • Aralık: '+modalState.range;
-    document.getElementById('v108-source-chip').textContent=meta.source;
-
-    const w=920,h=420,pad={l:56,r:18,t:24,b:38};
-    if(series.length<2){
-      svg.innerHTML='<text x="60" y="210" fill="#8ea2b6" font-size="18">Detay grafik için daha fazla veri bekleniyor</text>';
+    // < 2 nokta varsa "Veri toplanıyor" mesajı
+    if(!prices || prices.length < 2) {
+      svgEl.innerHTML = '<text x="50%" y="50%" fill="#5a6a7a" font-size="' +
+        Math.max(9, Math.min(12, H * 0.18)) + '" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,-apple-system,sans-serif">' +
+        (prices && prices.length === 1 ? 'Yeni veri bekleniyor...' : 'Veri toplanıyor...') +
+        '</text>';
+      svgEl.setAttribute('data-alp-unified','pending');
       return;
     }
-    const pts=makePath(series,w,h,{});
-    const vals=series.map(s=>s.v);
-    const min=Math.min(...vals), max=Math.max(...vals), range=(max-min)||1;
-    const mapped=series.map((pt,i)=>{
-      const x=pad.l + (series.length===1?0:i*(w-pad.l-pad.r)/(series.length-1));
-      const y=h-pad.b-((pt.v-min)/range)*(h-pad.t-pad.b);
-      return {x,y,v:pt.v,t:pt.t};
+
+    var pad = Math.max(3, Math.min(8, H * 0.08));
+    var min = Math.min.apply(null, prices);
+    var max = Math.max.apply(null, prices);
+    var range = (max - min) || (Math.abs(min) * 0.001) || 1;
+
+    var pts = prices.map(function(v, i){
+      var x = pad + (i * (W - 2*pad)) / (prices.length - 1);
+      var y = H - pad - ((v - min) * (H - 2*pad)) / range;
+      return [x, y];
     });
-    const line=mapped.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' ');
-    const area=mapped.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' ');
-    let grid='';
-    for(let i=0;i<5;i++){
-      const y=pad.t + i*(h-pad.t-pad.b)/4;
-      const v=max - i*(max-min)/4;
-      grid += '<line x1="'+pad.l+'" y1="'+y.toFixed(1)+'" x2="'+(w-pad.r)+'" y2="'+y.toFixed(1)+'" stroke="rgba(255,255,255,.08)" stroke-width="1"/>';
-      grid += '<text x="'+(pad.l-8)+'" y="'+(y+4).toFixed(1)+'" fill="#8ea2b6" font-size="11" text-anchor="end">'+trNum(v,2)+'</text>';
+
+    var polyPoints = pts.map(function(p){ return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ');
+    var lastX = pts[pts.length-1][0];
+    var lastY = pts[pts.length-1][1];
+
+    // Grid - 3 yatay çizgi
+    var grid = '';
+    var gridCount = H >= 60 ? 3 : 2;
+    for(var g = 1; g <= gridCount; g++){
+      var gy = (g * H) / (gridCount + 1);
+      grid += '<line x1="0" y1="' + gy.toFixed(1) + '" x2="' + W + '" y2="' + gy.toFixed(1) +
+              '" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>';
     }
-    const firstLabel=trDateShort(series[0].t), midLabel=trDateShort(series[Math.floor(series.length/2)].t), lastLabel=trDateShort(series[series.length-1].t);
-    let xAxis=''
-      + '<text x="'+pad.l+'" y="'+(h-12)+'" fill="#8ea2b6" font-size="11">'+firstLabel+'</text>'
-      + '<text x="'+(w/2)+'" y="'+(h-12)+'" fill="#8ea2b6" font-size="11" text-anchor="middle">'+midLabel+'</text>'
-      + '<text x="'+(w-pad.r)+'" y="'+(h-12)+'" fill="#8ea2b6" font-size="11" text-anchor="end">'+lastLabel+'</text>';
 
-    svg.innerHTML=''
-      + '<defs><linearGradient id="v108ModalGrad" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="'+meta.color+'" stop-opacity=".30"/><stop offset="100%" stop-color="'+meta.color+'" stop-opacity="0"/></linearGradient></defs>'
-      + grid
-      + '<polygon points="'+pad.l+','+(h-pad.b)+' '+area+' '+(w-pad.r)+','+(h-pad.b)+'" fill="url(#v108ModalGrad)"></polygon>'
-      + '<polyline points="'+line+'" fill="none" stroke="'+meta.color+'" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></polyline>'
-      + '<circle cx="'+mapped[mapped.length-1].x.toFixed(1)+'" cy="'+mapped[mapped.length-1].y.toFixed(1)+'" r="5" fill="'+meta.color+'"></circle>'
-      + xAxis;
+    // Gradient için benzersiz id
+    var gid = 'alpspk-' + Math.random().toString(36).slice(2, 9);
 
-    const stats=calcStats(series);
-    document.getElementById('v108-kpi-last').textContent=trNum(stats.last,2)+' '+meta.unit;
-    document.getElementById('v108-kpi-change').textContent=((stats.change||0)>=0?'+':'')+trNum(stats.change||0,2)+' / '+((stats.pct||0)>=0?'+':'')+trNum(stats.pct||0,2)+'%';
-    document.getElementById('v108-kpi-change').style.color=(stats.change||0)>=0?'#2ecc71':'#ff7675';
-    document.getElementById('v108-kpi-min').textContent=trNum(stats.min,2);
-    document.getElementById('v108-kpi-max').textContent=trNum(stats.max,2);
-    document.getElementById('v108-chart-foot-left').textContent='Veri: '+stats.count+' nokta • İlk: '+trDateShort(series[0].t)+' • Son: '+trDateShort(series[series.length-1].t);
-    document.getElementById('v108-chart-foot-right').textContent='Kaynak doğrudan geçmiş alınamazsa çekilen fiyat geçmişinden oluşturulur';
+    // Area polygon - alt kısım gradient dolgu
+    var areaPts = pad.toFixed(1) + ',' + H + ' ' + polyPoints + ' ' + (W-pad).toFixed(1) + ',' + H;
 
-    bindHover(svg,mapped,meta);
+    // Glow halkası boyutu - küçük grafiklerde küçült
+    var dotR = H >= 60 ? 3 : 2;
+    var glowR = H >= 60 ? 6 : 4;
+    var strokeW = H >= 60 ? 1.8 : 1.4;
+
+    svgEl.innerHTML =
+      '<defs>' +
+        '<linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0%" stop-color="' + color + '" stop-opacity="0.32"/>' +
+          '<stop offset="100%" stop-color="' + color + '" stop-opacity="0"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      grid +
+      '<polygon points="' + areaPts + '" fill="url(#' + gid + ')"/>' +
+      '<polyline points="' + polyPoints + '" fill="none" stroke="' + color +
+        '" stroke-width="' + strokeW + '" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<circle cx="' + lastX.toFixed(1) + '" cy="' + lastY.toFixed(1) + '" r="' + glowR +
+        '" fill="' + color + '" opacity="0.28"/>' +
+      '<circle cx="' + lastX.toFixed(1) + '" cy="' + lastY.toFixed(1) + '" r="' + dotR +
+        '" fill="' + color + '"/>';
+
+    svgEl.setAttribute('data-alp-unified','ok');
   }
-  function bindHover(svg,mapped,meta){
-    const tip=document.getElementById('v108-chart-tooltip');
-    if(!svg || !tip) return;
-    const rectNow=()=>svg.getBoundingClientRect();
-    const show=(pt,clientX,clientY)=>{
-      tip.style.display='block';
-      tip.innerHTML='<div style="font-weight:900;color:#fff">'+meta.name+'</div>'
-        + '<div style="margin-top:4px;color:'+meta.color+';font-weight:900">'+trNum(pt.v,2)+' '+meta.unit+'</div>'
-        + '<div style="margin-top:4px;color:#9db0c2">'+trDateShort(pt.t)+'</div>';
-      const host=svg.parentElement.getBoundingClientRect();
-      tip.style.left=(clientX - host.left + 14)+'px';
-      tip.style.top=(clientY - host.top - 10)+'px';
-    };
-    svg.onmousemove=function(e){
-      const r=rectNow();
-      const x=((e.clientX-r.left)/r.width)*920;
-      let nearest=mapped[0];
-      let best=Math.abs(mapped[0].x-x);
-      for(let i=1;i<mapped.length;i++){
-        const d=Math.abs(mapped[i].x-x);
-        if(d<best){best=d; nearest=mapped[i]}
+
+  // Tüm sparkline benzeri SVG'leri yakalayıp unified stilde çiz
+  function applyToAll() {
+    var selectors = [
+      '.v5-spark',
+      '.v69q-spark',
+      '.v71-detail-chart',
+      'svg[class*="spark"]',
+      'svg[class*="chart"][viewBox]'
+    ].join(', ');
+
+    var nodes = document.querySelectorAll(selectors);
+    nodes.forEach(function(svg){
+      // Büyük chart'lara dokunma (sadece mini grafikler)
+      var vb = (svg.getAttribute('viewBox') || '').split(/\s+/).map(Number);
+      var H = vb[3] || 0;
+      if(H > 200) return; // Büyük grafikler atlansın
+
+      // Modal içindeki grafiklere dokunma
+      if(svg.closest('.modal, [class*="modal"], [class*="Modal"]')) return;
+
+      var metal = detectMetal(svg);
+      if(!metal) return;
+
+      var prices = (metal === 'fx') ? getFxHistory() : getMetalHistory(metal);
+      drawUnified(svg, prices, COLORS[metal]);
+    });
+  }
+
+  // /api/metals ve /api/fx çağrılarını yakala, sparkline'ları yenile
+  var origFetch = window.fetch;
+  if(origFetch && !origFetch.__alpUnifiedWrapped) {
+    window.fetch = function(){
+      var args = arguments;
+      var url = (args[0] && args[0].url) ? args[0].url : (args[0] || '');
+      url = String(url);
+      var p = origFetch.apply(this, args);
+      if(/\/api\/(metals|fx|mcu3-copper)/.test(url)) {
+        p.then(function(resp){
+          // Cevabı klonlayıp FX history'ye push et
+          if(/\/api\/fx/.test(url)) {
+            try {
+              resp.clone().json().then(function(d){
+                if(d && d.usdtry) pushFxHistory(Number(d.usdtry));
+                setTimeout(applyToAll, 300);
+              }).catch(function(){});
+            } catch(e){}
+          } else {
+            setTimeout(applyToAll, 400);
+          }
+          return resp;
+        }).catch(function(){});
       }
-      show(nearest,e.clientX,e.clientY);
-      renderCrosshair(nearest);
+      return p;
     };
-    svg.onmouseleave=function(){
-      tip.style.display='none';
-      renderCrosshair(null);
-    };
-    function renderCrosshair(pt){
-      const old=svg.querySelector('#v108-crosshair-group');
-      if(old) old.remove();
-      if(!pt) return;
-      const g=document.createElementNS('http://www.w3.org/2000/svg','g');
-      g.setAttribute('id','v108-crosshair-group');
-      g.innerHTML='<line x1="'+pt.x.toFixed(1)+'" y1="24" x2="'+pt.x.toFixed(1)+'" y2="382" stroke="rgba(255,255,255,.18)" stroke-dasharray="4 4"/><line x1="56" y1="'+pt.y.toFixed(1)+'" x2="902" y2="'+pt.y.toFixed(1)+'" stroke="rgba(255,255,255,.12)" stroke-dasharray="4 4"/><circle cx="'+pt.x.toFixed(1)+'" cy="'+pt.y.toFixed(1)+'" r="5" fill="'+meta.color+'" stroke="#fff" stroke-width="1.5"/>';
-      svg.appendChild(g);
+    window.fetch.__alpUnifiedWrapped = true;
+  }
+
+  // İlk yükleme + periyodik refresh
+  function init(){
+    setTimeout(applyToAll, 1200);
+    setTimeout(applyToAll, 2500);
+    setTimeout(applyToAll, 5000);
+    // 20 saniyede bir tara - yeni eklenen kartları yakalamak için
+    setInterval(applyToAll, 20000);
+
+    // localStorage değişikliklerini yakala (başka sekmede de güncellenir)
+    window.addEventListener('storage', function(e){
+      if(e.key === 'v5_metal_history' || e.key === 'v5_fx_history') {
+        setTimeout(applyToAll, 100);
+      }
+    });
+
+    // DOM değişikliklerini yakala (yeni kartlar render edilince)
+    if(window.MutationObserver) {
+      var pending = false;
+      var obs = new MutationObserver(function(){
+        if(pending) return;
+        pending = true;
+        setTimeout(function(){ pending = false; applyToAll(); }, 600);
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
     }
   }
 
-  function patchAutoRefresh(){
-    const old=window.v5RenderInvestingCharts;
-    if(typeof old==='function' && !old._v108Wrapped){
-      const wrapped=function(){
-        const r=old.apply(this, arguments);
-        setTimeout(renderMiniCharts, 60);
-        return r;
-      };
-      wrapped._v108Wrapped=true;
-      window.v5RenderInvestingCharts=wrapped;
-    }
+  if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
-  function init(){
-    ensureModal();
-    patchAutoRefresh();
-    renderMiniCharts();
-    setTimeout(renderMiniCharts, 1200);
-    setTimeout(renderMiniCharts, 3000);
-    setInterval(renderMiniCharts, 30000);
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
 })();
 </script>
 

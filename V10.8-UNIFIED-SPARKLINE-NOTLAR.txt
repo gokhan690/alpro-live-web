@@ -1,0 +1,64 @@
+AluminyumPro V10.8 - Unified Sparkline (Tek Tip Mini Grafikler, Gerçek Fiyatlardan)
+
+BAZ: V10.7 (MCU3 Only No LB) - server.js degismedi, sadece index.html'e patch eklendi.
+
+SORUN (V10.7 ve oncesinde):
+Sayfada 4 farkli sparkline sistemi vardi ve hicbiri birbiriyle uyumlu degildi:
+1) V69q KPI kartlari   -> Math.sin/cos ile TAMAMEN SAHTE veri
+2) V71 Stage1 dashboard -> Yarisi gercek, az nokta varsa Math.random ile simule
+3) V5 mini grafikler    -> Gercek ama basit gorunumlu
+4) Hardcoded HTML       -> +0,73% gibi sabit yuzdeler, sahte veri
+
+Bu yuzden bazi grafikler sahte, bazilari gercek, gorsel olarak da hicbiri ayni degildi.
+
+YENI (V10.8):
+1) TEK SPARKLINE SISTEMI - Tum mevcut sistemleri override eden unified katman eklendi.
+2) GERCEK FIYATLARDAN  - Veri kaynagi: localStorage.v5_metal_history (300 nokta)
+3) SIMULASYON YOK      - Gercek fiyat yoksa "Veri toplaniyor..." mesaji gosterir
+4) AYNI GORSEL STIL    - Tum mini grafikler:
+   - Gradient fill (renkten transparana)
+   - Smooth polyline
+   - Sag uçta glow nokta + halka
+   - 2-3 yatay grid cizgisi
+   - Boyut otomatik (viewBox'a gore scale eder)
+5) METAL RENKLERI:
+   - Aluminyum: #e8a020 (altin sarisi)
+   - Bakir:     #d97706 (bakir turuncusu)
+   - Cinko:     #88a4b8 (gumusi mavi)
+   - USD/TRY:   #3aa6f4 (mavi)
+6) FX HISTORY EKLENDI - localStorage.v5_fx_history (yeni). /api/fx her cagrildiginda
+   anlik kur push edilir. USD/TRY mini grafigi de boylece gercek veriden cizilir.
+7) OTOMATIK YENILEME:
+   - Sayfa yuklendiginde ilk render
+   - /api/metals ve /api/fx fetch edildiginde otomatik yenilenir (fetch wrap)
+   - 20 saniyede bir tarama (yeni eklenen kartlari yakalar)
+   - localStorage degisikliklerinde tetiklenir (storage event)
+   - DOM mutation observer ile dinamik kartlar da yakalanir
+
+ETKILENEN GRAFIKLER (hepsi unified hale gelir):
+- Stage1 Dashboard 4 KPI karti (Aluminyum, Bakir, Cinko, USD/TRY)
+- Canli LME sayfasindaki mini grafikler (3 kart)
+- 6 fiyat karti sparkline'lari
+- V69q KPI sparkline'lari (eski sahte olanlar)
+- Tum diger .v5-spark, .v69q-spark, .v71-detail-chart elementleri
+
+DOKUNMAYAN YERLER:
+- server.js (degismedi, V10.7 ile ayni - bakir hala MCU3'ten)
+- Buyuk chart'lar (viewBox yuksekligi 200 ustu)
+- Modal icindeki grafikler (sparkline degil, detayli grafik)
+- Diger dashboard ozellikleri (cop kutusu, popSel, Cash Position vb.)
+
+DEPLOY:
+1) ZIP ac, dosyalari GitHub'a yukle (sadece index.html degisti, ama hepsini yukle)
+2) Commit: V10.8 - Unified sparkline (tek tip, gercek fiyatlardan)
+3) Push -> Render auto deploy
+4) Hard refresh
+
+KULLANICI DENEYIMI:
+- Site ilk acildigi an: history bos, tum grafiklerde "Veri toplaniyor..." yazar
+- 30 saniye sonra ilk fiyat gelir, history'ye 1 nokta birikir, "Yeni veri bekleniyor..."
+- 2-3 dakika sonra 5+ nokta birikir, gercek sparkline cizilmeye baslar
+- Gun icinde history dolar, daha guzel grafikler olusur
+
+NOT: Sahte/simule veri istemediginiz icin baslangicta birkac dakika beklemek gerekiyor.
+Eger anlik gosterim isterseniz server-side history endpoint'i (/api/metals-history) eklenebilir.

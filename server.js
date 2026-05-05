@@ -643,6 +643,7 @@ function v133cGetSupabaseClient(){
 
     const key =
       process.env.SUPABASE_SERVICE_ROLE_KEY ||
+      process.env.SUPABASE_SERVICE_KEY ||
       process.env.SUPABASE_ANON_KEY ||
       process.env.VITE_SUPABASE_ANON_KEY ||
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -795,7 +796,127 @@ http.createServer(async(req,res)=>{try{
   const u=new URL(req.url,'http://localhost:'+PORT);
   
 
-  // ===== V13.3E HISTORY ROUTES FIRST START =====
+  
+
+  // ===== V13.3F HISTORY DEBUG DIRECT START =====
+  if(u.pathname==='/api/history-debug'){
+    const startedAt = new Date().toISOString();
+
+    let client = null;
+    let clientSource = 'none';
+
+    try{
+      if(typeof v133cGetSupabaseClient === 'function'){
+        client = v133cGetSupabaseClient();
+        clientSource = client ? 'v133cGetSupabaseClient' : 'v133cGetSupabaseClient_none';
+      }
+    }catch(e){}
+
+    if(!client){
+      try{
+        const url =
+          process.env.SUPABASE_URL ||
+          process.env.VITE_SUPABASE_URL ||
+          process.env.NEXT_PUBLIC_SUPABASE_URL;
+
+        const key =
+          process.env.SUPABASE_SERVICE_ROLE_KEY ||
+          process.env.SUPABASE_SERVICE_KEY ||
+          process.env.SUPABASE_ANON_KEY ||
+          process.env.VITE_SUPABASE_ANON_KEY ||
+          process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+        if(url && key){
+          const mod = require('@supabase/supabase-js');
+          client = mod.createClient(url, key);
+          clientSource = 'direct_env_require';
+        }
+      }catch(e){
+        clientSource = 'direct_env_require_failed:'+e.message;
+      }
+    }
+
+    const env = {
+      SUPABASE_URL:!!process.env.SUPABASE_URL,
+      SUPABASE_SERVICE_ROLE_KEY:!!process.env.SUPABASE_SERVICE_ROLE_KEY,
+      SUPABASE_SERVICE_KEY:!!process.env.SUPABASE_SERVICE_KEY,
+      SUPABASE_ANON_KEY:!!process.env.SUPABASE_ANON_KEY,
+      VITE_SUPABASE_URL:!!process.env.VITE_SUPABASE_URL,
+      VITE_SUPABASE_ANON_KEY:!!process.env.VITE_SUPABASE_ANON_KEY
+    };
+
+    if(!client){
+      json(res,200,{
+        ok:false,
+        reason:'no_supabase_client',
+        clientSource,
+        env,
+        startedAt
+      });
+      return;
+    }
+
+    let countResult = null;
+    let recentResult = null;
+    let latestDynamic = null;
+    let errors = [];
+
+    try{
+      const {count, error} = await client
+        .from('metal_price_history')
+        .select('*', {count:'exact', head:true});
+
+      countResult = error ? {ok:false, error:error.message} : {ok:true, count};
+    }catch(e){
+      countResult = {ok:false, error:e.message};
+      errors.push('count:'+e.message);
+    }
+
+    try{
+      const {data, error} = await client
+        .from('metal_price_history')
+        .select('created_at,symbol,price,unit,source')
+        .order('created_at', {ascending:false})
+        .limit(10);
+
+      recentResult = error ? {ok:false, error:error.message} : {ok:true, count:Array.isArray(data)?data.length:0, items:data||[]};
+
+      if(Array.isArray(data)){
+        const map = {};
+        data.forEach(row=>{
+          const key = String(row.symbol||'').trim();
+          if(key && !map[key]) map[key]=row;
+        });
+        latestDynamic = Object.values(map);
+      }
+    }catch(e){
+      recentResult = {ok:false, error:e.message};
+      errors.push('recent:'+e.message);
+    }
+
+    json(res,200,{
+      ok:errors.length===0,
+      endpoint:'history-debug',
+      build:'V13.3F',
+      startedAt,
+      clientFound:!!client,
+      clientSource,
+      env,
+      table:'metal_price_history',
+      countResult,
+      recentResult,
+      latestDynamic,
+      autoSnapshot:{
+        lastAutoSnapshotAt: typeof V132_LAST_AUTO_SNAPSHOT_AT !== 'undefined' ? V132_LAST_AUTO_SNAPSHOT_AT : null,
+        lastAutoSnapshotResult: typeof V132_LAST_AUTO_SNAPSHOT_RESULT !== 'undefined' ? V132_LAST_AUTO_SNAPSHOT_RESULT : null
+      },
+      errors
+    });
+    return;
+  }
+  // ===== V13.3F HISTORY DEBUG DIRECT END =====
+
+// ===== V13.3E HISTORY ROUTES FIRST START =====
   // History read endpoints must be handled before generic price/API routes.
   // They must NOT call Investing/getMetals, otherwise "Invalid API key" may appear on history pages.
   if(u.pathname==='/api/supabase-status'){

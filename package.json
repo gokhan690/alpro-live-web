@@ -1,11 +1,14 @@
 {
-  "name": "aluminyumpro-v13-3b-supabase-client-resolver",
-  "version": "13.3.1",
+  "name": "aluminyumpro-v13-3c-supabase-env-client",
+  "version": "13.3.2",
   "private": true,
   "scripts": {
     "start": "node server.js"
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "latest"
   }
 }

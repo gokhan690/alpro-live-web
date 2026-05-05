@@ -613,47 +613,93 @@ setTimeout(v132StartAutoHistorySnapshot, 1500);
 
 
 
-// ===== V13.3B SUPABASE CLIENT RESOLVER START =====
-function v133bGetSupabaseClient(){
+
+
+
+// ===== V13.3C SUPABASE ENV CLIENT START =====
+let V133C_SUPABASE_CLIENT = null;
+
+function v133cGetSupabaseClient(){
+  if(V133C_SUPABASE_CLIENT && typeof V133C_SUPABASE_CLIENT.from === 'function') return V133C_SUPABASE_CLIENT;
+
   try{
     if(typeof supabase !== 'undefined' && supabase && typeof supabase.from === 'function') return supabase;
   }catch(e){}
-
   try{
     if(typeof supabaseClient !== 'undefined' && supabaseClient && typeof supabaseClient.from === 'function') return supabaseClient;
   }catch(e){}
-
   try{
     if(typeof sb !== 'undefined' && sb && typeof sb.from === 'function') return sb;
   }catch(e){}
-
   try{
     if(typeof supabaseAdmin !== 'undefined' && supabaseAdmin && typeof supabaseAdmin.from === 'function') return supabaseAdmin;
   }catch(e){}
 
   try{
-    if(global.supabase && typeof global.supabase.from === 'function') return global.supabase;
-  }catch(e){}
+    const url =
+      process.env.SUPABASE_URL ||
+      process.env.VITE_SUPABASE_URL ||
+      process.env.NEXT_PUBLIC_SUPABASE_URL;
 
-  try{
-    if(global.supabaseClient && typeof global.supabaseClient.from === 'function') return global.supabaseClient;
-  }catch(e){}
+    const key =
+      process.env.SUPABASE_SERVICE_ROLE_KEY ||
+      process.env.SUPABASE_ANON_KEY ||
+      process.env.VITE_SUPABASE_ANON_KEY ||
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if(!url || !key) return null;
+
+    // Try already imported createClient first
+    if(typeof createClient === 'function'){
+      V133C_SUPABASE_CLIENT = createClient(url, key);
+      return V133C_SUPABASE_CLIENT;
+    }
+
+    // Fallback require
+    const mod = require('@supabase/supabase-js');
+    if(mod && typeof mod.createClient === 'function'){
+      V133C_SUPABASE_CLIENT = mod.createClient(url, key);
+      return V133C_SUPABASE_CLIENT;
+    }
+  }catch(e){
+    return null;
+  }
 
   return null;
 }
-// ===== V13.3B SUPABASE CLIENT RESOLVER END =====
+
+function v133cSupabaseEnvStatus(){
+  return {
+    SUPABASE_URL: !!process.env.SUPABASE_URL,
+    SUPABASE_SERVICE_ROLE_KEY: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+    SUPABASE_ANON_KEY: !!process.env.SUPABASE_ANON_KEY,
+    VITE_SUPABASE_URL: !!process.env.VITE_SUPABASE_URL,
+    VITE_SUPABASE_ANON_KEY: !!process.env.VITE_SUPABASE_ANON_KEY,
+    NEXT_PUBLIC_SUPABASE_URL: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  };
+}
+// ===== V13.3C SUPABASE ENV CLIENT END =====
 
 // ===== V13.3 HISTORY READ ORDER FIX START =====
 async function v133FetchHistoryRows(opts={}){
   const limit = Math.max(1, Math.min(Number(opts.limit || 500), 5000));
   const symbol = opts.symbol ? String(opts.symbol).toUpperCase() : null;
+  const client = v133cGetSupabaseClient();
 
-  const _supabase = v133bGetSupabaseClient();
-  if(!_supabase){
-    return {mode:'no_supabase', order:'created_at_desc', count:0, latest:null, items:[]};
+  if(!client){
+    return {
+      ok:false,
+      mode:'no_supabase',
+      order:'created_at_desc',
+      count:0,
+      latest:null,
+      items:[],
+      env:v133cSupabaseEnvStatus()
+    };
   }
 
-  let query = _supabase
+  let query = client
     .from('metal_price_history')
     .select('created_at,symbol,price,unit,source')
     .order('created_at', {ascending:false})
@@ -676,16 +722,23 @@ async function v133FetchHistoryRows(opts={}){
 }
 
 async function v133FetchLatestBySymbol(){
-  const _supabase = v133bGetSupabaseClient();
-  if(!_supabase){
-    return {ok:false, mode:'no_supabase', items:[]};
+  const client = v133cGetSupabaseClient();
+
+  if(!client){
+    return {
+      ok:false,
+      mode:'no_supabase',
+      count:0,
+      items:[],
+      env:v133cSupabaseEnvStatus()
+    };
   }
 
   const symbols = ['ALU','MCU3','ZIN','USDTRY','EURTRY','GBPTRY'];
   const items = [];
 
   for(const sym of symbols){
-    const {data, error} = await _supabase
+    const {data, error} = await client
       .from('metal_price_history')
       .select('created_at,symbol,price,unit,source')
       .eq('symbol', sym)
@@ -705,18 +758,28 @@ async function v133FetchLatestBySymbol(){
 }
 
 async function v133CountHistoryRows(){
-  const _supabase = v133bGetSupabaseClient();
-  if(!_supabase){
-    return {ok:false, mode:'no_supabase', count:null};
+  const client = v133cGetSupabaseClient();
+
+  if(!client){
+    return {
+      ok:false,
+      mode:'no_supabase',
+      count:null,
+      env:v133cSupabaseEnvStatus()
+    };
   }
 
-  const {count, error} = await _supabase
+  const {count, error} = await client
     .from('metal_price_history')
     .select('*', {count:'exact', head:true});
 
   if(error) throw error;
 
-  return {ok:true, mode:'supabase', count};
+  return {
+    ok:true,
+    mode:'supabase',
+    count
+  };
 }
 // ===== V13.3 HISTORY READ ORDER FIX END =====
 
@@ -746,23 +809,20 @@ http.createServer(async(req,res)=>{try{
   }
 
 
-  // ===== V13.3B SUPABASE DEBUG ROUTE START =====
+  
+
+
+  // ===== V13.3C SUPABASE DEBUG ROUTE START =====
   if(u.pathname==='/api/supabase-status'){
-    const client = v133bGetSupabaseClient();
+    const client = v133cGetSupabaseClient();
     json(res,200,{
       ok:!!client,
       clientFound:!!client,
-      env:{
-        SUPABASE_URL:!!process.env.SUPABASE_URL,
-        SUPABASE_ANON_KEY:!!process.env.SUPABASE_ANON_KEY,
-        SUPABASE_SERVICE_ROLE_KEY:!!process.env.SUPABASE_SERVICE_ROLE_KEY,
-        VITE_SUPABASE_URL:!!process.env.VITE_SUPABASE_URL,
-        VITE_SUPABASE_ANON_KEY:!!process.env.VITE_SUPABASE_ANON_KEY
-      }
+      env:v133cSupabaseEnvStatus()
     });
     return;
   }
-  // ===== V13.3B SUPABASE DEBUG ROUTE END =====
+  // ===== V13.3C SUPABASE DEBUG ROUTE END =====
 
   if(u.pathname==='/api/metals-history/count'){
     const result = await v133CountHistoryRows();

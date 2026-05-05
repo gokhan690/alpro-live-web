@@ -612,16 +612,48 @@ setTimeout(v132StartAutoHistorySnapshot, 1500);
 // ===== V13.2 AUTO HISTORY SNAPSHOT END =====
 
 
+
+// ===== V13.3B SUPABASE CLIENT RESOLVER START =====
+function v133bGetSupabaseClient(){
+  try{
+    if(typeof supabase !== 'undefined' && supabase && typeof supabase.from === 'function') return supabase;
+  }catch(e){}
+
+  try{
+    if(typeof supabaseClient !== 'undefined' && supabaseClient && typeof supabaseClient.from === 'function') return supabaseClient;
+  }catch(e){}
+
+  try{
+    if(typeof sb !== 'undefined' && sb && typeof sb.from === 'function') return sb;
+  }catch(e){}
+
+  try{
+    if(typeof supabaseAdmin !== 'undefined' && supabaseAdmin && typeof supabaseAdmin.from === 'function') return supabaseAdmin;
+  }catch(e){}
+
+  try{
+    if(global.supabase && typeof global.supabase.from === 'function') return global.supabase;
+  }catch(e){}
+
+  try{
+    if(global.supabaseClient && typeof global.supabaseClient.from === 'function') return global.supabaseClient;
+  }catch(e){}
+
+  return null;
+}
+// ===== V13.3B SUPABASE CLIENT RESOLVER END =====
+
 // ===== V13.3 HISTORY READ ORDER FIX START =====
 async function v133FetchHistoryRows(opts={}){
   const limit = Math.max(1, Math.min(Number(opts.limit || 500), 5000));
   const symbol = opts.symbol ? String(opts.symbol).toUpperCase() : null;
 
-  if(typeof supabase === 'undefined' || !supabase){
+  const _supabase = v133bGetSupabaseClient();
+  if(!_supabase){
     return {mode:'no_supabase', order:'created_at_desc', count:0, latest:null, items:[]};
   }
 
-  let query = supabase
+  let query = _supabase
     .from('metal_price_history')
     .select('created_at,symbol,price,unit,source')
     .order('created_at', {ascending:false})
@@ -644,7 +676,8 @@ async function v133FetchHistoryRows(opts={}){
 }
 
 async function v133FetchLatestBySymbol(){
-  if(typeof supabase === 'undefined' || !supabase){
+  const _supabase = v133bGetSupabaseClient();
+  if(!_supabase){
     return {ok:false, mode:'no_supabase', items:[]};
   }
 
@@ -652,7 +685,7 @@ async function v133FetchLatestBySymbol(){
   const items = [];
 
   for(const sym of symbols){
-    const {data, error} = await supabase
+    const {data, error} = await _supabase
       .from('metal_price_history')
       .select('created_at,symbol,price,unit,source')
       .eq('symbol', sym)
@@ -672,11 +705,12 @@ async function v133FetchLatestBySymbol(){
 }
 
 async function v133CountHistoryRows(){
-  if(typeof supabase === 'undefined' || !supabase){
+  const _supabase = v133bGetSupabaseClient();
+  if(!_supabase){
     return {ok:false, mode:'no_supabase', count:null};
   }
 
-  const {count, error} = await supabase
+  const {count, error} = await _supabase
     .from('metal_price_history')
     .select('*', {count:'exact', head:true});
 
@@ -710,6 +744,25 @@ http.createServer(async(req,res)=>{try{
     json(res,200,result);
     return;
   }
+
+
+  // ===== V13.3B SUPABASE DEBUG ROUTE START =====
+  if(u.pathname==='/api/supabase-status'){
+    const client = v133bGetSupabaseClient();
+    json(res,200,{
+      ok:!!client,
+      clientFound:!!client,
+      env:{
+        SUPABASE_URL:!!process.env.SUPABASE_URL,
+        SUPABASE_ANON_KEY:!!process.env.SUPABASE_ANON_KEY,
+        SUPABASE_SERVICE_ROLE_KEY:!!process.env.SUPABASE_SERVICE_ROLE_KEY,
+        VITE_SUPABASE_URL:!!process.env.VITE_SUPABASE_URL,
+        VITE_SUPABASE_ANON_KEY:!!process.env.VITE_SUPABASE_ANON_KEY
+      }
+    });
+    return;
+  }
+  // ===== V13.3B SUPABASE DEBUG ROUTE END =====
 
   if(u.pathname==='/api/metals-history/count'){
     const result = await v133CountHistoryRows();

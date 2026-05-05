@@ -722,7 +722,7 @@ async function v133FetchHistoryRows(opts={}){
 }
 
 async function v133FetchLatestBySymbol(){
-  const client = v133cGetSupabaseClient();
+  const client = v133cGetSupabaseClient ? v133cGetSupabaseClient() : null;
 
   if(!client){
     return {
@@ -730,29 +730,37 @@ async function v133FetchLatestBySymbol(){
       mode:'no_supabase',
       count:0,
       items:[],
-      env:v133cSupabaseEnvStatus()
+      env:typeof v133cSupabaseEnvStatus === 'function' ? v133cSupabaseEnvStatus() : {}
     };
   }
 
-  const symbols = ['ALU','MCU3','ZIN','USDTRY','EURTRY','GBPTRY'];
-  const items = [];
+  // Sabit sembol arama yerine son kayıtları çekip symbol'e göre grupla.
+  // Böylece ALU / aluminium / copper / MCU3 gibi isim farkları sorun olmaz.
+  const {data, error} = await client
+    .from('metal_price_history')
+    .select('created_at,symbol,price,unit,source')
+    .order('created_at', {ascending:false})
+    .limit(1000);
 
-  for(const sym of symbols){
-    const {data, error} = await client
-      .from('metal_price_history')
-      .select('created_at,symbol,price,unit,source')
-      .eq('symbol', sym)
-      .order('created_at', {ascending:false})
-      .limit(1);
+  if(error) throw error;
 
-    if(!error && data && data[0]) items.push(data[0]);
-  }
+  const latestMap = {};
+  const rows = Array.isArray(data) ? data : [];
+
+  rows.forEach(row=>{
+    const key = String(row.symbol || '').trim();
+    if(!key) return;
+    if(!latestMap[key]) latestMap[key] = row;
+  });
+
+  const items = Object.values(latestMap);
 
   return {
     ok:true,
     mode:'supabase',
-    order:'latest_each_symbol',
+    order:'latest_dynamic_by_symbol',
     count:items.length,
+    scanned:rows.length,
     items
   };
 }
@@ -802,6 +810,36 @@ http.createServer(async(req,res)=>{try{
   // ===== V13.2 HISTORY STATUS ROUTE START =====
 
   // ===== V13.3 HISTORY READ ROUTES START =====
+
+  // ===== V13.3D SYMBOLS ROUTE START =====
+  if(u.pathname==='/api/metals-history/symbols'){
+    const client = typeof v133cGetSupabaseClient === 'function' ? v133cGetSupabaseClient() : null;
+    if(!client){
+      json(res,200,{ok:false, mode:'no_supabase', symbols:[]});
+      return;
+    }
+
+    const {data, error} = await client
+      .from('metal_price_history')
+      .select('symbol,created_at')
+      .order('created_at', {ascending:false})
+      .limit(5000);
+
+    if(error) throw error;
+
+    const seen = {};
+    (Array.isArray(data)?data:[]).forEach(r=>{
+      const s = String(r.symbol || '').trim();
+      if(!s) return;
+      if(!seen[s]) seen[s] = {symbol:s, lastSeen:r.created_at, count:0};
+      seen[s].count++;
+    });
+
+    json(res,200,{ok:true, mode:'supabase', count:Object.keys(seen).length, symbols:Object.values(seen)});
+    return;
+  }
+  // ===== V13.3D SYMBOLS ROUTE END =====
+
   if(u.pathname==='/api/metals-history/latest'){
     const result = await v133FetchLatestBySymbol();
     json(res,200,result);

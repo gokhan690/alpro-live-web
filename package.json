@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-v13-3c-supabase-env-client",
-  "version": "13.3.2",
+  "name": "aluminyumpro-v13-3d-dynamic-latest-symbols",
+  "version": "13.3.3",
   "private": true,
   "scripts": {
     "start": "node server.js"

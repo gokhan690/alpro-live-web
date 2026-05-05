@@ -536,6 +536,81 @@ async function v1102BuildSafeMetalsPayload(errorMessage){
 }
 // ===== V11.0.2 INVESTING 403 SAFE FALLBACK END =====
 
+
+// ===== V13.2 AUTO HISTORY SNAPSHOT START =====
+let V132_HISTORY_TIMER = null;
+let V132_LAST_AUTO_SNAPSHOT_AT = null;
+let V132_LAST_AUTO_SNAPSHOT_RESULT = null;
+let V132_AUTO_SNAPSHOT_RUNNING = false;
+
+async function v132RunAutoHistorySnapshot(){
+  if(V132_AUTO_SNAPSHOT_RUNNING) return {ok:false, skipped:'already_running'};
+  V132_AUTO_SNAPSHOT_RUNNING = true;
+
+  try{
+    if(typeof getMetals !== 'function' || typeof v110SnapshotPriceHistory !== 'function'){
+      return {ok:false, error:'history functions missing'};
+    }
+
+    let metalsData;
+    try{
+      metalsData = await getMetals();
+    }catch(e){
+      if(typeof v1102BuildSafeMetalsPayload === 'function'){
+        metalsData = await v1102BuildSafeMetalsPayload(e.message);
+      }else{
+        throw e;
+      }
+    }
+
+    let fxData = null;
+    try{
+      if(typeof getFx === 'function') fxData = await getFx();
+    }catch(e){}
+
+    const saved = await v110SnapshotPriceHistory(metalsData, fxData);
+    V132_LAST_AUTO_SNAPSHOT_AT = new Date().toISOString();
+    V132_LAST_AUTO_SNAPSHOT_RESULT = {
+      ok:true,
+      at:V132_LAST_AUTO_SNAPSHOT_AT,
+      saved,
+      source: metalsData && metalsData.source ? metalsData.source : null,
+      metals: metalsData && metalsData.metals ? Object.keys(metalsData.metals) : []
+    };
+    return V132_LAST_AUTO_SNAPSHOT_RESULT;
+  }catch(e){
+    V132_LAST_AUTO_SNAPSHOT_AT = new Date().toISOString();
+    V132_LAST_AUTO_SNAPSHOT_RESULT = {
+      ok:false,
+      at:V132_LAST_AUTO_SNAPSHOT_AT,
+      error:e.message
+    };
+    return V132_LAST_AUTO_SNAPSHOT_RESULT;
+  }finally{
+    V132_AUTO_SNAPSHOT_RUNNING = false;
+  }
+}
+
+function v132StartAutoHistorySnapshot(){
+  const enabled = String(process.env.AUTO_HISTORY_SNAPSHOT || 'true').toLowerCase() !== 'false';
+  if(!enabled) return;
+
+  const intervalMs = Number(process.env.HISTORY_SNAPSHOT_INTERVAL_MS || 60000);
+  const safeInterval = Number.isFinite(intervalMs) && intervalMs >= 30000 ? intervalMs : 60000;
+
+  if(V132_HISTORY_TIMER) return;
+
+  setTimeout(()=>{ v132RunAutoHistorySnapshot().catch(()=>{}); }, 8000);
+  V132_HISTORY_TIMER = setInterval(()=>{ v132RunAutoHistorySnapshot().catch(()=>{}); }, safeInterval);
+
+  if(V132_HISTORY_TIMER && typeof V132_HISTORY_TIMER.unref === 'function'){
+    V132_HISTORY_TIMER.unref();
+  }
+}
+
+setTimeout(v132StartAutoHistorySnapshot, 1500);
+// ===== V13.2 AUTO HISTORY SNAPSHOT END =====
+
 http.createServer(async(req,res)=>{try{
   const u=new URL(req.url,'http://localhost:'+PORT);
   if(u.pathname==='/'||u.pathname==='/index.html'){serve(res,'index.html');return}
@@ -551,6 +626,26 @@ http.createServer(async(req,res)=>{try{
 
 
   
+
+  // ===== V13.2 HISTORY STATUS ROUTE START =====
+  if(u.pathname==='/api/metals-history/status'){
+    json(res,200,{
+      ok:true,
+      autoSnapshot:true,
+      lastAutoSnapshotAt:V132_LAST_AUTO_SNAPSHOT_AT,
+      lastAutoSnapshotResult:V132_LAST_AUTO_SNAPSHOT_RESULT,
+      intervalMs:Number(process.env.HISTORY_SNAPSHOT_INTERVAL_MS || 60000)
+    });
+    return;
+  }
+
+  if(u.pathname==='/api/metals-history/auto-snapshot'){
+    const result = await v132RunAutoHistorySnapshot();
+    json(res,200,result);
+    return;
+  }
+  // ===== V13.2 HISTORY STATUS ROUTE END =====
+
   if(u.pathname==='/api/metals-history/snapshot'){
     let metalsData;
     try{

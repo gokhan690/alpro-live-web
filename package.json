@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-v13-2-auto-history-snapshot",
-  "version": "13.2.0",
+  "name": "aluminyumpro-v13-3-history-read-order-fix",
+  "version": "13.3.0",
   "private": true,
   "scripts": {
     "start": "node server.js"

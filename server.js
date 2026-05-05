@@ -611,6 +611,81 @@ function v132StartAutoHistorySnapshot(){
 setTimeout(v132StartAutoHistorySnapshot, 1500);
 // ===== V13.2 AUTO HISTORY SNAPSHOT END =====
 
+
+// ===== V13.3 HISTORY READ ORDER FIX START =====
+async function v133FetchHistoryRows(opts={}){
+  const limit = Math.max(1, Math.min(Number(opts.limit || 500), 5000));
+  const symbol = opts.symbol ? String(opts.symbol).toUpperCase() : null;
+
+  if(typeof supabase === 'undefined' || !supabase){
+    return {mode:'no_supabase', order:'created_at_desc', count:0, latest:null, items:[]};
+  }
+
+  let query = supabase
+    .from('metal_price_history')
+    .select('created_at,symbol,price,unit,source')
+    .order('created_at', {ascending:false})
+    .limit(limit);
+
+  if(symbol) query = query.eq('symbol', symbol);
+
+  const {data, error} = await query;
+  if(error) throw error;
+
+  const items = Array.isArray(data) ? data : [];
+  return {
+    ok:true,
+    mode:'supabase',
+    order:'created_at_desc',
+    count:items.length,
+    latest:items[0] || null,
+    items
+  };
+}
+
+async function v133FetchLatestBySymbol(){
+  if(typeof supabase === 'undefined' || !supabase){
+    return {ok:false, mode:'no_supabase', items:[]};
+  }
+
+  const symbols = ['ALU','MCU3','ZIN','USDTRY','EURTRY','GBPTRY'];
+  const items = [];
+
+  for(const sym of symbols){
+    const {data, error} = await supabase
+      .from('metal_price_history')
+      .select('created_at,symbol,price,unit,source')
+      .eq('symbol', sym)
+      .order('created_at', {ascending:false})
+      .limit(1);
+
+    if(!error && data && data[0]) items.push(data[0]);
+  }
+
+  return {
+    ok:true,
+    mode:'supabase',
+    order:'latest_each_symbol',
+    count:items.length,
+    items
+  };
+}
+
+async function v133CountHistoryRows(){
+  if(typeof supabase === 'undefined' || !supabase){
+    return {ok:false, mode:'no_supabase', count:null};
+  }
+
+  const {count, error} = await supabase
+    .from('metal_price_history')
+    .select('*', {count:'exact', head:true});
+
+  if(error) throw error;
+
+  return {ok:true, mode:'supabase', count};
+}
+// ===== V13.3 HISTORY READ ORDER FIX END =====
+
 http.createServer(async(req,res)=>{try{
   const u=new URL(req.url,'http://localhost:'+PORT);
   if(u.pathname==='/'||u.pathname==='/index.html'){serve(res,'index.html');return}
@@ -628,6 +703,29 @@ http.createServer(async(req,res)=>{try{
   
 
   // ===== V13.2 HISTORY STATUS ROUTE START =====
+
+  // ===== V13.3 HISTORY READ ROUTES START =====
+  if(u.pathname==='/api/metals-history/latest'){
+    const result = await v133FetchLatestBySymbol();
+    json(res,200,result);
+    return;
+  }
+
+  if(u.pathname==='/api/metals-history/count'){
+    const result = await v133CountHistoryRows();
+    json(res,200,result);
+    return;
+  }
+
+  if(u.pathname==='/api/metals-history/recent'){
+    const limit = Number(u.searchParams.get('limit') || 500);
+    const symbol = u.searchParams.get('symbol');
+    const result = await v133FetchHistoryRows({limit, symbol});
+    json(res,200,result);
+    return;
+  }
+  // ===== V13.3 HISTORY READ ROUTES END =====
+
   if(u.pathname==='/api/metals-history/status'){
     json(res,200,{
       ok:true,
@@ -661,7 +759,18 @@ http.createServer(async(req,res)=>{try{
   }
 
 if(u.pathname==='/api/metals-history'){
-    json(res,200,await v110GetPriceHistory(u.searchParams));
+    const limit = Number(u.searchParams.get('limit') || 500);
+    const symbol = u.searchParams.get('symbol');
+    const order = String(u.searchParams.get('order') || 'desc').toLowerCase();
+    const result = await v133FetchHistoryRows({limit, symbol});
+
+    if(order === 'asc'){
+      result.items = result.items.slice().reverse();
+      result.order = 'created_at_asc';
+      result.latest = result.items[result.items.length-1] || null;
+    }
+
+    json(res,200,result);
     return;
   }
 

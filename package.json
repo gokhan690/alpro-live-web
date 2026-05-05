@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-v13-3f-history-debug-direct",
-  "version": "13.3.5",
+  "name": "aluminyumpro-v13-3g-service-key-alias-debug",
+  "version": "13.3.6",
   "private": true,
   "scripts": {
     "start": "node server.js"

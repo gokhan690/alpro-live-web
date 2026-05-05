@@ -616,11 +616,77 @@ setTimeout(v132StartAutoHistorySnapshot, 1500);
 
 
 
+
+// ===== V13.3G SERVICE KEY ALIAS START =====
+function v133gSupabaseKeyCandidates(){
+  return [
+    ['SUPABASE_SERVICE_KEY', process.env.SUPABASE_SERVICE_KEY],
+    ['SUPABASE_SERVICE_ROLE_KEY', process.env.SUPABASE_SERVICE_ROLE_KEY],
+    ['SUPABASE_ANON_KEY', process.env.SUPABASE_ANON_KEY],
+    ['VITE_SUPABASE_ANON_KEY', process.env.VITE_SUPABASE_ANON_KEY],
+    ['NEXT_PUBLIC_SUPABASE_ANON_KEY', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY]
+  ].filter(x=>!!x[1]);
+}
+
+function v133gSupabaseUrl(){
+  return process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || null;
+}
+
+function v133gGetSupabaseClientWithMeta(){
+  const url = v133gSupabaseUrl();
+  const candidates = v133gSupabaseKeyCandidates();
+
+  if(!url || !candidates.length){
+    return {client:null, usedKeyName:null, reason:'missing_url_or_key'};
+  }
+
+  for(const [name,key] of candidates){
+    try{
+      let create = null;
+      if(typeof createClient === 'function') create = createClient;
+      else{
+        const mod = require('@supabase/supabase-js');
+        create = mod && mod.createClient;
+      }
+
+      if(typeof create !== 'function') continue;
+
+      const client = create(url, String(key).trim());
+      if(client && typeof client.from === 'function'){
+        return {client, usedKeyName:name, reason:null};
+      }
+    }catch(e){}
+  }
+
+  return {client:null, usedKeyName:null, reason:'client_create_failed'};
+}
+
+function v133gEnvStatus(){
+  return {
+    SUPABASE_URL:!!process.env.SUPABASE_URL,
+    SUPABASE_SERVICE_KEY:!!process.env.SUPABASE_SERVICE_KEY,
+    SUPABASE_SERVICE_ROLE_KEY:!!process.env.SUPABASE_SERVICE_ROLE_KEY,
+    SUPABASE_ANON_KEY:!!process.env.SUPABASE_ANON_KEY,
+    VITE_SUPABASE_URL:!!process.env.VITE_SUPABASE_URL,
+    VITE_SUPABASE_ANON_KEY:!!process.env.VITE_SUPABASE_ANON_KEY,
+    NEXT_PUBLIC_SUPABASE_URL:!!process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_ANON_KEY:!!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  };
+}
+// ===== V13.3G SERVICE KEY ALIAS END =====
+
 // ===== V13.3C SUPABASE ENV CLIENT START =====
 let V133C_SUPABASE_CLIENT = null;
 
 function v133cGetSupabaseClient(){
   if(V133C_SUPABASE_CLIENT && typeof V133C_SUPABASE_CLIENT.from === 'function') return V133C_SUPABASE_CLIENT;
+
+  const meta = typeof v133gGetSupabaseClientWithMeta === 'function' ? v133gGetSupabaseClientWithMeta() : {client:null};
+  if(meta.client){
+    V133C_SUPABASE_CLIENT = meta.client;
+    V133C_SUPABASE_CLIENT.__alproUsedKeyName = meta.usedKeyName;
+    return V133C_SUPABASE_CLIENT;
+  }
 
   try{
     if(typeof supabase !== 'undefined' && supabase && typeof supabase.from === 'function') return supabase;
@@ -635,49 +701,22 @@ function v133cGetSupabaseClient(){
     if(typeof supabaseAdmin !== 'undefined' && supabaseAdmin && typeof supabaseAdmin.from === 'function') return supabaseAdmin;
   }catch(e){}
 
-  try{
-    const url =
-      process.env.SUPABASE_URL ||
-      process.env.VITE_SUPABASE_URL ||
-      process.env.NEXT_PUBLIC_SUPABASE_URL;
-
-    const key =
-      process.env.SUPABASE_SERVICE_ROLE_KEY ||
-      process.env.SUPABASE_SERVICE_KEY ||
-      process.env.SUPABASE_ANON_KEY ||
-      process.env.VITE_SUPABASE_ANON_KEY ||
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-    if(!url || !key) return null;
-
-    // Try already imported createClient first
-    if(typeof createClient === 'function'){
-      V133C_SUPABASE_CLIENT = createClient(url, key);
-      return V133C_SUPABASE_CLIENT;
-    }
-
-    // Fallback require
-    const mod = require('@supabase/supabase-js');
-    if(mod && typeof mod.createClient === 'function'){
-      V133C_SUPABASE_CLIENT = mod.createClient(url, key);
-      return V133C_SUPABASE_CLIENT;
-    }
-  }catch(e){
-    return null;
-  }
-
   return null;
 }
 
 function v133cSupabaseEnvStatus(){
+  const meta = typeof v133gGetSupabaseClientWithMeta === 'function' ? v133gGetSupabaseClientWithMeta() : {client:null, usedKeyName:null, reason:'missing_helper'};
   return {
     SUPABASE_URL: !!process.env.SUPABASE_URL,
+    SUPABASE_SERVICE_KEY: !!process.env.SUPABASE_SERVICE_KEY,
     SUPABASE_SERVICE_ROLE_KEY: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
     SUPABASE_ANON_KEY: !!process.env.SUPABASE_ANON_KEY,
     VITE_SUPABASE_URL: !!process.env.VITE_SUPABASE_URL,
     VITE_SUPABASE_ANON_KEY: !!process.env.VITE_SUPABASE_ANON_KEY,
     NEXT_PUBLIC_SUPABASE_URL: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    usedKeyName: meta.usedKeyName,
+    candidateKeyNames: typeof v133gSupabaseKeyCandidates === 'function' ? v133gSupabaseKeyCandidates().map(x=>x[0]) : []
   };
 }
 // ===== V13.3C SUPABASE ENV CLIENT END =====
@@ -866,7 +905,7 @@ http.createServer(async(req,res)=>{try{
         .from('metal_price_history')
         .select('*', {count:'exact', head:true});
 
-      countResult = error ? {ok:false, error:error.message} : {ok:true, count};
+      countResult = error ? {ok:false, error:error.message, usedKeyName: client && client.__alproUsedKeyName ? client.__alproUsedKeyName : null} : {ok:true, count};
     }catch(e){
       countResult = {ok:false, error:e.message};
       errors.push('count:'+e.message);
@@ -879,7 +918,7 @@ http.createServer(async(req,res)=>{try{
         .order('created_at', {ascending:false})
         .limit(10);
 
-      recentResult = error ? {ok:false, error:error.message} : {ok:true, count:Array.isArray(data)?data.length:0, items:data||[]};
+      recentResult = error ? {ok:false, error:error.message, usedKeyName: client && client.__alproUsedKeyName ? client.__alproUsedKeyName : null} : {ok:true, count:Array.isArray(data)?data.length:0, items:data||[]};
 
       if(Array.isArray(data)){
         const map = {};
@@ -901,6 +940,7 @@ http.createServer(async(req,res)=>{try{
       startedAt,
       clientFound:!!client,
       clientSource,
+      usedKeyName: client && client.__alproUsedKeyName ? client.__alproUsedKeyName : (typeof v133gGetSupabaseClientWithMeta==='function' ? v133gGetSupabaseClientWithMeta().usedKeyName : null),
       env,
       table:'metal_price_history',
       countResult,

@@ -5642,6 +5642,105 @@ div[style*="position: fixed"][style*="bottom"]:not([id^="v70"]):not([id^="page-"
 }
 </style>
 
+
+<style id="v131-customs-upload-history-silent-css">
+#v110-history-badge,
+[id*="history-badge"],
+[id*="server-history"],
+.v110-history-badge{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+.v131-customs-upload-box{
+  margin:14px 0!important;
+  padding:14px!important;
+  border-radius:18px!important;
+  border:1px dashed rgba(244,202,117,.38)!important;
+  background:linear-gradient(180deg,rgba(244,202,117,.08),rgba(255,255,255,.025))!important;
+  color:#fff!important;
+}
+.v131-customs-upload-title{
+  font-size:14px!important;
+  font-weight:1000!important;
+  color:#fff!important;
+  margin-bottom:6px!important;
+}
+.v131-customs-upload-sub{
+  font-size:11px!important;
+  color:rgba(255,255,255,.58)!important;
+  margin-bottom:10px!important;
+}
+.v131-customs-upload-row{
+  display:flex!important;
+  gap:8px!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+}
+.v131-customs-upload-btn,
+.v131-customs-clear-btn{
+  min-height:38px!important;
+  border-radius:13px!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:linear-gradient(135deg,rgba(244,202,117,.95),rgba(222,173,72,.90))!important;
+  color:#080808!important;
+  font-size:12px!important;
+  font-weight:1000!important;
+  padding:0 12px!important;
+  cursor:pointer!important;
+}
+.v131-customs-clear-btn{
+  background:rgba(255,255,255,.06)!important;
+  color:#fff!important;
+}
+.v131-customs-file-list{
+  margin-top:10px!important;
+  display:grid!important;
+  gap:7px!important;
+}
+.v131-customs-file-item{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:8px!important;
+  padding:8px 10px!important;
+  border-radius:13px!important;
+  background:rgba(255,255,255,.05)!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  color:#fff!important;
+  font-size:12px!important;
+}
+.v131-customs-file-item small{
+  color:rgba(255,255,255,.55)!important;
+}
+.v131-customs-file-actions{
+  display:flex!important;
+  gap:6px!important;
+  flex:0 0 auto!important;
+}
+.v131-customs-file-actions button{
+  min-height:28px!important;
+  border-radius:10px!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:rgba(255,255,255,.06)!important;
+  color:#fff!important;
+  padding:0 8px!important;
+  font-size:11px!important;
+}
+@media(max-width:820px){
+  .v131-customs-upload-row{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+  }
+  .v131-customs-file-item{
+    align-items:flex-start!important;
+    flex-direction:column!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="login-screen" class="login-overlay">
@@ -15152,7 +15251,7 @@ window.openTrash = function(type) {
           setTimeout(()=>window.v5RenderInvestingCharts(),120);
         }
         if(typeof window.notif==='function'){
-          window.notif('Server fiyat geçmişi yüklendi: '+grouped.length+' kayıt','s');
+          
         }
       }
     }catch(e){
@@ -16377,6 +16476,204 @@ window.openTrash = function(type) {
       return r;
     };
     wrapped._v130Wrapped=true;
+    window.P=wrapped;
+    window.showPage=wrapped;
+  }
+})();
+</script>
+
+
+<script id="v131-customs-upload-history-silent-js">
+(function(){
+  const STORAGE_KEY='v131_customs_files';
+
+  function q(id){return document.getElementById(id)}
+  function safeJSON(v,d){try{return JSON.parse(v)}catch(e){return d}}
+  function getFiles(){const v=safeJSON(localStorage.getItem(STORAGE_KEY)||'[]',[]);return Array.isArray(v)?v:[]}
+  function saveFiles(v){localStorage.setItem(STORAGE_KEY,JSON.stringify(v));}
+  function uid(){return 'cf_'+Date.now()+'_'+Math.random().toString(16).slice(2)}
+  function fmtSize(n){
+    n=Number(n||0);
+    if(n>1024*1024) return (n/1024/1024).toFixed(2)+' MB';
+    if(n>1024) return (n/1024).toFixed(1)+' KB';
+    return n+' B';
+  }
+  function escapeHTML(s){
+    return String(s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  }
+
+  function silenceHistory(){
+    document.querySelectorAll('#v110-history-badge,[id*="history-badge"],[id*="server-history"],.v110-history-badge').forEach(el=>el.remove());
+
+    if(typeof window.notif==='function' && !window.notif._v131SilentWrapped){
+      const old=window.notif;
+      const wrapped=function(msg,type){
+        try{
+          if(String(msg||'').includes('Server fiyat geçmişi yüklendi')) return;
+        }catch(e){}
+        return old.apply(this,arguments);
+      };
+      wrapped._v131SilentWrapped=true;
+      window.notif=wrapped;
+    }
+
+    document.querySelectorAll('.toast,.notif,.notification,.v69-toast,.v5-toast').forEach(el=>{
+      if((el.textContent||'').includes('Server fiyat geçmişi yüklendi')) el.remove();
+    });
+  }
+
+  function findCustomsPage(){
+    return q('page-customs') || q('page-customs-calc') || q('customs') || q('page-logistics');
+  }
+
+  function ensureCustomsUpload(){
+    const page=findCustomsPage();
+    if(!page || q('v131-customs-upload-box')) return;
+
+    const box=document.createElement('div');
+    box.id='v131-customs-upload-box';
+    box.className='v131-customs-upload-box';
+    box.innerHTML=
+      '<div class="v131-customs-upload-title">📎 Gümrük Dosyaları</div>'+
+      '<div class="v131-customs-upload-sub">PDF, görsel, Excel veya gümrük evraklarını buraya ekleyebilirsin. Dosya listesi tarayıcıda saklanır.</div>'+
+      '<input id="v131-customs-file-input" type="file" multiple style="display:none" accept=".pdf,.png,.jpg,.jpeg,.webp,.xlsx,.xls,.csv,.doc,.docx,.txt,application/pdf,image/*">'+
+      '<div class="v131-customs-upload-row">'+
+        '<button type="button" class="v131-customs-upload-btn" id="v131-customs-add-file">Dosya Ekle</button>'+
+        '<button type="button" class="v131-customs-clear-btn" id="v131-customs-clear-files">Listeyi Temizle</button>'+
+      '</div>'+
+      '<div class="v131-customs-file-list" id="v131-customs-file-list"></div>';
+
+    const first = page.querySelector('.card,.panel,.v111-panel') || page.firstElementChild;
+    if(first) first.insertAdjacentElement('beforebegin', box);
+    else page.prepend(box);
+
+    bindUpload();
+    renderFiles();
+  }
+
+  function bindUpload(){
+    const btn=q('v131-customs-add-file');
+    const input=q('v131-customs-file-input');
+    const clear=q('v131-customs-clear-files');
+
+    if(btn && input && !btn._v131){
+      btn._v131=true;
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        input.click();
+      });
+    }
+
+    if(input && !input._v131){
+      input._v131=true;
+      input.addEventListener('change',function(){
+        const selected=[...input.files||[]];
+        if(!selected.length) return;
+        const rows=getFiles();
+
+        selected.forEach(file=>{
+          rows.unshift({
+            id:uid(),
+            name:file.name,
+            size:file.size,
+            type:file.type || 'file',
+            addedAt:new Date().toISOString()
+          });
+        });
+
+        saveFiles(rows.slice(0,200));
+        input.value='';
+        renderFiles();
+
+        if(typeof window.notif==='function') window.notif(selected.length+' gümrük dosyası eklendi','s');
+      });
+    }
+
+    if(clear && !clear._v131){
+      clear._v131=true;
+      clear.addEventListener('click',function(e){
+        e.preventDefault();
+        if(confirm('Gümrük dosya listesini temizleyeyim mi?')){
+          saveFiles([]);
+          renderFiles();
+        }
+      });
+    }
+  }
+
+  function renderFiles(){
+    const list=q('v131-customs-file-list');
+    if(!list) return;
+    const rows=getFiles();
+
+    if(!rows.length){
+      list.innerHTML='<div class="v131-customs-file-item"><span>Henüz dosya eklenmedi.</span></div>';
+      return;
+    }
+
+    list.innerHTML=rows.map(r=>{
+      const dt=r.addedAt ? new Date(r.addedAt).toLocaleString('tr-TR') : '';
+      return '<div class="v131-customs-file-item" data-id="'+r.id+'">'+
+        '<div><strong>'+escapeHTML(r.name)+'</strong><br><small>'+fmtSize(r.size)+' • '+escapeHTML(r.type||'file')+' • '+dt+'</small></div>'+
+        '<div class="v131-customs-file-actions">'+
+          '<button type="button" data-remove="'+r.id+'">Sil</button>'+
+        '</div>'+
+      '</div>';
+    }).join('');
+
+    list.querySelectorAll('[data-remove]').forEach(btn=>{
+      btn.onclick=function(){
+        const id=btn.getAttribute('data-remove');
+        saveFiles(getFiles().filter(x=>x.id!==id));
+        renderFiles();
+      };
+    });
+  }
+
+  function patchNativeCustomsInputs(){
+    const page=findCustomsPage();
+    if(!page) return;
+
+    page.querySelectorAll('input[type="file"]').forEach(inp=>{
+      if(inp.id==='v131-customs-file-input') return;
+      inp.style.pointerEvents='auto';
+      inp.style.opacity=inp.style.opacity==='0'?'1':inp.style.opacity;
+      inp.disabled=false;
+    });
+
+    page.querySelectorAll('button').forEach(btn=>{
+      const t=(btn.textContent||'').toLowerCase();
+      if(t.includes('dosya') || t.includes('evrak') || t.includes('upload') || t.includes('yükle')){
+        btn.style.pointerEvents='auto';
+        btn.disabled=false;
+      }
+    });
+  }
+
+  function init(){
+    silenceHistory();
+    ensureCustomsUpload();
+    patchNativeCustomsInputs();
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    init();
+    setTimeout(init,250);
+    setTimeout(init,900);
+    setTimeout(init,1800);
+  });
+
+  setInterval(init,2500);
+
+  const oldP=window.P;
+  if(typeof oldP==='function' && !oldP._v131Wrapped){
+    const wrapped=function(){
+      const r=oldP.apply(this,arguments);
+      setTimeout(init,120);
+      setTimeout(init,500);
+      return r;
+    };
+    wrapped._v131Wrapped=true;
     window.P=wrapped;
     window.showPage=wrapped;
   }

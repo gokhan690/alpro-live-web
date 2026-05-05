@@ -793,7 +793,86 @@ async function v133CountHistoryRows(){
 
 http.createServer(async(req,res)=>{try{
   const u=new URL(req.url,'http://localhost:'+PORT);
-  if(u.pathname==='/'||u.pathname==='/index.html'){serve(res,'index.html');return}
+  
+
+  // ===== V13.3E HISTORY ROUTES FIRST START =====
+  // History read endpoints must be handled before generic price/API routes.
+  // They must NOT call Investing/getMetals, otherwise "Invalid API key" may appear on history pages.
+  if(u.pathname==='/api/supabase-status'){
+    const client = typeof v133cGetSupabaseClient === 'function' ? v133cGetSupabaseClient() : null;
+    json(res,200,{
+      ok:!!client,
+      clientFound:!!client,
+      env: typeof v133cSupabaseEnvStatus === 'function' ? v133cSupabaseEnvStatus() : {}
+    });
+    return;
+  }
+
+  if(u.pathname==='/api/metals-history/count'){
+    const result = await v133CountHistoryRows();
+    json(res,200,result);
+    return;
+  }
+
+  if(u.pathname==='/api/metals-history/symbols'){
+    const client = typeof v133cGetSupabaseClient === 'function' ? v133cGetSupabaseClient() : null;
+    if(!client){
+      json(res,200,{ok:false, mode:'no_supabase', symbols:[], env: typeof v133cSupabaseEnvStatus === 'function' ? v133cSupabaseEnvStatus() : {}});
+      return;
+    }
+
+    const {data, error} = await client
+      .from('metal_price_history')
+      .select('symbol,created_at')
+      .order('created_at', {ascending:false})
+      .limit(5000);
+
+    if(error) throw error;
+
+    const seen = {};
+    (Array.isArray(data)?data:[]).forEach(r=>{
+      const s = String(r.symbol || '').trim();
+      if(!s) return;
+      if(!seen[s]) seen[s] = {symbol:s, lastSeen:r.created_at, count:0};
+      seen[s].count++;
+    });
+
+    json(res,200,{ok:true, mode:'supabase', count:Object.keys(seen).length, symbols:Object.values(seen)});
+    return;
+  }
+
+  if(u.pathname==='/api/metals-history/latest'){
+    const result = await v133FetchLatestBySymbol();
+    json(res,200,result);
+    return;
+  }
+
+  if(u.pathname==='/api/metals-history/recent'){
+    const limit = Number(u.searchParams.get('limit') || 500);
+    const symbol = u.searchParams.get('symbol');
+    const result = await v133FetchHistoryRows({limit, symbol});
+    json(res,200,result);
+    return;
+  }
+
+  if(u.pathname==='/api/metals-history'){
+    const limit = Number(u.searchParams.get('limit') || 500);
+    const symbol = u.searchParams.get('symbol');
+    const order = String(u.searchParams.get('order') || 'desc').toLowerCase();
+    const result = await v133FetchHistoryRows({limit, symbol});
+
+    if(order === 'asc' && result.items){
+      result.items = result.items.slice().reverse();
+      result.order = 'created_at_asc';
+      result.latest = result.items[result.items.length-1] || null;
+    }
+
+    json(res,200,result);
+    return;
+  }
+  // ===== V13.3E HISTORY ROUTES FIRST END =====
+
+if(u.pathname==='/'||u.pathname==='/index.html'){serve(res,'index.html');return}
   
   if(u.pathname==='/api/mcu3-copper'){
     try{

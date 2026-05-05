@@ -1,6 +1,6 @@
 {
-  "name": "aluminyumpro-v13-3d-dynamic-latest-symbols",
-  "version": "13.3.3",
+  "name": "aluminyumpro-v13-3e-history-routes-first",
+  "version": "13.3.4",
   "private": true,
   "scripts": {
     "start": "node server.js"
